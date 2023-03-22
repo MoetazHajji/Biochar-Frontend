@@ -1,1 +1,41 @@
-
+<div class="backadmin-table">
+    <div class="p-d-flex p-jc-between">
+        <div>
+            <h1 class="text-center">
+                Product list
+            </h1>
+            <button class="btn btn-blue btn-primary" pButton pRipple label="Add product" icon="pi pi-plus" >New product +</button>
+            <hr width="100%">
+        </div>
+    </div>
+    <div class="container">
+        <div class="backadmin-table">
+            <div class="row">
+                <div class="content-move">
+                    <table style="width: 100px;">
+                        <thead>
+                            <tr>
+                                <th>Id</th>
+                                <th>Name</th>
+                                <th>Reference</th>
+                                <th>Qantity</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody *ngFor="let item of productList">
+                            <tr>
+                                <td>{{item.id}}</td>
+                                <td>{{item.product_name}}</td>
+                                <td>{{item.reference}}</td>
+                                <td>{{item.quantity}}</td>
+                                <td>
+                                    <button type="button" tooltipPosition="left" pButton class="p-panel-header-icon p-link" icon="pi pi-eye" ></button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

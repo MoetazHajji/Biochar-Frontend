@@ -4,13 +4,15 @@ import { BackadminRoutingModule } from './backadmin-routing.module';
 import { SideBarComponent } from './side-bar/side-bar.component';
 import { ProductListComponent } from './product-list/product-list.component';
 import { AdminLayoutComponent } from './admin-layout/admin-layout.component';
+import { HeaderComponent } from './shared/header/header.component';
 
 
 @NgModule({
   declarations: [
     SideBarComponent,
     ProductListComponent,
-    AdminLayoutComponent
+    AdminLayoutComponent,
+    HeaderComponent
   ],
   imports: [
     CommonModule,
