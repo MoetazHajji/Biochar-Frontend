@@ -14,7 +14,12 @@ const routes: Routes = [
       {
         path:'',
         component:ProductListComponent
+      },
+      {
+        path:'add',
+        component:ProductListComponent
       }
+
     ]
     },
   {path:'**',component:NotFoundComponent}

@@ -8,7 +8,13 @@ import { Product } from 'src/app/_models/_product/product';
 })
 export class ProductListComponent implements OnInit {
 
-  productList:Product[]=[{id:1 , product_name:"MSI" , reference:"123AR" , quantity:100}];
+  productList:Product[]=[{id:1 ,  product_name:"MSI" , reference:"123AR" , quantity:100},
+                        {id:1 ,  product_name:"MSI" , reference:"123AR" , quantity:100},
+                        {id:1 ,  product_name:"MSI" , reference:"123AR" , quantity:100},
+                        {id:1 ,  product_name:"MSI" , reference:"123AR" , quantity:100},
+                        {id:1 ,  product_name:"MSI" , reference:"123AR" , quantity:100},
+                        {id:1 ,  product_name:"MSI" , reference:"123AR" , quantity:100}
+];
   constructor() { }
 
   ngOnInit(): void {

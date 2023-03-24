@@ -5,6 +5,8 @@ import { SideBarComponent } from './side-bar/side-bar.component';
 import { ProductListComponent } from './product-list/product-list.component';
 import { AdminLayoutComponent } from './admin-layout/admin-layout.component';
 import { HeaderComponent } from './shared/header/header.component';
+import {TableModule} from "primeng/table";
+import { ButtonModule } from 'primeng/button';
 
 
 @NgModule({
@@ -16,7 +18,9 @@ import { HeaderComponent } from './shared/header/header.component';
   ],
   imports: [
     CommonModule,
-    BackadminRoutingModule
+    BackadminRoutingModule,
+    TableModule,
+    ButtonModule
   ],
   bootstrap: [AdminLayoutComponent]
 })

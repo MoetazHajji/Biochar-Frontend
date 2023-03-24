@@ -1,75 +1,93 @@
-
-  
-.backadmin-table {
-    background-color: #f9f9f9;
-    border: 3px solid #f9f9f9;
-    border-radius: 4px;
-    padding: 10px;
-    margin: 10px;
-  }
-  
-  .backadmin-table table{
-    background-color: #f9f9f9;
-    font-family: Arial, Helvetica, sans-serif;
-    border-collapse: collapse;
-  }
-  
-  .backadmin-table th thead{
-    background-color: #009879;
-    color: #585858;
-    text-align: left;
-  }
-   
-  .backadmin-table td {
-    padding: 12px 15px;
-  }
-  
-  .backadmin-table tbody tr:nth-child(even) {
-    background-color: #f2f2f2;
-  }
-  .backadmin-table tbody tr {
-    border-bottom: 1px solid #dddddd;
+.list-table-header-item-area .introduction-area .p-d-flex {
+  display: flex;
+  justify-content: space-between;
+  text-align: center;
+  margin-bottom: 30px;
+  font-size: 20px;
+  line-height: 20px;
+  font-family: "Montserrat-Bold", sans-serif;
+  font-weight: normal;
+  background-size: 24px auto;
+  background-repeat: no-repeat;
+  cursor: pointer;
 }
-.styled-table tbody tr.active-row {
-  font-weight: bold;
-  color: #009879;
+.list-table-header-item-area .big-title {
+  font-size: 28px;
+  line-height: 28px;
+  color: #292828;
+  font-family: "Montserrat-Bold", sans-serif;
+  text-align: center;
+  margin: 0;
+  font-weight: normal;
+  background-position: left center;
+  background-size: 24px auto;
+  background-repeat: no-repeat;
+  padding: 0 0 0 40px;
+  cursor: pointer;
+}
+.list-table-header-item-area{
+  padding: 100px 10px 10px;
+  font-size: 10px;
 }
 
-.backadmin-table tbody tr:nth-of-type(even) {
-    background-color: #f3f3f3;
+.list-table-item-area {
+  padding: 100px 18px 18px;
+  border-radius: #292828;
 }
 
-.backadmin-table tr:last-of-type {
-    border-bottom: 2px solid #009879;
+.list-table-item-area .table-area.comments-table ::ng-deep table thead tr th {
+  text-align: left;
+  color: #292828;
+}
+.list-table-item-area .table-area.comments-table ::ng-deep table tbody tr td {
+  text-align: left;
+  color: #1481ca;
+  border-radius: #292828;
+}
+.list-table-item-area .table-area.recherche-btn-bloc {
+  position: relative;
+}
+.list-table-item-area .table-area.recherche-btn-bloc .recherche-btn-content {
+  position: absolute;
+  background-color: #1481ca;
+  right: 0;
+  bottom: 0;
+  color: white;
+  width: 117px;
+  border: none;
+  height: 35px;
+  background-repeat: no-repeat;
+  background-position: 5px;
+  background-size: 17px;
+  font-size: 14px;
+  font-family: 'Roboto', serif;
+  border-radius: 2px;
+}
+.list-table-item-area .table-area .recherche-btn-bloc .recherche-btn-content:hover {
+  cursor: pointer;
+}
+.list-table-item-area .more-link .p-button {
+  background-color: transparent;
+  color: #2f455c;
+  padding: 0;
 }
 
-  .content-move{
-    margin-left: 200px
-  }
+.btns-group.two-btns .btn.btn-blue {
+  background-color: #2366f7;
+  font-family: "Montserrat-Medium", sans-serif;
+  float: right;
+  font-size: 15px;
+  line-height: 12px;
+  border-radius: 2px;
+}
 
-  .big-title {
-    font-size: 28px;
-    line-height: 20px;
-    font-family: "Montserrat-Bold", sans-serif;
-    margin: 0;
-    font-weight: bold;
-  }
-
-  
-    .btns-group {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      grid-gap: 15px;
-    }
-    .btn.btn-blue {
-      font-size: 12px;
-      line-height: 12px;
-    }
-  
-    .backadmin-table hr{
-     width: 50%;
-    }
-    .backadmin-table button{
-
-      float: right; 
-    }
+@media (max-width: 767px) {
+  .list-product-categories-item-area {
+    margin: 96px 0 0 0;
+ }
+}
+@media (max-width: 420px) {
+  .list-product-categories-item-area {
+    margin: 150px 0 0 0;
+ }
+}
