@@ -1,0 +1,68 @@
+.modal.open {
+  display: block;
+}
+
+.required-field{
+  font-size: 14px;
+  line-height: 15px;
+  font-family: "Poppins-Medium", serif;
+  font-weight: 200;
+  color: #1f0101;
+  text-align: left;
+  margin-left : 13px;
+  display: block;
+}
+
+
+.form-container {
+  max-width: 500px;
+  margin: auto;
+  padding: 20px;
+  background-color: #f1f1f1;
+  border-radius: 10px;
+}
+.form-container button{
+  float: right;
+}
+
+/* form input fields */
+input[type=text], input[type=email], input[type=number], select, textarea {
+  width: 100%;
+  padding: 10px ;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+  margin-top: 6px;
+  margin-bottom: 16px;
+  resize: vertical;
+  font-size: 10px;
+}
+
+/* form label */
+label {
+  font-size: 12px;
+  font-weight: bold;
+  display: block;
+  margin-bottom: 10px;
+}
+
+/* form submit button */
+input[type=submit] {
+  background-color: #09b68a;
+  color: white;
+  padding: 12px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 12px;
+}
+
+/* form submit button on hover */
+input[type=submit]:hover {
+  background-color: #5c39f7;
+}
+
+/* form submit button on focus */
+input[type=submit]:focus {
+  outline: none;
+}

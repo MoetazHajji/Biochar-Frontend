@@ -1,15 +1,25 @@
 <div class="list-table-header-item-area">
     <div class="introduction-area p-d-flex p-jc-between">
         <h1 class="big-title">
-          Product list
+        Product list
         </h1>
-      <!--.btns-group-->
-    </div>
-    <div class="container">
-        <div class="btns-group two-btns">
-            <button class="btn btn-blue" pButton pRipple icon="pi pi-plus"> New Product</button>
+        <div class="container">
+            <div class="btns-group two-btns">
+                <button class="btn btn-blue" pButton pRipple icon="pi pi-plus" (click)="AddNewProduct()"> New Product</button>
+            </div>
         </div>
     </div>
+    <!--.btns-group-->
+
+    <!--.ADD PRODUCT MODEL-->
+    <app-add-product *ngIf="addNewProductModal" [modalNewProduct]="addNewProductModal"
+                    (closeModalNewProduct)="closeModalNewProduct($event)"></app-add-product>
+    <!--.EDIT PRODUCT MODEL-->
+    <app-edit-product *ngIf="editProductModal" [modalEditProduct]="editProductModal"
+                      [ProductId]="getProductId"
+                      (closeModalNewProduct)="closeModalNewProduct($event)"></app-edit-product>
+
+
     <div class="list-table-item-area">
         <div class="container" style="width: 60%;">
             <div class="table-area ">
@@ -19,27 +29,29 @@
                             <ng-template pTemplate="header" let-columns>
                                 <tr>
                                     <th id="image" pSortableColumn="image">Image</th>
-                                    <th id="name" pSortableColumn="name">Name</th>
+                                    <th id="product_name" pSortableColumn="product_name">Name</th>
                                     <th id="reference" pSortableColumn="reference">Refrence</th>
                                     <th id="quantity" pSortableColumn="quantity">Quantity</th>
-                                    <th id="countOrder" pSortableColumn="countOrder">Count order</th>
+                                    <th id="price" pSortableColumn="price">Price</th>
+                                    <th id="type_product" pSortableColumn="type_product">Type product</th>
                                     <th id="description" pSortableColumn="description">Description</th>
                                     <th id="action" pSortableColumn="action">Actions</th>
                                 </tr>
                             </ng-template>
                             <ng-template pTemplate="body" let-productList let-columns="columns">
                                 <tr>
-                                    <td><span class="p-column-title">Id</span>{{productList.id}}</td>
+                                    <td><span class="p-column-title">Id</span>{{productList.image}}</td>
                                     <td><span class="p-column-title">Name</span>{{productList.product_name}}</td>
                                     <td><span class="p-column-title">Refrence</span>{{productList.reference}}</td>
                                     <td><span class="p-column-title">Quantity</span>{{productList.quantity}}</td>
-                                    <td><span class="p-column-title">Quantity</span>{{productList.quantity}}</td>
-                                    <td><span class="p-column-title">Quantity</span>{{productList.quantity}}</td>
+                                    <td><span class="p-column-title">Price</span>{{productList.price}}</td>
+                                    <td><span class="p-column-title">Price</span>{{productList.type_product}}</td>
+                                    <td><span class="p-column-title">Description</span>{{productList.description}}</td>
                                     <td>
                                         <div class="more-link">
-                                            <p-button class="p-panel-header-icon p-link" icon="pi pi-eye"></p-button>
-                                            <p-button class="p-panel-header-icon p-link" icon="pi pi-pencil"></p-button>
-                                            <p-button class="p-panel-header-icon p-link" icon="pi pi-times" ></p-button>
+                                            <p-button tooltipPosition="left" class="p-panel-header-icon p-link" icon="pi pi-eye " [routerLink]="['/admin/product/update',productList.id]" ></p-button>
+                                            <p-button class="p-panel-header-icon p-link" icon="pi pi-pencil" (click)="EditProduct(productList.id)"></p-button>
+                                            <p-button class="p-panel-header-icon p-link" icon="pi pi-times" (click)="DeleteProduct(productList.id)"></p-button>
                                         </div>
                                     </td>
                                 </tr>

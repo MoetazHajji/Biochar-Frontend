@@ -1,0 +1,49 @@
+<div class="modal modal-product-area" [class]="modalNewProduct ? 'open' : ''">
+    <p-dialog header="Product Area" [(visible)]="modalNewProduct" [modal]="true" [style]="{width: '500px'}" [baseZIndex]="10000" [draggable]="false" [resizable]="true" (onHide)="cancel()">
+        <div *ngIf="hideForm" [formGroup]="createProductForm" >
+            <div class="inscription-form-title-blc">
+                </div>
+                <div class="inscription-form-title">
+                <h1 class="edit-form-title text-hideform">Product added</h1>
+                </div>
+                <button type="button" (click)="cancel()" class="btn btn-blue"></button>
+            </div>
+            <div class="form-container">
+              <form #p="ngForm"  action="">
+                  <!-- <form> -->
+                    <label for="product_name">Name</label>
+                    <input type="text" id="product_name" name="product_name" #product_name="ngModel" [(ngModel)]="product.product_name" required>
+                    
+                    <label for="image">Image</label>
+                    <input type="text" id="image" name="image" #image="ngModel" [(ngModel)]="product.image" required>
+
+                    <label for="reference">Refrence</label>
+                    <input type="text" id="reference" name="reference" #refrence="ngModel" [(ngModel)]="product.reference" required>
+
+                    <label for="price">Price</label>
+                    <input type="number" id="price" name="price" #price="ngModel" [(ngModel)]="product.price"  required>
+
+                    <label for="quantity">Quantity</label>
+                    <input type="number" id="quantity" name="quantity" #quantity="ngModel" [(ngModel)]="product.quantity" required>
+
+                    <label for="autoFillQuantity">Auto Fill Quantity</label>
+                    <input type="number" id="autoFillQuantity" name="autoFillQuantity" #autoFillQuantity="ngModel" [(ngModel)]="product.autoFillQuantity" required>
+
+                    <label for="autoFillThreshold">Auto Fill Threshold</label>
+                    <input type="number" id="autoFillThreshold" name="autoFillThreshold" #autoFillThreshold="ngModel" [(ngModel)]="product.autoFillThreshold" required>
+
+                    <label for="size_product">Auto Fill Threshold</label>
+                    <input type="number" id="size_product" name="size_product" #size_product="ngModel" [(ngModel)]="product.size_product" required>
+
+                    
+                    
+                    
+                    
+                    <input type="submit" value="Submit" (click)="addProduct()">
+                  <!--.form-area-->
+                  <!-- </form> -->
+              </form>
+            </div>
+            <!--.inscription-form-area-->
+    </p-dialog>
+</div>
