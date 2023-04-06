@@ -1,4 +1,32 @@
-.iq-error { position: relative; width: 100%; height: 100vh; overflow: hidden; display: inline-block; }
-.iq-error h1.text-in-box { position: absolute; top: 0; left: 0; right: 0; font-size: 8em; font-weight: 700; }
-.iq-error-img { position: static; display: inline-block; }
-.error-500 .iq-error-img { width: 100%; }
+.iq-error {
+    position: relative;
+    width: 100%; 
+    height: 100vh; 
+    overflow: hidden; 
+    display: inline-block; 
+    }
+.iq-error h1.text-in-box { 
+    position: absolute;
+    top: 0; 
+    left: 0; 
+    right: 0; 
+    font-size: 8em; 
+    font-weight: 700; 
+}
+.iq-error-img {
+    position: static; 
+    display: inline-block; 
+}
+.error-500 .iq-error-img { 
+    width: 100%; 
+}
+.iq-error h1 { font-size: 12rem; }
+
+@media(max-width:479px) {
+    .iq-error h1 { font-size: 8rem; }
+    .iq-error h1.text-in-box {font-size: 4em;}
+}
+@media(max-width:767px) {
+    .iq-error h1 { font-size: 12rem; }
+    .iq-error h1.text-in-box{font-size: 5em;}
+}

@@ -24,6 +24,7 @@ import { SelectButtonModule } from "primeng/selectbutton";
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { EditProductComponent } from './product-list/edit-product/edit-product.component';
 import { DetailsProductComponent } from './product-list/details-product/details-product.component';
+import { LoginComponent } from './login/login.component';
 
 @NgModule({
   declarations: [
@@ -33,7 +34,8 @@ import { DetailsProductComponent } from './product-list/details-product/details-
     HeaderComponent,
     AddProductComponent,
     EditProductComponent,
-    DetailsProductComponent
+    DetailsProductComponent,
+    LoginComponent
   ],
   imports: [
     CommonModule,
