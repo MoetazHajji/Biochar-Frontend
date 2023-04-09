@@ -58,6 +58,6 @@ import { LoginComponent } from './login/login.component';
     CardModule,
     SelectButtonModule
   ],
-  bootstrap: [AdminLayoutComponent]
+  bootstrap: [LoginComponent]
 })
 export class BackadminModule { }

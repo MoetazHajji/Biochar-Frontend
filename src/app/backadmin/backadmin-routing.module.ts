@@ -5,10 +5,10 @@ import { LoginComponent } from './login/login.component';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { AddProductComponent } from './product-list/add-product/add-product.component';
 import { ProductListComponent } from './product-list/product-list.component';
-import { SideBarComponent } from './side-bar/side-bar.component';
 
 const routes: Routes = [
   {path: '', component:LoginComponent},
+  {path: 'login', component:LoginComponent},
   {
     path: 'product',
     component:AdminLayoutComponent,
