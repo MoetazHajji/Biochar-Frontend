@@ -25,6 +25,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { EditProductComponent } from './product-list/edit-product/edit-product.component';
 import { DetailsProductComponent } from './product-list/details-product/details-product.component';
 import { LoginComponent } from './login/login.component';
+import { StockComponent } from './stock/stock.component';
 
 @NgModule({
   declarations: [
@@ -35,7 +36,8 @@ import { LoginComponent } from './login/login.component';
     AddProductComponent,
     EditProductComponent,
     DetailsProductComponent,
-    LoginComponent
+    LoginComponent,
+    StockComponent
   ],
   imports: [
     CommonModule,
