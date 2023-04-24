@@ -8,7 +8,8 @@ import { ProductListComponent } from './product-list/product-list.component';
 import { TrainingAdminComponent } from './training-admin/training-admin.component';
 import { SubjectsComponent } from './subjects/subjects.component';
 import { TrainingsListComponent } from './trainings-list/trainings-list.component';
-
+import { StockComponent } from './stock/stock.component';
+import { EditStockComponent } from './stock/edit-stock/edit-stock.component';
 const routes: Routes = [
   {path: '', component:LoginComponent},
   {path: 'login', component:LoginComponent},
@@ -42,6 +43,24 @@ const routes: Routes = [
         component:SubjectsComponent
       }
     ]},
+    {
+      path :'stock',
+      component:AdminLayoutComponent,
+      children : [
+        {
+          path:'',
+          component:StockComponent
+        },
+        {
+          path:'update',
+          component:EditStockComponent
+        },
+        {
+          path:'add',
+          component:AddProductComponent
+        }
+      ]
+    },
   {path:'**',component:NotFoundComponent}
 ];
 

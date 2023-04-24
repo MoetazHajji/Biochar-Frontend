@@ -33,6 +33,7 @@
 .list-table-item-area {
   padding: 100px 18px 18px;
   border-radius: #292828;
+  text-align: center;
 }
 
 .list-table-item-area .table-area.comments-table ::ng-deep table thead tr th {
@@ -66,10 +67,15 @@
 .list-table-item-area .table-area .recherche-btn-bloc .recherche-btn-content:hover {
   cursor: pointer;
 }
-.list-table-item-area .more-link .p-button {
+.list-table-item-area .more-link {
   background-color: transparent;
   color: #2f455c;
   padding: 0;
+}
+
+.list-table-item-area .p-button {
+  display: inline-block;
+  margin: 0 15px;
 }
 
 .btns-group.two-btns .btn.btn-blue {

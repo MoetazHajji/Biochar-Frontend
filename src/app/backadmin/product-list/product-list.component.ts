@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { Product } from 'src/app/_models/_product/product';
+import { Product } from 'src/app/_models/_stock/product';
 import { ProductService } from '../_services/product.service';
 
 @Component({
@@ -61,6 +61,7 @@ export class ProductListComponent implements OnInit {
     this.getProductId = event
     this.editProductModal = !this.editProductModal;
   }
+  
   showDetails($event:any){
     this.prodId = $event;
     this.openDetailPodModal = !this.openDetailPodModal;

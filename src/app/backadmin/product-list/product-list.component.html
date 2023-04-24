@@ -48,7 +48,7 @@
                                     <td><span class="p-column-title">Price</span>{{productList.type_product}}</td>
                                     <td><span class="p-column-title">Description</span>{{productList.description}}</td>
                                     <td>
-                                        <div class="more-link">
+                                        <div>
                                             <p-button tooltipPosition="left" class="p-panel-header-icon p-link" icon="pi pi-eye " [routerLink]="['/admin/product/update',productList.id]" ></p-button>
                                             <p-button class="p-panel-header-icon p-link" icon="pi pi-pencil" (click)="EditProduct(productList.id)"></p-button>
                                             <p-button class="p-panel-header-icon p-link" icon="pi pi-times" (click)="DeleteProduct(productList.id)"></p-button>

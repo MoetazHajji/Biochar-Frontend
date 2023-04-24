@@ -29,6 +29,8 @@ import { StockComponent } from './stock/stock.component';
 import { TrainingAdminComponent } from './training-admin/training-admin.component';
 import { SubjectsComponent } from './subjects/subjects.component';
 import { TrainingsListComponent } from './trainings-list/trainings-list.component';
+import { AddStockComponent } from './stock/add-stock/add-stock.component';
+import { EditStockComponent } from './stock/edit-stock/edit-stock.component';
 
 @NgModule({
   declarations: [
@@ -43,7 +45,9 @@ import { TrainingsListComponent } from './trainings-list/trainings-list.componen
     StockComponent,
     TrainingAdminComponent,
     SubjectsComponent,
-    TrainingsListComponent
+    TrainingsListComponent,
+    AddStockComponent,
+    EditStockComponent
   ],
   imports: [
     CommonModule,
