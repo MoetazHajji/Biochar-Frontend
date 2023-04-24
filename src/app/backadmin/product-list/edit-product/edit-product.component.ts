@@ -1,6 +1,6 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { UntypedFormBuilder, UntypedFormGroup } from '@angular/forms';
-import { Product } from 'src/app/_models/_product/product';
+import { Product } from 'src/app/_models/_stock/product';
 import { ProductService } from '../../_services/product.service';
 
 @Component({

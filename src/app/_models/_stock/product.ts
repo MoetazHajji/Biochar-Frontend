@@ -13,5 +13,4 @@ export class Product{
     autoFillQuantity?:number;
     autoFillThreshold?:number;
     type_product?:Type_product;
-
 }

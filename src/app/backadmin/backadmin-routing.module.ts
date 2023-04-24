@@ -5,6 +5,8 @@ import { LoginComponent } from './login/login.component';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { AddProductComponent } from './product-list/add-product/add-product.component';
 import { ProductListComponent } from './product-list/product-list.component';
+import { StockComponent } from './stock/stock.component';
+import { EditStockComponent } from './stock/edit-stock/edit-stock.component';
 
 const routes: Routes = [
   {path: '', component:LoginComponent},
@@ -23,7 +25,28 @@ const routes: Routes = [
       }
     ]
     },
-  {path:'**',component:NotFoundComponent}
+    {
+      path :'stock',
+      component:AdminLayoutComponent,
+      children : [
+        {
+          path:'',
+          component:StockComponent
+        },
+        {
+          path:'update',
+          component:EditStockComponent
+        },
+        {
+          path:'add',
+          component:AddProductComponent
+        }
+      ]
+    },
+  {
+    path:'**',
+    component:NotFoundComponent
+  }
 ];
 
 @NgModule({
