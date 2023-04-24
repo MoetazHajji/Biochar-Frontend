@@ -1,0 +1,42 @@
+<div class="main-body">
+    
+
+    <div class="grid grid-cols-3 gap-4 overflow-y-auto h-screen p-3 ">
+        <div class="bg-gray-50 rounded-lg shadow-md p-4 h-[250px] hover:bg-blue-200 cursor-pointer" *ngFor="let t of trainings">
+        <div class="md:flex">
+          <div class="md:flex-shrink-0">
+            <img class="h-48 w-full object-cover md:w-48" src="http://localhost:9022/biochar/training/images/{{t.title}}/{{t.title}}.png" alt="Training Photo">
+          </div>
+          <div class="p-7">
+            <div class="uppercase tracking-wide text-sm text-indigo-500 font-semibold">{{t.title}}</div>
+            <div class="mt-2">
+              <div class=" text-sm py-1">
+                <span class="text-gray-500 ">{{t.start_date}} -> {{t.end_date}}</span>
+                
+              </div>
+              <div class="text-sm py-1">
+                <span class="text-gray-700 ">Time : </span>
+                <span class="text-gray-500 ">{{t.time}}</span>
+              </div>
+              <div class="text-gray-500 text-sm py-1">
+                <span class="text-gray-700 ">Location :</span>
+                <span class="text-gray-500 ">{{t.location}}</span>
+              </div>
+              <div class=" text-sm py-1">
+                <span class="text-gray-700 ">Subject : </span>
+                <span class="text-gray-500 ">{{t.subject}}</span>
+              </div>
+              <div class="text-sm py-1">
+                <span class="text-gray-700 ">Duration : </span>
+                <span class="text-gray-500 ">{{t.duration}}</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+   
+      
+</div>
+
+

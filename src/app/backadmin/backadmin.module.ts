@@ -26,6 +26,9 @@ import { EditProductComponent } from './product-list/edit-product/edit-product.c
 import { DetailsProductComponent } from './product-list/details-product/details-product.component';
 import { LoginComponent } from './login/login.component';
 import { StockComponent } from './stock/stock.component';
+import { TrainingAdminComponent } from './training-admin/training-admin.component';
+import { SubjectsComponent } from './subjects/subjects.component';
+import { TrainingsListComponent } from './trainings-list/trainings-list.component';
 import { AddStockComponent } from './stock/add-stock/add-stock.component';
 import { EditStockComponent } from './stock/edit-stock/edit-stock.component';
 
@@ -40,6 +43,9 @@ import { EditStockComponent } from './stock/edit-stock/edit-stock.component';
     DetailsProductComponent,
     LoginComponent,
     StockComponent,
+    TrainingAdminComponent,
+    SubjectsComponent,
+    TrainingsListComponent,
     AddStockComponent,
     EditStockComponent
   ],

@@ -5,9 +5,11 @@ import { LoginComponent } from './login/login.component';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { AddProductComponent } from './product-list/add-product/add-product.component';
 import { ProductListComponent } from './product-list/product-list.component';
+import { TrainingAdminComponent } from './training-admin/training-admin.component';
+import { SubjectsComponent } from './subjects/subjects.component';
+import { TrainingsListComponent } from './trainings-list/trainings-list.component';
 import { StockComponent } from './stock/stock.component';
 import { EditStockComponent } from './stock/edit-stock/edit-stock.component';
-
 const routes: Routes = [
   {path: '', component:LoginComponent},
   {path: 'login', component:LoginComponent},
@@ -25,6 +27,22 @@ const routes: Routes = [
       }
     ]
     },
+    {path :'training',
+    component:AdminLayoutComponent,
+    children:[
+      {
+        path : '',
+        component:TrainingsListComponent
+      },
+      {
+        path:'add',
+        component:TrainingAdminComponent
+      },
+      {
+        path:'subjects',
+        component:SubjectsComponent
+      }
+    ]},
     {
       path :'stock',
       component:AdminLayoutComponent,
@@ -43,10 +61,7 @@ const routes: Routes = [
         }
       ]
     },
-  {
-    path:'**',
-    component:NotFoundComponent
-  }
+  {path:'**',component:NotFoundComponent}
 ];
 
 @NgModule({
