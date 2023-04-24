@@ -1,0 +1,67 @@
+.main-body {
+    @apply relative left-[300px] top-[100px] w-[1510px];
+}
+
+.modal.open {
+    @apply block;
+  }
+  .required-field {
+    @apply text-sm leading-[15px] font-extralight text-[#1f0101] text-left block ml-[13px];
+    font-family: "Poppins-Medium", serif;
+  }
+  .form-container {
+    @apply max-w-[500px] bg-[#f1f1f1] m-auto p-5 rounded-[10px];
+  }
+  .form-container button {
+    @apply float-right;
+  }
+  
+  /* form input fields */
+  input[type="text"],
+  input[type="email"],
+  input[type="number"],
+  select,
+  textarea {
+    @apply w-full border rounded box-border resize-y text-[10px] mt-1.5 mb-4 p-2.5 border-solid border-[#ccc];
+  }
+  
+  /* form label */
+  label {
+    @apply text-xs font-[bold] block mb-2.5;
+  }
+  
+  /* form submit button */
+  input[type="submit"] {
+    @apply bg-[#09b68a] text-[white] rounded cursor-pointer text-xs px-5 py-3 border-[none];
+  }
+  
+  /* form submit button on hover */
+  input[type="submit"]:hover {
+    @apply bg-[#5c39f7];
+  }
+  
+  /* form submit button on focus */
+  input[type="submit"]:focus {
+    outline: none;
+  }
+  
+  .attribute {
+    @apply w-full rounded-md border-gray-300 shadow-sm py-2 px-3 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500;
+  }
+
+  .label {
+    @apply block mb-2 font-medium;
+  }
+  
+  input[type="radio"]:checked + span {
+    background-color: blue;
+    border-color: blue;
+  }
+  
+  .hover\:opacity-100:hover .hidden {
+    display: block;
+  }
+  
+  
+  
+  

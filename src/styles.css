@@ -26,3 +26,11 @@
         background-position: 468px 0;
    }
 }
+.main-body {
+    @apply relative left-[300px] top-[100px] w-[1510px];
+}
+
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;

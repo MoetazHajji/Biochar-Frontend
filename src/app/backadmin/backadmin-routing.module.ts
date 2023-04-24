@@ -5,6 +5,9 @@ import { LoginComponent } from './login/login.component';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { AddProductComponent } from './product-list/add-product/add-product.component';
 import { ProductListComponent } from './product-list/product-list.component';
+import { TrainingAdminComponent } from './training-admin/training-admin.component';
+import { SubjectsComponent } from './subjects/subjects.component';
+import { TrainingsListComponent } from './trainings-list/trainings-list.component';
 
 const routes: Routes = [
   {path: '', component:LoginComponent},
@@ -23,6 +26,22 @@ const routes: Routes = [
       }
     ]
     },
+    {path :'training',
+    component:AdminLayoutComponent,
+    children:[
+      {
+        path : '',
+        component:TrainingsListComponent
+      },
+      {
+        path:'add',
+        component:TrainingAdminComponent
+      },
+      {
+        path:'subjects',
+        component:SubjectsComponent
+      }
+    ]},
   {path:'**',component:NotFoundComponent}
 ];
 
