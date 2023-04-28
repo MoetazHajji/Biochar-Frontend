@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { TrainingService } from '../_services/training.service';
-import { Training } from 'src/app/_models/_product/training';
-import { Type_training } from 'src/app/_models/_product/Type_training';
-import { Subject } from 'src/app/_models/_product/subject';
+import { Training } from 'src/app/_models/_stock/training';
+import { Subject } from 'src/app/_models/_stock/subject';
+import { Type_training } from 'src/app/_models/_stock/Type_training';
+
 
 @Component({
   selector: 'app-training-admin',

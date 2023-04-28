@@ -66,3 +66,21 @@ input[type=submit]:hover {
 input[type=submit]:focus {
   outline: none;
 }
+
+.my-select {
+  border: 1px solid #ccc;
+  background-color: #fff;
+  color: #1f0101;
+  border-radius: 4px;
+  padding: 8px;
+  font-size: 13px;
+}
+
+.my-select:focus {
+  outline: none;
+  border-color: #2196f3;
+}
+
+.my-select option:first-of-type {
+  color: #2196f3;
+}

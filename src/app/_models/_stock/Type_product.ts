@@ -1,3 +1,4 @@
 export enum Type_product{
-    REAGENT,EQUIPEMENT
+    REAGENT='REAGENT',
+    EQUIPEMENT='EQUIPEMENT'
 }

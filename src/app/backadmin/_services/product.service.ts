@@ -14,20 +14,25 @@ export class ProductService {
     return this.http.get(`${this.url}/stock-service/product/getAllProducts` , {observe : 'response'})
   }
 
-  getProductById(id:any){
+  getProductById(id:any) : Observable<HttpResponse<any>>{
     return this.http.get(`${this.url}/stock-service/product/getProduct/${id}`,{observe : 'response'})
   }
 
-  addProduct(product:Product) : Observable<HttpResponse<any>> {
+  addProduct(product:Product,) : Observable<HttpResponse<any>> {
     return this.http.post(`${this.url}/stock-service/product/add`,product , {observe : 'response'})
   }
 
-  DeleteProduct(id:any){
+  DeleteProduct(id:any): Observable<HttpResponse<any>>{
     return this.http.delete(`${this.url}/stock-service/product/delete/${id}`, {observe : 'response'})
   }
 
-  EditProduct(product:Product){
+  EditProduct(product:Product) : Observable<HttpResponse<any>>{
     return this.http.put(`${this.url}/stock-service/product/modify`, product , {observe : 'response'})
+  }
+
+
+  getOfferForProduct(id:any) : Observable<HttpResponse<any>>{
+    return this.http.get(`${this.url}/stock-service/product/getOfferForProduct/${id}` , {observe : 'response'})
   }
   
 }

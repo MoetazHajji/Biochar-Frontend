@@ -20,6 +20,9 @@ export class StockComponent implements OnInit {
   stockList:Stock[]=[];
   StockDetailedList:Stock[]=[];
   Stock : Stock = new Stock();
+
+  stockIdToDelete!:any
+
   constructor(private _stockService : StockService) { }
 
   ngOnInit(): void {
@@ -34,8 +37,13 @@ export class StockComponent implements OnInit {
 
   DeleteStock(id:any){
     this._stockService.DeleteStock(id).subscribe({
-      next:()=>this.stockList=this.stockList.filter((p)=> p.id!=id)
-    })
+      next:()=>this.stockList=this.stockList.filter((p)=> p.id!=id),
+    },
+    )
+  }
+
+  refresh(): void {
+    window.location.reload();
   }
 
   getStockById(id:any){

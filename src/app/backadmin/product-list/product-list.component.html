@@ -40,7 +40,9 @@
                             </ng-template>
                             <ng-template pTemplate="body" let-productList let-columns="columns">
                                 <tr>
-                                    <td><span class="p-column-title">Id</span>{{productList.image}}</td>
+                                    <td>
+                                        <div class="icon"> <i class="bx bxl-mailchimp"> <img src="http://localhost:9099/biochar/stock-service/images/{{productList.reference}}.png"></i> </div>
+                                    </td>
                                     <td><span class="p-column-title">Name</span>{{productList.product_name}}</td>
                                     <td><span class="p-column-title">Refrence</span>{{productList.reference}}</td>
                                     <td><span class="p-column-title">Quantity</span>{{productList.quantity}}</td>
@@ -49,9 +51,9 @@
                                     <td><span class="p-column-title">Description</span>{{productList.description}}</td>
                                     <td>
                                         <div>
-                                            <p-button tooltipPosition="left" class="p-panel-header-icon p-link" icon="pi pi-eye " [routerLink]="['/admin/product/update',productList.id]" ></p-button>
+                                            <p-button tooltipPosition="left" class="p-panel-header-icon p-link" icon="pi pi-eye " [routerLink]="['/admin/product/details',productList.id]" ></p-button>
                                             <p-button class="p-panel-header-icon p-link" icon="pi pi-pencil" (click)="EditProduct(productList.id)"></p-button>
-                                            <p-button class="p-panel-header-icon p-link" icon="pi pi-times" (click)="DeleteProduct(productList.id)"></p-button>
+                                            <p-button class="p-panel-header-icon p-link" icon="pi pi-times" data-toggle="modal" data-target="#exampleModal" (click)="productIdToDelete=productList.id"></p-button>
                                         </div>
                                     </td>
                                 </tr>
@@ -62,5 +64,27 @@
             </div>
         </div>
     </div>
-  </div>
+</div>
+
+
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="row">
+                <div class="col-md-12">
+                <div class="card card-user">
+                    <div class="modal-header text-center">
+                        <h5 class="modal-title" id="exampleModalLabel">Are you sure to delete product {{productIdToDelete}}</h5>
+                        <button type="button" class="btn-close" data-dismiss="modal" aria-label="Close"></button>
+                    </div>           
+                    <div class="modal-body text-center">
+                        <button class="btn btn-danger btn-round mr-2" (click)="DeleteProduct(productIdToDelete)" >Yes</button>
+                        <button class="btn btn-primary btn-round ml-2" data-dismiss="modal" aria-label="Close">No</button>
+                    </div>
+                </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
   

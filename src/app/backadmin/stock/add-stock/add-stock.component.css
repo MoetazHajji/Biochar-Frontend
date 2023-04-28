@@ -26,7 +26,7 @@
   }
   
   /* form input fields */
-  input[type=text], input[type=email], input[type=number], select, textarea {
+  input[type=text], input[type=email] , input[type=date], input[type=number], select, textarea  {
     width: 100%;
     padding: 10px ;
     border: 1px solid #ccc;
@@ -65,4 +65,22 @@
   /* form submit button on focus */
   input[type=submit]:focus {
     outline: none;
+  }
+
+  .my-select {
+    border: 1px solid #ccc;
+    background-color: #fff;
+    color: #1f0101;
+    border-radius: 4px;
+    padding: 8px;
+    font-size: 13px;
+  }
+  
+  .my-select:focus {
+    outline: none;
+    border-color: #2196f3;
+  }
+  
+  .my-select option:first-of-type {
+    color: #2196f3;
   }

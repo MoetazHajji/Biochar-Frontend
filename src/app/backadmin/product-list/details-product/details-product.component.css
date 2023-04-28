@@ -1,0 +1,110 @@
+.list-detailed-item-area{
+    padding: 100px 100px 50px;
+    border-radius: #292828;
+    text-align: center;
+  }
+
+body {
+    background-color: #eee
+}
+
+.card {
+    border: none;
+    border-radius: 10px
+}
+
+.c-details span {
+    font-weight: 300;
+    font-size: 13px
+}
+
+.icon {
+    width: 80px;
+    height: 80px;
+    background-color: #eee;
+    border-radius: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 39px
+}
+
+.badge span {
+    background-color: #fffbec;
+    width: 60px;
+    height: 25px;
+    padding-bottom: 3px;
+    border-radius: 5px;
+    display: flex;
+    color: #fed85d;
+    justify-content: center;
+    align-items: center
+}
+
+.progress {
+    height: 10px;
+    border-radius: 10px
+}
+
+.progress div {
+    background-color: rgb(81, 22, 190)
+}
+
+.text1 {
+    font-size: 14px;
+    font-weight: 600
+}
+
+.text2 {
+    color: #a5aec0
+}
+
+.my-select {
+    border: 1px solid #3f51b5;
+    background-color: #fff;
+    color: #3f51b5;
+    border-radius: 4px;
+    padding: 8px;
+    font-size: 16px;
+  }
+  
+  .my-select:focus {
+    outline: none;
+    border-color: #2196f3;
+  }
+  
+  .my-select option:first-of-type {
+    color: #2196f3;
+  }
+
+  .list-table-header-item-area .introduction-area .p-d-flex {
+    display: flex;
+    justify-content: space-between;
+    text-align: center;
+    margin-bottom: 30px;
+    font-size: 20px;
+    line-height: 20px;
+    font-family: "Montserrat-Bold", sans-serif;
+    font-weight: normal;
+    background-size: 24px auto;
+    background-repeat: no-repeat;
+    cursor: pointer;
+  }
+  .list-table-header-item-area .big-title {
+    font-size: 28px;
+    line-height: 28px;
+    color: #292828;
+    font-family: "Montserrat-Bold", sans-serif;
+    text-align: center;
+    margin: 0;
+    font-weight: normal;
+    background-position: left center;
+    background-size: 24px auto;
+    background-repeat: no-repeat;
+    padding: 0 0 0 40px;
+    cursor: pointer;
+  }
+  .list-table-header-item-area{
+    padding: 10px 10px 10px;
+    font-size: 10px;
+  }

@@ -20,6 +20,9 @@ export class ProductListComponent implements OnInit {
   productList:Product[]=[];
   productDetailedList:Product[]=[];
   product : Product = new Product();
+
+  productIdToDelete!:any
+
   constructor(private _productService : ProductService) { }
 
   ngOnInit(): void {
@@ -35,8 +38,15 @@ export class ProductListComponent implements OnInit {
 
   DeleteProduct(id:any){
     this._productService.DeleteProduct(id).subscribe({
-      next:()=>this.productList=this.productList.filter((p)=> p.id!=id)
+      next:()=>{
+        this.productList=this.productList.filter((p)=> p.id!=id)
+        this.refresh()
+      }
     })
+  }
+
+  refresh(): void {
+    window.location.reload();
   }
 
   getProductById(id:any){
