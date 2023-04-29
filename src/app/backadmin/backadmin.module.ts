@@ -26,6 +26,15 @@ import { EditProductComponent } from './product-list/edit-product/edit-product.c
 import { DetailsProductComponent } from './product-list/details-product/details-product.component';
 import { LoginComponent } from './login/login.component';
 import { StockComponent } from './stock/stock.component';
+import { LeaveAuthorizationComponent } from './leave-authorization/leave-authorization.component';
+import { AddLeaveAuthComponent } from './leave-authorization/add-leave-auth/add-leave-auth.component';
+import { DetailsLeaveAuthComponent } from './leave-authorization/details-leave-auth/details-leave-auth.component';
+import { EditLeaveAuthComponent } from './leave-authorization/edit-leave-auth/edit-leave-auth.component';
+import { ProfileComponent } from './profile/profile.component';
+import { AddProfileComponent } from './profile/add-profile/add-profile.component';
+import { DetailsProfileComponent } from './profile/details-profile/details-profile.component';
+import { EditProfileComponent } from './profile/edit-profile/edit-profile.component';
+import { WorkScheduleComponent } from './work-schedule/work-schedule.component';
 
 @NgModule({
   declarations: [
@@ -37,7 +46,16 @@ import { StockComponent } from './stock/stock.component';
     EditProductComponent,
     DetailsProductComponent,
     LoginComponent,
-    StockComponent
+    StockComponent,
+    LeaveAuthorizationComponent,
+    AddLeaveAuthComponent,
+    DetailsLeaveAuthComponent,
+    EditLeaveAuthComponent,
+    ProfileComponent,
+    AddProfileComponent,
+    DetailsProfileComponent,
+    EditProfileComponent,
+    WorkScheduleComponent
   ],
   imports: [
     CommonModule,

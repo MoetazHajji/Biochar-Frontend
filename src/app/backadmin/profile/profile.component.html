@@ -1,0 +1,60 @@
+<div class="list-table-header-item-area">
+    <div class="introduction-area p-d-flex p-jc-between">
+        <h1 class="big-title">
+        Profile list
+        </h1>
+        <div class="container">
+            <div class="btns-group two-btns">
+                <button class="btn btn-blue" pButton pRipple icon="pi pi-plus" (click)="AddProfile()"> New Profile</button>
+            </div>
+        </div>
+    </div>
+    <!--.btns-group-->
+
+    <!--.ADD PROFILE MODAL-->
+    <app-add-profile *ngIf="addNewProfileModal" [modalNewProfile]="addNewProfileModal"
+            (closeModalNewProfile)="closeModalNewProfile($event)"></app-add-profile>
+    <!--.EDIT PROFILE MODAL-->
+    <app-edit-profile *ngIf="editProfileModal" [modalEditProfile]="editProfileModal"
+            [ProfileId]="getProfileId"
+            (closeModalNewProfile)="closeModalNewProfile($event)"></app-edit-profile>
+    <!--.DETAIL PROFILE MODAL-->
+    
+
+    <div class="list-table-item-area">
+        <div class="container" style="width: 60%;">
+            <div class="table-area ">
+                <div class="comments-table">
+                    <div class="card">
+                        <p-table [value]="profileList" responsiveLayout="stack" [breakpoint]="'960px'" [tableStyle]="{'min-width': '50rem'}">
+                            <ng-template pTemplate="header" let-columns>
+                                <tr>
+                                    <th id="id" pSortableColumn="id">Id</th>
+                                    <th id="skills" pSortableColumn="skills">Skills</th>
+                                    <th id="knowledge" pSortableColumn="knowledge">Knowledge</th>
+                                    <th id="experience" pSortableColumn="experience">Experience</th>
+                                    <th id="action" pSortableColumn="action">Actions</th>
+                                </tr>
+                            </ng-template>
+                            <ng-template pTemplate="body" let-profileList let-columns="columns">
+                                <tr>
+                                    <td><span class="p-column-title">Id</span>{{profileList.id}}</td>
+                                    <td><span class="p-column-title">Skills</span>{{profileList.skills}}</td>
+                                    <td><span class="p-column-title">Knowledge</span>{{profileList.knowledge}}</td>
+                                    <td><span class="p-column-title">Experience</span>{{profileList.experience}}</td>
+                                    <td>
+                                        <div class="more-link">
+                                            <p-button tooltipPosition="left" class="p-panel-header-icon p-link" icon="pi pi-eye " [routerLink]="['/admin/profile/update',profileList.id]" ></p-button>
+                                            <p-button class="p-panel-header-icon p-link" icon="pi pi-pencil" (click)="EditProfile(profileList.id)"></p-button>
+                                            <p-button class="p-panel-header-icon p-link" icon="pi pi-times" (click)="DeleteProfile(profileList.id)"></p-button>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </ng-template>
+                        </p-table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
