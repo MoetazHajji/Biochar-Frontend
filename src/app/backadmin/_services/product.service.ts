@@ -18,7 +18,7 @@ export class ProductService {
     return this.http.get(`${this.url}/stock-service/product/getProduct/${id}`,{observe : 'response'})
   }
 
-  addProduct(product:Product,) : Observable<HttpResponse<any>> {
+  addProduct(product:Product) : Observable<HttpResponse<any>> {
     return this.http.post(`${this.url}/stock-service/product/add`,product , {observe : 'response'})
   }
 
@@ -33,6 +33,11 @@ export class ProductService {
 
   getOfferForProduct(id:any) : Observable<HttpResponse<any>>{
     return this.http.get(`${this.url}/stock-service/product/getOfferForProduct/${id}` , {observe : 'response'})
+  }
+
+
+  getMostOrdredProducts() : Observable<HttpResponse<any>>{
+    return this.http.get(`${this.url}/stock-service/product/getMostOrdredProducts` , {observe : 'response'});
   }
   
 }

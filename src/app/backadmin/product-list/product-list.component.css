@@ -76,6 +76,7 @@
 .list-table-item-area .p-button {
   display: inline-block;
   margin: 0 15px;
+  background-color: transparent;
 }
 
 .btns-group.two-btns .btn.btn-blue {
@@ -85,6 +86,7 @@
   font-size: 15px;
   line-height: 12px;
   border-radius: 2px;
+  margin-right: 10px;
 }
 .icon {
   width: 80px;
@@ -106,4 +108,14 @@
   .list-product-categories-item-area {
     margin: 150px 0 0 0;
  }
+}
+
+.modal-lg { /* added this class for bigger modal */
+  max-width: 80%;
+}
+
+@media (min-width: 1200px) { /* increase modal size for larger screens */
+  .modal-lg {
+    max-width: 1000px;
+  }
 }

@@ -1,9 +1,7 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { UntypedFormArray, UntypedFormBuilder, UntypedFormGroup } from '@angular/forms';
-import { PrimeNGConfig } from 'primeng/api';
 import { Product } from 'src/app/_models/_stock/product';
 import { ProductService } from '../../_services/product.service';
-import { State } from 'src/app/_models/_stock/state';
 import { Type_product } from 'src/app/_models/_stock/Type_product';
 
 @Component({

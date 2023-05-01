@@ -6,6 +6,9 @@ import { StockService } from '../../_services/stock.service';
 import { Stock } from 'src/app/_models/_stock/stock';
 import { Command } from 'src/app/_models/_stock/command';
 import { Offer } from 'src/app/_models/_stock/offer';
+import { CommandLigneService } from '../../_services/command-ligne.service';
+import { CommandLigne } from 'src/app/_models/_stock/commandLigne';
+import { CommandService } from '../../_services/command.service';
 
 @Component({
   selector: 'app-details-product',
@@ -25,16 +28,26 @@ export class DetailsProductComponent implements OnInit {
 
   quantityToadd!:any;
 
+  quantityToOrder!:number;
+
   offerList : Offer[]=[]
 
   order:Command = new Command()
+
+  panier:CommandLigne = new CommandLigne()
+
+  idCmdlForProd!:any
+
+  productFromCmdl!:Product
 
   
   constructor(
     private _route : ActivatedRoute,
     private _router: Router,
     private _productService : ProductService,
-    private _stockService : StockService
+    private _stockService : StockService,
+    private _cmdLiService:CommandLigneService,
+    private _command:CommandService
   ) { }
 
   ngOnInit(): void {
@@ -80,6 +93,22 @@ export class DetailsProductComponent implements OnInit {
     })
   }
 
+  AddProductToCommandLigne(idProd:any){
+    this._cmdLiService.addCommandLigne(idProd,this.panier).subscribe((data:any)=>{
+      this.idCmdlForProd = this.panier.id
+      console.log(this.panier.id)
+    })
+  }
 
+  getCmdlForProduct() {
+    this._cmdLiService.getProductFromCmdl(this.idCmdlForProd).subscribe((data:any)=>{
+      this.productFromCmdl=data.body
+      console.log(this.productFromCmdl)
+    })
+  }
+
+  orderProduct(){
+    //this._command.addCommand(1,this.order).subscribe
+  }
 
 }

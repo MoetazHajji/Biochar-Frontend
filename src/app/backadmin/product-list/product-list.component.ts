@@ -23,10 +23,13 @@ export class ProductListComponent implements OnInit {
 
   productIdToDelete!:any
 
+  mostOrdedProducts: Product[]=[]
+
   constructor(private _productService : ProductService) { }
 
   ngOnInit(): void {
    this.getProductList();
+   this.getMostOrdredProducts();
   }
 
   getProductList(){
@@ -75,5 +78,11 @@ export class ProductListComponent implements OnInit {
   showDetails($event:any){
     this.prodId = $event;
     this.openDetailPodModal = !this.openDetailPodModal;
+  }
+
+  getMostOrdredProducts(){
+    this._productService.getMostOrdredProducts().subscribe((data:any)=>{
+      this.mostOrdedProducts=data.body
+    })
   }
 }
