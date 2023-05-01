@@ -5,7 +5,8 @@
         </h1>
         <div class="container">
             <div class="btns-group two-btns">
-                <button class="btn btn-blue" pButton pRipple icon="pi pi-plus" (click)="AddNewProduct()"> New Product</button>
+                <button class="btn btn-blue " pButton pRipple (click)="AddNewProduct()"> New Product</button>
+                <button class="btn btn-blue " pButton pRipple data-toggle="modal" data-target="#mostOrdred"> Most Ordred</button>
             </div>
         </div>
     </div>
@@ -29,6 +30,7 @@
                             <ng-template pTemplate="header" let-columns>
                                 <tr>
                                     <th id="image" pSortableColumn="image">Image</th>
+                                    <th id="image" pSortableColumn="image">Id</th>
                                     <th id="product_name" pSortableColumn="product_name">Name</th>
                                     <th id="reference" pSortableColumn="reference">Refrence</th>
                                     <th id="quantity" pSortableColumn="quantity">Quantity</th>
@@ -40,18 +42,21 @@
                             </ng-template>
                             <ng-template pTemplate="body" let-productList let-columns="columns">
                                 <tr>
-                                    <td><span class="p-column-title">Id</span>{{productList.image}}</td>
-                                    <td><span class="p-column-title">Name</span>{{productList.product_name}}</td>
+                                    <td>
+                                        <div class="icon"> <i class="bx bxl-mailchimp"> <img src="http://localhost:9099/biochar/stock-service/images/{{productList.reference}}.png"></i> </div>
+                                    </td>
+                                    <td><span class="p-column-title">Name</span>{{productList.id}}</td>
+                                    <td><span class="p-column-title">Name</span>{{productList.name_product}}</td>
                                     <td><span class="p-column-title">Refrence</span>{{productList.reference}}</td>
                                     <td><span class="p-column-title">Quantity</span>{{productList.quantity}}</td>
                                     <td><span class="p-column-title">Price</span>{{productList.price}}</td>
                                     <td><span class="p-column-title">Price</span>{{productList.type_product}}</td>
                                     <td><span class="p-column-title">Description</span>{{productList.description}}</td>
                                     <td>
-                                        <div>
-                                            <p-button tooltipPosition="left" class="p-panel-header-icon p-link" icon="pi pi-eye " [routerLink]="['/admin/product/update',productList.id]" ></p-button>
+                                        <div class="transparent-button">
+                                            <p-button tooltipPosition="left" class="p-panel-header-icon p-link" icon="pi pi-eye " [routerLink]="['/admin/product/details',productList.id]" ></p-button>
                                             <p-button class="p-panel-header-icon p-link" icon="pi pi-pencil" (click)="EditProduct(productList.id)"></p-button>
-                                            <p-button class="p-panel-header-icon p-link" icon="pi pi-times" (click)="DeleteProduct(productList.id)"></p-button>
+                                            <p-button class="p-panel-header-icon p-link" icon="pi pi-times" data-toggle="modal" data-target="#exampleModal" (click)="productIdToDelete=productList.id"></p-button>
                                         </div>
                                     </td>
                                 </tr>
@@ -62,5 +67,73 @@
             </div>
         </div>
     </div>
-  </div>
+</div>
+
+
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="row">
+                <div class="col-md-12">
+                <div class="card card-user">
+                    <div class="modal-header text-center">
+                        <h5 class="modal-title" id="exampleModalLabel">Are you sure to delete product {{productIdToDelete}}</h5>
+                        <button type="button" class="btn-close" data-dismiss="modal" aria-label="Close"></button>
+                    </div>           
+                    <div class="modal-body text-center">
+                        <button class="btn btn-danger btn-round mr-2" (click)="DeleteProduct(productIdToDelete)" >Yes</button>
+                        <button class="btn btn-primary btn-round ml-2" data-dismiss="modal" aria-label="Close">No</button>
+                    </div>
+                </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+  
+
+<div class="modal fade" id="mostOrdred" tabindex="-1" aria-labelledby="mostOrdredModal" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg">
+        <div class="modal-content">
+            <div class="row">
+                <div class="col-md-12">
+                <div class="card card-user">
+                    <div class="modal-header text-center">
+                        <h5 class="modal-title" id="mostOrdredModal">Most Ordred Products</h5>
+                        <button type="button" class="btn-close" data-dismiss="modal" aria-label="Close"></button>
+                    </div>           
+                    <div class="modal-body d-flex flex-wrap" >
+                        <div class="container mt-5 mb-3">
+                            <div class="row">
+                                <div class="col-md-4" *ngFor="let item of mostOrdedProducts">
+                                    <div class="card p-3 mb-2" >
+                                        <div class="d-flex justify-content-between">
+                                            <div class="d-flex flex-row align-items-center">
+                                                <div class="icon"> <i class="bx bxl-mailchimp"> <img src="http://localhost:9099/biochar/stock-service/images/{{item.reference}}.png"></i> </div>
+                                                <div class="ms-2 c-details">
+                                                    <h6 class="mb-0">{{item.reference}}</h6> <span>{{item.price}}DT {{item.id }}</span>
+                                                </div>
+                                            </div>
+                                            <div class="badge"> <span>{{item.type_product}}</span> </div>
+                                        </div>
+                                        <div class="mt-5">
+                                            <h3 class="heading">Product Quanity : {{item.quantity}}<br>Product ordred : {{item.count_order}}</h3>
+                                            <div class="mt-5">
+                                                <div class="progress">
+                                                    <div class="progress-bar" role="progressbar" style="width: 50%" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
+                                                </div>
+                                                <div class="mt-3"> <span class="text1">32 Applied <span class="text2">of 50 capacity</span></span> </div>
+                                            </div>
+                                        </div>         
+                                    </div>
+                                </div>                                                                                                                      
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
   

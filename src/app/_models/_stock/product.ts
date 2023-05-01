@@ -2,7 +2,7 @@ import { Type_product } from "./Type_product";
 
 export class Product{
     id?:number;
-    product_name?:string;
+    name_product?:string;
     price?:number;
     size_product?:number;
     reference?:string;

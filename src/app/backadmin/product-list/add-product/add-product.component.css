@@ -26,7 +26,7 @@
   }
   
   /* form input fields */
-  input[type=text], input[type=email], input[type=number], select, textarea {
+  input[type=text], input[type=email], input[type=number], input[type=file], select, textarea {
     width: 100%;
     padding: 10px ;
     border: 1px solid #ccc;
@@ -36,6 +36,18 @@
     margin-bottom: 16px;
     resize: vertical;
     font-size: 10px;
+  }
+  input[type=file] {
+    width: 100%;
+    padding: 10px ;
+    border: 1px solid #000000;
+    border-radius: 4px;
+    box-sizing: border-box;
+    margin-top: 6px;
+    margin-bottom: 16px;
+    resize: vertical;
+    font-size: 13px;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
   }
   
   /* form label */
@@ -65,4 +77,22 @@
   /* form submit button on focus */
   input[type=submit]:focus {
     outline: none;
+  }
+
+  .my-select {
+    border: 1px solid #ccc;
+    background-color: #fff;
+    color: #1f0101;
+    border-radius: 4px;
+    padding: 8px;
+    font-size: 13px;
+  }
+  
+  .my-select:focus {
+    outline: none;
+    border-color: #2196f3;
+  }
+  
+  .my-select option:first-of-type {
+    color: #2196f3;
   }

@@ -2,6 +2,7 @@ import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { UntypedFormBuilder, UntypedFormGroup } from '@angular/forms';
 import { Stock } from 'src/app/_models/_stock/stock';
 import { StockService } from '../../_services/stock.service';
+import { Type_product } from 'src/app/_models/_stock/Type_product';
 
 @Component({
   selector: 'app-add-stock',
@@ -23,6 +24,7 @@ export class AddStockComponent implements OnInit {
   path: any = false;
   hideForm = false;
   submitted = false;
+  productTypes = Object.keys(Type_product)
   constructor(private formBuilder : UntypedFormBuilder,private _stockService:StockService ) { }
 
   ngOnInit(): void {
@@ -31,7 +33,11 @@ export class AddStockComponent implements OnInit {
   addStock() {
     this._stockService.addStock(this.stock).subscribe((res:any) => {
       error : (err:any) => console.log(err)
+      this.refresh();
     }) 
+  }
+  refresh(): void {
+    window.location.reload();
   }
 
 

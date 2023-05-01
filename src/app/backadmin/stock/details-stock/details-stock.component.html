@@ -1,0 +1,80 @@
+<div class="list-table-header-item-area">
+    <div class="introduction-area p-d-flex p-jc-between">
+        <h1 class="big-title">
+        Details of Stock with ID : #{{detailedStock.id}}
+        </h1>
+        <div class="container">
+            <button class="btn btn-primary btn-round" data-toggle="modal" data-target="#exampleModal">Withdraw</button>
+        </div>
+    </div>
+</div>
+
+
+<div class="list-table-item-area">
+    <div class="container" style="width: 60%;">
+        <div class="table-area ">
+            <div class="comments-table">
+                <div class="card">
+                    <p-table [value]="prodForStock"  responsiveLayout="stack" [breakpoint]="'960px'" [tableStyle]="{'min-width': '50rem'}">
+                        <ng-template pTemplate="header" let-columns>
+                            <tr>
+                                <th id="image" pSortableColumn="image">Image</th>
+                                <th id="uhnit" pSortableColumn="unit">Product name</th>
+                                <th id="reference" pSortableColumn="reference">Reference</th>
+                                <th id="quantity" pSortableColumn="quantity">quantity</th>
+                                <th id="description" pSortableColumn="description">description</th>
+                                <th id="type_product" pSortableColumn="type_product">type_product</th>
+                                <th id="action" pSortableColumn="action">Actions</th>
+                            </tr>
+                        </ng-template>
+                        <ng-template pTemplate="body" let-prodForStock let-columns="columns">
+                            <tr>
+                                <td><span class="p-column-title">Image</span><div class="icon"> <i class="bx bxl-mailchimp"> <img src="http://localhost:9099/biochar/stock-service/images/{{prodForStock.reference}}.png"></i> </div></td>                                
+                                <td><span class="p-column-title">Product name</span>{{prodForStock.name_product}}</td>                                
+                                <td><span class="p-column-title">Reference</span>{{prodForStock.reference}}</td>
+                                <td><span class="p-column-title">quantity</span>{{prodForStock.quantity}}</td>
+                                <td><span class="p-column-title">description</span>{{prodForStock.description}}</td>
+                                <td><span class="p-column-title">type_product</span>{{prodForStock.type_product}}</td>
+                                <td>
+                                    <div>        
+                                        <p-button class="p-panel-header-icon p-link" icon="pi pi-pencil"></p-button>
+                                        <p-button class="p-panel-header-icon p-link" icon="pi pi-times"></p-button>
+                                    </div>
+                                </td>
+                            </tr>
+                        </ng-template>
+                    </p-table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+        <div class="row">
+            <div class="col-md-12">
+            <div class="card card-user">
+                <div class="modal-header text-center">
+                    <h5 class="modal-title" id="exampleModalLabel">Add number to draw</h5>
+                    <button type="button" class="btn-close" data-dismiss="modal" aria-label="Close"></button>
+                </div>           
+                <div class="modal-body">
+                    <form action="">
+                        <div >
+                            <label for="quantity">Quantity</label>
+                            <input type="number" id="quantity" name="quantity" #quantity [(ngModel)]="quantityToAdd" required>
+                        </div>
+                        
+                    </form>
+                    <div class="modal-footer">
+                        <button class="btn btn-primary btn-round" (click)="withdraw(quantityToAdd)">Draw</button>
+                    </div>
+                </div>
+            </div>
+            </div>
+        </div>
+    </div>
+    </div>
+</div>

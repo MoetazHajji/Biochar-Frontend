@@ -31,6 +31,7 @@ import { SubjectsComponent } from './subjects/subjects.component';
 import { TrainingsListComponent } from './trainings-list/trainings-list.component';
 import { AddStockComponent } from './stock/add-stock/add-stock.component';
 import { EditStockComponent } from './stock/edit-stock/edit-stock.component';
+import { DetailsStockComponent } from './stock/details-stock/details-stock.component';
 
 @NgModule({
   declarations: [
@@ -47,7 +48,8 @@ import { EditStockComponent } from './stock/edit-stock/edit-stock.component';
     SubjectsComponent,
     TrainingsListComponent,
     AddStockComponent,
-    EditStockComponent
+    EditStockComponent,
+    DetailsStockComponent
   ],
   imports: [
     CommonModule,

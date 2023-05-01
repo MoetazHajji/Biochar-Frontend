@@ -10,6 +10,8 @@ import { SubjectsComponent } from './subjects/subjects.component';
 import { TrainingsListComponent } from './trainings-list/trainings-list.component';
 import { StockComponent } from './stock/stock.component';
 import { EditStockComponent } from './stock/edit-stock/edit-stock.component';
+import { DetailsProductComponent } from './product-list/details-product/details-product.component';
+import { DetailsStockComponent } from './stock/details-stock/details-stock.component';
 const routes: Routes = [
   {path: '', component:LoginComponent},
   {path: 'login', component:LoginComponent},
@@ -24,6 +26,10 @@ const routes: Routes = [
       {
         path:'add',
         component:AddProductComponent
+      },
+      {
+        path:'details/:id',
+        component:DetailsProductComponent
       }
     ]
     },
@@ -58,6 +64,10 @@ const routes: Routes = [
         {
           path:'add',
           component:AddProductComponent
+        },
+        {
+          path:'details/:id',
+          component:DetailsStockComponent
         }
       ]
     },

@@ -25,11 +25,12 @@
 
                     <label for="location">Location</label>
                     <input type="text" id="location" name="location" #location="ngModel" [(ngModel)]="stock.location"  required>
-
-                    <label for="type_product">Type Product</label>
-                    <input type="text" id="type_product" name="type_product" #type_product="ngModel" [(ngModel)]="stock.type_product" required>
                     
-                    
+                    <label for="type_product">Product Type</label>
+                    <select class="my-select"  id="type_product" name="type_product" #type_product="ngModel" [(ngModel)]="stock.type_product" >
+                      <option value="" disabled selected>Select product type </option>
+                      <option *ngFor="let productType of productTypes"  [value]="productType">{{productType}}</option>
+                    </select>
                     
                     
                     <input type="submit" value="Submit" (click)="EditStock()">

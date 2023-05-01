@@ -34,4 +34,16 @@ export class StockService {
     return this.http.put(`${this.url}/stock-service/stock/modify`, stock , {observe : 'response'});
   }
 
+  getProductsForStock(idStock : any) : Observable<HttpResponse<any>>{
+    return this.http.get(`${this.url}/stock-service/stock/getProdForStock/${idStock}` , {observe : 'response'})
+  }
+
+  withdrawQuantity(idStock:any,quantity:any) : Observable<HttpResponse<any>>{
+    return this.http.put(`${this.url}/stock-service/stock/withdraw/${idStock}`,quantity,{observe : 'response'})
+  }
+
+  AssignProductToStock(idProd:any,idStock:any,quantity:any) : Observable<HttpResponse<any>>{
+    return this.http.put(`${this.url}/stock-service/stock/AssignProductToStock/${idProd}/${idStock}`,quantity ,{observe : 'response'})
+  }
+
 }
