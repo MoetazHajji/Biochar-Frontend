@@ -8,6 +8,8 @@ import { HomeComponent } from './home/home.component';
 import { LoginComponent } from './login/login.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { VitrineLayoutComponent } from './vitrine-layout/vitrine-layout.component';
+import { SignupComponent } from './signup/signup.component';
+import { NavBarAuthComponent } from './nav-bar-auth/nav-bar-auth.component';
 
 
 @NgModule({
@@ -17,7 +19,9 @@ import { VitrineLayoutComponent } from './vitrine-layout/vitrine-layout.componen
     HomeComponent,
     LoginComponent,
     NavbarComponent,
-    VitrineLayoutComponent
+    VitrineLayoutComponent,
+    SignupComponent,
+    NavBarAuthComponent
   ],
   imports: [
     CommonModule,
