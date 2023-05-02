@@ -24,9 +24,6 @@ import { NgChartsModule } from 'ng2-charts';
     ReactiveFormsModule,
     HttpClientModule,
     NgChartsModule,
-    NgxPaginationModule
-,
-    TooltipModule
   ],
   providers: [],
   bootstrap: [AppComponent]
