@@ -1,0 +1,273 @@
+<div class="main-body">
+  <form class="px-6 py-4" #f="ngForm">
+    <div class="flex flex-row h-full">
+
+      <div class="bg-white p-6 rounded-md shadow-md w-1/2">
+        <div class="flex flex-auto gap-2">
+          <h2 class="text-lg font-semibold mb-4">New Training</h2>
+          <div>
+            <i class="fa fa-info-circle hover:bg-gray-300 rounded-full cursor-pointer" style="font-size: 20px"
+         aria-hidden="true" pTooltip="get suggestions"
+              (click)="openModal('Most wanted trainings')"></i>
+          </div>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <div >
+            <label for="start_date" class="label" >Start Date</label>
+            <input type="date" id="start_date" class="attriute" name="start_date" #price="ngModel" [(ngModel)]="mytraining.start_date" required/>
+          </div>
+          <div>
+            <label for="end_date" class="label">End Date</label>
+            <input type="date" id="end_date" name="end_date" class="attribute" name="e,d_date" #price="ngModel" [(ngModel)]="mytraining.end_date" required/>
+          </div>
+          <div>
+            <label for="location" class="label">Location</label>
+            <input type="text" id="location" name="location" class="attribute" name="location" #price="ngModel" [(ngModel)]="mytraining.location" required/>
+          </div>
+          <div>
+            <label for="duration" class="label">Duration</label>
+            <input type="number" id="duration" name="duration" class="attribute" min="2" max="40" name="start_date" #price="ngModel" [(ngModel)]="mytraining.duration" required/>
+          </div>
+          <div>
+          <div >
+            <label for="time" class="label">Time</label>
+            <input type="time" id="time" name="time" class="attribute" name="start_date" #price="ngModel" [(ngModel)]="mytraining.time" required/>
+          </div>
+          <div>
+
+          </div>
+            
+        
+        </div>
+          <div class="col-span-2">
+            <label for="title" class="label">Title</label>
+            <input type="text" id="title" name="title" class="attribute" name="title" #price="ngModel" [(ngModel)]="mytraining.title" required/>
+          </div>
+          <div *ngIf="mytraining.type == options[1]; else internalBlock">
+            <label for="subject" class="label">Subject</label>
+            <input type="text" id="subject" name="subject" class="attribute" name="subject" #price="ngModel" [(ngModel)]="mytraining.subject" required/>
+          </div>
+          <ng-template #internalBlock>
+            <div class="relative">
+              <label for="type" class="label">Subject</label>
+              <select class="block appearance-none w-full h-11 bg-white border border-gray-300 hover:border-gray-400  rounded shadow leading-tight focus:outline-none focus:shadow-outline" name="subject_2" #price="ngModel" [(ngModel)]="mytraining.subject">
+                <option value="internal" *ngFor="let subject of subjects" [value]="subject.title">{{subject.title}}</option>
+              </select>
+              <div class="absolute inset-y-0 right-0 flex items-center px-2 pointer-events-none">
+                <svg class="w-4 h-4 fill-current" viewBox="0 0 20 20">
+                  <path d="M10 12a2 2 0 100-4 2 2 0 000 4z"/>
+                  <path fill-rule="evenodd" d="M16.293 5.293a1 1 0 00-1.414 0L10 10.586 5.707 6.293a1 1 0 00-1.414 1.414l4.586 4.586a1 1 0 001.414 0l4.586-4.586a1 1 0 000-1.414z" clip-rule="evenodd"/>
+                </svg>
+              </div>
+            </div>
+          </ng-template>
+                      <div class="relative">
+              <label for="type" class="label">Type</label>
+              <select class="block appearance-none w-full h-11 bg-white border border-gray-300 hover:border-gray-400  rounded shadow leading-tight focus:outline-none focus:shadow-outline" name="type" #price="ngModel" [(ngModel)]="mytraining.type">
+                <option value="internal" *ngFor="let option of options" [value]="option">{{option}}</option>
+       
+      
+              </select>
+              <div class="absolute inset-y-0 right-0 flex items-center px-2 pointer-events-none">
+                <svg class="w-4 h-4 fill-current" viewBox="0 0 20 20">
+                  <path d="M10 12a2 2 0 100-4 2 2 0 000 4z"/>
+                  <path fill-rule="evenodd" d="M16.293 5.293a1 1 0 00-1.414 0L10 10.586 5.707 6.293a1 1 0 00-1.414 1.414l4.586 4.586a1 1 0 001.414 0l4.586-4.586a1 1 0 000-1.414z" clip-rule="evenodd"/>
+                </svg>
+              </div>
+            </div>
+          <div class="col-span-2">
+            <label for="description" class="label">Description</label>
+            <textarea id="description" name="description" rows="8" class="attribute" name="description" #price="ngModel" [(ngModel)]="mytraining.description" required></textarea>
+          </div>
+        </div>
+        <div class="flex justify-center">
+          <button
+            class="px-4 py-2 bg-blue-500 text-white rounded-md mr-4 w-full hover:bg-blue-600 disabled:bg-slate-300"  (click)="add()">
+            Add
+          </button>
+          <button class="px-4 py-2 bg-gray-500 text-white rounded-md w-full hover:bg-gray-600" (click)="moreDetails()">
+            <span *ngIf="details">
+              << </span>Details
+                <span *ngIf="!details"> >> </span>
+          </button>
+        </div>
+      </div>
+      <div class="bg-white p-6 rounded-md shadow-md w-1/2" *ngIf="details">
+        <!-- Image input -->
+        <div class="mb-4">
+          <label for="image" class="block text-gray-700 font-bold mb-2">Image:</label>
+          <div class="h-[320px] bg-center bg-cover flex items-center justify-center relative"
+            [style.background-image]="'url(' + path + ')'">
+            <input type="file" class="absolute inset-0 w-full h-full opacity-0 cursor-pointer" accept="image/*"
+              id="image" (change)="onImageSelected($event)" #image/>
+            <div id="preview" class="h-full w-full bg-center bg-cover"></div>
+          </div>
+        </div>
+
+        <!-- Trainer input -->
+        <div class="mb-4">
+          <label for="trainer" class="block text-gray-700 font-bold mb-2">Trainer:</label>
+          <div class="flex">
+            <input type="text" class="px-4 border border-gray-300 rounded-l-md w-full" placeholder="Trainer name" />
+            <div class="pt-[6px]">
+              <button class="px-4 bg-gray-200 text-gray-700 rounded-r-md hover:bg-gray-300 text-sm h-9"
+                (click)="openModal('Trainers')">
+                <i class="fa fa-window-restore" aria-hidden="true"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Trainees input -->
+        <div class="mb-4">
+          <label class="block text-gray-700 font-bold mb-2">Quizzes:</label>
+          <div class="relative">
+            <select multiple
+              class="block appearance-none w-full border border-gray-400 hover:border-gray-500 px-4 py-2 pr-8 rounded shadow leading-tight focus:outline-none focus:shadow-outline"
+              size="5">
+              <option *ngFor="let z of [1,2,3,4]">Quiz {{z}}</option>
+            </select>
+          </div>
+          <div class="flex flex-col items-center">
+            <button class="px-4 py-2 bg-gray-500 text-white rounded-full shadow hover:bg-gray-600 focus:outline-none"
+              (click)="openModal('Quizes')">
+              <span class="text-sm font-bold"><i class="fa fa-plus" aria-hidden="true"></i>
+              </span>
+            </button>
+          </div>
+        </div>
+        <!-- Quizzes input -->
+        <!-- <div class="flex flex-col items-center">
+          <h3 class="text-lg font-medium mb-2">Quizzes</h3>
+          <div class="w-full max-w-md">
+            <ul class="bg-gray-100 divide-y divide-gray-200">
+              <li>
+                <div class="ml-6">
+                  <label class="block text-gray-700 font-bold mb-2">Trainees:</label>
+                </div>
+              </li>
+
+              <li>
+                <div class="ml-6">
+                  <label class="block text-gray-700 font-bold mb-2">Trainees:</label>
+                </div>
+              </li>
+            </ul>
+          </div>
+          <button class="px-4 py-2 bg-gray-500 text-white rounded-full shadow hover:bg-gray-600 focus:outline-none" (click)="openModal('Quizzes')">
+            <span class="text-sm font-bold">+</span>
+          </button>
+        </div>-->
+      </div>
+    </div>
+  </form>
+</div>
+
+<div class="fixed top-0 left-0 w-full h-full bg-gray-900 bg-opacity-50" *ngIf="showModal" (click)="closeModal()"></div>
+
+<!-- Modal dialog -->
+<div
+  class="fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-11/12 md:w-2/3 lg:w-1/2 bg-white rounded-lg shadow-lg overflow-hidden"
+  *ngIf="showModal">
+  <!-- Modal header -->
+  <div class="bg-gray-100 p-4">
+    <h2 class="text-lg font-medium">{{ modalTitle }}</h2>
+  </div>
+
+  <!-- Modal body -->
+  <div class="grid grid-cols-3 gap-4 h-[512px] overflow-x-auto overflow-y-auto" *ngIf="modalTitle == 'Quizes'">
+    <div class="p-4" *ngFor="let n of [1, 2, 3, 4, 5]">
+      <h1>Quiz 1</h1>
+      <div>
+        <label class="block text-gray-700 font-bold mb-2" for="question">Question</label>
+        <input
+          class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+          id="question" type="text" placeholder="Enter your question" />
+      </div>
+
+      <div *ngFor="let w of [1,2,3,4]">
+        <label class="block text-gray-700 font-bold mb-2" for="option1">Option {{w}}</label>
+        <input
+          class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+          id="option1" type="text" placeholder="Enter option 1" />
+      </div>
+
+      <div>
+        <label class="block text-gray-700 font-bold mb-2" for="correctOption">Correct Option (Enter option
+          number)</label>
+        <input
+          class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+          id="correctOption" type="number" placeholder="Enter the number of the correct option" />
+      </div>
+    </div>
+
+    <ng-content></ng-content>
+  </div>
+
+  <div class="grid grid-cols-3 gap-4 overflow-y-auto h-[512px] p-3 " *ngIf="modalTitle == 'Trainers'">
+    <div class="bg-gray-50 rounded-lg shadow-md p-4 hover:bg-blue-200 cursor-pointer" *ngFor="let y of [1,2,3,4]">
+      <img src="https://via.placeholder.com/150" alt="Profile Picture" class="rounded-full w-20 h-20 mx-auto mb-4" />
+      <h2 class="text-lg font-medium">John Doe</h2>
+      <p class="text-gray-600">johndoe@example.com</p>
+      <p class="text-gray-600">555-1234</p>
+    </div>
+
+  </div>
+  <div class="grid grid-cols-3 gap-4 overflow-y-auto h-[512px] p-3 grid-rows-2" *ngIf="modalTitle == 'Most wanted trainings'">
+    <div class="bg-gray-50 rounded-lg shadow-md p-4" *ngFor="let x of [1,2,3,4]">
+      <div class="flex">
+        <h2 class="text-lg font-medium">Subject :</h2>
+        <h2 class="text-lg font-sans">Title</h2>
+      </div>
+      <h2 class="text-lg font-medium py-3">Fited :</h2>
+      <ul class="w-full">
+        <li>
+          <input type="radio" id="{{x}}-small" name="{{x}}" value="hosting-small" class="hidden peer" required />
+          <label for="{{x}}-small"
+            class="inline-flex w-full text-gray-500 rounded-lg cursor-pointer peer-checked:border-blue-600 peer-checked:text-blue-600 hover:text-gray-600 hover:bg-gray-100">
+            <div class="w-full">Good for small websites</div>
+          </label>
+        </li>
+        <li>
+          <input type="radio" id="{{x}}-large" name="{{x}}" value="hosting-small" class="hidden peer" required />
+          <label for="{{x}}-large"
+            class="inline-flex w-full text-gray-500 rounded-lg cursor-pointer peer-checked:border-blue-600 peer-checked:text-blue-600 hover:text-gray-600 hover:bg-gray-100">
+            <div class="w-full">Good for large websites</div>
+          </label>
+        </li>
+      </ul>
+      <div class="flex justify-center items-center py-3 transition-opacity hover:opacity-100">
+        <i class="fa fa-check text-[20px] hidden text-blue-400 cursor-pointer " aria-hidden="true"></i>
+      </div>
+      
+    </div>
+  </div>
+  <!-- Modal footer -->
+  <div class="bg-gray-100 p-4 flex justify-end">
+    <div class="flex items-center" *ngIf="modalTitle == 'Quizes'">
+      <button
+        class="border-2 border-gray-800 px-3 py-2 bg-gray-50 text-gray-800 font-bold rounded-full hover:bg-gray-200">
+        <i class="fa fa-minus" aria-hidden="true"></i>
+      </button>
+      <div class="w-10">
+        <input type="number"
+          class="px-2 text-center bg-gray-200 text-black text-base border border-gray-600 rounded-md cursor-default"
+          disabled value="{{ nb_options }}" />
+      </div>
+
+      <button
+        class="border-2 border-gray-800 px-3 py-2 bg-gray-50 text-gray-800 font-bold rounded-full hover:bg-gray-200">
+        <i class="fa fa-plus" aria-hidden="true"></i>
+      </button>
+    </div>
+    <div class="pl-8">
+      <button type="button" class="px-4 py-2 bg-gray-500 text-white rounded-md hover:bg-gray-600 mr-2"
+        (click)="closeModal()">
+        Close
+      </button>
+      <button type="button" class="px-4 py-2 bg-blue-500 text-white rounded-md hover:bg-blue-600" (click)="onSave()">
+        Save
+      </button>
+    </div>
+  </div>
+</div>

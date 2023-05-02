@@ -8,7 +8,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { NgChartsModule } from 'ng2-charts';
-import { NgxPaginationModule } from 'ngx-pagination';
+
+
 @NgModule({
   declarations: [
     AppComponent
@@ -24,7 +25,8 @@ import { NgxPaginationModule } from 'ngx-pagination';
     HttpClientModule,
     NgChartsModule,
     NgxPaginationModule
-
+,
+    TooltipModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -37,6 +37,12 @@ import { AddTesttComponent } from './tests/add-testt/add-testt.component';
 import { AnalysisStatistiqueComponent } from './analysis-statistique/analysis-statistique.component';
 import { PdfextractorComponent } from './Testresult-list/pdfextractor/pdfextractor.component';
 import { UpdateTesttComponent } from './tests/update-testt/update-testt.component';
+import { TrainingAdminComponent } from './training-admin/training-admin.component';
+import { SubjectsComponent } from './subjects/subjects.component';
+import { TrainingsListComponent } from './trainings-list/trainings-list.component';
+import { AddStockComponent } from './stock/add-stock/add-stock.component';
+import { EditStockComponent } from './stock/edit-stock/edit-stock.component';
+import { DetailsStockComponent } from './stock/details-stock/details-stock.component';
 
 @NgModule({
   declarations: [
@@ -59,7 +65,13 @@ import { UpdateTesttComponent } from './tests/update-testt/update-testt.componen
     AddTesttComponent,
     AnalysisStatistiqueComponent,
     PdfextractorComponent,
-    UpdateTesttComponent
+    UpdateTesttComponent,
+    TrainingAdminComponent,
+    SubjectsComponent,
+    TrainingsListComponent,
+    AddStockComponent,
+    EditStockComponent,
+    DetailsStockComponent
   ],
   imports: [
     CommonModule,

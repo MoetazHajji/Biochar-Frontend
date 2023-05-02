@@ -7,31 +7,24 @@
                <nav class="iq-sidebar-menu">
                   <ul id="iq-sidebar-toggle" class="iq-menu">
                      <li>
+                        <a href="#ui-stock" class="iq-waves-effect collapsed"  data-toggle="collapse" aria-expanded="false"><i class="ri-focus-2-line"></i><span>Stock Service</span><i class="ri-arrow-right-s-line iq-arrow-right"></i></a>
+                        <ul id="ui-stock" class="iq-submenu collapse" data-parent="#iq-sidebar-toggle">
+                              <li><a [routerLink]="['/admin/stock']"><i class="ri-text"></i>Stock List</a></li>                           
+                              <li><a [routerLink]="['/admin/product']"><i class="ri-font-color"></i>Product List</a></li>
+                              <li><a [routerLink]="['/admin/order']"><i class="ri-building-3-line"></i>Order list</a></li>
+                              <li><a [routerLink]="['/admin/offer']"><i class="ri-alert-line"></i>Offer List</a></li>
+                              <li><a [routerLink]="['/admin/adress']"><i class="ri-menu-2-line"></i>Adress list</a></li>                   
+                        </ul>
                         <a [routerLink]="['/admin/stat']" routerLinkActive="nav-link-active" class="iq-waves-effect"><i class="las la-chart-line"></i><span>statistique Analysis</span></a>
                      </li>
                      <li>
-                        <a routerLink="/" routerLinkActive="nav-link-active" class="iq-waves-effect"><i class="las la-users"></i><span>Users</span></a>
-                     </li>
-                     <li>
-                        <a routerLink="/" routerLinkActive="nav-link-active" class="iq-waves-effect"><i class="las la-image"></i><span>Profile Image</span></a>
-                     </li>
-                     <li>
-                        <a routerLink="/" routerLinkActive="nav-link-active" class="iq-waves-effect"><i class="las la-video"></i><span>Profile Video</span></a>
-                     </li>
-                     <li>
-                        <a  routerLink="/" routerLinkActive="nav-link-active" class="iq-waves-effect"><i class="las la-list"></i><span>Product</span></a>
-                     </li>
-                     <li>
-                        <a  routerLink="/" routerLinkActive="nav-link-active" class="iq-waves-effect"><i class="las la-user-friends"></i><span>Stock</span></a>
-                     </li>
-                     <li>
-                        <a class="iq-waves-effect collapsed"  data-toggle="collapse" aria-expanded="false"><i class="ri-mail-line"></i><span>Stock</span><i class="ri-arrow-right-s-line iq-arrow-right"></i></a>
-                        <ul id="stock" class="iq-submenu collapse" data-parent="#iq-sidebar-toggle">
-                           <li><a href="app/index.html"><i class="ri-inbox-line"></i>Product</a></li>
-                           <li><a href="app/email-compose.html"><i class="ri-edit-line"></i>Offer</a></li>
-                           <li><a href="app/email-compose.html"><i class="ri-edit-line"></i>Supplier</a></li>
-                           <li><a href="app/email-compose.html"><i class="ri-edit-line"></i>Orders</a></li>
-                           <li><a href="app/email-compose.html"><i class="ri-edit-line"></i>Address</a></li>
+                        <a href="#ui-elements" class="iq-waves-effect collapsed"  data-toggle="collapse" aria-expanded="false"><i class="ri-focus-2-line"></i><span>Humain Ressource</span><i class="ri-arrow-right-s-line iq-arrow-right"></i></a>
+                        <ul id="ui-elements" class="iq-submenu collapse" data-parent="#iq-sidebar-toggle">
+                              <li><a [routerLink]="['/admin/stock']"><i class="ri-text"></i>Leave Authorisation</a></li>                           
+                              <li><a [routerLink]="['/admin/product']"><i class="ri-font-color"></i>Product List</a></li>
+                              <li><a [routerLink]="['/admin/order']"><i class="ri-building-3-line"></i>Order list</a></li>
+                              <li><a [routerLink]="['/admin/offer']"><i class="ri-alert-line"></i>Offer List</a></li>
+                              <li><a [routerLink]="['/admin/adress']"><i class="ri-menu-2-line"></i>Adress list</a></li>                   
                         </ul>
                      </li>
                      <li>
