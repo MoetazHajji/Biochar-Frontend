@@ -1,0 +1,86 @@
+<div class="list-table-header-item-area">
+    <div class="introduction-area p-d-flex p-jc-between">
+        <h1 class="big-title">
+        TestResult list
+        </h1>
+        <div class="container">
+            <div class="btns-group two-btns">
+                <button class="btn btn-blue" (click)="AddNewProduct()"> New TestResult</button>
+            </div>
+        </div>
+    </div>
+    <!--.btns-group-->
+
+  <!--.ADD PRODUCT MODEL-->
+  <app-add-testresult *ngIf="addNewProductModal" [modalNewProduct]="addNewProductModal"
+  (closeModalNewProduct)="closeModalNewProduct($event)"></app-add-testresult>
+<!--.EDIT PRODUCT MODEL-->
+    
+
+
+    <div class="list-table-item-area">
+        <div class="container" style="width: 60%;">
+            <div class="table-area ">
+                <div class="comments-table">
+                    <div class="card">
+                        <p-table [value]="productList" responsiveLayout="stack" [breakpoint]="'960px'" [tableStyle]="{'min-width': '50rem'}"  [paginator]="true"
+                        [rows]="5"
+                        [showCurrentPageReport]="true"
+                        [tableStyle]="{ 'min-width': '50rem' }"
+                        currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
+                        [rowsPerPageOptions]="[10, 25, 50]">
+                            <div class="col-md-12">
+                                <button
+                                  previousLabel="Prev"
+                                  nextLabel="Next"
+                                  responsive="true"
+                                  (pageChange)="handlePageChange($event)"
+                                ></button>
+                              </div>
+                            <ng-template pTemplate="header" let-columns>
+                                <tr>
+                                   
+                                    <th id="teest" pSortableColumn="teest">Test</th>
+                                    <th id="resultat" pSortableColumn="resultat">Resultat</th>
+                                    <th id="unite" pSortableColumn="unite">Unite</th>
+                                    <th id="PLAGE_DE_REFERENCE" pSortableColumn="PLAGE_DE_REFERENCE">PLAGE DE REFERENCE</th>
+                                    <th id="date" pSortableColumn="date">Date</th>
+                                </tr>
+                            </ng-template>
+                            
+                            <ng-template pTemplate="body" let-TestResultList let-columns="columns">
+                                
+                                <tr>
+                                  
+                                    <td><span class="p-column-title">teest</span>{{TestResultList.teest}}</td>
+                                    <td><span class="p-column-title">resultat</span>{{TestResultList.resultat}}</td>
+                                    <td><span class="p-column-title">unite</span>{{TestResultList.unite}}</td>
+                                    <td><span class="p-column-title">PLAGE_DE_REFERENCE</span>{{TestResultList.PLAGE_DE_REFERENCE}}</td>
+                                    <td><span class="p-column-title">date</span>{{TestResultList.date}}</td>
+
+                                    <td>
+
+                                        <div class="more-link">
+
+                                            <p-button class="p-panel-header-icon p-link" icon="pi pi-times" (click)="DeleteProduct(TestResultList.idTestResult)"></p-button>
+                                        </div>
+                                    </td>
+                                                            
+
+                                </tr>
+                            </ng-template>
+                            <ng-template pTemplate="paginatorleft">
+                                <p-button type="button" icon="pi pi-plus" styleClass="p-button-text"></p-button>
+                            </ng-template>
+                            <ng-template pTemplate="paginatorright">
+                                <p-button type="button" icon="pi pi-cloud" styleClass="p-button-text"></p-button>
+                            </ng-template>
+                        </p-table>
+                             
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+  </div>
+  

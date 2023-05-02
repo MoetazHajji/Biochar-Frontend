@@ -1,0 +1,54 @@
+<div class="list-table-header-item-area">
+    <div class="introduction-area p-d-flex p-jc-between">
+        <h1 class="big-title">
+        Sample list
+        </h1>
+        <div class="container">
+            <div class="btns-group two-btns">
+                <button class="btn btn-blue" (click)="AddNewProduct()" > New Product</button>
+            </div>
+        </div>
+    </div>
+    <!--.btns-group-->
+
+    <!--.ADD PRODUCT MODEL-->
+    <app-add-sample *ngIf="addNewProductModal" [modalNewProduct]="addNewProductModal"
+                    (closeModalNewProduct)="closeModalNewProduct($event)"></app-add-sample>
+
+
+    <div class="list-table-item-area">
+        <div class="container" style="width: 60%;">
+            <div class="table-area ">
+                <div class="comments-table">
+                    <div class="card">
+                        <p-table [value]="productList" responsiveLayout="stack" [breakpoint]="'960px'" [tableStyle]="{'min-width': '50rem'}">
+                            <ng-template pTemplate="header" let-columns>
+                                <tr>
+                                    
+                                    <th id="date" pSortableColumn="date">Date</th>
+                                    <th id="numSample" pSortableColumn="numSample">numSample</th>
+                                 
+                                </tr>
+                            </ng-template>
+                            <ng-template pTemplate="body" let-SampleList let-columns="columns">
+                                <tr>
+                                    
+                                    <td><span class="p-column-title">date</span>{{SampleList.date}}</td>
+                                    <td><span class="p-column-title">numSample</span>{{SampleList.numSample}}</td>
+                                    <td>
+                                        <div class="more-link">
+
+                                            <p-button class="p-panel-header-icon p-link" icon="pi pi-times" (click)="DeleteProduct(SampleList.idSample)"></p-button>
+                                        </div>
+                                    </td>
+                                  
+                                </tr>
+                            </ng-template>
+                        </p-table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+  </div>
+  
