@@ -26,6 +26,17 @@ import { EditProductComponent } from './product-list/edit-product/edit-product.c
 import { DetailsProductComponent } from './product-list/details-product/details-product.component';
 import { LoginComponent } from './login/login.component';
 import { StockComponent } from './stock/stock.component';
+import { SampleListComponent } from './sample-list/sample-list.component';
+import { AddSampleComponent } from './sample-list/add-sample/add-sample.component';
+import { UpdateSampleComponent } from './sample-list/update-sample/update-sample.component';
+import { DetailsSampleComponent } from './sample-list/details-sample/details-sample.component';
+import { TestresultListComponent } from './testresult-list/testresult-list.component';
+import { AddTestresultComponent } from './Testresult-list/add-testresult/add-testresult.component';
+import { TestsComponent } from './tests/tests.component';
+import { AddTesttComponent } from './tests/add-testt/add-testt.component';
+import { AnalysisStatistiqueComponent } from './analysis-statistique/analysis-statistique.component';
+import { PdfextractorComponent } from './Testresult-list/pdfextractor/pdfextractor.component';
+import { UpdateTesttComponent } from './tests/update-testt/update-testt.component';
 
 @NgModule({
   declarations: [
@@ -37,7 +48,18 @@ import { StockComponent } from './stock/stock.component';
     EditProductComponent,
     DetailsProductComponent,
     LoginComponent,
-    StockComponent
+    StockComponent,
+    SampleListComponent,
+    AddSampleComponent,
+    UpdateSampleComponent,
+    DetailsSampleComponent,
+    TestresultListComponent,
+    AddTestresultComponent,
+    TestsComponent,
+    AddTesttComponent,
+    AnalysisStatistiqueComponent,
+    PdfextractorComponent,
+    UpdateTesttComponent
   ],
   imports: [
     CommonModule,

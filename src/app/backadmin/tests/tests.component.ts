@@ -1,13 +1,13 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { Product } from 'src/app/_models/_product/product';
-import { ProductService } from '../_services/product.service';
+import { Test } from 'src/app/_models/test';
+import { TestService } from '../_services/test.service';
 
 @Component({
-  selector: 'app-product-list',
-  templateUrl: './product-list.component.html',
-  styleUrls: ['./product-list.component.css']
+  selector: 'app-tests',
+  templateUrl: './tests.component.html',
+  styleUrls: ['./tests.component.css']
 })
-export class ProductListComponent implements OnInit {
+export class TestsComponent implements OnInit {
 
   @Input() getProductId : any
   addNewProductModal:boolean = false;
@@ -17,35 +17,27 @@ export class ProductListComponent implements OnInit {
 
   prodId: any
 
-  productList:Product[]=[];
-  productDetailedList:Product[]=[];
-  product : Product = new Product();
-  constructor(private _productService : ProductService) { }
+
+  productList:Test[]=[];
+  sample : Test = new Test();
+  
+  constructor(private _testService : TestService) { }
 
   ngOnInit(): void {
    this.getProductList();
-   
   }
 
   getProductList(){
-    this._productService.getAll().subscribe((res:any)=>{
+    this._testService.getAll().subscribe((res:any)=>{
       this.productList = res.body
     })
     console.log(this.productList)
   }
-
-  DeleteProduct(id:any){
-    this._productService.DeleteProduct(id).subscribe({
-      next:()=>this.productList=this.productList.filter((p)=> p.id!=id)
+  DeleteProduct(idTest:any){
+    this._testService.DeleteProduct(idTest).subscribe({
+      next:()=>this.productList=this.productList.filter((p)=> p.idTest!=idTest)
     })
   }
-
-  getProductById(id:any){
-    this._productService.getProductById(id).subscribe((res:any)=>{
-      this.productList = res.body
-    })
-  }
-
   AddNewProduct(){
     this.addNewProductModal = !this.addNewProductModal;
   }
@@ -66,4 +58,5 @@ export class ProductListComponent implements OnInit {
     this.prodId = $event;
     this.openDetailPodModal = !this.openDetailPodModal;
   }
+
 }
