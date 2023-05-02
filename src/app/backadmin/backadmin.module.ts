@@ -31,11 +31,9 @@ import { AddSampleComponent } from './sample-list/add-sample/add-sample.componen
 import { UpdateSampleComponent } from './sample-list/update-sample/update-sample.component';
 import { DetailsSampleComponent } from './sample-list/details-sample/details-sample.component';
 import { TestresultListComponent } from './testresult-list/testresult-list.component';
-import { AddTestresultComponent } from './Testresult-list/add-testresult/add-testresult.component';
 import { TestsComponent } from './tests/tests.component';
 import { AddTesttComponent } from './tests/add-testt/add-testt.component';
 import { AnalysisStatistiqueComponent } from './analysis-statistique/analysis-statistique.component';
-import { PdfextractorComponent } from './Testresult-list/pdfextractor/pdfextractor.component';
 import { UpdateTesttComponent } from './tests/update-testt/update-testt.component';
 import { TrainingAdminComponent } from './training-admin/training-admin.component';
 import { SubjectsComponent } from './subjects/subjects.component';
@@ -43,6 +41,8 @@ import { TrainingsListComponent } from './trainings-list/trainings-list.componen
 import { AddStockComponent } from './stock/add-stock/add-stock.component';
 import { EditStockComponent } from './stock/edit-stock/edit-stock.component';
 import { DetailsStockComponent } from './stock/details-stock/details-stock.component';
+import { AddTestresultComponent } from './testresult-list/add-testresult/add-testresult.component';
+import { PdfextractorComponent } from './testresult-list/pdfextractor/pdfextractor.component';
 
 @NgModule({
   declarations: [
