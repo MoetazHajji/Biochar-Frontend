@@ -1,0 +1,43 @@
+<div class="modal modal-product-area" [class]="modalNewProfile ? 'open' : ''">
+    <p-dialog header="Profile Area" [(visible)]="modalNewProfile" [modal]="true" [style]="{width: '500px'}" [baseZIndex]="10000" [draggable]="false" [resizable]="true" (onHide)="cancel()">
+        <div *ngIf="hideForm"  >
+            <div class="inscription-form-title-blc">
+                </div>
+                <div class="inscription-form-title">
+                <h1 class="edit-form-title text-hideform">Profile added</h1>
+                </div>
+                <button type="button" (click)="cancel()" class="btn btn-blue"></button>
+            </div>
+            <div class="form-container">
+              <form #p="ngForm"  action="">
+                  <!-- <form> -->
+                    <label for="skills">Skills</label>
+                    <input type="text" id="skills" name="skills" #skills="ngModel" [(ngModel)]="profile.skills" required>
+                    <div class="alert alert-danger" *ngIf="skills.touched && skills.invalid">
+                        <div *ngIf="skills.errors?.['required']">Skills are required</div>
+                    </div>
+
+                    <label for="knowledge">Knowledge</label>
+                    <input type="text" id="knowledge" name="knowledge" #knowledge="ngModel" [(ngModel)]="profile.knowledge" required>
+                    <div class="alert alert-danger" *ngIf="knowledge.touched && knowledge.invalid">
+                        <div *ngIf="knowledge.errors?.['required']">Knowledge are required</div>
+                    </div>
+                    
+                    <label for="experience">Experience</label>
+                    <input type="text" id="experience" name="experience" #experience="ngModel" [(ngModel)]="profile.experience" required max="37">
+                    <div class="alert alert-danger" *ngIf="experience.touched && experience.invalid">
+                        <div *ngIf="experience.errors?.['required']">Experience is required</div>
+                        <div *ngIf="experience.errors?.['max']">Experience must not exceed 37!</div>
+                    </div>
+                    
+                    <label for="experience">account_id</label>
+                    <input type="text" id="account_id" name="account_id" #account_id="ngModel" [(ngModel)]="profile.account_id" >
+                    
+                    <input type="submit" value="Submit" (click)="addProfile()">
+                  <!--.form-area-->
+                  <!-- </form> -->
+              </form>
+            </div>
+            <!--.inscription-form-area-->
+    </p-dialog>
+</div>

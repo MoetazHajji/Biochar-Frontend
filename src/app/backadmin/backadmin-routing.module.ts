@@ -6,10 +6,17 @@ import { LoginComponent } from './login/login.component';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { AddProductComponent } from './product-list/add-product/add-product.component';
 import { ProductListComponent } from './product-list/product-list.component';
+import { ProfileComponent } from './profile/profile.component';
+import { AddProfileComponent } from './profile/add-profile/add-profile.component';
+import { EditProductComponent } from './product-list/edit-product/edit-product.component';
+import { EditProfileComponent } from './profile/edit-profile/edit-profile.component';
+import { LeaveAuthorizationComponent } from './leave-authorization/leave-authorization.component';
+import { AddLeaveAuthComponent } from './leave-authorization/add-leave-auth/add-leave-auth.component';
+import { EditLeaveAuthComponent } from './leave-authorization/edit-leave-auth/edit-leave-auth.component';
 import { SampleListComponent } from './sample-list/sample-list.component';
 
 import { TestresultListComponent } from './testresult-list/testresult-list.component';
-import {  AddTesttComponent } from './tests/add-testt/add-testt.component';
+import { AddTesttComponent } from './tests/add-testt/add-testt.component';
 import { TestsComponent } from './tests/tests.component';
 import { TrainingAdminComponent } from './training-admin/training-admin.component';
 import { SubjectsComponent } from './subjects/subjects.component';
@@ -21,89 +28,127 @@ import { DetailsStockComponent } from './stock/details-stock/details-stock.compo
 import { UpdateTesttComponent } from './tests/update-testt/update-testt.component';
 import { AddTestresultComponent } from './testresult-list/add-testresult/add-testresult.component';
 const routes: Routes = [
-  {path: '', component:LoginComponent},
-  {path: 'login', component:LoginComponent},
+  { path: '', component: LoginComponent },
+  { path: 'login', component: LoginComponent },
   {
-      path: 'product',
-      component:AdminLayoutComponent,
-      children:[
-        {
-          path:'',
-          component:ProductListComponent
-        },
-        {
-          path:'add',
-          component:AddProductComponent
-        },
-        {
-          path:'details/:id',
-          component:DetailsProductComponent
-        }
-      ]
-      },
-      {path :'training',
-      component:AdminLayoutComponent,
-      children:[
-        {
-          path : '',
-          component:TrainingsListComponent
-        },
-        {
-          path:'add',
-          component:TrainingAdminComponent
-        },
-        {
-          path:'subjects',
-          component:SubjectsComponent
-        }
-      ]},
+    path: 'product',
+    component: AdminLayoutComponent,
+    children: [
       {
-        path :'stock',
-        component:AdminLayoutComponent,
-        children : [
-          {
-            path:'',
-            component:StockComponent
-          },
-          {
-            path:'update',
-            component:EditStockComponent
-          },
-          {
-            path:'add',
-            component:AddProductComponent
-          },
-          {
-            path:'details/:id',
-            component:DetailsStockComponent
-          }
-        ]
+        path: '',
+        component: ProductListComponent
       },
       {
-        path :'testr',
-        component:AdminLayoutComponent,
-        children : [
-          {
-            path:'',
-            component:TestresultListComponent
-          },
-          {
-            path:'add',
-            component:AddTestresultComponent
-          }
-        ]
+        path: 'add',
+        component: AddProductComponent
+      }
+    ]
+  },
+  {
+    path: 'profile',
+    component: AdminLayoutComponent,
+    children: [
+      {
+        path: '',
+        component: ProfileComponent
       },
       {
-        path :'stat',
-        component:AdminLayoutComponent,
-        children : [
-          {
-            path:'',
-            component:AnalysisStatistiqueComponent
-          }
-        ]
+        path: 'addProfile',
+        component: AddProfileComponent
       },
-  {path:'**',component:NotFoundComponent}
+      {
+        path: 'updateProfile',
+        component: EditProfileComponent
+      }
+    ]
+  },
+  {
+    path: 'leaveAuth',
+    component: AdminLayoutComponent,
+    children: [
+      {
+        path: '',
+        component: LeaveAuthorizationComponent
+      },
+      {
+        path: 'addLeaveAuth',
+        component: AddLeaveAuthComponent
+      },
+      {
+        path: 'updateLeaveAuth',
+        component: EditLeaveAuthComponent
+      },
+      {
+        path: 'details/:id',
+        component: DetailsProductComponent
+      }
+    ]
+  },
+  {
+    path: 'training',
+    component: AdminLayoutComponent,
+    children: [
+      {
+        path: '',
+        component: TrainingsListComponent
+      },
+      {
+        path: 'add',
+        component: TrainingAdminComponent
+      },
+      {
+        path: 'subjects',
+        component: SubjectsComponent
+      }
+    ]
+  },
+  {
+    path: 'stock',
+    component: AdminLayoutComponent,
+    children: [
+      {
+        path: '',
+        component: StockComponent
+      },
+      {
+        path: 'update',
+        component: EditStockComponent
+      },
+      {
+        path: 'add',
+        component: AddProductComponent
+      },
+      {
+        path: 'details/:id',
+        component: DetailsStockComponent
+      }
+    ]
+  },
+  {
+    path: 'testr',
+    component: AdminLayoutComponent,
+    children: [
+      {
+        path: '',
+        component: TestresultListComponent
+      },
+      {
+        path: 'add',
+        component: AddTestresultComponent
+      }
+    ]
+  },
+  {
+    path: 'stat',
+    component: AdminLayoutComponent,
+    children: [
+      {
+        path: '',
+        component: AnalysisStatistiqueComponent
+      }
+    ]
+  },
+  { path: '**', component: NotFoundComponent }
 ];
 
 @NgModule({

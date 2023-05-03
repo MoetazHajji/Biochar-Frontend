@@ -43,6 +43,15 @@ import { EditStockComponent } from './stock/edit-stock/edit-stock.component';
 import { DetailsStockComponent } from './stock/details-stock/details-stock.component';
 import { AddTestresultComponent } from './testresult-list/add-testresult/add-testresult.component';
 import { PdfextractorComponent } from './testresult-list/pdfextractor/pdfextractor.component';
+import { LeaveAuthorizationComponent } from './leave-authorization/leave-authorization.component';
+import { AddLeaveAuthComponent } from './leave-authorization/add-leave-auth/add-leave-auth.component';
+import { DetailsLeaveAuthComponent } from './leave-authorization/details-leave-auth/details-leave-auth.component';
+import { EditLeaveAuthComponent } from './leave-authorization/edit-leave-auth/edit-leave-auth.component';
+import { ProfileComponent } from './profile/profile.component';
+import { AddProfileComponent } from './profile/add-profile/add-profile.component';
+import { DetailsProfileComponent } from './profile/details-profile/details-profile.component';
+import { EditProfileComponent } from './profile/edit-profile/edit-profile.component';
+import { WorkScheduleComponent } from './work-schedule/work-schedule.component';
 
 @NgModule({
   declarations: [
@@ -71,7 +80,16 @@ import { PdfextractorComponent } from './testresult-list/pdfextractor/pdfextract
     TrainingsListComponent,
     AddStockComponent,
     EditStockComponent,
-    DetailsStockComponent
+    DetailsStockComponent,
+    LeaveAuthorizationComponent,
+    AddLeaveAuthComponent,
+    DetailsLeaveAuthComponent,
+    EditLeaveAuthComponent,
+    ProfileComponent,
+    AddProfileComponent,
+    DetailsProfileComponent,
+    EditProfileComponent,
+    WorkScheduleComponent
   ],
   imports: [
     CommonModule,
