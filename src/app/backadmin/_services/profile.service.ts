@@ -30,4 +30,8 @@ export class ProfileService {
   EditProfile(profile: Profile) {
     return this.http.put(`${this.url}/Profile/updateProfile`, profile, { observe: 'response' })
   }
+
+  UpdateExperience() {
+    return this.http.post(`${this.url}/Profile/updateExperience`, { observe: 'response' })
+  }
 }

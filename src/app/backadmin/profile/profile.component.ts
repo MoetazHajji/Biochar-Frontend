@@ -67,4 +67,14 @@ export class ProfileComponent implements OnInit {
     this.openDetailProfileModal = !this.openDetailProfileModal;
   }
 
+  refresh(): void {
+    window.location.reload();
+  }
+
+  updateExperience() {
+    this._profileService.UpdateExperience().subscribe((res: any) => {
+      this.refresh();
+    })
+  }
+
 }
