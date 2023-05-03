@@ -1,1 +1,83 @@
-<p>stock works!</p>
+<div class="list-table-header-item-area">
+    <div class="introduction-area p-d-flex p-jc-between">
+        <h1 class="big-title">
+        Stock list
+        </h1>
+        <div class="container">
+            <div class="btns-group two-btns">
+                <button class="btn btn-blue" pButton pRipple icon="pi pi-plus" (click)="AddNewStock()"> New Stock</button>
+            </div>
+        </div>
+    </div>
+    <!--.btns-group-->
+
+    <!--.ADD Stock MODEL-->
+    <app-add-stock *ngIf="addNewStockModal" [modalNewStock]="addNewStockModal"
+                    (closeModalNewStock)="closeModalNewStock($event)"></app-add-stock>
+    <!--.EDIT STOCK MODEL-->
+    <app-edit-stock *ngIf="editStockModal" [modalEditStock]="editStockModal"
+                      [StockId]="getStockId"
+                      (closeModalNewStock)="closeModalNewStock($event)"></app-edit-stock>
+
+
+    <div class="list-table-item-area">
+        <div class="container" style="width: 60%;">
+            <div class="table-area ">
+                <div class="comments-table">
+                    <div class="card">
+                        <p-table [value]="stockList" responsiveLayout="stack" [breakpoint]="'960px'" [tableStyle]="{'min-width': '50rem'}">
+                            <ng-template pTemplate="header" let-columns>
+                                <tr>
+                                    <th id="uhnit" pSortableColumn="unit">Unit</th>
+                                    <th id="total_quantity" pSortableColumn="total_quantity">Total Quantity</th>
+                                    <th id="storage" pSortableColumn="storage">Storage</th>
+                                    <th id="date" pSortableColumn="date">Date</th>
+                                    <th id="location" pSortableColumn="location">Location</th>
+                                    <th id="action" pSortableColumn="action">Actions</th>
+                                </tr>
+                            </ng-template>
+                            <ng-template pTemplate="body" let-stockList let-columns="columns">
+                                <tr>
+                                    <td><span class="p-column-title">Unit</span>{{stockList.unit}}</td>                                
+                                    <td><span class="p-column-title">Total Quantity</span>{{stockList.total_quantity}}</td>
+                                    <td><span class="p-column-title">Storage</span>{{stockList.storage}}</td>
+                                    <td><span class="p-column-title">Date</span>{{stockList.date}}</td>
+                                    <td><span class="p-column-title">Location</span>{{stockList.location}}</td>
+                                    <td>
+                                        <div>
+                                            <p-button tooltipPosition="left" class="p-panel-header-icon p-link" icon="pi pi-eye " [routerLink]="['/admin/stock/details',stockList.id]" ></p-button>
+                                            <p-button class="p-panel-header-icon p-link" icon="pi pi-pencil" (click)="EditStock(stockList.id)"></p-button>
+                                            <p-button class="p-panel-header-icon p-link" icon="pi pi-times" data-toggle="modal" data-target="#exampleModal" (click)="stockIdToDelete=stockList.id"></p-button>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </ng-template>
+                        </p-table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="row">
+                <div class="col-md-12">
+                <div class="card card-user">
+                    <div class="modal-header text-center">
+                        <h5 class="modal-title" id="exampleModalLabel">Are you sure to delete stock {{stockIdToDelete}}</h5>
+                        <button type="button" class="btn-close" data-dismiss="modal" aria-label="Close"></button>
+                    </div>           
+                    <div class="modal-body text-center">
+                        <button class="btn btn-danger btn-round mr-2" (click)="DeleteStock(stockIdToDelete)" >Yes</button>
+                        <button class="btn btn-primary btn-round ml-2" data-dismiss="modal" aria-label="Close">No</button>
+                    </div>
+                </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+  

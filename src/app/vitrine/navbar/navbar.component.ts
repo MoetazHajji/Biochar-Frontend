@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Router, NavigationEnd, NavigationStart } from '@angular/router';
+import { Location, PopStateEvent } from '@angular/common';
 
 @Component({
   selector: 'app-navbar',
@@ -7,9 +9,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class NavbarComponent implements OnInit {
 
-  constructor() { }
+  
 
-  ngOnInit(): void {
-  }
+    constructor() {
+    }
 
+    ngOnInit() {    
+    }
+
+    
 }

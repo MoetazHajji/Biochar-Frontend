@@ -1,0 +1,43 @@
+<div class="modal modal-product-area" [class]="modalEditStock ? 'open' : ''">
+    <p-dialog header="Product Area" [(visible)]="modalEditStock" [modal]="true" [style]="{width: '500px'}" [baseZIndex]="10000" [draggable]="false" [resizable]="true" (onHide)="cancel()">
+        <div *ngIf="hideForm" [formGroup]="editStockForm" >
+            <div class="inscription-form-title-blc">
+                </div>
+                <div class="inscription-form-title">
+                <h1 class="edit-form-title text-hideform">Product added</h1>
+                </div>
+                <button type="button" (click)="cancel()" class="btn btn-blue"></button>
+            </div>
+            <div class="form-container">
+              <form #p="ngForm"  action="">
+                  <!-- <form> -->
+                    <label for="unit">Unit</label>
+                    <input type="text" id="unit" name="unit" #unit="ngModel" [(ngModel)]="stock.unit" required>
+                    
+                    <label for="storage">Storage</label>
+                    <input type="number" id="storage" name="storage" #storage="ngModel" [(ngModel)]="stock.storage" required>
+
+                    <label for="total_quantity">Total Quantity</label>
+                    <input type="number" id="total_quantity" name="total_quantity" #date="ngModel" [(ngModel)]="stock.total_quantity" required>
+
+                    <label for="date">Date</label>
+                    <input type="date" id="date" name="date" #date="ngModel" [(ngModel)]="stock.date" required>
+
+                    <label for="location">Location</label>
+                    <input type="text" id="location" name="location" #location="ngModel" [(ngModel)]="stock.location"  required>
+                    
+                    <label for="type_product">Product Type</label>
+                    <select class="my-select"  id="type_product" name="type_product" #type_product="ngModel" [(ngModel)]="stock.type_product" >
+                      <option value="" disabled selected>Select product type </option>
+                      <option *ngFor="let productType of productTypes"  [value]="productType">{{productType}}</option>
+                    </select>
+                    
+                    
+                    <input type="submit" value="Submit" (click)="EditStock()">
+                  <!--.form-area-->
+                  <!-- </form> -->
+              </form>
+            </div>
+            <!--.inscription-form-area-->
+    </p-dialog>
+</div>
