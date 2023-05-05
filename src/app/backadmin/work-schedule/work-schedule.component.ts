@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { WorkScheduleService } from '../_services/work-schedule.service';
 
 @Component({
   selector: 'app-work-schedule',
@@ -7,7 +8,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class WorkScheduleComponent implements OnInit {
 
-  constructor() { }
+  constructor(private _wsService: WorkScheduleService) { }
 
   ngOnInit(): void {
   }

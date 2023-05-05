@@ -27,6 +27,7 @@ import { DetailsProductComponent } from './product-list/details-product/details-
 import { DetailsStockComponent } from './stock/details-stock/details-stock.component';
 import { UpdateTesttComponent } from './tests/update-testt/update-testt.component';
 import { AddTestresultComponent } from './testresult-list/add-testresult/add-testresult.component';
+import { WorkScheduleComponent } from './work-schedule/work-schedule.component';
 const routes: Routes = [
   { path: '', component: LoginComponent },
   { path: 'login', component: LoginComponent },
@@ -83,6 +84,15 @@ const routes: Routes = [
         component: DetailsProductComponent
       }
     ]
+  },
+  {
+    path: 'workSchedule',
+    component: AdminLayoutComponent,
+    children: [
+      {
+        path: '',
+        component: WorkScheduleComponent
+      }]
   },
   {
     path: 'training',
