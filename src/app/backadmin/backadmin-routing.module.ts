@@ -45,6 +45,7 @@ import { AddMedicalcardComponent } from './midcalcard-list/add-medicalcard/add-m
 import { UpdateSampleComponent } from './sample-list/update-sample/update-sample.component';
 import { UpdateMedicalcardComponent } from './midcalcard-list/update-medicalcard/update-medicalcard.component';
 import { PdfextractorComponent } from './testresult-list/pdfextractor/pdfextractor.component';
+import { WorkScheduleComponent } from './work-schedule/work-schedule.component';
 const routes: Routes = [
   { path: '', component: LoginComponent },
   { path: 'login', component: LoginComponent },
@@ -101,6 +102,15 @@ const routes: Routes = [
         component: DetailsProductComponent
       }
     ]
+  },
+  {
+    path: 'workSchedule',
+    component: AdminLayoutComponent,
+    children: [
+      {
+        path: '',
+        component: WorkScheduleComponent
+      }]
   },
   {
     path: 'training',
@@ -166,169 +176,171 @@ const routes: Routes = [
       }
     ]
   },
-    {
-      path:'panier',
-      component:AdminLayoutComponent,
-      children:[{
-        path:'',
-        component:PanierComponent
-      }]
+  {
+    path: 'panier',
+    component: AdminLayoutComponent,
+    children: [{
+      path: '',
+      component: PanierComponent
+    }]
+  },
+  {
+    path: 'order',
+    component: AdminLayoutComponent,
+    children: [{
+      path: '',
+      component: OrderComponent
     },
     {
-      path:'order',
-      component:AdminLayoutComponent,
-      children:[{
-        path:'',
-        component:OrderComponent
+      path: 'details/:id',
+      component: DetailsOrderComponent
+    }
+    ]
+  },
+  {
+    path: 'offer',
+    component: AdminLayoutComponent,
+    children: [{
+      path: '',
+      component: OfferComponent
+    }
+    ]
+  },
+  {
+    path: 'auth',
+    //component:AdminLayoutComponent,
+    children: [
+      {
+        path: 'sign-in',
+        component: SignInAuthenticationComponent
       },
       {
-        path:'details/:id',
-        component:DetailsOrderComponent
+        path: 'sign-up',
+        component: SignUpAuthenticationComponent
       }
     ]
-    },
-    {
-      path:'offer',
-      component:AdminLayoutComponent,
-      children:[{
-        path:'',
-        component:OfferComponent
+  },
+  {
+    path: 'auth',
+    component: AdminLayoutComponent,
+    children: [
+      {
+        path: 'edit-forget-password/:code',
+        component: EditForgotPasswordAuthenticationComponent
       }
     ]
-    },
-    {
-      path: 'auth',
-      //component:AdminLayoutComponent,
-      children:[
-        {
-          path:'sign-in',
-          component:SignInAuthenticationComponent
-        },
-        {
-          path:'sign-up',
-          component:SignUpAuthenticationComponent
-        }
-      ]},
+  },
+  {
+    path: 'timeoff',
+    component: AdminLayoutComponent,
+    children: [
       {
-        path: 'auth',
-        component:AdminLayoutComponent,
-        children:[
-          {
-            path:'edit-forget-password/:code',
-            component:EditForgotPasswordAuthenticationComponent
-          }
-        ]},
-    {
-      path: 'timeoff',
-      component:AdminLayoutComponent,
-      children:[
-        {
-          path:'',
-          component:ListTimeoffComponent
-        },
-        {
-          path:'add',
-          component:AddTimeoffComponent
-        },
-        {
-          path:'edit',
-          component:EditTimeoffComponent
-        }
-      ]
+        path: '',
+        component: ListTimeoffComponent
       },
       {
-        path: 'account',
-        component:AdminLayoutComponent,
-        children:[
-          {
-            path:'',
-            component:ListAccountComponent
-          },          {
-            path:'edit-detailled/:id',
-            component:EditGlobalAccountComponent
-          },
-          {
-            path:'pdf',
-            component:PdfextractorComponent
-          }
-        ]
+        path: 'add',
+        component: AddTimeoffComponent
       },
       {
-        path :'medicallist',
-        component:AdminLayoutComponent,
-        children : [
-          {
-            path:'',
-            component:MidcalcardListComponent
-          },
-          {
-            path:'add',
-            component:AddMedicalcardComponent
-          },
-          {
-            path:'update',
-            component:UpdateMedicalcardComponent
-          }
-        ]
+        path: 'edit',
+        component: EditTimeoffComponent
+      }
+    ]
+  },
+  {
+    path: 'account',
+    component: AdminLayoutComponent,
+    children: [
+      {
+        path: '',
+        component: ListAccountComponent
+      }, {
+        path: 'edit-detailled/:id',
+        component: EditGlobalAccountComponent
       },
       {
-        path :'samplelist',
-        component:AdminLayoutComponent,
-        children : [
-          {
-            path:'',
-            component:SampleListComponent
-          },
-          {
-            path:'add',
-            component:AddMedicalcardComponent
-          },
-          {
-            path:'update',
-            component:UpdateSampleComponent
-          }
-        ]
+        path: 'pdf',
+        component: PdfextractorComponent
+      }
+    ]
+  },
+  {
+    path: 'medicallist',
+    component: AdminLayoutComponent,
+    children: [
+      {
+        path: '',
+        component: MidcalcardListComponent
       },
       {
-        path :'testList',
-        component:AdminLayoutComponent,
-        children : [
-          {
-            path:'',
-            component:TestsComponent
-          },
-          {
-            path:'add',
-            component:AddTesttComponent
-          },
-          {
-            path:'update',
-            component:UpdateTesttComponent
-          }
-        ]
-        }, 
-        {
-          path: 'appointment',
-          component:AdminLayoutComponent,
-          children:[
-            {
-              path:':id',
-              component:ListAppointmentComponent
-            }  
-          ]
-          }, 
-  
+        path: 'add',
+        component: AddMedicalcardComponent
+      },
       {
-        path :'stat',
-        component:AdminLayoutComponent,
-        children : [
-          {
-            path:'',
-            component:AnalysisStatistiqueComponent
-          }
-        ]
-      }, 
-  {path:'**',component:NotFoundComponent}
+        path: 'update',
+        component: UpdateMedicalcardComponent
+      }
+    ]
+  },
+  {
+    path: 'samplelist',
+    component: AdminLayoutComponent,
+    children: [
+      {
+        path: '',
+        component: SampleListComponent
+      },
+      {
+        path: 'add',
+        component: AddMedicalcardComponent
+      },
+      {
+        path: 'update',
+        component: UpdateSampleComponent
+      }
+    ]
+  },
+  {
+    path: 'testList',
+    component: AdminLayoutComponent,
+    children: [
+      {
+        path: '',
+        component: TestsComponent
+      },
+      {
+        path: 'add',
+        component: AddTesttComponent
+      },
+      {
+        path: 'update',
+        component: UpdateTesttComponent
+      }
+    ]
+  },
+  {
+    path: 'appointment',
+    component: AdminLayoutComponent,
+    children: [
+      {
+        path: ':id',
+        component: ListAppointmentComponent
+      }
+    ]
+  },
+
+  {
+    path: 'stat',
+    component: AdminLayoutComponent,
+    children: [
+      {
+        path: '',
+        component: AnalysisStatistiqueComponent
+      }
+    ]
+  },
+  { path: '**', component: NotFoundComponent }
 ];
 
 @NgModule({

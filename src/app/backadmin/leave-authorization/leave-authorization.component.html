@@ -34,8 +34,8 @@
                                 <tr>
                                     <th id="start_date" pSortableColumn="start_date">Start Date</th>
                                     <th id="end_date" pSortableColumn="end_date">End Date</th>
-                                    <th id="authStartTime" pSortableColumn="authStartTime">Authorization Start Time</th>
-                                    <th id="authEndTime" pSortableColumn="authEndTime">Authorization End Time</th>
+                                    <th id="authStartTime" pSortableColumn="authStartTime">Start Time</th>
+                                    <th id="authEndTime" pSortableColumn="authEndTime">End Time</th>
                                     <th id="remaining_days" pSortableColumn="remaining_days">Remainig Days</th>
                                     <th id="cause" pSortableColumn="cause">Cause</th>
                                     <th id="type_la" pSortableColumn="type_la">Type</th>
@@ -57,7 +57,7 @@
                                         <div class="more-link">
                                             <p-button tooltipPosition="left" class="p-panel-header-icon p-link" icon="pi pi-eye " [routerLink]="['/admin/leaveAuth/updateLeaveAuth',leaveAuthList.id]" ></p-button>
                                             <p-button class="p-panel-header-icon p-link" icon="pi pi-pencil" (click)="editLeaveAuth(leaveAuthList.id_LA)"></p-button>
-                                            <p-button class="p-panel-header-icon p-link" icon="pi pi-times" (click)="deleteLeaveAuth(leaveAuthList.id_LA)" ></p-button>
+                                            <p-button class="p-panel-header-icon p-link" icon="pi pi-times" data-toggle="modal" data-target="#exampleModal" (click)="idLeaveToDelete = leaveAuthList.id_LA"></p-button>
                                         </div>
                                     </td>
                                 </tr>
@@ -70,4 +70,23 @@
     </div>
 </div>
 
-  
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="row">
+                <div class="col-md-12">
+                <div class="card card-user">
+                    <div class="modal-header text-center">
+                        <h5 class="modal-title" id="exampleModalLabel">Are you sure to delete leaveAuth</h5>
+                        <button type="button" class="btn-close" data-dismiss="modal" aria-label="Close"></button>
+                    </div>           
+                    <div class="modal-body text-center">
+                        <button class="btn btn-danger btn-round mr-2" data-dismiss="modal" (click)="deleteLeaveAuth(idLeaveToDelete)">Yes</button>
+                        <button class="btn btn-primary btn-round ml-2" data-dismiss="modal" aria-label="Close">No</button>
+                    </div>
+                </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
