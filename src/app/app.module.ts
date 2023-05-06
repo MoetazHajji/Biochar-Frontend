@@ -7,7 +7,6 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { NgChartsModule } from 'ng2-charts';
 
 
 @NgModule({
@@ -22,8 +21,7 @@ import { NgChartsModule } from 'ng2-charts';
     BrowserAnimationsModule,
     CommonModule,
     ReactiveFormsModule,
-    HttpClientModule,
-    NgChartsModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]
