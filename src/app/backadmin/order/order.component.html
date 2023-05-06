@@ -1,0 +1,40 @@
+
+<div class="list-table-header-item-area">
+    <div class="introduction-area p-d-flex p-jc-between">
+        <h1 class="big-title">
+        Order list
+        </h1>      
+    </div>
+    <div class="list-table-item-area">
+        <div class="container" style="width: 60%;">
+            <div class="table-area ">
+                <div class="comments-table">
+                    <div class="card">
+                        <p-table [value]="orderList" responsiveLayout="stack" [breakpoint]="'960px'" [tableStyle]="{'min-width': '50rem'}">
+                            <ng-template pTemplate="header" let-columns>
+                                <tr>
+                                    <th id="idC" pSortableColumn="idC">Id</th>
+                                    <th id="notice" pSortableColumn="notice">Notice</th>                                    
+                                    <th id="dateC" pSortableColumn="dateC">Date</th> 
+                                    <th id="actions" pSortableColumn="actions">Actions</th>                                    
+                                </tr>
+                            </ng-template>
+                            <ng-template pTemplate="body" let-orderList let-columns="columns">
+                                <tr>
+                                    <td><span class="p-column-title">Id</span>{{orderList.id}}</td>
+                                    <td><span class="p-column-title">Notice</span>{{orderList.date}}</td>
+                                    <td><span class="p-column-title">Refrence</span>{{orderList.notice}}</td>
+                                    <td>
+                                        <div class="transparent-button">
+                                            <p-button tooltipPosition="left" class="p-panel-header-icon p-link" icon="pi pi-eye " [routerLink]="['/admin/order/details',orderList.id]" ></p-button>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </ng-template>
+                        </p-table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
