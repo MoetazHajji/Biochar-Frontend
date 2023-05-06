@@ -2,6 +2,7 @@
 {
   "compileOnSave": false,
   "compilerOptions": {
+     "allowJs": true,  //"     Import a JavaScript file into a TypeScript file     "
     "baseUrl": "./",
     "outDir": "./dist/out-tsc",
     "forceConsistentCasingInFileNames": true,
