@@ -1,0 +1,17 @@
+<div class="list-table-item-area  ">
+  <div class="introduction-area p-d-flex p-jc-between">
+      <h1 class="text-center">
+      Work Schedule
+      </h1>
+      <div class="container">
+          <div class="btns-group two-btns">
+              <button class="btn btn-blue" pButton pRipple icon="pi pi-plus" (click)="AddWorkSchedule()"> New Profile</button>
+          </div>
+      </div>
+  </div>
+
+  <!--.ADD PROFILE MODAL-->
+  <app-add-ws *ngIf="addNewWorkScheduleModal" [modalNewWorkSchedule]="addNewWorkScheduleModal"
+  (closeModalNewWorkSchedule)="closeModalNewWorkSchedule($event)"></app-add-ws>
+
+</div>

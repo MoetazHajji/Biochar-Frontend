@@ -52,6 +52,7 @@ import { AddProfileComponent } from './profile/add-profile/add-profile.component
 import { DetailsProfileComponent } from './profile/details-profile/details-profile.component';
 import { EditProfileComponent } from './profile/edit-profile/edit-profile.component';
 import { WorkScheduleComponent } from './work-schedule/work-schedule.component';
+import { AddWsComponent } from './work-schedule/add-ws/add-ws.component';
 
 @NgModule({
   declarations: [
@@ -89,7 +90,8 @@ import { WorkScheduleComponent } from './work-schedule/work-schedule.component';
     AddProfileComponent,
     DetailsProfileComponent,
     EditProfileComponent,
-    WorkScheduleComponent
+    WorkScheduleComponent,
+    AddWsComponent
   ],
   imports: [
     CommonModule,

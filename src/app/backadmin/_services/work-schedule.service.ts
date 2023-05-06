@@ -15,4 +15,8 @@ export class WorkScheduleService {
     return this.http.get(`${this.url}/WorkSchedule/getAllWorkSchedule`, { observe: 'response' })
   }
 
+  addWorkSchedule() {
+
+  }
+
 }
