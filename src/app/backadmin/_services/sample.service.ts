@@ -26,5 +26,10 @@ export class SampleService {
  /* affectCompToMiss(idM:any , idComp:any[] ) : Observable<HttpResponse<any>>{
     return this.http.put(`${this.url}/analysis/Test/${idM}`, idComp,{observe : 'response'})
    }*/
-
+   EditProduct(sample:Sample){
+    return this.http.put(`${this.url}/analysis/Sample/update`, sample , {observe : 'response'})
+  }
+  getProductById(idSample:any){
+    return this.http.get(`${this.url}/analysis/Sample/get/${idSample}`,{observe : 'response'})
+  }
 }

@@ -1,4 +1,4 @@
-import { AppointmentService } from '../../_services/_user/appointment.service.js';
+import { AppointmentService } from '../../_services/_user/appointment.service.ts';
 
 
 

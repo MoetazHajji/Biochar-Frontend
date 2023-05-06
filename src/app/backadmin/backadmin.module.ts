@@ -64,6 +64,9 @@ import { DetailsOrderComponent } from './order/details-order/details-order.compo
 import { OfferComponent } from './offer/offer.component';
 import { AddTestresultComponent } from './testresult-list/add-testresult/add-testresult.component';
 import { PdfextractorComponent } from './testresult-list/pdfextractor/pdfextractor.component';
+import { MidcalcardListComponent } from './midcalcard-list/midcalcard-list.component';
+import { AddMedicalcardComponent } from './midcalcard-list/add-medicalcard/add-medicalcard.component';
+import { UpdateMedicalcardComponent } from './midcalcard-list/update-medicalcard/update-medicalcard.component';
 import { LeaveAuthorizationComponent } from './leave-authorization/leave-authorization.component';
 import { AddLeaveAuthComponent } from './leave-authorization/add-leave-auth/add-leave-auth.component';
 import { DetailsLeaveAuthComponent } from './leave-authorization/details-leave-auth/details-leave-auth.component';
@@ -131,7 +134,10 @@ import { WorkScheduleComponent } from './work-schedule/work-schedule.component';
     SignUpAuthenticationComponent,
     MessageBoxAuthenticationComponent,
     ForgotPasswordAuthenticationComponent,
-    EditForgotPasswordAuthenticationComponent 
+    EditForgotPasswordAuthenticationComponent ,
+    MidcalcardListComponent,
+    AddMedicalcardComponent,
+    UpdateMedicalcardComponent
   ],
   imports: [
     CommonModule,

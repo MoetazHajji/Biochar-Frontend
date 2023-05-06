@@ -1,20 +1,22 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { UntypedFormBuilder, UntypedFormGroup } from '@angular/forms';
-import { Sample } from 'src/app/_models/sample';
-import { SampleService } from '../../_services/sample.service';
+import { Medicalcard } from 'src/app/_models/medicalcard';
+import { Typedossier } from 'src/app/_models/Typedossier';
+import { MedicalcardService } from '../../_services/medicalcard.service';
 
 @Component({
-  selector: 'app-update-sample',
-  templateUrl: './update-sample.component.html',
-  styleUrls: ['./update-sample.component.css']
+  selector: 'app-update-medicalcard',
+  templateUrl: './update-medicalcard.component.html',
+  styleUrls: ['./update-medicalcard.component.css']
 })
-export class UpdateSampleComponent implements OnInit {
+export class UpdateMedicalcardComponent implements OnInit {
 
   @Input() modalEditProduct:boolean=true ;
   @Input() ProductId : any
   @Output() closeModalEditProduct=new EventEmitter<boolean>(); 
   @Output() refreshProduct=new EventEmitter<boolean>();
-  sample:Sample = new Sample();
+  medicalcard:Medicalcard = new Medicalcard();
+  Typedossies = Object.keys(Typedossier)
   path: any = false;
   hideForm = false;
   submitted = false;
@@ -23,17 +25,17 @@ export class UpdateSampleComponent implements OnInit {
     description:['']
   })
   
-  constructor(private formBuilder : UntypedFormBuilder ,private _sampleService:SampleService) { }
+  constructor(private formBuilder : UntypedFormBuilder ,private _medicalcardService:MedicalcardService) { }
   
   ngOnInit(): void {
-    this._sampleService.getProductById(this.ProductId).subscribe((res:any)=>{
-      this.sample=res.body
+    this._medicalcardService.getProductId(this.ProductId).subscribe((res:any)=>{
+      this.medicalcard=res.body
     })
   }
   EditProduct(){
-    this._sampleService.EditProduct(this.sample).subscribe((res:any)=>{
+    this._medicalcardService.EditProduct(this.medicalcard).subscribe((res:any)=>{
       this.refresh()
-      console.log(this.sample)
+      console.log(this.medicalcard)
     })
   }
   
@@ -47,17 +49,4 @@ export class UpdateSampleComponent implements OnInit {
     this.editProductForm.reset();
     this.closeModalEditProduct.emit(this.modalEditProduct);
   }
-
 }
-
-
-
-
-
-
-
-
-
-
-
-

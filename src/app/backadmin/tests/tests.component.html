@@ -5,7 +5,7 @@
         </h1>
         <div class="container">
             <div class="btns-group two-btns">
-                <button class="btn btn-blue" (click)="AddNewProduct()"> New Product</button>
+                <button class="btn btn-blue" (click)="AddNewProduct()"> New Test</button>
             </div>
         </div>
     </div>
@@ -25,27 +25,33 @@
             <div class="table-area ">
                 <div class="comments-table">
                     <div class="card">
-                        <p-table [value]="productList" responsiveLayout="stack" [breakpoint]="'960px'" [tableStyle]="{'min-width': '50rem'}">
+                        <p-table [value]="productList" responsiveLayout="stack" [breakpoint]="'960px'" [tableStyle]="{'min-width': '50rem'}"[paginator]="true"
+                        [rows]="5"
+                        [showCurrentPageReport]="true"
+                        [tableStyle]="{ 'min-width': '50rem' }"
+                        currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
+                        [rowsPerPageOptions]="[10, 25, 50]">
                             <ng-template pTemplate="header" let-columns>
                                 <tr>
                                     
                                     <th id="nameTest" pSortableColumn="nameTest">Test</th>
                                     <th id="price" pSortableColumn="price">Price</th>
                                     <th id="dateTest" pSortableColumn="dateTest">Date of Test</th>
+                                    <th  pSortableColumn="numSample">Actions</th>
                                  
                                 </tr>
                             </ng-template>
-                            <ng-template pTemplate="body" let-TestList let-columns="columns">
+                            <ng-template pTemplate="body" let-Tests let-columns="columns">
                                 <tr>
                                     
-                                    <td><span class="p-column-title">nameTest</span>{{TestList.nameTest}}</td>
-                                    <td><span class="p-column-title">price</span>{{TestList.price}}</td>
-                                    <td><span class="p-column-title">dateTest</span>{{TestList.dateTest}}</td>
+                                    <td><span class="p-column-title">nameTest</span>{{Tests.nameTest}}</td>
+                                    <td><span class="p-column-title">price</span>{{Tests.price}}</td>
+                                    <td><span class="p-column-title">dateTest</span>{{Tests.dateTest}}</td>
                                     <td>
                                         <div class="more-link">
 
-                                            <p-button class="p-panel-header-icon p-link" icon="pi pi-times" (clic k)="DeleteProduct(TestList.idTest)"></p-button>
-                                            <p-button class="p-panel-header-icon p-link" icon="pi pi-pencil" (click)="EditProduct(TestList.idTest)"></p-button>
+                                            <p-button class="p-panel-header-icon p-link" icon="pi pi-times" (click)="DeleteProduct(Tests.idTest)"></p-button>
+                                            <p-button class="p-panel-header-icon p-link" icon="pi pi-pencil" (click)="EditProduct(Tests.idTest)"></p-button>
 
                                         </div>
                                     </td>
