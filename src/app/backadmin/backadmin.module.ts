@@ -43,6 +43,9 @@ import { EditStockComponent } from './stock/edit-stock/edit-stock.component';
 import { DetailsStockComponent } from './stock/details-stock/details-stock.component';
 import { AddTestresultComponent } from './testresult-list/add-testresult/add-testresult.component';
 import { PdfextractorComponent } from './testresult-list/pdfextractor/pdfextractor.component';
+import { MidcalcardListComponent } from './midcalcard-list/midcalcard-list.component';
+import { AddMedicalcardComponent } from './midcalcard-list/add-medicalcard/add-medicalcard.component';
+import { UpdateMedicalcardComponent } from './midcalcard-list/update-medicalcard/update-medicalcard.component';
 
 @NgModule({
   declarations: [
@@ -71,7 +74,10 @@ import { PdfextractorComponent } from './testresult-list/pdfextractor/pdfextract
     TrainingsListComponent,
     AddStockComponent,
     EditStockComponent,
-    DetailsStockComponent
+    DetailsStockComponent,
+    MidcalcardListComponent,
+    AddMedicalcardComponent,
+    UpdateMedicalcardComponent
   ],
   imports: [
     CommonModule,

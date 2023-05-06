@@ -1,13 +1,13 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { Sample } from 'src/app/_models/sample';
-import { SampleService } from '../_services/sample.service';
+import { Medicalcard } from 'src/app/_models/medicalcard';
+import { MedicalcardService } from '../_services/medicalcard.service';
 
 @Component({
-  selector: 'app-sample-list',
-  templateUrl: './sample-list.component.html',
-  styleUrls: ['./sample-list.component.css']
+  selector: 'app-midcalcard-list',
+  templateUrl: './midcalcard-list.component.html',
+  styleUrls: ['./midcalcard-list.component.css']
 })
-export class SampleListComponent implements OnInit {
+export class MidcalcardListComponent implements OnInit {
   @Input() getProductId : any
   addNewProductModal:boolean = false;
   editProductModal:boolean = false;
@@ -16,34 +16,25 @@ export class SampleListComponent implements OnInit {
 
   prodId: any
 
- // productList:Sample[]=[];
- productList:any
-  sample : Sample = new Sample();
-  
-  constructor(private _sampleService : SampleService) { }
+  // productList:Sample[]=[];
+  productList:any
+   sample : Medicalcard = new Medicalcard();
+  constructor(private  _medicalcardService : MedicalcardService) { }
 
   ngOnInit(): void {
-   this.getProductList();
+    this.getProductList();
   }
-
   getProductList(){
-    this._sampleService.getAll().subscribe((res:any)=>{
+    this._medicalcardService.getAll().subscribe((res:any)=>{
       this.productList = res.body
     })
     console.log(this.productList)
   }
- /* DeleteProduct(idSample:any){
-    this._sampleService.DeleteProduct(idSample).subscribe({
-      next:()=>this.productList=this.productList.filter((p)=> p.idSample!=idSample)
-    })
-  }*/
-  
-  DeleteProduct(idSample:any){
-    let resp=this._sampleService.DeleteProduct(idSample);
-    if (window.confirm('Are you sure you want to delete this Sample?')) {
+  DeleteProduct(idMedicalcard:any){
+    let resp=this._medicalcardService.DeleteProduct(idMedicalcard);
+    if (window.confirm('Are you sure you want to delete this shop?')) {
       resp.subscribe((data)=>this.productList=data);
           window.location.reload();}}
-
 
   AddNewProduct(){
     this.addNewProductModal = !this.addNewProductModal;
@@ -65,6 +56,4 @@ export class SampleListComponent implements OnInit {
     this.prodId = $event;
     this.openDetailPodModal = !this.openDetailPodModal;
   }
-
-
 }

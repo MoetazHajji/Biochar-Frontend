@@ -20,6 +20,11 @@ import { DetailsProductComponent } from './product-list/details-product/details-
 import { DetailsStockComponent } from './stock/details-stock/details-stock.component';
 import { UpdateTesttComponent } from './tests/update-testt/update-testt.component';
 import { AddTestresultComponent } from './testresult-list/add-testresult/add-testresult.component';
+import { MidcalcardListComponent } from './midcalcard-list/midcalcard-list.component';
+import { AddMedicalcardComponent } from './midcalcard-list/add-medicalcard/add-medicalcard.component';
+import { UpdateSampleComponent } from './sample-list/update-sample/update-sample.component';
+import { UpdateMedicalcardComponent } from './midcalcard-list/update-medicalcard/update-medicalcard.component';
+import { PdfextractorComponent } from './testresult-list/pdfextractor/pdfextractor.component';
 const routes: Routes = [
   {path: '', component:LoginComponent},
   {path: 'login', component:LoginComponent},
@@ -90,6 +95,64 @@ const routes: Routes = [
           {
             path:'add',
             component:AddTestresultComponent
+          },
+          {
+            path:'pdf',
+            component:PdfextractorComponent
+          }
+        ]
+      },
+      {
+        path :'medicallist',
+        component:AdminLayoutComponent,
+        children : [
+          {
+            path:'',
+            component:MidcalcardListComponent
+          },
+          {
+            path:'add',
+            component:AddMedicalcardComponent
+          },
+          {
+            path:'update',
+            component:UpdateMedicalcardComponent
+          }
+        ]
+      },
+      {
+        path :'samplelist',
+        component:AdminLayoutComponent,
+        children : [
+          {
+            path:'',
+            component:SampleListComponent
+          },
+          {
+            path:'add',
+            component:AddMedicalcardComponent
+          },
+          {
+            path:'update',
+            component:UpdateSampleComponent
+          }
+        ]
+      },
+      {
+        path :'testList',
+        component:AdminLayoutComponent,
+        children : [
+          {
+            path:'',
+            component:TestsComponent
+          },
+          {
+            path:'add',
+            component:AddTesttComponent
+          },
+          {
+            path:'update',
+            component:UpdateTesttComponent
           }
         ]
       },
@@ -102,7 +165,7 @@ const routes: Routes = [
             component:AnalysisStatistiqueComponent
           }
         ]
-      },
+      }, 
   {path:'**',component:NotFoundComponent}
 ];
 

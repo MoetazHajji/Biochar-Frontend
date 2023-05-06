@@ -5,7 +5,7 @@
         </h1>
         <div class="container">
             <div class="btns-group two-btns">
-                <button class="btn btn-blue" (click)="AddNewProduct()" > New Product</button>
+                <button class="btn btn-blue" (click)="AddNewProduct()" > New Sample</button>
             </div>
         </div>
     </div>
@@ -15,19 +15,29 @@
     <app-add-sample *ngIf="addNewProductModal" [modalNewProduct]="addNewProductModal"
                     (closeModalNewProduct)="closeModalNewProduct($event)"></app-add-sample>
 
+                    
+    <app-update-sample *ngIf="editProductModal" [modalEditProduct]="editProductModal"
+    [ProductId]="getProductId"
+    (closeModalNewProduct)="closeModalNewProduct($event)"></app-update-sample>
+
 
     <div class="list-table-item-area">
         <div class="container" style="width: 60%;">
             <div class="table-area ">
                 <div class="comments-table">
                     <div class="card">
-                        <p-table [value]="productList" responsiveLayout="stack" [breakpoint]="'960px'" [tableStyle]="{'min-width': '50rem'}">
+                        <p-table [value]="productList" responsiveLayout="stack" [breakpoint]="'960px'" [tableStyle]="{'min-width': '50rem'}"[paginator]="true"
+                        [rows]="5"
+                        [showCurrentPageReport]="true"
+                        [tableStyle]="{ 'min-width': '50rem' }"
+                        currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
+                        [rowsPerPageOptions]="[10, 25, 50]">
                             <ng-template pTemplate="header" let-columns>
                                 <tr>
                                     
-                                    <th id="date" pSortableColumn="date">Date</th>
-                                    <th id="numSample" pSortableColumn="numSample">numSample</th>
-                                 
+                                    <th id="date" pSortableColumn="date">Date Sample</th>
+                                    <th id="numSample" pSortableColumn="numSample">numero of Sample</th>
+                                    <th id="numSample" pSortableColumn="numSample">Actions</th>
                                 </tr>
                             </ng-template>
                             <ng-template pTemplate="body" let-SampleList let-columns="columns">
@@ -39,6 +49,7 @@
                                         <div class="more-link">
 
                                             <p-button class="p-panel-header-icon p-link" icon="pi pi-times" (click)="DeleteProduct(SampleList.idSample)"></p-button>
+                                            <p-button class="p-panel-header-icon p-link" icon="pi pi-pencil" (click)="EditProduct(SampleList.idSample)"></p-button>
                                         </div>
                                     </td>
                                   
