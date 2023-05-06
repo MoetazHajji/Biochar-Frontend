@@ -1,0 +1,49 @@
+<div class="modal modal-la-area" [class]="modalEditLeaveAuth ? 'open' : ''">
+    <p-dialog header="Leave / Authorization" [(visible)]="modalEditLeaveAuth" [modal]="true" [style]="{width: '500px'}" [baseZIndex]="10000" [draggable]="false" [resizable]="true" (onHide)="cancel()">
+        <div *ngIf="hideForm" >
+            <div class="inscription-form-title-blc">
+                </div>
+                <div class="inscription-form-title">
+                <h1 class="edit-form-title text-hideform">Leave / Authorization</h1>
+                </div>
+                <button type="button" (click)="cancel()" class="btn btn-blue"></button>
+            </div>
+            <div class="form-container">
+              <form #p="ngForm" action="">
+                  <!-- <form> -->
+                    <label for="start_date">Start Date</label>
+                    <input type="text" id="start_date" name="start_date" #start_date="ngModel" [(ngModel)]="leaveAuth.start_date" required [readOnly]="true">
+
+                    <label for="end_date">End Date</label>
+                    <input type="text" id="end_date" name="end_date" #end_date="ngModel" [(ngModel)]="leaveAuth.end_date" required [readOnly]="true">
+                    
+                    <label for="authStartTime">Authorization Start Time</label>
+                    <input type="text" id="authStartTime" name="authStartTime" #authStartTime="ngModel" [(ngModel)]="leaveAuth.authStartTime" required [readOnly]="true">
+                    
+                    <label for="authEndTime">Authorization End Time</label>
+                    <input type="text" id="authEndTime" name="authEndTime" #authEndTime="ngModel" [(ngModel)]="leaveAuth.authEndTime" [readOnly]="true">
+
+                    <label for="remaining_days">Remainig Days</label>
+                    <input type="text" id="remaining_days" name="remaining_days" #remaining_days="ngModel" [(ngModel)]="leaveAuth.remainingLeaveDays" required [readOnly]="true">
+
+                    <label for="cause">Cause</label>
+                    <input type="text" id="cause" name="cause" #cause="ngModel" [(ngModel)]="leaveAuth.cause" required [readOnly]="true">
+                    
+                    <label for="type_la">Type</label>
+                    <input type="text" id="type_la" name="type_la" #type_la="ngModel" [(ngModel)]="leaveAuth.type_la" required [readOnly]="true">
+
+                    <label for="state_la">State</label>
+                    <select class="my-select" id="state_la" name="state_la" #state_la="ngModel" [(ngModel)]="leaveAuth.state_la" >
+                      <option value="" disabled selected>Select a state</option>
+                      <option *ngFor="let statelist of stateTypes"  [value]="statelist">{{statelist}}</option>
+                    </select>
+                   
+                    
+                    <input type="submit" value="Submit" (click)="EditLeaveAuth(leaveAuth.account_id)" >
+                  <!--.form-area-->
+                  <!-- </form> -->
+              </form>
+            </div>
+            <!--.inscription-form-area-->
+    </p-dialog>
+</div>

@@ -1,0 +1,62 @@
+<div class="list-table-header-item-area">
+    <div class="introduction-area p-d-flex p-jc-between">
+        <h1 class="big-title">
+        Test list
+        </h1>
+        <div class="container">
+            <div class="btns-group two-btns">
+                <button class="btn btn-blue" (click)="AddNewProduct()"> New Product</button>
+            </div>
+        </div>
+    </div>
+       <!--.btns-group-->
+
+    <!--.ADD PRODUCT MODEL-->
+    <app-add-testt *ngIf="addNewProductModal" [modalNewProduct]="addNewProductModal"
+                    (closeModalNewProduct)="closeModalNewProduct($event)"></app-add-testt>
+    <!--.EDIT PRODUCT MODEL-->
+
+    <app-update-testt *ngIf="editProductModal" [modalEditProduct]="editProductModal"
+    [ProductId]="getProductId"
+    (closeModalNewProduct)="closeModalNewProduct($event)"></app-update-testt>
+
+    <div class="list-table-item-area">
+        <div class="container" style="width: 60%;">
+            <div class="table-area ">
+                <div class="comments-table">
+                    <div class="card">
+                        <p-table [value]="productList" responsiveLayout="stack" [breakpoint]="'960px'" [tableStyle]="{'min-width': '50rem'}">
+                            <ng-template pTemplate="header" let-columns>
+                                <tr>
+                                    
+                                    <th id="nameTest" pSortableColumn="nameTest">Test</th>
+                                    <th id="price" pSortableColumn="price">Price</th>
+                                    <th id="dateTest" pSortableColumn="dateTest">Date of Test</th>
+                                 
+                                </tr>
+                            </ng-template>
+                            <ng-template pTemplate="body" let-TestList let-columns="columns">
+                                <tr>
+                                    
+                                    <td><span class="p-column-title">nameTest</span>{{TestList.nameTest}}</td>
+                                    <td><span class="p-column-title">price</span>{{TestList.price}}</td>
+                                    <td><span class="p-column-title">dateTest</span>{{TestList.dateTest}}</td>
+                                    <td>
+                                        <div class="more-link">
+
+                                            <p-button class="p-panel-header-icon p-link" icon="pi pi-times" (clic k)="DeleteProduct(TestList.idTest)"></p-button>
+                                            <p-button class="p-panel-header-icon p-link" icon="pi pi-pencil" (click)="EditProduct(TestList.idTest)"></p-button>
+
+                                        </div>
+                                    </td>
+                                  
+                                </tr>
+                            </ng-template>
+                        </p-table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+  </div>
+  

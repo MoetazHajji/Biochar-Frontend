@@ -1,0 +1,73 @@
+<div class="list-table-header-item-area">
+    <div class="introduction-area p-d-flex p-jc-between">
+        <h1 class="big-title">
+        Leave/Authorization  list
+        </h1>
+        <div class="container">
+            <div class="btns-group two-btns">
+                <button class="btn btn-blue" pButton pRipple icon="pi pi-plus" (click)="addLeaveAuth()"> New Request</button>
+            </div>
+            <div class="btns-group two-btns">
+                <button class="btn btn-green" pButton pRipple icon="pi pi-history" (click)="updateRemainigDays()"> Remainig Days </button>
+            </div>
+        </div>
+    </div>
+    <!--.btns-group-->
+
+    <!--.ADD Leave/Auth MODAL-->
+    <app-add-leave-auth *ngIf="addLeaveAuthModal" [modalNewLeaveAuth]="addLeaveAuthModal"
+            (closeModalNewLeaveAuth)="closeModalNewLeaveAuth($event)"></app-add-leave-auth>
+
+
+    <!--.EDIT Leave/Auth MODAL-->
+    <app-edit-leave-auth *ngIf="editLeaveAuthModal" [modalEditLeaveAuth]="editLeaveAuthModal"
+            [LeaveAuthId]="getLeaveAuthId"
+            (closeModalNewLeaveAuth)="closeModalNewLeaveAuth($event)"></app-edit-leave-auth>
+
+    <div class="list-table-item-area">
+        <div class="container" style="width: 80%;">
+            <div class="table-area ">
+                <div class="comments-table">
+                    <div class="card">
+                        <p-table [value]="leaveAuthList" responsiveLayout="stack" [breakpoint]="'960px'" [tableStyle]="{'min-width': '50rem'}">
+                            <ng-template pTemplate="header" let-columns>
+                                <tr>
+                                    <th id="start_date" pSortableColumn="start_date">Start Date</th>
+                                    <th id="end_date" pSortableColumn="end_date">End Date</th>
+                                    <th id="authStartTime" pSortableColumn="authStartTime">Authorization Start Time</th>
+                                    <th id="authEndTime" pSortableColumn="authEndTime">Authorization End Time</th>
+                                    <th id="remaining_days" pSortableColumn="remaining_days">Remainig Days</th>
+                                    <th id="cause" pSortableColumn="cause">Cause</th>
+                                    <th id="type_la" pSortableColumn="type_la">Type</th>
+                                    <th id="state_la" pSortableColumn="state_la">State</th>
+                                    <th id="action" pSortableColumn="action">Actions</th>
+                                </tr>
+                            </ng-template>
+                            <ng-template pTemplate="body" let-leaveAuthList let-columns="columns">
+                                <tr>
+                                    <td><span class="p-column-title">Start Date</span>{{leaveAuthList.start_date}}</td>
+                                    <td><span class="p-column-title">End Date</span>{{leaveAuthList.end_date}}</td>
+                                    <td><span class="p-column-title">Authorization Start Time</span>{{leaveAuthList.authStartTime}}</td>
+                                    <td><span class="p-column-title">Authorization End Time</span>{{leaveAuthList.authEndTime}}</td>
+                                    <td><span class="p-column-title">Remainig Days</span>{{leaveAuthList.remainingLeaveDays}}</td>
+                                    <td><span class="p-column-title">Cause</span>{{leaveAuthList.cause}}</td>
+                                    <td><span class="p-column-title">Type</span>{{leaveAuthList.type_la}}</td>
+                                    <td><span class="p-column-title">State</span>{{leaveAuthList.state_la}}</td>
+                                    <td>
+                                        <div class="more-link">
+                                            <p-button tooltipPosition="left" class="p-panel-header-icon p-link" icon="pi pi-eye " [routerLink]="['/admin/leaveAuth/updateLeaveAuth',leaveAuthList.id]" ></p-button>
+                                            <p-button class="p-panel-header-icon p-link" icon="pi pi-pencil" (click)="editLeaveAuth(leaveAuthList.id_LA)"></p-button>
+                                            <p-button class="p-panel-header-icon p-link" icon="pi pi-times" (click)="deleteLeaveAuth(leaveAuthList.id_LA)" ></p-button>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </ng-template>
+                        </p-table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+  
