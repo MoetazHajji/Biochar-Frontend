@@ -103,8 +103,7 @@
                                 quantity : {{quantityToOrder}}
                             </div>
                             <div class="card-footer"> 
-                                <button type="button" class="subscribe btn btn-primary btn-block shadow-sm" (click)="AddProductToCommandLigne(detailedProduct.id)" >Add To command ligne</button>
-                                <button type="button" class="subscribe btn btn-primary btn-block shadow-sm" data-toggle="model" data-target="#cmdLigneModal" >See Panier</button>
+                                <button type="button" class="subscribe btn btn-primary btn-block shadow-sm" (click)="AddProductToCommandLigne()" >Add To panier</button>
                             </div>
                             </form>
                         </div>
@@ -126,7 +125,12 @@
             <div class="table-area ">
                 <div class="comments-table">
                     <div class="card">
-                        <p-table [value]="offerList" [breakpoint]="'960px'" [tableStyle]="{'min-width': '50rem'}">
+                        <p-table [value]="offerList" [breakpoint]="'960px'" [tableStyle]="{'min-width': '50rem'}" [paginator]="true"
+                        [rows]="5"
+                        [showCurrentPageReport]="true"
+                        [tableStyle]="{ 'min-width': '50rem' }"
+                        currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
+                        [rowsPerPageOptions]="[5, 25, 50]">
                             <ng-template pTemplate="header" let-columns>
                                 <tr>
                                     <th id="start_date" pSortableColumn="start_date">Start Date</th>

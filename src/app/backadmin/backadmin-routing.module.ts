@@ -12,6 +12,10 @@ import { StockComponent } from './stock/stock.component';
 import { EditStockComponent } from './stock/edit-stock/edit-stock.component';
 import { DetailsProductComponent } from './product-list/details-product/details-product.component';
 import { DetailsStockComponent } from './stock/details-stock/details-stock.component';
+import { PanierComponent } from './order/panier/panier.component';
+import { OrderComponent } from './order/order.component';
+import { DetailsOrderComponent } from './order/details-order/details-order.component';
+import { OfferComponent } from './offer/offer.component';
 const routes: Routes = [
   {path: '', component:LoginComponent},
   {path: 'login', component:LoginComponent},
@@ -70,6 +74,36 @@ const routes: Routes = [
           component:DetailsStockComponent
         }
       ]
+    },
+    {
+      path:'panier',
+      component:AdminLayoutComponent,
+      children:[{
+        path:'',
+        component:PanierComponent
+      }]
+    },
+    {
+      path:'order',
+      component:AdminLayoutComponent,
+      children:[{
+        path:'',
+        component:OrderComponent
+      },
+      {
+        path:'details/:id',
+        component:DetailsOrderComponent
+      }
+    ]
+    },
+    {
+      path:'offer',
+      component:AdminLayoutComponent,
+      children:[{
+        path:'',
+        component:OfferComponent
+      }
+    ]
     },
   {path:'**',component:NotFoundComponent}
 ];

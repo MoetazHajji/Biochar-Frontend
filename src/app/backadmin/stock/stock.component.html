@@ -25,9 +25,16 @@
             <div class="table-area ">
                 <div class="comments-table">
                     <div class="card">
-                        <p-table [value]="stockList" responsiveLayout="stack" [breakpoint]="'960px'" [tableStyle]="{'min-width': '50rem'}">
+                        <p-table [value]="stockList" responsiveLayout="stack" [breakpoint]="'960px'" [tableStyle]="{'min-width': '50rem'}" 
+                        [paginator]="true"
+                        [rows]="5"
+                        [showCurrentPageReport]="true"
+                        [tableStyle]="{ 'min-width': '50rem' }"
+                        currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
+                        [rowsPerPageOptions]="[5, 25, 50]">
                             <ng-template pTemplate="header" let-columns>
                                 <tr>
+                                    <th id="idS" pSortableColumn="idS">ID</th>
                                     <th id="uhnit" pSortableColumn="unit">Unit</th>
                                     <th id="total_quantity" pSortableColumn="total_quantity">Total Quantity</th>
                                     <th id="storage" pSortableColumn="storage">Storage</th>
@@ -38,6 +45,7 @@
                             </ng-template>
                             <ng-template pTemplate="body" let-stockList let-columns="columns">
                                 <tr>
+                                    <td><span class="p-column-title">ID</span>{{stockList.id}}</td>                                
                                     <td><span class="p-column-title">Unit</span>{{stockList.unit}}</td>                                
                                     <td><span class="p-column-title">Total Quantity</span>{{stockList.total_quantity}}</td>
                                     <td><span class="p-column-title">Storage</span>{{stockList.storage}}</td>

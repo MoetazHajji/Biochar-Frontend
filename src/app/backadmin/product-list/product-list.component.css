@@ -88,15 +88,15 @@
   border-radius: 2px;
   margin-right: 10px;
 }
-.icon {
-  width: 80px;
-  height: 80px;
+.icon img{
+  width: 70px;
+  height: 70px;
   background-color: #eee;
   border-radius: 15px;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 39px
+  font-size: 30px
 }
 
 @media (max-width: 767px) {

@@ -32,6 +32,10 @@ import { TrainingsListComponent } from './trainings-list/trainings-list.componen
 import { AddStockComponent } from './stock/add-stock/add-stock.component';
 import { EditStockComponent } from './stock/edit-stock/edit-stock.component';
 import { DetailsStockComponent } from './stock/details-stock/details-stock.component';
+import { OrderComponent } from './order/order.component';
+import { PanierComponent } from './order/panier/panier.component';
+import { DetailsOrderComponent } from './order/details-order/details-order.component';
+import { OfferComponent } from './offer/offer.component';
 
 @NgModule({
   declarations: [
@@ -49,7 +53,11 @@ import { DetailsStockComponent } from './stock/details-stock/details-stock.compo
     TrainingsListComponent,
     AddStockComponent,
     EditStockComponent,
-    DetailsStockComponent
+    DetailsStockComponent,
+    OrderComponent,
+    PanierComponent,
+    DetailsOrderComponent,
+    OfferComponent
   ],
   imports: [
     CommonModule,
