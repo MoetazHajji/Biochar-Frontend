@@ -1,0 +1,19 @@
+<div role="dialog" tabindex="-1" class="modal " [class]="modalConfirmState ? 'show' : 'fade'" style="display: block;">
+    <div class="modal-dialog modal-dialog-centered" role="document"  >
+        <div class="modal-content">
+            <div class="modal-header d-flex justify-content-start" >
+              <i class="fa "
+               [class]="type == 'question' ? 'fa-question-circle' : type == 'exclamation' ? 'fa-exclamation-circle' : type == 'interdit' ?  'fa-times-circle' : 'fa-info-circle'"
+              style="font-size: 35px;margin-right: 5px; " [style]="{color: (type == 'question' ? '#50B5FF' : type == 'exclamation' ? '#EAF945' : type == 'interdit' ?  '#D9534F' : '#50B5FF')}"></i>
+                <h4 class="modal-title" style="font: 20px TimesNewRoman;margin-top: auto;margin-bottom: auto;">{{title}}</h4> </div>
+            <div class="modal-body">
+                <div class="d-flex flex-row float-left">
+                    <p style="font: 20px TimesNewRoman;margin-top: 12.5px;margin-left: 12.5px;">{{message}}<br /></p>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button (click) ="onClickYes()" class="btn btn-primary" type="button" style="font: 20px TimesNewRoman;background-color: rgb(0,123,255);">yes</button>
+                <button (click) ="onClickNo()"  class="btn btn-light" type="button" data-dismiss="modal" style="font: 20px TimesNewRoman;">no</button></div>
+        </div>
+    </div>
+</div>

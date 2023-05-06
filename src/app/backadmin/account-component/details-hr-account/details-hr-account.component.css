@@ -1,0 +1,19 @@
+.input-design {
+    margin-left: 5px;
+    min-width: 100px;
+    max-width: 250px;
+  }
+  
+  .primary-light-blue-color {
+    color: #50B5FF;
+  }
+  
+  .style-text-timenewroman {
+    font: 20px TimesNewRoman;
+  }
+  
+  .primary-light-blue-color-backgroud {
+    background-color: #50B5FF;
+  }
+  
+  

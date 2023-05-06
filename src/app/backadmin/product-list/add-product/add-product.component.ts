@@ -24,7 +24,8 @@ export class AddProductComponent implements OnInit {
   path: any = false;
   hideForm = false;
   submitted = false;
-  constructor(private formBuilder : UntypedFormBuilder,private _productService:ProductService ) { }
+  constructor(private formBuilder : UntypedFormBuilder,
+    private _productService:ProductService ) { }
 
   ngOnInit(): void {
   }
@@ -32,7 +33,7 @@ export class AddProductComponent implements OnInit {
   addProduct() {
     this._productService.addProduct(this.product).subscribe((res:any) => {
       error : (err:any) => console.log(err)
-    }) 
+    })
   }
 
 

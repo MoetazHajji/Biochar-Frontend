@@ -1,0 +1,57 @@
+<div class="modal bd-example-modal-lg" [class]="modalState ? 'show' : 'fade'" role="dialog" tabindex="-1" style="display: block;">
+    <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <i class="fa fa-user primary-light-blue-color" style="font-size: 35px;margin-right: 10px;"></i>
+                <h4 class="modal-title">{{detailedAccount.firstname}}  {{detailedAccount.lastname}}<br></h4><button (click) ="onClickNo()" type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button></div>
+            <div class="modal-body">
+                <div class="table table-hover  table-borderless" style="height: 400px;">
+                    <table class="table table table-bordered table-hover"  >
+                        <thead>
+                            <tr style="background-color: #f7f6f6;"></tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Cin</td>
+                                <td>{{detailedAccount.cin}}<br></td>
+                            </tr>
+                            <tr>
+                                <td>Gender</td>
+                                <td>{{detailedAccount.gender}}<br></td>
+                            </tr>
+                            <tr>
+                                <td>Phone</td>
+                                <td>{{detailedAccount.phone}}<br></td>
+                            </tr>
+                            <tr>
+                                <td>Date Of Birth<br></td>
+                                <td>{{detailedAccount.dateOfBirth}}<br></td>
+                            </tr>
+                            <tr>
+                                <td>Email</td>
+                                <td>{{detailedAccount.email}}<br></td>
+                            </tr>   
+                            <tr>
+                                <td>State Region<br></td>
+                                <td>{{detailedAccount.state}}<br></td>
+                            </tr>
+                            <tr>
+                                <td>City<br></td>
+                                <td>{{detailedAccount.city}}<br></td>
+                            </tr> 
+                            <tr>
+                                <td>Zip Code<br></td>
+                                <td>{{detailedAccount.zip_code}}<br></td>
+                            </tr>
+                            <tr>
+                                <td>Address<br></td>
+                                <td>{{detailedAccount.adresse}}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div class="modal-footer"><button (click) ="onClickNo()" class="btn btn-secondary" type="button" data-dismiss="modal">Close</button></div>
+        </div>
+    </div>
+</div>
