@@ -1,0 +1,43 @@
+<div class="modal modal-product-area" [class]="modalNewProduct ? 'open' : ''">
+    <p-dialog header="Product Area" [(visible)]="modalNewProduct" [modal]="true" [style]="{width: '500px'}" [baseZIndex]="10000" [draggable]="false" [resizable]="true" (onHide)="cancel()">
+        <div *ngIf="hideForm" [formGroup]="createProductForm" >
+            <div class="inscription-form-title-blc">
+                </div>
+                <div class="inscription-form-title">
+                <h1 class="edit-form-title text-hideform">Sample added</h1>
+                </div>
+                <button type="button" (click)="cancel()" class="btn btn-blue"></button>
+            </div>
+            <div class="form-container">
+              <form #p="ngForm"  action="">
+                  <!-- <form> -->
+                    <label for="date">date</label>
+                    <input type="date" id="date" name="date" #date="ngModel" [(ngModel)]="sample.date" required>
+                    
+                    <label for="numSample">numSample</label>
+                    <input type="text" id="numSample" name="numSample" #numSample="ngModel" [(ngModel)]="sample.numSample" required>
+
+                
+                    
+                    <input type="submit" value="Submit" (click)="addProduct()">
+                  <!--.form-area-->
+                  <!-- </form> -->
+              </form>
+            </div>
+            <!--.inscription-form-area-->
+            
+                           
+                 
+                   
+                   
+              
+    </p-dialog>
+</div>
+  
+  
+     
+        
+    
+  
+  
+

@@ -43,6 +43,36 @@ import { SignUpAuthenticationComponent } from './authentication-component/sign-u
 import { MessageBoxAuthenticationComponent } from './authentication-component/message-box-authentication/message-box-authentication.component';
 import { ForgotPasswordAuthenticationComponent } from './authentication-component/forgot-password-authentication/forgot-password-authentication.component';
 import { EditForgotPasswordAuthenticationComponent } from './authentication-component/edit-forgot-password-authentication/edit-forgot-password-authentication.component'; 
+import { SampleListComponent } from './sample-list/sample-list.component';
+import { AddSampleComponent } from './sample-list/add-sample/add-sample.component';
+import { UpdateSampleComponent } from './sample-list/update-sample/update-sample.component';
+import { DetailsSampleComponent } from './sample-list/details-sample/details-sample.component';
+import { TestresultListComponent } from './testresult-list/testresult-list.component';
+import { TestsComponent } from './tests/tests.component';
+import { AddTesttComponent } from './tests/add-testt/add-testt.component';
+import { AnalysisStatistiqueComponent } from './analysis-statistique/analysis-statistique.component';
+import { UpdateTesttComponent } from './tests/update-testt/update-testt.component';
+import { TrainingAdminComponent } from './training-admin/training-admin.component';
+import { SubjectsComponent } from './subjects/subjects.component';
+import { TrainingsListComponent } from './trainings-list/trainings-list.component';
+import { AddStockComponent } from './stock/add-stock/add-stock.component';
+import { EditStockComponent } from './stock/edit-stock/edit-stock.component';
+import { DetailsStockComponent } from './stock/details-stock/details-stock.component';
+import { OrderComponent } from './order/order.component';
+import { PanierComponent } from './order/panier/panier.component';
+import { DetailsOrderComponent } from './order/details-order/details-order.component';
+import { OfferComponent } from './offer/offer.component';
+import { AddTestresultComponent } from './testresult-list/add-testresult/add-testresult.component';
+import { PdfextractorComponent } from './testresult-list/pdfextractor/pdfextractor.component';
+import { LeaveAuthorizationComponent } from './leave-authorization/leave-authorization.component';
+import { AddLeaveAuthComponent } from './leave-authorization/add-leave-auth/add-leave-auth.component';
+import { DetailsLeaveAuthComponent } from './leave-authorization/details-leave-auth/details-leave-auth.component';
+import { EditLeaveAuthComponent } from './leave-authorization/edit-leave-auth/edit-leave-auth.component';
+import { ProfileComponent } from './profile/profile.component';
+import { AddProfileComponent } from './profile/add-profile/add-profile.component';
+import { DetailsProfileComponent } from './profile/details-profile/details-profile.component';
+import { EditProfileComponent } from './profile/edit-profile/edit-profile.component';
+import { WorkScheduleComponent } from './work-schedule/work-schedule.component';
 
 @NgModule({
   declarations: [
@@ -55,6 +85,36 @@ import { EditForgotPasswordAuthenticationComponent } from './authentication-comp
     DetailsProductComponent,
     LoginComponent,
     StockComponent,
+    SampleListComponent,
+    AddSampleComponent,
+    UpdateSampleComponent,
+    DetailsSampleComponent,
+    TestresultListComponent,
+    AddTestresultComponent,
+    TestsComponent,
+    AddTesttComponent,
+    AnalysisStatistiqueComponent,
+    PdfextractorComponent,
+    UpdateTesttComponent,
+    TrainingAdminComponent,
+    SubjectsComponent,
+    TrainingsListComponent,
+    AddStockComponent,
+    EditStockComponent,
+    DetailsStockComponent,
+    LeaveAuthorizationComponent,
+    AddLeaveAuthComponent,
+    DetailsLeaveAuthComponent,
+    EditLeaveAuthComponent,
+    ProfileComponent,
+    AddProfileComponent,
+    DetailsProfileComponent,
+    EditProfileComponent,
+    WorkScheduleComponent,
+    OrderComponent,
+    PanierComponent,
+    DetailsOrderComponent,
+    OfferComponent,
     ListTimeoffComponent,
     AddTimeoffComponent,
     EditTimeoffComponent,

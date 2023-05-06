@@ -1,7 +1,8 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { UntypedFormBuilder, UntypedFormGroup } from '@angular/forms';
-import { Product } from 'src/app/_models/_product/product';
+import { Product } from 'src/app/_models/_stock/product';
 import { ProductService } from '../../_services/product.service';
+import { Type_product } from 'src/app/_models/_stock/Type_product';
 
 @Component({
   selector: 'app-edit-product',
@@ -19,6 +20,7 @@ export class EditProductComponent implements OnInit {
   path: any = false;
   hideForm = false;
   submitted = false;
+  productTypes = Object.keys(Type_product)
   editProductForm : UntypedFormGroup =this.formBuilder.group({
     image:[''],
     description:['']
@@ -33,9 +35,15 @@ export class EditProductComponent implements OnInit {
 
   EditProduct(){
     this._productService.EditProduct(this.product).subscribe((res:any)=>{
+      this.refresh()
       console.log(this.product)
     })
   }
+
+  refresh(): void {
+    window.location.reload();
+  }
+
   cancel(){
     this.submitted = false
     this.hideForm = true;

@@ -1,1 +1,194 @@
-<p>details-product works!</p>
+<div class="list-detailed-item-area">
+        <div class="container mt-5 mb-3">
+            <!-- *********************** Detailed product Area **************************************-->
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="card p-3 mb-2">
+                        <div >
+                            <div class="d-flex justify-content-between">
+                                <div class="d-flex flex-row align-items-center">
+                                    <div class="icon"> <i class="bx bxl-mailchimp"> <img src="http://localhost:9099/biochar/stock-service/images/{{detailedProduct.reference}}.png"></i> </div>
+                                    <div class="ms-2 c-details">
+                                        <h6 class="mb-0">{{detailedProduct.reference}}</h6> <span>{{detailedProduct.price}}DT {{detailedProduct.id}}</span>
+                                    </div>
+                                </div>
+                                <div class="badge"> <span>{{detailedProduct.type_product}}</span> </div>
+                            </div>
+                            <div class="mt-5">
+                                <h3 class="heading">Product Quanity : {{detailedProduct.quantity}}<br>Product ordred : {{detailedProduct.count_order}}</h3>
+                                <div class="mt-5">
+                                    <div class="progress">
+                                        <div class="progress-bar" role="progressbar" style="width: 50%" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
+                                    </div>
+                                    <div class="mt-3"> <span class="text1">32 Applied <span class="text2">of 50 capacity</span></span> </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- *********************** End of detailed product Area **************************************-->
+
+                <!-- *********************** Assign Area **************************************-->
+                <div class="col-md-4">
+                    <div class="card p-3 mb-2">
+                        <div class="d-flex justify-content-between">
+                            <div class="d-flex flex-row align-items-center">
+                                <div class="ms-2 c-details">
+                                    <h5 class="modal-title" id="exampleModalLabel">Assign product to STOCK</h5>
+                                </div>
+                            </div>
+                            <div class="badge"> <span>Assign</span> </div>
+                        </div>
+                        <div class="mt-5">
+                            <form #f="ngForm">
+                                <div class="form-group"> <label for="name_product">
+                                    <h6>Product Name</h6>
+                                </label> 
+                                <input type="text" name="name_product" placeholder="Product Name" value="{{detailedProduct.name_product}}" required class="form-control ">
+                                </div>
+                            <div class="form-group"> <label for="cardNumber">
+                                    <h6>Quantity to add</h6>
+                                </label>
+                                <div class="input-group"> <input type="number" name="quantity" placeholder="Product Quantity" #quantityToUse [(ngModel)]="quantityToadd" class="form-control" required>
+                                    <div class="input-group-append"> <span class="input-group-text text-muted">  </span> </div>
+                                </div>
+                            </div>
+                            <div class="row" >
+                                <select class="my-select text-center" #stock="ngModel" [(ngModel)]="id_stock" name="id_stock" >
+                                    <option value="" disabled selected>Select a stock </option>
+                                    <option *ngFor="let stockL of stockList"  [value]="stockL.id">Stock N°:{{stockL.id}} with free space : {{stockL.free_storage}}  </option>
+                                </select>
+                            </div>
+                            <div> 
+                                quanttity : {{quantityToadd}}
+                            </div>
+                            
+
+                            <div class="card-footer"> 
+                                <button type="button" class="subscribe btn btn-primary btn-block shadow-sm" (click)="AssignProductToStock(detailedProduct.id,id_stock,quantityToadd)">Affecter</button>
+                            </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                <!-- ***********************End of Assign Area **************************************-->
+
+                <!-- *********************** Order Area **************************************-->
+                <div class="col-md-4">
+                    <div class="card p-3 mb-2">
+                        <div class="d-flex justify-content-between">
+                            <div class="d-flex flex-row align-items-center">
+                                <div class="ms-2 c-details">
+                                    <h5 class="modal-title" id="exampleModalLabel">Order product</h5>
+                                </div>
+                            </div>
+                            <div class="badge"> <span>Order</span> </div>
+                        </div>
+                        <div class="mt-5">
+                            <form #f="ngForm">
+                                <div class="form-group">
+                                <label for="name_product">
+                                    <h6>Product Name</h6>
+                                </label>                           
+                                <input type="text" name="name_product" placeholder="Product Name" value="{{detailedProduct.name_product}}" required class="form-control ">
+                                </div>
+                            <div class="form-group"> <label for="cardNumber">
+                                    <h6>Quantity to order</h6>
+                                </label>
+                                <div class="input-group"> <input type="number" name="quantityToOrder" placeholder="Product Quantity" [(ngModel)]="panier.quantite_product" class="form-control" required>
+                                    <div class="input-group-append"> <span class="input-group-text text-muted">  </span> </div>
+                                </div>
+                            </div>                            
+                            <div>
+                                quantity : {{quantityToOrder}}
+                            </div>
+                            <div class="card-footer"> 
+                                <button type="button" class="subscribe btn btn-primary btn-block shadow-sm" (click)="AddProductToCommandLigne()" >Add To panier</button>
+                            </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                <!-- ***********************End of Order Area **************************************-->
+            </div>
+        </div>
+</div>
+
+<div class="list-table-header-item-area">
+    <div class="introduction-area p-d-flex p-jc-between">
+        <h1 class="big-title">
+        Offer List
+        </h1>
+    </div>
+    <div class="list-table-item-area">
+        <div class="container" style="width: 60%;">
+            <div class="table-area ">
+                <div class="comments-table">
+                    <div class="card">
+                        <p-table [value]="offerList" [breakpoint]="'960px'" [tableStyle]="{'min-width': '50rem'}" [paginator]="true"
+                        [rows]="5"
+                        [showCurrentPageReport]="true"
+                        [tableStyle]="{ 'min-width': '50rem' }"
+                        currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
+                        [rowsPerPageOptions]="[5, 25, 50]">
+                            <ng-template pTemplate="header" let-columns>
+                                <tr>
+                                    <th id="start_date" pSortableColumn="start_date">Start Date</th>
+                                    <th id="end_date" pSortableColumn="end_date">End date</th>
+                                    <th id="quantity" pSortableColumn="quantity">Quantity</th>
+                                    <th id="prix" pSortableColumn="prix">Price</th>
+                                    <th id="actions" pSortableColumn="actions">Actions</th>
+                                </tr>
+                            </ng-template>
+                            <ng-template pTemplate="body" let-offerList let-columns="columns">
+                                <tr>                        
+                                    <td><span class="p-column-title">Strat Date</span>{{offerList.start_date}}</td>
+                                    <td><span class="p-column-title">End Date</span>{{offerList.end_date}}</td>
+                                    <td><span class="p-column-title">Quantity</span>{{offerList.quantity}}</td>
+                                    <td><span class="p-column-title">Price</span>{{offerList.prix}}</td>
+                                    <td>
+                                        <div> 
+                                            <p-button class="p-panel-header-icon p-link" data-toggle="modal" >Order</p-button>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </ng-template>
+                        </p-table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="modal fade" id="cmdLigneModal" tabindex="-1" aria-labelledby="cmdLigneModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="row">
+                <div class="col-md-12">
+                <div class="card card-user">
+                    <div class="modal-header text-center">
+                        <h5 class="modal-title" id="cmdLigneModalLabel">Order Area</h5>
+                        <button type="button" class="btn-close" data-dismiss="modal" aria-label="Close"></button>
+                    </div>  
+                    <div class="modal-body text-center">
+                        <label for="name_product">
+                            <label for="notice">
+                                <h6>Order Notice</h6>
+                            </label>      
+                        </label> 
+                        <input type="text" placeholder="Notice"  required class="form-control " > 
+                    </div>         
+                    <div class="modal-footer text-center">
+                        <button class="btn btn-danger btn-round mr-2" >Yes</button>
+                        <button class="btn btn-primary btn-round ml-2" data-dismiss="modal" aria-label="Close">No</button>
+                    </div>
+                </div>
+                </div>
+            </div>
+        </div>
+    </div>
+  </div>
+
+  

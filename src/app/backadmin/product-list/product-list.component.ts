@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { Product } from 'src/app/_models/_product/product';
+import { Product } from 'src/app/_models/_stock/product';
 import { ProductService } from '../_services/product.service';
 
 @Component({
@@ -20,10 +20,16 @@ export class ProductListComponent implements OnInit {
   productList:Product[]=[];
   productDetailedList:Product[]=[];
   product : Product = new Product();
+
+  productIdToDelete!:any
+
+  mostOrdedProducts: Product[]=[]
+
   constructor(private _productService : ProductService) { }
 
   ngOnInit(): void {
    this.getProductList();
+   this.getMostOrdredProducts();
   }
 
   getProductList(){
@@ -35,8 +41,15 @@ export class ProductListComponent implements OnInit {
 
   DeleteProduct(id:any){
     this._productService.DeleteProduct(id).subscribe({
-      next:()=>this.productList=this.productList.filter((p)=> p.id!=id)
+      next:()=>{
+        this.productList=this.productList.filter((p)=> p.id!=id)
+        this.refresh()
+      }
     })
+  }
+
+  refresh(): void {
+    window.location.reload();
   }
 
   getProductById(id:any){
@@ -61,8 +74,15 @@ export class ProductListComponent implements OnInit {
     this.getProductId = event
     this.editProductModal = !this.editProductModal;
   }
+  
   showDetails($event:any){
     this.prodId = $event;
     this.openDetailPodModal = !this.openDetailPodModal;
+  }
+
+  getMostOrdredProducts(){
+    this._productService.getMostOrdredProducts().subscribe((data:any)=>{
+      this.mostOrdedProducts=data.body
+    })
   }
 }

@@ -1,0 +1,231 @@
+.list-table-header-item-area .introduction-area .p-d-flex {
+    display: flex;
+    justify-content: space-between;
+    text-align: center;
+    margin-bottom: 30px;
+    font-size: 20px;
+    line-height: 20px;
+    font-family: "Montserrat-Bold", sans-serif;
+    font-weight: normal;
+    background-size: 24px auto;
+    background-repeat: no-repeat;
+    cursor: pointer;
+  }
+  .list-table-header-item-area .big-title {
+    font-size: 28px;
+    line-height: 28px;
+    color: #292828;
+    font-family: "Montserrat-Bold", sans-serif;
+    text-align: center;
+    margin: 0;
+    font-weight: normal;
+    background-position: left center;
+    background-size: 24px auto;
+    background-repeat: no-repeat;
+    padding: 0 0 0 40px;
+    cursor: pointer;
+  }
+  .list-table-header-item-area button{
+    float: right;
+    
+  }
+
+  .list-table-header-item-area{
+    padding: 100px 10px 10px;
+    font-size: 10px;
+  }
+  
+  .list-table-item-area {
+    padding: 100px 18px 18px;
+    border-radius: #292828;
+    text-align: center;
+  }
+  
+  .list-table-item-area .table-area.comments-table ::ng-deep table thead tr th {
+    text-align: left;
+    color: #292828;
+  }
+  .list-table-item-area .table-area.comments-table ::ng-deep table tbody tr td {
+    text-align: left;
+    color: #1481ca;
+    border-radius: #292828;
+  }
+  .list-table-item-area .table-area.recherche-btn-bloc {
+    position: relative;
+  }
+  .list-table-item-area .table-area.recherche-btn-bloc .recherche-btn-content {
+    position: absolute;
+    background-color: #1481ca;
+    right: 0;
+    bottom: 0;
+    color: white;
+    width: 117px;
+    border: none;
+    height: 35px;
+    background-repeat: no-repeat;
+    background-position: 5px;
+    background-size: 17px;
+    font-size: 14px;
+    font-family: 'Roboto', serif;
+    border-radius: 2px;
+  }
+  .list-table-item-area .table-area .recherche-btn-bloc .recherche-btn-content:hover {
+    cursor: pointer;
+  }
+  .list-table-item-area .more-link {
+    background-color: transparent;
+    color: #2f455c;
+    padding: 0;
+  }
+  
+  .list-table-item-area .p-button {
+    display: inline-block;
+    margin: 0 15px;
+  }
+  
+  .btns-group.two-btns .btn.btn-blue {
+    background-color: #2366f7;
+    font-family: "Montserrat-Medium", sans-serif;
+    float: right;
+    font-size: 15px;
+    line-height: 12px;
+    border-radius: 2px;
+  }
+  
+  @media (max-width: 767px) {
+    .list-product-categories-item-area {
+      margin: 96px 0 0 0;
+   }
+  }
+  @media (max-width: 420px) {
+    .list-product-categories-item-area {
+      margin: 150px 0 0 0;
+   }
+  }.list-table-header-item-area .introduction-area .p-d-flex {
+  display: flex;
+  justify-content: space-between;
+  text-align: center;
+  margin-bottom: 30px;
+  font-size: 20px;
+  line-height: 20px;
+  font-family: "Montserrat-Bold", sans-serif;
+  font-weight: normal;
+  background-size: 24px auto;
+  background-repeat: no-repeat;
+  cursor: pointer;
+}
+.list-table-header-item-area .big-title {
+  font-size: 28px;
+  line-height: 28px;
+  color: #292828;
+  font-family: "Montserrat-Bold", sans-serif;
+  text-align: center;
+  margin: 0;
+  font-weight: normal;
+  background-position: left center;
+  background-size: 24px auto;
+  background-repeat: no-repeat;
+  padding: 0 0 0 40px;
+  cursor: pointer;
+}
+.list-table-header-item-area{
+  padding: 100px 10px 10px;
+  font-size: 10px;
+}
+
+.list-table-item-area {
+  padding: 100px 18px 18px;
+  border-radius: #292828;
+  text-align: center;
+}
+
+.list-table-item-area .table-area.comments-table ::ng-deep table thead tr th {
+  text-align: left;
+  color: #292828;
+}
+.list-table-item-area .table-area.comments-table ::ng-deep table tbody tr td {
+  text-align: left;
+  color: #1481ca;
+  border-radius: #292828;
+}
+.list-table-item-area .table-area.recherche-btn-bloc {
+  position: relative;
+}
+.list-table-item-area .table-area.recherche-btn-bloc .recherche-btn-content {
+  position: absolute;
+  background-color: #1481ca;
+  right: 0;
+  bottom: 0;
+  color: white;
+  width: 117px;
+  border: none;
+  height: 35px;
+  background-repeat: no-repeat;
+  background-position: 5px;
+  background-size: 17px;
+  font-size: 14px;
+  font-family: 'Roboto', serif;
+  border-radius: 2px;
+}
+.list-table-item-area .table-area .recherche-btn-bloc .recherche-btn-content:hover {
+  cursor: pointer;
+}
+.list-table-item-area .more-link {
+  background-color: transparent;
+  color: #2f455c;
+  padding: 0;
+}
+
+.list-table-item-area .p-button {
+  display: inline-block;
+  margin: 0 15px;
+}
+
+.btns-group.two-btns .btn.btn-blue {
+  background-color: #2366f7;
+  font-family: "Montserrat-Medium", sans-serif;
+  float: right;
+  font-size: 15px;
+  line-height: 12px;
+  border-radius: 2px;
+}
+
+.icon img{
+  width: 70px;
+  height: 70px;
+  background-color: #eee;
+  border-radius: 15px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 30px
+}
+
+@media (max-width: 767px) {
+  .list-product-categories-item-area {
+    margin: 96px 0 0 0;
+ }
+}
+@media (max-width: 420px) {
+  .list-product-categories-item-area {
+    margin: 150px 0 0 0;
+ }
+}
+input[type=text], input[type=email] , input[type=date], input[type=number], select, textarea  {
+  width: 100%;
+  padding: 10px ;
+  border: 1px solid #838282;
+  border-radius: 4px;
+  box-sizing: border-box;
+  margin-top: 6px;
+  margin-bottom: 16px;
+  resize: vertical;
+  font-size: 15px;
+}
+  /* form label */
+  label {
+    font-size: 15px;
+    font-weight: bold;
+    display: block;
+    margin-bottom: 10px;
+  }
