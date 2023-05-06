@@ -1,0 +1,76 @@
+<div class="modal modal-la-area" [class]="modalNewLeaveAuth ? 'open' : ''">
+    <p-dialog header="Leave / Authorization" [(visible)]="modalNewLeaveAuth" [modal]="true" [style]="{width: '500px'}" [baseZIndex]="10000" [draggable]="false" [resizable]="true" (onHide)="cancel()">
+        <div *ngIf="hideForm" >
+            <div class="inscription-form-title-blc">
+                </div>
+                <div class="inscription-form-title">
+                <h1 class="edit-form-title text-hideform">Add Leave / Authorization Request</h1>
+                </div>
+                <button type="button" (click)="cancel()" class="btn btn-blue"></button>
+            </div>
+            <div class="form-container">
+              <form #p="ngForm" action="">
+                  <!-- <form> -->
+                    <label for="type_la">Type</label>
+                    <select class="my-select" id="type_la" name="type_la" #type_la="ngModel" [(ngModel)]="leaveAuth.type_la" required >
+                      <option value="" disabled selected>Select</option>
+                      <option *ngFor="let typeLA of leaveAuthTypes"  [value]="typeLA">{{typeLA}}</option>
+                    </select>
+                    <div class="alert alert-danger" *ngIf="type_la.touched && type_la.invalid">
+                      <div *ngIf="type_la.errors?.['required']">Please select a type!</div>
+                    </div>
+
+                  <div class="form-group" *ngIf="leaveAuth.type_la === 'Leave'">
+                    <label for="start_date">Start Date</label>
+                    <input type="date" class="form-control" id="start_date" name="start_date" #start_date="ngModel" [(ngModel)]="leaveAuth.start_date" required value="" (change)="dateVerification()"> 
+                    <div class="alert alert-danger" *ngIf="start_date.touched && start_date.invalid">
+                      <div *ngIf="start_date.errors?.['required']">Start Date is required</div>    
+                    </div> 
+                    <div class="alert alert-danger" *ngIf="dateValidation">
+                      <div>Verify Start Date</div>
+                    </div>                  
+
+                    <label for="end_date">End Date</label>
+                    <input type="date" class="form-control" id="end_date" name="end_date" #end_date="ngModel" [(ngModel)]="leaveAuth.end_date" required value="" (change)="dateVerification()"> 
+                    <div class="alert alert-danger" *ngIf="end_date.touched && end_date.invalid">
+                      <div *ngIf="end_date.errors?.['required']">End Date is required</div>
+                    </div>
+                    <div class="alert alert-danger" *ngIf="dateValidation">
+                      <div>Verify End Date</div>
+                    </div> 
+                  </div>
+
+                    <div class="form-group" *ngIf="leaveAuth.type_la === 'Authorization'">
+                    <label for="authStartTime">Authorization Start Time</label>
+                    <input type="time" class="form-control" id="authStartTime" name="authStartTime" #authStartTime="ngModel" [(ngModel)]="leaveAuth.authStartTime" required value="08:00" (change)="timeVerification()">                  
+                    <div class="alert alert-danger" *ngIf="authStartTime.touched && authStartTime.invalid">
+                      <div *ngIf="authStartTime.errors?.['required']">Time is required</div>
+                    </div>
+                    <div class="alert alert-danger" *ngIf="timeValidation">
+                      <div>Verify Start Time</div>
+                    </div> 
+
+                    <label for="authEndTime">Authorization End Time</label>
+                    <input type="time" class="form-control" id="authEndTime" name="authEndTime" #authEndTime="ngModel" [(ngModel)]="leaveAuth.authEndTime" required value="00:00" (change)="timeVerification()"> 
+                    <div class="alert alert-danger" *ngIf="authEndTime.touched && authEndTime.invalid">
+                      <div *ngIf="authEndTime.errors?.['required']">Time is required</div>
+                    </div>
+                    <div class="alert alert-danger" *ngIf="timeValidation">
+                      <div>Verify End Time</div>
+                    </div> 
+                    </div>
+
+                    <label for="cause">Cause</label>
+                    <textarea class="form-control" id="cause" name="cause" #cause="ngModel" [(ngModel)]="leaveAuth.cause" required rows="2"></textarea>
+                    <div class="alert alert-danger" *ngIf="cause.touched && cause.invalid">
+                      <div *ngIf="cause.errors?.['required']">Cause is required</div>
+                    </div>                                    
+
+                    <button (click)="addLeaveAuth()" [disabled]="dateValidation" class="disabled:bg-blue-400 text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-12 py-2.5 mr-36 mb-20 focus:outline-none"> Submit </button>
+                  <!--.form-area-->
+                  <!-- </form> -->
+              </form>
+            </div>
+            <!--.inscription-form-area-->
+    </p-dialog>
+</div>
