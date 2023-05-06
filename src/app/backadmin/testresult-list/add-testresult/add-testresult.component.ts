@@ -27,8 +27,15 @@ export class AddTestresultComponent implements OnInit {
     const uploadImage = new FormData();
     console.log(uploadImage.append('image',this.selectedFile,this.selectedFile.name));
     this._testresultService.uploadImage(uploadImage,this.selectedBook)
-      .subscribe(response => console.log(response));
-  }
+      .subscribe(response => {
+        error : (err:any) => console.log(err)
+        this.refresh()
+      }) 
+    }
+  
+    refresh(): void {
+      window.location.reload();
+    }
 
 
 

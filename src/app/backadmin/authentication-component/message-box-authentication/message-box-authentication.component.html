@@ -1,0 +1,21 @@
+<div role="dialog" tabindex="-1" class="modal " [class]="modalConfirmState ? 'show' : 'fade'" style="display: block;">
+    <div class="modal-dialog modal-dialog-centered" role="document"  >
+        <div class="modal-content">
+            <div class="modal-header d-flex justify-content-start" >
+              <i class="fa "
+               [class]="type == 'SUCCESSFUL' ? 'fa-check-circle-o' : type == 'UNSUCCESSFUL' ? 'fa-exclamation-circle' : type == 'ERROR' ?  'fa-times-circle' : 'fa-info-circle'"
+              style="font-size: 35px;margin-right: 5px; " [style]="{color: (type == 'SUCCESSFUL' ? '#50B5FF' : type == 'UNSUCCESSFUL' ? '#ffc107' : type == 'ERROR' ?  '#D9534F' : '#50B5FF')}"></i>
+                <h4 class="modal-title" style="font: 20px TimesNewRoman;margin-top: auto;margin-bottom: auto;">{{title}}</h4> </div>
+            <div class="modal-body">
+                <div class="d-flex flex-row float-left">
+                    <p style="font: 20px TimesNewRoman;margin-top: 12.5px;margin-left: 12.5px;">{{message}}<br /></p>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button (click) ="onClickNo()" class="btn " type="button" style="font: 20px TimesNewRoman;"
+                [class]="(type == 'SUCCESSFUL' ? 'btn-info' : type == 'UNSUCCESSFUL' ? 'btn-warning' : type == 'ERROR' ?  'btn-danger' : 'btn-primary')"
+                 >close</button>
+            </div>
+        </div>
+    </div>
+</div>

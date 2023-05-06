@@ -40,7 +40,7 @@ export class SampleListComponent implements OnInit {
   
   DeleteProduct(idSample:any){
     let resp=this._sampleService.DeleteProduct(idSample);
-    if (window.confirm('Are you sure you want to delete this shop?')) {
+    if (window.confirm('Are you sure you want to delete this Sample?')) {
       resp.subscribe((data)=>this.productList=data);
           window.location.reload();}}
 

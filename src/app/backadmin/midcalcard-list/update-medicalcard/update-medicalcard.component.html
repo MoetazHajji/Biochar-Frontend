@@ -1,0 +1,40 @@
+<div class="modal modal-product-area" [class]="modalEditProduct ? 'open' : ''">
+    <p-dialog header="MedicalCard" [(visible)]="modalEditProduct" [modal]="true" [style]="{width: '500px'}" [baseZIndex]="10000" [draggable]="false" [resizable]="true" (onHide)="cancel()">
+        <div *ngIf="hideForm" [formGroup]="editProductForm" >
+            <div class="inscription-form-title-blc">
+                </div>
+                <div class="inscription-form-title">
+                <h1 class="edit-form-title text-hideform">Product added</h1>
+                </div>
+                <button type="button" (click)="cancel()" class="btn btn-blue"></button>
+            </div>
+            <div class="form-container">
+
+                <form #p="ngForm"  action="">
+                  <!-- <form> -->
+                    <label for="card_number">card_number</label>
+                    <input type="text" id="card_number" name="card_number" #card_number="ngModel" [(ngModel)]="medicalcard.card_number" required>
+                    
+                    <label for="date_creation">date_creation</label>
+                    <input type="date" id="date_creation" name="date_creation" #date_creation="ngModel" [(ngModel)]="medicalcard.date_creation" required>
+
+                    <label for="review">review</label>
+                    <input type="text" id="review" name="review" #review="ngModel" [(ngModel)]="medicalcard.review" required>
+                    
+                    <label for="Doc">Doc</label>
+                    <input type="text" id="Doc" name="Doc" #Doc="ngModel" [(ngModel)]="medicalcard.Doc" required>
+                
+                    <label for="typedossier">dossier Type</label>
+                    <select class="my-select" #stock="ngModel" [(ngModel)]="medicalcard.typedossier" name="typedossier" >
+                      <option value="" disabled selected>Select Dossier type </option>
+                      <option *ngFor="let Typedossier of Typedossies"  [value]="Typedossier">{{Typedossier}}</option>
+                    </select>
+                    
+  
+                    <input type="submit" value="Submit" (click)="EditProduct()" >                  <!--.form-area-->
+                  <!-- </form> -->
+                </form>
+            </div>
+            <!--.inscription-form-area-->
+    </p-dialog>
+</div>

@@ -18,7 +18,7 @@ export class TestsComponent implements OnInit {
   prodId: any
 
 
-  productList:Test[]=[];
+  productList:any;
   sample : Test = new Test();
   
   constructor(private _testService : TestService) { }
@@ -34,9 +34,10 @@ export class TestsComponent implements OnInit {
     console.log(this.productList)
   }
   DeleteProduct(idTest:any){
-    this._testService.DeleteProduct(idTest).subscribe({
-      next:()=>this.productList=this.productList.filter((p)=> p.idTest!=idTest)
-    })
+   let resp= this._testService.DeleteProduct(idTest);
+    if (window.confirm('Are you sure you want to delete this Test?')) {
+      resp.subscribe((data)=>this.productList=data);
+          window.location.reload();}
   }
   AddNewProduct(){
     this.addNewProductModal = !this.addNewProductModal;
