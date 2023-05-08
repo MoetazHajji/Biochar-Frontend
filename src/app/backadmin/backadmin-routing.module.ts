@@ -45,6 +45,10 @@ const routes: Routes = [
       {
         path: 'add',
         component: AddProductComponent
+      },
+      {
+        path: 'details/:id',
+        component: DetailsProductComponent
       }
     ]
   },
@@ -81,10 +85,6 @@ const routes: Routes = [
       {
         path: 'updateLeaveAuth',
         component: EditLeaveAuthComponent
-      },
-      {
-        path: 'details/:id',
-        component: DetailsProductComponent
       }
     ]
   },
