@@ -1,0 +1,74 @@
+<div class="modal bd-example-modal-lg" [class]="modalState ? 'show' : 'fade'"  role="dialog" tabindex="-1" style="display: block;">
+    <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <form #detailsHRForm = "ngForm">
+            <div class="modal-header"><i class="fa fa-briefcase primary-light-blue-color" style="font-size: 35px;margin-right: 10px;"></i>
+                <h4 class="modal-title">{{detailedHRAccount.firstname}}  {{detailedHRAccount.lastname}} <br></h4><button  (click) ="onClickNo()" type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button></div>
+            <div class="modal-body">
+                <p class="">Updating an employee's hire date is a critical step in maintaining accurate personnel records. Along with the hire date, it is important to update the team information and shift schedule to reflect the employee's current status. Accurate
+                    team and shift information can help with organizational and project management and can also ensure effective communication with the employee.<br></p>
+                <div class="table-responsive table table-borderless style-text-timenewroman">
+                    <table class="table table table-bordered table-hover" id="demande-stage-detaille-stagiaire-modale-table">
+                        <thead>
+                            <tr style="background-color: #f7f6f6;"></tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Hire Date :</td>
+                                <td>
+                                    <input   class="form-control input-design" type="date"  id="hireDate" name="hireDate" 
+                                    [(ngModel)]="detailedHRAccount.hireDate" #hireDate="ngModel"
+                                    [class]="(hireDate.invalid && hireDate.touched) ? 'is-invalid' : (!hireDate.invalid) ? 'is-valid' : ''" 
+                                    required>
+                                </td>
+                            </tr>
+                            <tr *ngIf="hireDate.invalid && hireDate.touched">
+                                <div class="d-flex flex-row justify-content-center margin-bottom-ten-px">
+                                    <div  style="color:#DC3545;" *ngIf="shift.errors?.['required']"> shift is required  </div> 
+                                </div> 
+                            </tr>
+                            <tr>
+                                <td>Shift :</td>
+                                <td> 
+                                   
+                                    <select class="form-control input-design"  id="shift" name="shift" 
+                                    [(ngModel)]="detailedHRAccount.shift"
+                                    [class]="(shift.invalid && shift.touched) ? 'is-invalid' : (!shift.invalid) ? 'is-valid' : ''" 
+                                    name="shift"   #shift="ngModel"   required >
+                                        <optgroup label="This is a group">
+                                            <!--<option value="12" selected="">This is item 1</option>-->
+                                            <option *ngFor="let option of accountService.listShiftOptions" [value]="option.value"  [selected] = "option.value === detailedHRAccount.shift"  >{{ option.label }}</option> 
+                                        </optgroup></select>
+                                
+                                </td>
+                            </tr>
+                            <tr *ngIf="shift.invalid && shift.touched">
+                                <div class="d-flex flex-row justify-content-center margin-bottom-ten-px">
+                                    <div  style="color:#DC3545;" *ngIf="shift.errors?.['required']"> shift is required  </div> 
+                                </div> 
+                            </tr>
+                            <tr  *ngIf="detailedHRAccount.shift == 'Night'">
+                                <td>Team :<br></td>
+                                <td>
+                                    <select class="form-control input-design"  id="team" name="team" 
+                                    [(ngModel)]="detailedHRAccount.team"
+                                   name="team"   #team="ngModel"    
+                                   >
+                                   <optgroup label="This is a group">
+                                       <option *ngFor="let option of accountService.listTeamOptions" [value]="option.value" [selected] = "option.value === detailedHRAccount.team">{{ option.label }}</option> 
+                                   </optgroup>
+                               </select>
+                            </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button [disabled]="detailsHRForm.invalid" (click) ="onClickUpdating()" class="btn btn-primary style-text-timenewroman primary-light-blue-color-backgroud" type="button">Update</button>
+
+                <button (click) ="onClickNo()" class="btn btn-light" type="button style-text-timenewroman" data-dismiss="modal" >no</button></div>
+            </form>
+         </div>
+    </div>
+</div>

@@ -1,5 +1,5 @@
 <div class="modal modal-product-area" [class]="modalEditProduct ? 'open' : ''">
-    <p-dialog header="Product area" [(visible)]="modalEditProduct" [modal]="true" [style]="{width: '500px'}" [baseZIndex]="10000" [draggable]="false" [resizable]="true" (onHide)="cancel()">
+    <p-dialog header="Test area" [(visible)]="modalEditProduct" [modal]="true" [style]="{width: '500px'}" [baseZIndex]="10000" [draggable]="false" [resizable]="true" (onHide)="cancel()">
         <div *ngIf="hideForm" [formGroup]="editProductForm" >
             <div class="inscription-form-title-blc">
                 </div>
@@ -12,15 +12,39 @@
 
                 <form #p="ngForm"  action="">
                     <!-- <form> -->
-                      <label for="nameTest">Test</label>
-                      <input type="text" id="nameTest" name="nameTest" #nameTest="ngModel" [(ngModel)]="test.nameTest" required>
-                      
-                      <label for="price">Price</label>
-                      <input type="text" id="price" name="price" #price="ngModel" [(ngModel)]="test.price" required>
-  
-                      <label for="dateTest">Date</label>
-                      <input type="date" id="dateTest" name="dateTest" #dateTest="ngModel" [(ngModel)]="test.dateTest" required>
-                      <label for="dateTest">Sample</label>
+                  <!-- <form> -->
+                    <label for="nameTest">Test</label>
+                    <input type="text" id="nameTest" name="nameTest" placeholder="Name Of Test" #nameTest="ngModel" [(ngModel)]="test.nameTest" required minlength="3">
+                    <div class="alert alert-danger" *ngIf="nameTest.touched && nameTest.invalid">
+                      <div *ngIf="nameTest.errors?.['required']">Test is required</div>
+                      <div *ngIf="nameTest.errors?.['minlength']">Test must have at least 3 characters</div>
+                  </div>
+                    <label for="price">Price</label>
+                    <input type="text" id="price" name="price" placeholder="Price Of Test" #price="ngModel" [(ngModel)]="test.price" required max="100">
+                    <div class="alert alert-danger" *ngIf="price.touched && price.invalid">
+                      <div *ngIf="price.errors?.['required']">Price du place is required</div>
+                      <div *ngIf="price.errors?.['max']">Price must not exceed 100!</div>
+                  </div>
+                    <label for="dateTest">Date</label>
+                    <input type="date" id="dateTest" name="dateTest" #dateTest="ngModel" [(ngModel)]="test.dateTest" required>
+                    <label for="dateTest">Sample</label>
+                    <div class="mb-3">
+                      <select
+                        #inputcategorieId
+                     
+                        (change)="check($event)"
+                        class="form-control show-tick"
+                      >
+                      <option value="" disabled selected>Select Sample </option>
+                       
+                        <option
+                        *ngFor="let sample of competenceList"
+                          [value]="sample.idSample"
+                        >
+                          {{ sample.numSample }}
+                        </option>
+                      </select>
+                    </div>
                       
                       <input type="submit" value="Submit" (click)="EditProduct()" >
                     <!--.form-area-->

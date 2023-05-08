@@ -1,0 +1,27 @@
+<div class="modal" [class]="modalState ? 'show' : 'fade'" role="dialog" tabindex="-1" id="demande-stage-motif-stagiaire-modale" style="display: block;">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header"><i class="fa fa-info-circle icon-header"></i>
+                <h4 class="modal-title" style="margin-left: 5px;">Upload photo</h4><button (click) ="onClickNo()" type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button></div>
+            <div class="modal-body">
+                <form >
+                    <p><span style="font-size: 30px;">U</span>ploading a photo to an account is a great way to personalize the user's experience. It adds a visual element that can help make the account feel more connected to employees.<br></p>
+                    <div class="d-flex flex-row  justify-content-between row-input"> 
+                        <div class="input-group  input-design">
+                           <div class="input-group-prepend">
+                               <span class="input-group-text">Upload</span>
+                           </div>
+                           <div class="custom-file" >
+                               <input accept=".png, .jpg, .jpeg" (change)="onChange($event)" 
+                             
+                               type="file" class="custom-file-input" id="inputGroupFile01">
+                                    <label class="custom-file-label" for="inputGroupFile01">Choose file</label>
+                           </div>
+                        </div>
+                        <button (click)="onUpload()" class="btn btn-primary btn btn-info" type="button" style="font-family: TimesNewRoman;font-size: 16px;">upload   <i class="fa fa-send"></i></button>
+                    </div> 
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

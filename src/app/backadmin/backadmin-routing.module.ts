@@ -14,6 +14,15 @@ import { LeaveAuthorizationComponent } from './leave-authorization/leave-authori
 import { AddLeaveAuthComponent } from './leave-authorization/add-leave-auth/add-leave-auth.component';
 import { EditLeaveAuthComponent } from './leave-authorization/edit-leave-auth/edit-leave-auth.component';
 import { SampleListComponent } from './sample-list/sample-list.component';
+import { ListTimeoffComponent } from './timeoff-component/list-timeoff/list-timeoff.component';
+import { AddTimeoffComponent } from './timeoff-component/add-timeoff/add-timeoff.component';
+import { EditTimeoffComponent } from './timeoff-component/edit-timeoff/edit-timeoff.component';
+import { ListAccountComponent } from './account-component/list-account/list-account.component';
+import { EditGlobalAccountComponent } from './account-component/edit-global-account/edit-global-account.component';
+import { ListAppointmentComponent } from './appointment-component/list-appointment/list-appointment.component';
+import { SignInAuthenticationComponent } from './authentication-component/sign-in-authentication/sign-in-authentication.component';
+import { SignUpAuthenticationComponent } from './authentication-component/sign-up-authentication/sign-up-authentication.component';
+import { EditForgotPasswordAuthenticationComponent } from './authentication-component/edit-forgot-password-authentication/edit-forgot-password-authentication.component';
 
 import { TestresultListComponent } from './testresult-list/testresult-list.component';
 import { AddTesttComponent } from './tests/add-testt/add-testt.component';
@@ -31,6 +40,12 @@ import { PanierComponent } from './order/panier/panier.component';
 import { OrderComponent } from './order/order.component';
 import { DetailsOrderComponent } from './order/details-order/details-order.component';
 import { OfferComponent } from './offer/offer.component';
+import { MidcalcardListComponent } from './midcalcard-list/midcalcard-list.component';
+import { AddMedicalcardComponent } from './midcalcard-list/add-medicalcard/add-medicalcard.component';
+import { UpdateSampleComponent } from './sample-list/update-sample/update-sample.component';
+import { UpdateMedicalcardComponent } from './midcalcard-list/update-medicalcard/update-medicalcard.component';
+import { PdfextractorComponent } from './testresult-list/pdfextractor/pdfextractor.component';
+import { WorkScheduleComponent } from './work-schedule/work-schedule.component';
 const routes: Routes = [
   { path: '', component: LoginComponent },
   { path: 'login', component: LoginComponent },
@@ -87,6 +102,15 @@ const routes: Routes = [
         component: EditLeaveAuthComponent
       }
     ]
+  },
+  {
+    path: 'workSchedule',
+    component: AdminLayoutComponent,
+    children: [
+      {
+        path: '',
+        component: WorkScheduleComponent
+      }]
   },
   {
     path: 'training',
@@ -152,36 +176,170 @@ const routes: Routes = [
       }
     ]
   },
-    {
-      path:'panier',
-      component:AdminLayoutComponent,
-      children:[{
-        path:'',
-        component:PanierComponent
-      }]
+  {
+    path: 'panier',
+    component: AdminLayoutComponent,
+    children: [{
+      path: '',
+      component: PanierComponent
+    }]
+  },
+  {
+    path: 'order',
+    component: AdminLayoutComponent,
+    children: [{
+      path: '',
+      component: OrderComponent
     },
     {
-      path:'order',
-      component:AdminLayoutComponent,
-      children:[{
-        path:'',
-        component:OrderComponent
+      path: 'details/:id',
+      component: DetailsOrderComponent
+    }
+    ]
+  },
+  {
+    path: 'offer',
+    component: AdminLayoutComponent,
+    children: [{
+      path: '',
+      component: OfferComponent
+    }
+    ]
+  },
+  {
+    path: 'auth',
+    //component:AdminLayoutComponent,
+    children: [
+      {
+        path: 'sign-in',
+        component: SignInAuthenticationComponent
       },
       {
-        path:'details/:id',
-        component:DetailsOrderComponent
+        path: 'sign-up',
+        component: SignUpAuthenticationComponent
       }
     ]
-    },
-    {
-      path:'offer',
-      component:AdminLayoutComponent,
-      children:[{
-        path:'',
-        component:OfferComponent
+  },
+  {
+    path: 'auth',
+    component: AdminLayoutComponent,
+    children: [
+      {
+        path: 'edit-forget-password/:code',
+        component: EditForgotPasswordAuthenticationComponent
       }
     ]
-    },
+  },
+  {
+    path: 'timeoff',
+    component: AdminLayoutComponent,
+    children: [
+      {
+        path: '',
+        component: ListTimeoffComponent
+      },
+      {
+        path: 'add',
+        component: AddTimeoffComponent
+      },
+      {
+        path: 'edit',
+        component: EditTimeoffComponent
+      }
+    ]
+  },
+  {
+    path: 'account',
+    component: AdminLayoutComponent,
+    children: [
+      {
+        path: '',
+        component: ListAccountComponent
+      }, {
+        path: 'edit-detailled/:id',
+        component: EditGlobalAccountComponent
+      },
+      {
+        path: 'pdf',
+        component: PdfextractorComponent
+      }
+    ]
+  },
+  {
+    path: 'medicallist',
+    component: AdminLayoutComponent,
+    children: [
+      {
+        path: '',
+        component: MidcalcardListComponent
+      },
+      {
+        path: 'add',
+        component: AddMedicalcardComponent
+      },
+      {
+        path: 'update',
+        component: UpdateMedicalcardComponent
+      }
+    ]
+  },
+  {
+    path: 'samplelist',
+    component: AdminLayoutComponent,
+    children: [
+      {
+        path: '',
+        component: SampleListComponent
+      },
+      {
+        path: 'add',
+        component: AddMedicalcardComponent
+      },
+      {
+        path: 'update',
+        component: UpdateSampleComponent
+      }
+    ]
+  },
+  {
+    path: 'testList',
+    component: AdminLayoutComponent,
+    children: [
+      {
+        path: '',
+        component: TestsComponent
+      },
+      {
+        path: 'add',
+        component: AddTesttComponent
+      },
+      {
+        path: 'update',
+        component: UpdateTesttComponent
+      }
+    ]
+  },
+  {
+    path: 'appointment',
+    component: AdminLayoutComponent,
+    children: [
+      {
+        path: ':id',
+        component: ListAppointmentComponent
+      }
+    ]
+  },
+
+  {
+    path: 'stat',
+    component: AdminLayoutComponent,
+    children: [
+      {
+        path: '',
+        component: AnalysisStatistiqueComponent
+      }
+    ]
+  },
   { path: '**', component: NotFoundComponent }
 ];
 

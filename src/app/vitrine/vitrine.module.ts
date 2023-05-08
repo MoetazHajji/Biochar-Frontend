@@ -10,6 +10,7 @@ import { NavbarComponent } from './navbar/navbar.component';
 import { VitrineLayoutComponent } from './vitrine-layout/vitrine-layout.component';
 import { SignupComponent } from './signup/signup.component';
 import { NavBarAuthComponent } from './nav-bar-auth/nav-bar-auth.component';
+import { PdfextractorComponent } from './pdfextractor/pdfextractor.component';
 
 
 @NgModule({
@@ -21,7 +22,8 @@ import { NavBarAuthComponent } from './nav-bar-auth/nav-bar-auth.component';
     NavbarComponent,
     VitrineLayoutComponent,
     SignupComponent,
-    NavBarAuthComponent
+    NavBarAuthComponent,
+    PdfextractorComponent
   ],
   imports: [
     CommonModule,
