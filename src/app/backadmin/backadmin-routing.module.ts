@@ -63,6 +63,10 @@ const routes: Routes = [
       {
         path: 'add',
         component: AddProductComponent
+      },
+      {
+        path: 'details/:id',
+        component: DetailsProductComponent
       }
     ]
   },
