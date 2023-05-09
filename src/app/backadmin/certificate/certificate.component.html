@@ -1,0 +1,111 @@
+<div class="main-body">
+
+  <form #f="ngForm">
+    <div class="form-group">
+      <label for="title">Title</label>
+      <input type="text" class="form-control" id="title" name="title" #title="ngModel" [(ngModel)]="certificate.title" required>
+    </div>
+    <div class="form-group">
+      <label for="type">Type</label>
+      <input type="text" class="form-control" id="type" name="type" #type="ngModel" [(ngModel)]="certificate.type" required>
+    </div>
+    <div class="form-group">
+      <label for="description">Description</label>
+      <textarea class="form-control" id="description" name="description" #description="ngModel" [(ngModel)]="certificate.description" required></textarea>
+    </div>
+
+    <div class="form-group">
+      <label for="color">Color</label>
+      <input type="color" class="form-control w-64" id="color" name="color" #color="ngModel" [(ngModel)]="certificate.color"  required>
+
+  
+    </div>
+
+
+    <button class="text-white bg-gray-800 hover:bg-gray-900 focus:outline-none focus:ring-4 focus:ring-gray-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 disabled:bg-gray-300" [disabled]="f.invalid" (click)="add_certificate()">Set</button>
+  </form>
+  
+  <div>
+ 
+{{certificate.color}}
+        <body>
+
+          <div class="container pm-certificate-container" [ngStyle]="{ 'background-color': certificate.color }">
+
+
+
+            <div class="outer-border"></div>
+            <div class="inner-border"></div>
+            
+            <div class="pm-certificate-border col-xs-12">
+              <div class="flex justify-center items-center pm-certificate-header">
+                <div class="pm-certificate-title cursive">
+                  <h2 class="text-center">{{ certificate.title }}</h2>
+                </div>
+              </div>
+              
+        
+              <div class="row pm-certificate-body">
+                
+                <div class="pm-certificate-block">
+                    <div class="col-xs-12">
+                      <div class="row">
+                        <div class="col-xs-2"><!-- LEAVE EMPTY --></div>
+                        <div class="pm-certificate-name margin-0 col-xs-8 text-center">
+                          <span class="pm-name-text bold">{{certificate.type}}</span>
+                        </div>
+                        <div class="col-xs-2"><!-- LEAVE EMPTY --></div>
+                      </div>
+                    </div>          
+        
+                    <div class="col-xs-12">
+                      <div class="row">
+                        <div class="col-xs-2"><!-- LEAVE EMPTY --></div>
+                        <div class="pm-earned col-xs-8 text-center">
+                          <span class="pm-earned-text padding-0 block cursive">has earned</span>
+                          <span class="pm-credits-text block bold sans">{{certificate.description}}</span>
+                        </div>
+                        <div class="col-xs-2"><!-- LEAVE EMPTY --></div>
+                        <div class="col-xs-12"></div>
+                      </div>
+                    </div>
+                    
+                    <div class="col-xs-12">
+                      <div class="row">
+                        <div class="col-xs-2"><!-- LEAVE EMPTY --></div>
+                        <div class="pm-course-title col-xs-8 text-center">
+                          <span class="pm-earned-text block cursive">while completing the training course entitled</span>
+                        </div>
+                        <div class="col-xs-2"><!-- LEAVE EMPTY --></div>
+                      </div>
+                    </div>
+        
+       
+                </div>       
+                
+                <div class="col-xs-12">
+                  <div class="row">
+                    <div class="pm-certificate-footer">
+                        <div class="col-xs-4 pm-certified col-xs-4 text-center">
+                          <span class="pm-credits-text block sans">Charles Nicole</span>
+                          <span class="pm-empty-space block underline"></span>
+        
+                        </div>
+                        <div class="col-xs-4">
+                          <!-- LEAVE EMPTY -->
+                        </div>
+                        <div class="col-xs-4 pm-certified col-xs-4 text-center">
+                          <span class="pm-credits-text block sans">Date Completed</span>
+                          <span class="pm-empty-space block underline">{{currentDate}}</span>
+                          <span class="bold block">DOB: </span>
+                          <span class="bold block">Social Security # 0000</span>
+                        </div>
+                    </div>
+                  </div>
+                </div>
+        
+              </div>
+        
+            </div>
+          </div>
+        </body>
