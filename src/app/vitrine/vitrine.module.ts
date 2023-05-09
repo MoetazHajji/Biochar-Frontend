@@ -10,6 +10,9 @@ import { NavbarComponent } from './navbar/navbar.component';
 import { VitrineLayoutComponent } from './vitrine-layout/vitrine-layout.component';
 import { SignupComponent } from './signup/signup.component';
 import { NavBarAuthComponent } from './nav-bar-auth/nav-bar-auth.component';
+import { TrainingsComponent } from './trainings/trainings.component';
+import { MyTrainingComponent } from './my-training/my-training.component';
+import { FormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -21,11 +24,14 @@ import { NavBarAuthComponent } from './nav-bar-auth/nav-bar-auth.component';
     NavbarComponent,
     VitrineLayoutComponent,
     SignupComponent,
-    NavBarAuthComponent
+    NavBarAuthComponent,
+    TrainingsComponent,
+    MyTrainingComponent
   ],
   imports: [
     CommonModule,
-    VitrineRoutingModule
+    VitrineRoutingModule,
+    FormsModule
   ]
 })
 export class VitrineModule { }

@@ -1,0 +1,86 @@
+/* Modal Overlay */
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 9999;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  /* Modal */
+  .modal {
+    position: relative;
+    background-color: #fff;
+    width: 500px;
+    border-radius: 5px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+    padding: 20px;
+  }
+  
+  /* Modal Header */
+  .modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+  }
+  
+  /* Modal Title */
+  .modal-title {
+    margin: 0;
+    font-size: 24px;
+    font-weight: bold;
+  }
+  
+  /* Modal Close Button */
+  .modal-close-btn {
+    border: none;
+    background: none;
+    font-size: 24px;
+    cursor: pointer;
+  }
+  
+  /* Modal Body */
+  .modal-body {
+    margin-bottom: 20px;
+  }
+  
+  /* Modal Footer */
+  .modal-footer {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+  }
+  
+  /* Button */
+  .btn {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  /* Primary Button */
+  .btn-primary {
+    background-color: #007bff;
+    color: #fff;
+  }
+  
+  /* Secondary Button */
+  .btn-secondary {
+    background-color: #f0f0f0;
+    color: #333;
+    margin-left: 10px;
+  }
+  
+  .white-box {
+    background-color: #fff;
+    border-radius: 4px;
+    height: auto;
+    width: 100%;
+  }

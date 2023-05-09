@@ -43,6 +43,9 @@ import { EditStockComponent } from './stock/edit-stock/edit-stock.component';
 import { DetailsStockComponent } from './stock/details-stock/details-stock.component';
 import { AddTestresultComponent } from './testresult-list/add-testresult/add-testresult.component';
 import { PdfextractorComponent } from './testresult-list/pdfextractor/pdfextractor.component';
+import { CertificateComponent } from './certificate/certificate.component';
+import { NgxPaginationModule } from 'ngx-pagination';
+import { DemandsComponent } from './demands/demands.component';
 
 @NgModule({
   declarations: [
@@ -71,7 +74,9 @@ import { PdfextractorComponent } from './testresult-list/pdfextractor/pdfextract
     TrainingsListComponent,
     AddStockComponent,
     EditStockComponent,
-    DetailsStockComponent
+    DetailsStockComponent,
+    CertificateComponent,
+    DemandsComponent
   ],
   imports: [
     CommonModule,
@@ -92,7 +97,8 @@ import { PdfextractorComponent } from './testresult-list/pdfextractor/pdfextract
     AutoCompleteModule,
     AvatarModule,
     CardModule,
-    SelectButtonModule
+    SelectButtonModule,
+    NgxPaginationModule
   ],
   bootstrap: [LoginComponent]
 })

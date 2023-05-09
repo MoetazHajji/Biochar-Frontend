@@ -1,5 +1,6 @@
-import { Time } from "@angular/common";
-import { Type_training } from "./Type_training";
+import { Type_T } from "./Type_training";
+
+
 
 export class Training {
     id_training!: number;
@@ -12,7 +13,7 @@ export class Training {
     subject?: string;
     description?: string;
     image?: string;
-    type?: Type_training;
+    type?: Type_T;
 
     trainer?: string;
     trainees?: string[];

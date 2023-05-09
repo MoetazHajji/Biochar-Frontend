@@ -1,0 +1,61 @@
+
+<header class="header-2">
+    <div class="page-header min-vh-75 relative" style="background-image: url('./assets/front/assets/img/bg10.jpg')">
+        <span class="mask bg-primary opacity-4"></span>
+
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-7 text-center mx-auto">
+            <h1 class="text-white pt-3 mt-n5">Trainings</h1>
+            <p class="lead text-white mt-3">Free Trainings <br /> Join the best doctors around the world. </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+  <div class="card card-body blur shadow-blur mx-3 mx-md-4 mt-n6">
+    <h1 class="p-2"> Profile score : {{score}}%</h1>
+    <section class="pt-3 pb-4" id="count-stats">
+        <div class="quiz-container mt-3" *ngFor="let training of my_trainings; let i = index">
+            <h2 class="quiz-title">{{training.title}}</h2>
+            <form class="quiz-form" #f="ngForm">
+              <div class="row">
+                <div class="col-4" *ngFor="let quiz of quizzes[i]; let j = index">
+              <div class="quiz-question">
+                <h3>{{quiz.question}}:</h3>
+                <div class="quiz-answers">
+                    <label>
+                      <input type="checkbox" name="question{{j}}" #option1="ngModel" value="1" [(ngModel)]="answers[j][1]">
+                      {{quiz.answer_1}}
+                    </label>
+                    <label>
+                      <input type="checkbox" name="question{{j}}" #option2="ngModel" value="2" [(ngModel)]="answers[j][2]">
+                      {{quiz.answer_2}}
+                    </label>
+                    <label *ngIf="quiz.answer_3 != null">
+                      <input type="checkbox" name="question{{j}}" #option3="ngModel" value="3" [(ngModel)]="answers[j][3]">
+                      {{quiz.answer_3}}
+                    </label>
+                    <label *ngIf="quiz.answer_4 != null">
+                      <input type="checkbox" name="question{{j}}" #option4="ngModel" value="4" [(ngModel)]="answers[j][4]">
+                      {{quiz.answer_4}}
+                    </label>
+                  </div>
+                
+              </div>
+            </div>
+     
+              
+            </div>
+            <button type="submit" class="quiz-submit" (click)="submit(training)" [disabled]="f.invalid">Validate Answers</button>
+            <label style="color: green;" *ngIf="result != ''"> Your score :{{result}}</label>
+            </form>
+          </div>
+          
+    </section>
+    <section class="my-5 py-5">
+
+    </section> 
+
+    <!-- -------- END Content Presentation Docs ------- -->
+ 
