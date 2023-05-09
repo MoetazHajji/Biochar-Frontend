@@ -1,0 +1,110 @@
+.list-table-header-item-area .introduction-area .p-d-flex {
+    display: flex;
+    justify-content: space-between;
+    text-align: center;
+    margin-bottom: 30px;
+    font-size: 20px;
+    line-height: 20px;
+    font-family: "Montserrat-Bold", sans-serif;
+    font-weight: normal;
+    background-size: 24px auto;
+    background-repeat: no-repeat;
+    cursor: pointer;
+}
+
+.list-table-header-item-area .big-title {
+    font-size: 28px;
+    line-height: 28px;
+    color: #292828;
+    font-family: "Montserrat-Bold", sans-serif;
+    text-align: center;
+    margin: 0;
+    font-weight: normal;
+    background-position: left center;
+    background-size: 24px auto;
+    background-repeat: no-repeat;
+    padding: 0 0 0 40px;
+    cursor: pointer;
+}
+
+.list-table-header-item-area {
+    padding: 100px 10px 10px;
+    font-size: 10px;
+}
+
+.list-table-item-area {
+    padding: 100px 18px 18px;
+    border-radius: #292828;
+}
+
+.list-table-item-area .table-area.comments-table ::ng-deep table thead tr th {
+    text-align: left;
+    color: #292828;
+}
+
+.list-table-item-area .table-area.comments-table ::ng-deep table tbody tr td {
+    text-align: left;
+    color: #1481ca;
+    border-radius: #292828;
+}
+
+.list-table-item-area .table-area.recherche-btn-bloc {
+    position: relative;
+}
+
+.list-table-item-area .table-area.recherche-btn-bloc .recherche-btn-content {
+    position: absolute;
+    background-color: #1481ca;
+    right: 0;
+    bottom: 0;
+    color: white;
+    width: 117px;
+    border: none;
+    height: 35px;
+    background-repeat: no-repeat;
+    background-position: 5px;
+    background-size: 17px;
+    font-size: 14px;
+    font-family: 'Roboto', serif;
+    border-radius: 2px;
+}
+
+.list-table-item-area .table-area .recherche-btn-bloc .recherche-btn-content:hover {
+    cursor: pointer;
+}
+
+.list-table-item-area .more-link .p-button {
+    background-color: transparent;
+    color: #2f455c;
+    padding: 0;
+}
+
+.btns-group.two-btns .btn.btn-blue {
+    background-color: #2366f7;
+    font-family: "Montserrat-Medium", sans-serif;
+    float: right;
+    font-size: 15px;
+    line-height: 12px;
+    border-radius: 2px;
+}
+
+.btns-group.two-btns .btn.btn-green {
+    background-color: #4CB847;
+    font-family: "Montserrat-Medium", sans-serif;
+    float: right;
+    font-size: 15px;
+    line-height: 12px;
+    border-radius: 2px;
+}
+
+@media (max-width: 767px) {
+    .list-product-categories-item-area {
+        margin: 96px 0 0 0;
+    }
+}
+
+@media (max-width: 420px) {
+    .list-product-categories-item-area {
+        margin: 150px 0 0 0;
+    }
+}

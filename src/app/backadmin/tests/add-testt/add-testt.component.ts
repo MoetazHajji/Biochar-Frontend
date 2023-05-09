@@ -49,7 +49,12 @@ export class AddTesttComponent implements OnInit {
   addProduct() {
     this._testService.addProduct(this.test,this.selectedBook).subscribe((res:any) => {
       error : (err:any) => console.log(err)
+      this.refresh()
     }) 
+  }
+
+  refresh(): void {
+    window.location.reload();
   }
   check(value:any){
     this.selectedBook=value.target.value

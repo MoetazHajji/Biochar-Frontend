@@ -19,4 +19,12 @@ export class CommandLigneService {
   getProductFromCmdl(id:any) : Observable<HttpResponse<any>>{
     return this.http.get(`${this.url}/stock-service/commandLigne/getProductOfCmdl/${id}` , {observe : 'response'})
   }
+
+  getCmdlById(id:any) : Observable<HttpResponse<any>> {
+    return this.http.get(`${this.url}/stock-service/commandLigne/getCommLigne/${id}` , {observe : 'response'});
+  }
+  
+  getAll() : Observable<HttpResponse<any>>{
+    return this.http.get(`${this.url}/stock-service/offer/getAllAdress` , {observe : 'response'})
+  }
 }

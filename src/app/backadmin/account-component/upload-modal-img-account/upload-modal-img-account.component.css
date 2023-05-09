@@ -1,0 +1,33 @@
+.input-design {
+    margin-left: 5px;
+    min-width: 200px;
+    max-width: 250px;
+  }
+  
+  .group-input {
+    padding-right: 10px;
+    padding-top: 10px;
+    padding-left: 10px;
+    padding-bottom: 10px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    border-color: #eaedef;
+    border-width: 2px;
+    border-style: solid;
+    border-radius: 10px;
+    font-family: TimesNewRoman;
+  }
+  
+  .icon-header {
+    font-size: 35px;
+    margin-right: 5px;
+    color: rgb(23,162,184);
+  }
+  
+  p {
+    color: rgb(73,80,87);
+    font-size: 18px;
+    font-family: TimesNewRoman;
+  }
+  
+  

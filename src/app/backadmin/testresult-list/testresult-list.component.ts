@@ -69,7 +69,7 @@ export class TestresultListComponent implements OnInit {
 
   DeleteProduct(idTestResult:any){
     let resp=this._testresultService.DeleteProduct(idTestResult);
-    if (window.confirm('Are you sure you want to delete this shop?')) {
+    if (window.confirm('Are you sure you want to delete this Analysis?')) {
       resp.subscribe((data)=>this.productList=data);
           window.location.reload();}}
    

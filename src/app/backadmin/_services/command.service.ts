@@ -15,4 +15,12 @@ export class CommandService {
   addCommand(cmdLignes:number[],command:Command) : Observable<HttpResponse<any>> {
     return this.http.post(`${this.url}/stock-service/command/AddCommandAndAssignToCommandLigne/${cmdLignes}`,command , {observe : 'response'})
   }
+
+  getAll() : Observable<HttpResponse<any>>{
+    return this.http.get(`${this.url}/stock-service/command/getAllCommands`, {observe : 'response'})
+  }
+
+  getProdsForCommand(idC:any): Observable<HttpResponse<any>>{
+    return this.http.get(`${this.url}/stock-service/command/getProduForCommand/${idC}`, {observe : 'response'})
+  }
 }

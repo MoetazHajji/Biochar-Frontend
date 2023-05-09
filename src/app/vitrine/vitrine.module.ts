@@ -10,6 +10,7 @@ import { NavbarComponent } from './navbar/navbar.component';
 import { VitrineLayoutComponent } from './vitrine-layout/vitrine-layout.component';
 import { SignupComponent } from './signup/signup.component';
 import { NavBarAuthComponent } from './nav-bar-auth/nav-bar-auth.component';
+import { PdfextractorComponent } from './pdfextractor/pdfextractor.component';
 import { TrainingsComponent } from './trainings/trainings.component';
 import { MyTrainingComponent } from './my-training/my-training.component';
 import { FormsModule } from '@angular/forms';
@@ -26,7 +27,8 @@ import { FormsModule } from '@angular/forms';
     SignupComponent,
     NavBarAuthComponent,
     TrainingsComponent,
-    MyTrainingComponent
+    MyTrainingComponent,
+    PdfextractorComponent
   ],
   imports: [
     CommonModule,
