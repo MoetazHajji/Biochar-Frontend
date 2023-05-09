@@ -77,6 +77,9 @@ import { DetailsProfileComponent } from './profile/details-profile/details-profi
 import { EditProfileComponent } from './profile/edit-profile/edit-profile.component';
 import { WorkScheduleComponent } from './work-schedule/work-schedule.component';
 import { AddWsComponent } from './work-schedule/add-ws/add-ws.component';
+import { CertificateComponent } from './certificate/certificate.component';
+import { NgxPaginationModule } from 'ngx-pagination';
+import { DemandsComponent } from './demands/demands.component';
 
 @NgModule({
   declarations: [
@@ -139,7 +142,9 @@ import { AddWsComponent } from './work-schedule/add-ws/add-ws.component';
     MidcalcardListComponent,
     AddMedicalcardComponent,
     UpdateMedicalcardComponent,
-    AddWsComponent
+    AddWsComponent,
+    CertificateComponent,
+    DemandsComponent
   ],
   imports: [
     CommonModule,
@@ -160,7 +165,8 @@ import { AddWsComponent } from './work-schedule/add-ws/add-ws.component';
     AutoCompleteModule,
     AvatarModule,
     CardModule,
-    SelectButtonModule
+    SelectButtonModule,
+    NgxPaginationModule
   ],
   bootstrap: [LoginComponent]
 })
