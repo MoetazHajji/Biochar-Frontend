@@ -1,5 +1,5 @@
 <div class="modal modal-product-area" [class]="modalNewProduct ? 'open' : ''">
-    <p-dialog header="Product Area" [(visible)]="modalNewProduct" [modal]="true" [style]="{width: '500px'}" [baseZIndex]="10000" [draggable]="false" [resizable]="true" (onHide)="cancel()">
+    <p-dialog header="Sample Area" [(visible)]="modalNewProduct" [modal]="true" [style]="{width: '500px'}" [baseZIndex]="10000" [draggable]="false" [resizable]="true" (onHide)="cancel()">
         <div *ngIf="hideForm" [formGroup]="createProductForm" >
             <div class="inscription-form-title-blc">
                 </div>
@@ -15,8 +15,11 @@
                     <input type="date" id="date" name="date" #date="ngModel" [(ngModel)]="sample.date" required>
                     
                     <label for="numSample">numSample</label>
-                    <input type="text" id="numSample" name="numSample" #numSample="ngModel" [(ngModel)]="sample.numSample" required>
-
+                    <input type="text" id="numSample" name="numSample" placeholder="Numero Of Sample"  #numSample="ngModel" [(ngModel)]="sample.numSample" required>
+                    <div class="alert alert-danger" *ngIf="numSample.touched && numSample.invalid">
+                      <div *ngIf="numSample.errors?.['required']">Test is required</div>
+                     
+                  </div>
                 
                     
                     <input type="submit" value="Submit" (click)="addProduct()">

@@ -38,6 +38,8 @@ export class DetailsProductComponent implements OnInit {
 
   idCmdlForProd!:any
 
+  
+
   productFromCmdl!:Product
 
   
@@ -93,16 +95,17 @@ export class DetailsProductComponent implements OnInit {
     })
   }
 
-  AddProductToCommandLigne(idProd:any){
-    this._cmdLiService.addCommandLigne(idProd,this.panier).subscribe((data:any)=>{
-      this.idCmdlForProd = this.panier.id
-      console.log(this.panier.id)
+  AddProductToCommandLigne(){
+    this._cmdLiService.addCommandLigne(this.productId,this.panier).subscribe((data:any)=>{
+      this.idCmdlForProd = data.body.id
+      console.log(this.idCmdlForProd)
+      localStorage.setItem('idCmdlForPanier',this.idCmdlForProd)
     })
   }
 
   getCmdlForProduct() {
     this._cmdLiService.getProductFromCmdl(this.idCmdlForProd).subscribe((data:any)=>{
-      this.productFromCmdl=data.body
+      this.productFromCmdl=data.body      
       console.log(this.productFromCmdl)
     })
   }

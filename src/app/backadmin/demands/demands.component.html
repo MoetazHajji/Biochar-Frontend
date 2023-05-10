@@ -1,0 +1,54 @@
+<div class="main-body">
+  <div class="max-w-full mx-auto px-4 sm:px-6 lg:px-8 py-4 bg-white rounded-lg shadow-lg">
+    <div class="flex flex-col">
+      <div class="-my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
+        <div class="py-2 align-middle inline-block min-w-full sm:px-6 lg:px-8">
+          <div class="mb-4 flex flex-auto">
+            <label for="search" class="sr-only">Search</label>
+          </div>
+          <div class="shadow overflow-hidden border-b border-gray-200 sm:rounded-lg">
+            <table class="min-w-full divide-y divide-gray-200">
+              <thead class="bg-gray-50">
+                <tr>
+                  <th
+                    class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider cursor-pointer">
+                    Sender
+                  </th>
+                  <th
+                    class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider cursor-pointer">
+                    Date
+                  </th>
+
+                  <th
+                    class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider cursor-pointer">
+                    Training
+                  </th>
+                  <th
+                    class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider cursor-pointer">
+                    Action
+                  </th>
+                </tr>
+              </thead>
+              <tbody class="bg-gray-50 divide-y divide-gray-200 " *ngFor="
+                  let demand of demands
+                    | paginate : { itemsPerPage: 10, currentPage: currentPage }
+                ">
+                <tr>
+                  <td class="border px-4 py-2">{{ demand.description }}</td>
+                  <td class="border px-4 py-2">{{ demand.date | date}}</td>
+                  <td class="border px-4 py-2">{{ demand.training }}</td>
+                  <td class="border px-4 py-2 text-center"><button (click)="accept(demand)"><i class="fa fa-check" aria-hidden="true"></i>
+                  </button><button class="px-4 " (click)="refuse(demand.id_demand)"><i class="fa fa-times " style="color: rgb(180, 41, 41);"></i>
+                  </button></td>
+                </tr>
+              </tbody>
+            </table>
+            <div class="text-center py-3">
+              <pagination-controls (pageChange)="currentPage = $event"></pagination-controls>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

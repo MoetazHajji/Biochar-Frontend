@@ -1,0 +1,81 @@
+<div class="container padding-top-one-hundred ">
+    <div class="row margin-bottom-twenty-px"  >
+        <div class="col-md-12">
+            <div class="card shadow h-100 py-2 card-border">
+                <div class="card-content">
+                    <div class="card-body">
+                        <div class="d-flex flex-row margin-left-ten-px margin-right-ten-px">
+                            <div class="d-flex flex-column" style="width: 100%;">
+                                <div class="d-flex flex-row margin-bottom-ten-px margin-top-ten-px">
+                                    <div class="align-self-center margin-right-ten-px"><i class="fa fa-table fa-2x text-gray-300 primary-light-blue-color" style="font-size: 50px;"></i></div>
+                                    <h3>List time off&nbsp;</h3>
+                                </div>
+                                <div class="d-flex flex-column margin-left-fifty-px margin-top-fifteen-px margin-bottum-fifteen-px">
+                                    <p style="color: rgb(73,80,87);">Time off for employees refers to a period of leave granted to them by their employer, allowing them to take a break from work for various reasons, such as rest, personal matters, or emergencies.<br></p>
+                                    
+                                    <div class="d-flex flex-row justify-content-between">
+                                        <div><button (click)="insert_TimeOff()"    class="btn btn-primary primary-bold-blue-backgroud-color" type="button"><i class="fa fa-plus"></i>&nbsp;insert</button>
+                                            <button  (click)=" deleteAll_TimeOff()" class="btn btn-primary btn-danger margin-left-ten-px" type="button"><i class="fa fa-minus"></i>&nbsp;delete all</button></div><div class="input-group mb-auto input-max-width" >
+
+                                         <input      type="text" class="form-control" placeholder="🏸 Recherche " aria-label="🏸 Recherche " 
+                                         [(ngModel)]="searchText" (keyup)="search()"
+                                         />
+                                        </div>                              
+                                    </div>
+                            </div>
+                            <div class="margin-left-fifty-px">
+                                <div class="table-responsive">
+                                    <table   class="table table table-bordered table-hover"  >
+                                        <thead>
+                                            <tr>
+                                                <th>id</th>
+                                                <th>Titre<br></th>
+                                                <th>Type</th>
+                                                <th>Start Date</th>
+                                                <th>Start Time</th>
+                                                <th>End Date</th>
+                                                <th>End Time</th>
+                                                <th>Action</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody *ngFor="let timeoff of timeoffList"    >
+                                            <tr>
+                                                <td>{{timeoff.id}}</td>
+                                                <td>{{timeoff.titre}}</td>
+                                                <td>{{timeoff.typeTimeOff}}<br></td>
+                                                <td>{{timeoff.startDate}}<br></td>
+                                                <td>{{timeoff.startTime}}<br></td>
+                                                <td>{{timeoff.endDate}}<br></td>
+                                                <td>{{timeoff.endTime}}<br></td>
+                                                <td>
+                                                    <div class="d-flex flex-row">
+                                                        <img  (click)="update_TimeOff(timeoff)" class="text-danger cursor-pointer" src="../../../assets/images/pencil-512.png" style="font-size: 30px;display: table;margin: auto; width:25px; height:25px" >
+                                      
+                                                        <img  (click)="delete_TimeOff(timeoff.id)" class="text-danger cursor-drop" src="../../../assets/images/trash-512.png" style="font-size: 30px;display: table;margin: auto; width:25px; height:25px" >
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+<app-timeoffmodal *ngIf="this.timeoffService.stateModalConfirm" 
+                 [modalConfirmState]="this.timeoffService.stateModalConfirm"
+                 type="interdit" title="Message" message="Do you want to delete all ?"
+(confirmModalNoEvent)="confirmModalNoEventDeleteAllTimeoff($event)" 
+(confirmModalYesEvent)="confirmModalYesEventDeleteAllTimeoff($event)"></app-timeoffmodal>
+
+
+<app-timeoffmodal *ngIf=" this.deleteRowTimeoffModal" 
+                 [modalConfirmState]="this.deleteRowTimeoffModal"
+                 type="interdit" title="Message" message="Do you want to delete Row ?"
+(confirmModalNoEvent)="confirmModalNoEventDeleteTimeoff($event)" 
+(confirmModalYesEvent)="confirmModalYesEventDeleteTimeoff($event)"></app-timeoffmodal>  

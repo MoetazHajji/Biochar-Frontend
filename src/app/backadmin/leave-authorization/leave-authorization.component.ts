@@ -20,6 +20,7 @@ export class LeaveAuthorizationComponent implements OnInit {
   leaveAuthDetailedList: LeaveAuth[] = [];
   leaveAuth: LeaveAuth = new LeaveAuth();
   selected_id!: number;
+  idLeaveToDelete!: any
   constructor(private _leaveAuthService: LeaveAuthService) { }
 
   ngOnInit(): void {

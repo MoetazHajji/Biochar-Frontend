@@ -1,0 +1,72 @@
+<div class="container padding-top-one-hundred">
+
+    <div class="row">
+        <div class="col custom-collumun">
+            <div class="card custom-card" style="margin-right: auto;margin-left: auto; min-width: 500px;">
+                <div class="card-body text-center">
+                    <div class="d-flex flex-row">
+                        <div  style="margin-top: auto;margin-bottom: auto;">
+                                <div class="dropdown" >
+                                    <i (click)="toggleMenu()" class="fa fa-gear " type="button" id="dropdownMenuButton" data-toggle="dropdown" 
+                                    style="font-size: 25px;margin-bottom: auto;color: #50b5ff;margin-right: 10px;"></i>
+                                    <div class="dropdown-menu show" aria-labelledby="dropdownMenuButton"  *ngIf="isMenuOpened">
+                                       <a class="dropdown-item disabled" href="#">Action</a>
+                                       <a class="dropdown-item active" href="#">Another action</a>
+                                       <a class="dropdown-item" href="#">Something else here</a>
+                                   </div>
+                                </div>
+                        </div><div class="input-group "   > 
+                        <input   style="border-radius: 30px;"  type="text" class="form-control" placeholder="🏸 Search accounts" aria-label="🏸 Search accounts"
+                        [(ngModel)]="searchText" (keyup)="search()"
+                        />
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+
+
+
+
+
+
+
+    <div class="row" >
+        <div class="col custom-collumun" *ngFor="let account of ListAccounts">
+            <div class="card custom-card" >
+                <div class="card-header border-bottom-0 custom-card-header">
+                    <div class="d-flex flex-row-reverse">
+                      
+                        <i (click)="onClickDetailed(account)" class="fa fa-search-plus cursor-pointer" style="font-size: 25px;color: #50b5ff;"></i>
+                        <i *ngIf="!(account.userDto.roles ==='Patient')" (click)="onClickDetailedHR(account)"  class="fa fa-briefcase cursor-pointer" style="font-size: 25px;color: #50b5ff;margin-right: 10px;"></i>
+                    </div>
+                </div>
+                <div class="card-body text-center">
+                    <div><img class="rounded-circle" [src]="account.photo" style="width: 50%;height: 500%;"></div>
+                    <h4 class="mb-2" style="margin-top: 5px;">{{account.firstname}} - {{account.lastname}}</h4>
+                    <h6 class="mb-2">{{account.userDto.roles}}</h6>
+                    <h6 class="mb-2">{{account.gender}}</h6>
+                    <h6 class="mb-2">{{account.phone}}</h6>
+                    <h6 class="mb-2">{{account.email}}</h6>
+                    <div class="d-flex justify-content-around">
+                        <button (click)="onClickMail(account)" class="btn btn-outline-primary rounded-pill shadow-sm" type="button">
+                            <i class="fa fa-envelope"></i> Mail</button>
+                        <button (click)="onClickChat(account)" class="btn btn-outline-primary rounded-pill shadow-sm" type="button">
+                            <i class="fa fa-comments-o"></i> Chat</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<app-details-account *ngIf="this.modaldetailedAccount" [modalState]="this.modaldetailedAccount"
+[detailedAccount]="this.accountService.selectAccount" 
+(detailedModalCloseEvent)="detailedAccountModalCloseEvent($event)"></app-details-account> 
+ <app-details-hr-account *ngIf="this.modaldetailedAccountHR" [modalState]="this.modaldetailedAccountHR"
+ [detailedHRAccount]="this.accountService.selectAccount"
+(detailedHRModalCloseEvent)="detailedHRAccountModalCloseEvent($event)"></app-details-hr-account> 

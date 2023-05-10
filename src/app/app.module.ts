@@ -1,14 +1,15 @@
 import { CommonModule } from '@angular/common';
-import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { HttpClientModule } from '@angular/common/http';
 import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core';
-
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { NgChartsModule } from 'ng2-charts';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { GuardUserBackService } from './backadmin/_services/_user/guard-user.service';
+import { GuardUserFrontService } from './backadmin/_services/_user/guard-user-front-service';
+import { LoginComponent } from './vitrine/login/login.component';
 
 
 
@@ -16,6 +17,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 @NgModule({
   declarations: [
     AppComponent
+    
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   imports: [
@@ -25,10 +27,9 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     BrowserAnimationsModule,
     CommonModule,
     ReactiveFormsModule,
-    HttpClientModule,
-    NgChartsModule,
+    HttpClientModule
   ],
-  providers: [],
+  providers: [GuardUserBackService,GuardUserFrontService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

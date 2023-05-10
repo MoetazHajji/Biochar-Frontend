@@ -1,4 +1,4 @@
-export enum Type_training{
+export enum Type_T{
     internal = 'internal',
     external = 'external'
 }

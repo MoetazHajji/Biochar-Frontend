@@ -1,42 +1,268 @@
 <div class="main-body">
-    
-
-    <div class="grid grid-cols-3 gap-4 overflow-y-auto h-screen p-3 ">
-        <div class="bg-gray-50 rounded-lg shadow-md p-4 h-[250px] hover:bg-blue-200 cursor-pointer" *ngFor="let t of trainings">
-        <div class="md:flex">
-          <div class="md:flex-shrink-0">
-            <img class="h-48 w-full object-cover md:w-48" src="http://localhost:9022/biochar/training/images/{{t.title}}/{{t.title}}.png" alt="Training Photo">
-          </div>
-          <div class="p-7">
-            <div class="uppercase tracking-wide text-sm text-indigo-500 font-semibold">{{t.title}}</div>
-            <div class="mt-2">
-              <div class=" text-sm py-1">
-                <span class="text-gray-500 ">{{t.start_date}} -> {{t.end_date}}</span>
-                
-              </div>
-              <div class="text-sm py-1">
-                <span class="text-gray-700 ">Time : </span>
-                <span class="text-gray-500 ">{{t.time}}</span>
-              </div>
-              <div class="text-gray-500 text-sm py-1">
-                <span class="text-gray-700 ">Location :</span>
-                <span class="text-gray-500 ">{{t.location}}</span>
-              </div>
-              <div class=" text-sm py-1">
-                <span class="text-gray-700 ">Subject : </span>
-                <span class="text-gray-500 ">{{t.subject}}</span>
-              </div>
-              <div class="text-sm py-1">
-                <span class="text-gray-700 ">Duration : </span>
-                <span class="text-gray-500 ">{{t.duration}}</span>
+  <div class="max-w-full mx-auto px-4 sm:px-6 lg:px-8 py-4 bg-white rounded-lg shadow-lg">
+    <div class="flex flex-col">
+      <div class="-my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
+        <div class="py-2 align-middle inline-block min-w-full sm:px-6 lg:px-8">
+          <div class="mb-4 flex flex-auto">
+            <label for="search" class="sr-only">Search</label>
+            <div class="relative">
+              <input type="text" name="search" id="search"
+                class="block w-full py-2 pr-10 placeholder-gray-400 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 border-gray-300 rounded-md"
+                placeholder="Search" [(ngModel)]="searchQuery" (keyup)="searchByTitle()">
+              <div class="absolute inset-y-0 right-0 pr-3 flex items-center pointer-events-none">
+                <i class="fa fa-search" aria-hidden="true"></i>
               </div>
             </div>
+            <div class="ml-auto">
+              <button type="button"
+                class="py-2.5 px-5 mr-2 mb-2 text-sm font-medium text-gray-900 focus:outline-none bg-gray-100 rounded-full border border-gray-200 hover:bg-gray-200 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-200"
+                routerLink="/admin/training/add">Add +</button>
+              <button type="button"
+                class="py-2.5 px-5 mr-2 mb-2 text-sm font-medium text-gray-900 focus:outline-none bg-gray-100 rounded-full border border-gray-200 hover:bg-gray-200 hover:text-red-700 focus:z-10 focus:ring-4 focus:ring-gray-200"
+                 *ngIf="priv" (click)="displayDeleteAllModal()">Delete All</button>
+            </div>
+          </div>
+          <div class="shadow overflow-hidden border-b border-gray-200 sm:rounded-lg">
+            <table class="min-w-full divide-y divide-gray-200">
+              <thead class="bg-gray-50">
+                <tr>
+                  <th
+                    class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider cursor-pointer">
+                    Image
+                  </th>
+                  <th
+                    class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider cursor-pointer">
+                    Training Title
+                  </th>
+                  <th
+                    class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider cursor-pointer"
+                    (click)="SortBy('date')">
+                    <div class="flex items-center">
+                      Start Date
+                      <svg xmlns="http://www.w3.org/2000/svg" class="w-3 h-3 ml-1" aria-hidden="true"
+                        fill="currentColor" viewBox="0 0 320 512">
+                        <path
+                          d="M27.66 224h264.7c24.6 0 36.89-29.78 19.54-47.12l-132.3-136.8c-5.406-5.406-12.47-8.107-19.53-8.107c-7.055 0-14.09 2.701-19.45 8.107L8.119 176.9C-9.229 194.2 3.055 224 27.66 224zM292.3 288H27.66c-24.6 0-36.89 29.77-19.54 47.12l132.5 136.8C145.9 477.3 152.1 480 160 480c7.053 0 14.12-2.703 19.53-8.109l132.3-136.8C329.2 317.8 316.9 288 292.3 288z" />
+                      </svg>
+                    </div>
+
+
+                  </th>
+                  <th
+                    class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider cursor-pointer">
+                    End Date
+                  </th>
+                  <th
+                    class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider cursor-pointer">
+                    Time
+                  </th>
+                  <th
+                    class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider cursor-pointer">
+                    Location
+                  </th>
+                  <th
+                    class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider cursor-pointer">
+                    Subject
+                  </th>
+                  <th
+                    class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider cursor-pointer"
+                    (click)="SortBy('duration')">
+                    <div class="flex items-center">
+                      Duration
+                      <svg xmlns="http://www.w3.org/2000/svg" class="w-3 h-3 ml-1" aria-hidden="true"
+                        fill="currentColor" viewBox="0 0 320 512">
+                        <path
+                          d="M27.66 224h264.7c24.6 0 36.89-29.78 19.54-47.12l-132.3-136.8c-5.406-5.406-12.47-8.107-19.53-8.107c-7.055 0-14.09 2.701-19.45 8.107L8.119 176.9C-9.229 194.2 3.055 224 27.66 224zM292.3 288H27.66c-24.6 0-36.89 29.77-19.54 47.12l132.5 136.8C145.9 477.3 152.1 480 160 480c7.053 0 14.12-2.703 19.53-8.109l132.3-136.8C329.2 317.8 316.9 288 292.3 288z" />
+                      </svg>
+                    </div>
+                  </th>
+                  <th
+                    class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider cursor-pointer">
+                    Type
+                  </th>
+                  <th
+                  class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider cursor-pointer">
+                  Certificate
+                </th>
+                <th
+                class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider cursor-pointer">
+                Quizzes
+              </th>
+              <th
+              class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider cursor-pointer">
+              Trainer
+            </th>
+                <!--
+                  <th
+                    class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider cursor-pointer">
+                    <div class="flex items-center">
+                      Reviews
+                      <svg xmlns="http://www.w3.org/2000/svg" class="w-3 h-3 ml-1" aria-hidden="true"
+                        fill="currentColor" viewBox="0 0 320 512">
+                        <path
+                          d="M27.66 224h264.7c24.6 0 36.89-29.78 19.54-47.12l-132.3-136.8c-5.406-5.406-12.47-8.107-19.53-8.107c-7.055 0-14.09 2.701-19.45 8.107L8.119 176.9C-9.229 194.2 3.055 224 27.66 224zM292.3 288H27.66c-24.6 0-36.89 29.77-19.54 47.12l132.5 136.8C145.9 477.3 152.1 480 160 480c7.053 0 14.12-2.703 19.53-8.109l132.3-136.8C329.2 317.8 316.9 288 292.3 288z" />
+                      </svg>
+                    </div>
+                  </th>
+                  
+                  <th
+                    class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider cursor-pointer">
+                    <div class="flex items-center">
+                      Rating
+                      <svg xmlns="http://www.w3.org/2000/svg" class="w-3 h-3 ml-1" aria-hidden="true"
+                        fill="currentColor" viewBox="0 0 320 512">
+                        <path
+                          d="M27.66 224h264.7c24.6 0 36.89-29.78 19.54-47.12l-132.3-136.8c-5.406-5.406-12.47-8.107-19.53-8.107c-7.055 0-14.09 2.701-19.45 8.107L8.119 176.9C-9.229 194.2 3.055 224 27.66 224zM292.3 288H27.66c-24.6 0-36.89 29.77-19.54 47.12l132.5 136.8C145.9 477.3 152.1 480 160 480c7.053 0 14.12-2.703 19.53-8.109l132.3-136.8C329.2 317.8 316.9 288 292.3 288z" />
+                      </svg>
+                    </div>
+                  </th>
+    -->
+                </tr>
+              </thead>
+              <tbody class="bg-gray-50 divide-y divide-gray-200 hover:bg-gray-100 cursor-pointer "
+                *ngFor="let t of trainings | paginate: { itemsPerPage: 10, currentPage: currentPage }">
+                <tr (click)="openModal(t)">
+                  <td class="border px-4 py-2"><img
+                      [src]="t.image!= null ? 'http://localhost:9022/biochar/training/images/'+t.title+'.png' : myImgUrl"
+                      class="w-16 h-10"></td>
+                  <td class="border px-4 py-2">{{t.title}}</td>
+                  <td class="border px-4 py-2">{{t.start_date}}</td>
+                  <td class="border px-4 py-2">{{t.end_date}}</td>
+                  <td class="border px-4 py-2">{{t.time}}</td>
+                  <td class="border px-4 py-2">{{t.location}}</td>
+                  <td class="border px-4 py-2">{{t.subject}}</td>
+                  <td class="border px-4 py-2">{{t.duration}}</td>
+                  <td class="border px-4 py-2">{{t.type}}</td>
+                  <td class="border px-4 py-2"> {{t.certificate}}</td>
+                  <td class="border px-4 py-2"> <span *ngFor="let q of t.quizes">{{q}}</span></td>
+                  <td class="border px-4 py-2"> {{t.trainer}}</td>
+                </tr>
+
+
+              </tbody>
+            </table>
+            <div class="text-center py-3">
+            <pagination-controls (pageChange)="currentPage = $event"></pagination-controls>
+          </div>
           </div>
         </div>
       </div>
-
-   
-      
+    </div>
+  </div>
 </div>
 
+<div class="fixed inset-0 z-50 flex items-center justify-center bg-gray-500 bg-opacity-50 " *ngIf="showModal">
+  <div
+    class="fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-3/5 h-3/5 bg-white rounded-lg shadow-lg overflow-y-auto ">
 
+    <!-- Modal header -->
+    <div class="bg-gray-100 p-4 ">
+      <div class="flex flex-auto">
+        <div class="ml-auto">
+          <button class="text-gray-400 hover:text-gray-500 focus:outline-none" (click)="closeModal()">
+            <svg class="h-6 w-6" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+              viewBox="0 0 24 24" stroke="currentColor">
+              <path d="M6 18L18 6M6 6l12 12"></path>
+            </svg>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Modal body -->
+    <!-- Modal content container -->
+    <div class="bg-white px-4 pt-5 pb-4 sm:p-6 sm:pb-4 ">
+
+      <!-- Close button -->
+      <div class="flex flex-auto gap-2">
+        <div class="w-1/2">
+          <img
+            [src]="displayed_training.image!= null ? 'http://localhost:9022/biochar/training/images/'+displayed_training.title+'.png' : myImgUrl"
+            class="w-full h-full object-contain">
+        </div>
+        <div class="w-1/2">
+          <!-- Training details -->
+          <h3 class="text-lg leading-6 font-medium text-gray-900 mb-4">{{ displayed_training.title }}</h3>
+          <p class="text-sm leading-5 text-gray-500 mb-2"><span class="font-bold">Subject:</span> {{
+            displayed_training.subject }}</p>
+          <p class="text-sm leading-5 text-gray-500 mb-2"><span class="font-bold">Location:</span> {{
+            displayed_training.location }}</p>
+          <p class="text-sm leading-5 text-gray-500 mb-2"><span class="font-bold">Start Date:</span> {{
+            displayed_training.start_date | date: 'MMM d, y' }}</p>
+          <p class="text-sm leading-5 text-gray-500 mb-2"><span class="font-bold">End Date:</span> {{
+            displayed_training.end_date | date: 'MMM d, y' }}</p>
+          <p class="text-sm leading-5 text-gray-500 mb-2"><span class="font-bold">Time:</span> {{
+            displayed_training.time }}</p>
+          <p class="text-sm leading-5 text-gray-500 mb-4"><span class="font-bold">Duration:</span> {{
+            displayed_training.duration }} hours</p>
+
+          <!-- Update button -->
+          <button type="button"
+            class="text-white bg-gradient-to-r from-blue-500 via-blue-500 to-blue-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2"
+            [routerLink]="['/admin/training/update',displayed_training.title]">Update Training</button>
+          <button type="button"
+            class="text-white bg-gradient-to-r from-red-500 via-red-500 to-red-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2"
+            (click)="displayDeleteModal()">Delete</button>
+            <button type="button"
+            class="text-white bg-gradient-to-r from-green-500 via-green-500 to-green-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2"
+            [routerLink]="['/admin/training/certificate/',displayed_training.title]">Certificate</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
+  <!-- Modal footer -->
+
+</div>
+<div class="fixed inset-0 z-50 flex items-center justify-center bg-gray-500 bg-opacity-50" *ngIf="deleteconfirmeModal">
+  <div class="relative bg-white rounded-lg shadow">
+
+    <div class="p-6 text-center">
+      <svg aria-hidden="true" class="mx-auto mb-4 text-red-500 w-14 h-14" fill="none" stroke="currentColor"
+      viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+         d="M6 18L18 6M6 6l12 12"></path>
+ </svg>
+ 
+      <h3 class="mb-5 text-lg font-normal text-gray-500 dark:text-gray-400">Are you sure ? </h3>
+      <button data-modal-hide="popup-modal" type="button"
+        class="text-white bg-red-400 hover:bg-red-500 focus:ring-4 focus:outline-none  font-medium rounded-lg text-sm inline-flex items-center px-5 py-2.5 text-center mr-2"
+        (click)="deletetraining()">
+        Yes
+      </button>
+      <button data-modal-hide="popup-modal" type="button"
+      class="text-white bg-gray-500  hover:bg-gray-600 focus:ring-4 focus:outline-none  font-medium rounded-lg text-sm inline-flex items-center px-5 py-2.5 text-center mr-2"
+      (click) = "closeDeleteModal()">
+      No
+    </button>
+    </div>
+  </div>
+</div>
+
+<div class="fixed inset-0 z-50 flex items-center justify-center bg-gray-500 bg-opacity-50" *ngIf="deleteAllModal">
+  <div class="relative bg-white rounded-lg shadow">
+
+    <div class="p-6 text-center">
+      <svg aria-hidden="true" class="mx-auto mb-4 text-red-500 w-14 h-14" fill="none" stroke="currentColor"
+      viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+         d="M6 18L18 6M6 6l12 12"></path>
+ </svg>
+ 
+      <h3 class="mb-5 text-lg font-normal text-gray-500 dark:text-gray-400">Are you sure ? </h3>
+      <button data-modal-hide="popup-modal" type="button"
+        class="text-white bg-red-400 hover:bg-red-500 focus:ring-4 focus:outline-none  font-medium rounded-lg text-sm inline-flex items-center px-5 py-2.5 text-center mr-2 disabled:bg-red-100"
+        (click)="deleteAll()" [disabled]="timerRunning">
+        <label *ngIf="timerRunning; else yesBlock">{{ timeRemaining }}s</label>
+        <ng-template #yesBlock><label>Yes</label></ng-template>
+      </button> 
+      <button data-modal-hide="popup-modal" type="button"
+      class="text-white bg-gray-500  hover:bg-gray-600 focus:ring-4 focus:outline-none  font-medium rounded-lg text-sm inline-flex items-center px-5 py-2.5 text-center mr-2"
+      (click) = "closeDeleteAllModal()">
+    <label>No</label>  
+    </button>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,101 @@
+@import url("https://fonts.googleapis.com/css?family=Open+Sans|Pinyon+Script|Rochester");
+.cursive {
+  font-family: "Pinyon Script", cursive;
+}
+.sans {
+  font-family: "Open Sans", sans-serif;
+}
+
+
+.underline {
+  @apply mb-[15px] p-[5px] border-b-[#777] border-b border-solid;
+}
+.margin-0 {
+  @apply m-0;
+}
+.padding-0 {
+  @apply p-0;
+}
+.pm-empty-space {
+  @apply h-10 w-full;
+}
+body {
+  @apply px-0 py-5;
+  background: #ccc;
+}
+.pm-certificate-container {
+  @apply relative w-[800px] h-[600px]  text-[#333] shadow-[0_0_5px_rgba(0,0,0,0.5)] p-[30px];
+  font-family: "Open Sans", sans-serif;
+}
+
+
+.pm-certificate-container .outer-border {
+  @apply w-[794px] h-[594px] absolute ml-[-397px] mt-[-297px] border-2 border-solid border-white left-2/4 top-2/4;
+}
+.pm-certificate-container .inner-border {
+  @apply w-[730px] h-[530px] absolute ml-[-365px] mt-[-265px] border-2 border-solid border-white left-2/4 top-2/4;
+}
+.pm-certificate-container .pm-certificate-border {
+  @apply relative w-[720px] h-[520px] border bg-white bg-none ml-[-360px] mt-[-260px] p-0 border-solid border-[#E1E5F0] left-2/4 top-2/4;
+}
+.pm-certificate-container .pm-certificate-border .pm-certificate-block {
+  @apply w-[650px] h-[200px] relative ml-[-325px] mt-0 left-2/4 top-[70px];
+}
+.pm-certificate-container .pm-certificate-border .pm-certificate-header {
+  @apply mb-2.5;
+}
+.pm-certificate-container .pm-certificate-border .pm-certificate-title {
+  @apply relative top-10;
+}
+.pm-certificate-container .pm-certificate-border .pm-certificate-title h2 {
+  @apply text-[34px];
+  
+}
+.pm-certificate-container .pm-certificate-border .pm-certificate-body {
+  @apply p-5;
+}
+.pm-certificate-container
+  .pm-certificate-border
+  .pm-certificate-body
+  .pm-name-text {
+  @apply text-xl;
+}
+.pm-certificate-container .pm-certificate-border .pm-earned {
+  @apply mt-[15px] mb-5 mx-0;
+}
+.pm-certificate-container .pm-certificate-border .pm-earned .pm-earned-text {
+  @apply text-xl;
+}
+.pm-certificate-container .pm-certificate-border .pm-earned .pm-credits-text {
+  @apply text-[15px];
+}
+.pm-certificate-container
+  .pm-certificate-border
+  .pm-course-title
+  .pm-earned-text {
+  @apply text-xl;
+}
+.pm-certificate-container
+  .pm-certificate-border
+  .pm-course-title
+  .pm-credits-text {
+  @apply text-[15px];
+}
+.pm-certificate-container .pm-certificate-border .pm-certified {
+  @apply text-xs;
+}
+.pm-certificate-container .pm-certificate-border .pm-certified .underline {
+  @apply mb-[5px];
+}
+.pm-certificate-container .pm-certificate-border .pm-certificate-footer {
+  @apply w-[650px] h-[100px] relative ml-[-325px] bottom-[-105px] left-2/4;
+}
+
+.main-body {
+  @apply relative left-[300px] top-[100px] w-[1510px];
+}
+
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;

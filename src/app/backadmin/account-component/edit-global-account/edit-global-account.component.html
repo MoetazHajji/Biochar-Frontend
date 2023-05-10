@@ -1,0 +1,369 @@
+<div class="container padding-top-one-hundred">
+        <div class="row">
+        <div class="col-lg-12">
+           <div class="iq-card" style ="border-radius: 50px;">
+              <div class="iq-card-body p-0">
+                 <div class="iq-edit-list">
+                    <ul class="iq-edit-profile d-flex nav nav-pills">
+                       <li class="col-md-3 p-0">
+                          <a class="nav-link active" (click)="func_PersonalInformation()" data-toggle="pill" href="#personal-information" style ="border-bottom-left-radius: 50px;border-top-left-radius: 50px;">
+                          Personal Information
+                          </a>
+                       </li>
+                       <li class="col-md-3 p-0">
+                          <a class="nav-link" (click)="func_Change_Password()" data-toggle="pill" href="#chang-pwd" >
+                          Change Password
+                          </a>
+                       </li>
+                       <li class="col-md-3 p-0">
+                          <a class="nav-link" (click)="func_Email_and_SMS()" data-toggle="pill" href="#emailandsms">
+                          Email and SMS
+                          </a>
+                       </li>
+                       <li class="col-md-3 p-0">
+                          <a class="nav-link" (click)="func_ManageContact()" data-toggle="pill" href="#manage-contact" style ="border-bottom-right-radius: 50px;border-top-right-radius: 50px;">
+                          Manage Contact
+                          </a>
+                       </li>
+                    </ul>
+                 </div>
+              </div>
+           </div>
+        </div>
+    </div>
+    <div class="row" [ngClass]="( stateCard_PersonalInformation ? 'visible':'invisible' )" style="margin-bottom: 20px;">
+        <div class="col-md-12">
+            <div class="card shadow h-100 py-2 card-border">
+                <div class="card-content">
+                    <div class="card-body">
+                        <div class="d-flex flex-row margin-right-ten-px margin-left-ten-px">
+                            <div class="d-flex flex-column" style="width: 100%;">
+                                <div class="d-flex flex-row margin-top-ten-px margin-bottom-ten-px">
+                                    <div class="align-self-center margin-right-ten-px"><i class="fa fa-edit fa-2x text-gray-300 primary-light-blue-color" style="font-size: 50px"></i></div>
+                                    <h3>Account<br></h3>
+                                </div>
+                                <div class="d-flex justify-content-center">
+                                    <img class="rounded-circle" [src]="account.photo" style="width: 20%;">
+                                    <i (click)="onClickUpdate_Image()" class="fa fa-pencil primary-light-blue-color cursor-pointer" style="font-size: 30px;"></i>
+                                </div>
+                                <div class="d-flex flex-row margin-left-fifty-px">
+                                    <p style="color: rgb(73,80,87);font-size: 18px; font-family: TimesNewRoman;"><span style="font-size: 30px;font-family: TimesNewRoman;">E</span>diting your profile or account allows you to update your personal information, such as your name, email address, or profile picture. This can
+                                        be useful if your details change or if you want to keep your account up to date. It's important to ensure that the information you provide is accurate, as it can affect your user experience and the functionality
+                                        of the platform you're using. By keeping your profile or account information up to date, you can ensure that you have the best experience possible.</p>
+                                </div>
+                                <div class="d-flex flex-column margin-left-fifty-px">
+                                    <form #personalInformationForm = "ngForm">
+                                    <div class="d-flex flex-column">
+                                        <div  class="group-input" style="width: 100%;">
+                                            <p style="font: 40px TimesNewRoman;color: rgb(73,80,87);font-size: 24px;">Civil Status<br></p>
+                                            <div class="d-flex flex-row justify-content-around">
+                                                <div class="d-flex flex-column margin-left-ten-px margin-right-ten-px" style="width: 100%;">
+                                                    <div class="d-flex flex-row row-input justify-content-between">
+                                                        <p class="paragraph-input">Firstname :<br></p>
+                                                        <input type="text" class="form-control input-design"
+                                                        [class]="(firstname.invalid && firstname.touched) ? 'is-invalid' :  ''" 
+                                                         name="firstname" [(ngModel)]="account.firstname" #firstname="ngModel"  required>
+                                                    </div>
+                                                      <div class="d-flex flex-row justify-content-center margin-bottom-ten-px"  
+                                                        *ngIf="firstname.invalid && firstname.touched" >
+                                                         <div  style="color:#DC3545;" *ngIf="firstname.errors?.['required']"> Firstname is required  </div> 
+                                                      </div> 
+                                                    <div class="d-flex flex-row row-input">
+                                                        <p style="font: 40px TimesNewRoman;color: rgb(73,80,87);font-size: 18px;margin-top: auto;margin-bottom: auto;margin-right: 10px;">Sexe :<br></p>
+                                                        <p style="font: 40px TimesNewRoman;color: rgb(73,80,87);font-size: 18px;margin-top: auto;margin-bottom: auto;margin-right: 5px;margin-left: 10px;">Male<br></p>
+                                                        <input (click)="onCheckRadioGenderOptionMale()"[checked] = "stateRadioGenderOption === false"  type="radio" style="margin-top: auto;margin-bottom: auto;margin-left: 5px;"  >
+                                                        
+                                                        <p style="font: 40px TimesNewRoman;color: rgb(73,80,87);font-size: 18px;margin-top: auto;margin-bottom: auto;margin-right: 5px;margin-left: 10px;">Female<br></p>
+                                                        <input (click)="onCheckRadioGenderOptionFemale()"[checked] = "stateRadioGenderOption === true"   type="radio" style="margin-top: auto;margin-bottom: auto;margin-left: 5px;" >
+                                                      
+                                                    </div>
+                                                    <div class="d-flex flex-row justify-content-center margin-bottom-ten-px"  
+                                                    *ngIf="( account.gender !=maleOption ) &&( account.gender !=femaleOption )  " >
+                                                        <div  style="color:#DC3545;" > Gender is required  </div> 
+                                                    </div> 
+                                                    <div class="d-flex flex-row row-input justify-content-between">
+                                                        <p class="paragraph-input">Cin :<br></p>
+                                                        <input type="text" class="form-control input-design"
+                                                        [class]="(cin.invalid && cin.touched) ? 'is-invalid' :  ''" 
+                                                        name="cin" [(ngModel)]="account.cin" #cin="ngModel" 
+                                                        minlength=8 maxlength=8 pattern="^[0-9]{1,8}$" required >
+                                                    </div>
+                                                    <div class="d-flex flex-row justify-content-center margin-bottom-ten-px"  
+                                                    *ngIf="cin.invalid && cin.touched" >
+                                                        <div  style="color:#DC3545;" *ngIf="cin.errors?.['required']"> Cin is required  </div>
+                                                        <div style="color:#DC3545;" *ngIf="cin.errors?.['minlength']"> Cin minlength 8 chiffres</div> 
+                                                        <div style="color:#DC3545;" *ngIf="cin.errors?.['maxlength']"> Cin maxlength 8 chiffres</div> 
+                                                        <div style="color:#DC3545;" *ngIf="cin.errors?.['pattern']"> Cin pattern Key 0--9</div> 
+                                                    </div> 
+                                                </div>
+                                                <div class="d-flex flex-column margin-left-ten-px margin-right-ten-px" style="width: 100%;">
+                                                    <div class="d-flex flex-row row-input justify-content-between">
+                                                        <p class="paragraph-input">Lastname&nbsp;:<br></p>
+                                                        <input type="text" class="form-control input-design"
+                                                        [class]="(lastname.invalid && lastname.touched) ? 'is-invalid' :  ''" 
+                                                        name="lastname" [(ngModel)]="account.lastname"   #lastname="ngModel"  required  >
+                                                    </div>
+                                                    <div class="d-flex flex-row justify-content-center margin-bottom-ten-px"  
+                                                    *ngIf="lastname.invalid && lastname.touched" >
+                                                        <div  style="color:#DC3545;" *ngIf="lastname.errors?.['required']"> Lastname is required  </div> 
+                                                    </div> 
+                                                    <div class="d-flex flex-row row-input justify-content-between">
+                                                        <p class="paragraph-input">Date of Birth :<br></p>
+                                                        <input class="form-control input-design" type="date"
+                                                        [class]="(dateOfBirth.invalid && dateOfBirth.touched) ? 'is-invalid' :  ''" 
+                                                        name="dateOfBirth" [(ngModel)]="account.dateOfBirth" #dateOfBirth="ngModel"  required
+                                                        >
+                                                    </div>
+                                                    <div class="d-flex flex-row justify-content-center margin-bottom-ten-px"  
+                                                    *ngIf="dateOfBirth.invalid && dateOfBirth.touched" >
+                                                        <div  style="color:#DC3545;" *ngIf="dateOfBirth.errors?.['required']"> Date of Birth is required  </div> 
+                                                    </div> 
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="group-input"  style="width: 100%;">
+                                            <p style="font: 40px TimesNewRoman;color: rgb(73,80,87);font-size: 24px;">Current place of residence<br></p>
+                                            <div class="d-flex flex-row justify-content-around">
+                                                <div class="d-flex flex-column margin-left-ten-px margin-right-ten-px" style="width: 100%;">
+                                                    <div class="d-flex flex-row row-input justify-content-between">
+                                                        <p style="font: 40px TimesNewRoman;color: rgb(73,80,87);font-size: 18px;margin-top: auto;margin-bottom: auto;margin-right: 5px;">State :<br></p>
+                                                        <select class="form-control input-design"
+                                                        [class]="(state.invalid && state.touched) ? 'is-invalid' :  ''"
+                                                        name="state" [(ngModel)]="account.state" #state="ngModel"  
+                                                         required 
+                                                        >
+                                                            <optgroup label="This is a group"> 
+                                                                <option *ngFor="let optionStateRegion of accountService.listStateRegion" [value]="optionStateRegion.value" [selected] = "optionStateRegion.value === account.state">{{ optionStateRegion.label }}</option> 
+                                                            </optgroup>
+                                                        </select>
+                                                    </div>
+                                                    <div class="d-flex flex-row justify-content-center margin-bottom-ten-px"  
+                                                    *ngIf="state.invalid && state.touched" >
+                                                        <div  style="color:#DC3545;" *ngIf="state.errors?.['required']"> State is required  </div> 
+                                                    </div> 
+                                                    <div  class="d-flex flex-row row-input justify-content-between">
+                                                        <p style="font: 40px TimesNewRoman;color: rgb(73,80,87);font-size: 18px;margin-top: auto;margin-bottom: auto;margin-right: 5px;min-width: 90px;">Address :<br></p>
+                                                        <textarea class="form-control input-design"
+                                                        [class]="(adresse.invalid && adresse.touched) ? 'is-invalid' :  ''" 
+                                                         name="adresse" [(ngModel)]="account.adresse" #adresse="ngModel"  required
+                                                        ></textarea>
+                                                    </div>
+                                                    <div class="d-flex flex-row justify-content-center margin-bottom-ten-px"  
+                                                    *ngIf="adresse.invalid && adresse.touched" >
+                                                        <div  style="color:#DC3545;" *ngIf="adresse.errors?.['required']"> Address is required  </div> 
+                                                    </div> 
+                                            </div>
+                                            <div class="d-flex flex-column margin-left-ten-px margin-right-ten-px" style="width: 100%;">
+                                                <div class="d-flex flex-row row-input justify-content-between">
+                                                    <p style="font: 40px TimesNewRoman;color: rgb(73,80,87);font-size: 18px;margin-top: auto;margin-bottom: auto;margin-right: 5px;">City :<br></p>
+                                                    <input type="text" class="form-control input-design"
+                                                    [class]="(city.invalid && city.touched) ? 'is-invalid' :  ''" 
+                                                    name="city" [(ngModel)]="account.city" #city="ngModel" minlength=3 required   >
+                                                </div>
+                                                <div class="d-flex flex-row justify-content-center margin-bottom-ten-px"  
+                                                *ngIf="city.invalid && city.touched" >
+                                                    <div  style="color:#DC3545;" *ngIf="city.errors?.['required']"> City is required  </div>
+                                                    <div style="color:#DC3545;" *ngIf="city.errors?.['minlength']"> City min length 3 chiffres</div>  
+                                                </div> 
+                                                <div class="d-flex flex-row row-input justify-content-between">
+                                                    <p style="font: 40px TimesNewRoman;color: rgb(73,80,87);font-size: 18px;margin-top: auto;margin-bottom: auto;margin-right: 5px;">Zip Code :<br></p>
+                                                    <input type="text" class="form-control input-design"
+                                                    [class]="(zip_code.invalid && zip_code.touched) ? 'is-invalid' :  ''" 
+                                                   name="zip_code" [(ngModel)]="account.zip_code" #zip_code="ngModel" minlength=4 maxlength=4 pattern="^[0-9]{1,4}$" required>
+                                                </div>
+                                                <div class="d-flex flex-row justify-content-center margin-bottom-ten-px"  
+                                                *ngIf="zip_code.invalid && zip_code.touched" >
+                                                    <div  style="color:#DC3545;" *ngIf="zip_code.errors?.['required']"> Zip code is required  </div>
+                                                    <div style="color:#DC3545;" *ngIf="zip_code.errors?.['minlength']"> Zip code minlength 4 chiffres</div> 
+                                                    <div style="color:#DC3545;" *ngIf="zip_code.errors?.['maxlength']"> Zip code maxlength 4 chiffres</div> 
+                                                    <div style="color:#DC3545;" *ngIf="zip_code.errors?.['pattern']"> Zip code pattern Key 0--9</div> 
+                                                </div> 
+                                            </div>
+                                        </div>
+                                    </div>
+                            </div>
+                            <div class="d-flex flex-row d-flex justify-content-between" style="margin-top: 20px;margin-bottom: 10px;">
+                                <div class="d-flex flex-row padding-left-five-px padding-right-five-px"><i (click)="onClickBack()" class="fa fa-sign-out icon-return cursor-pointer"></i><span class="span-return">Back</span></div>
+                                <button [disabled]="personalInformationForm.invalid" (click)="onClickUpdate_PersonalInformation()"  class="btn btn-primary btn btn-info" id="arrets-machines-interruptions-departements-button-insert" type="button"
+                                    style="font-family: TimesNewRoman;font-size: 20px;">update &nbsp;<i class="fa fa-plus"></i></button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+<div [ngClass]="( stateCard_Change_Password ? 'visible':'invisible' )" class="row" style="margin-bottom: 20px;">
+<div class="col-md-12">
+    <div class="card shadow h-100 py-2 card-border">
+        <div class="card-content">
+            <div class="card-body">
+                <div class="d-flex flex-row margin-right-ten-px margin-left-ten-px">
+                    <div class="d-flex flex-column" style="width: 100%;">
+                        <div class="d-flex flex-row margin-top-ten-px margin-bottom-ten-px">
+                            <div class="align-self-center margin-right-ten-px"><i class="fa fa-user-secret fa-2x text-gray-300 primary-light-blue-color" style="font-size: 50px"></i></div>
+                            <h3>Change Password</h3>
+                        </div>
+                        <div class="d-flex flex-row margin-left-fifty-px">
+                            <p style="color: rgb(73,80,87);font-size: 18px; font-family: TimesNewRoman;"><span style="font-size: 30px;font-family: TimesNewRoman;">C</span>hange password is a feature that allows users to update their current password to a new one. This feature is usually available within the user account
+                                settings. On the other hand, forget password is a feature that allows users to recover their lost password. This feature typically requires the user to provide their email or phone number associated with their account
+                                and follow the steps to reset their password..</p>
+                        </div>
+                        <div class="d-flex flex-column margin-left-fifty-px">
+                            <form #changePasswordForm = "ngForm">
+                            <div class="d-flex flex-column">
+                                <div class="group-input" style="width: 100%;">
+                                    <p style="font: 40px TimesNewRoman;color: rgb(73,80,87);font-size: 24px;">Password</p>
+                                    <div class="d-flex flex-row justify-content-around">
+                                        <div class="d-flex flex-column margin-left-ten-px margin-right-ten-px" style="width: 100%;">
+                                            <div class="d-flex flex-row row-input justify-content-between">
+                                                <p style="font: 40px TimesNewRoman;color: rgb(73,80,87);font-size: 18px;margin-top: auto;margin-bottom: auto;margin-right: 5px;">Current Password:&nbsp;:<br></p>
+                                                <input type="password" class="form-control input-design"
+                                                [class]="(current_password.invalid && current_password.touched) ? 'is-invalid' : !current_password.touched ? '' : 'is-valid'" 
+                                                name="current_password" [(ngModel)]="currentPassword" #current_password="ngModel" required >
+                                            </div>
+                                            <div class="d-flex flex-row row-input justify-content-end">
+                                             
+                                                <p (click)="onClickForgotPassword()"   class="float-right cursor-pointer primary-light-blue-color" style="font: 40px TimesNewRoman;font-size: 18px;margin-top: auto;margin-bottom: auto;margin-right: 5px;">Forgot password?</p>
+                                            </div>
+                                            <div class="d-flex flex-row justify-content-center margin-bottom-ten-px"  
+                                            *ngIf="current_password.invalid && current_password.touched" >
+                                                <div  style="color:#DC3545;" *ngIf="current_password.errors?.['required']"> Verify password is required  </div> 
+                                            </div> 
+                                        </div>
+                                        <div class="d-flex flex-column margin-left-ten-px margin-right-ten-px" style="width: 100%;">
+                                            <div class="d-flex flex-row row-input justify-content-between">
+                                                <p style="font: 40px TimesNewRoman;color: rgb(73,80,87);font-size: 18px;margin-top: auto;margin-bottom: auto;margin-right: 5px;">New Password:<br></p>
+                                                <input type="password" class="form-control input-design" 
+                                                [class]="(new_password.invalid && new_password.touched) ? 'is-invalid' : !new_password.touched ? '' :  'is-valid'" 
+                                                name="new_password" [(ngModel)]="newPassword" #new_password="ngModel" 
+                                                pattern="^[a-z0-9@]{8,}$"  required  (keyup)="validator()" >
+                                            </div>
+                                            <div class="d-flex flex-row justify-content-center margin-bottom-ten-px"  
+                                            *ngIf="new_password.invalid && new_password.touched" >
+                                                <div  style="color:#DC3545;" *ngIf="new_password.errors?.['required']"> New password is required  </div>
+                                                <div style="color:#DC3545;" *ngIf="new_password.errors?.['pattern']"> New password error pattern</div>  
+                                            </div> 
+                                            <div class="d-flex flex-row row-input justify-content-between">
+                                                <p style="font: 40px TimesNewRoman;color: rgb(73,80,87);font-size: 18px;margin-top: auto;margin-bottom: auto;margin-right: 5px;">Verify Password:<br></p>
+                                                <input type="password" class="form-control input-design"
+                                                [class]="(verify_password.invalid && verify_password.touched) ? 'is-invalid' : !verify_password.touched ? '' :  'is-valid'" 
+                                                name="verify_password" [(ngModel)]="verifyPassword" #verify_password="ngModel"
+                                                pattern="^[a-z0-9@]{8,}$"  required  (keyup)="validator()" >
+                                            </div>
+                                            <div class="d-flex flex-row justify-content-center margin-bottom-ten-px"  
+                                            *ngIf="verify_password.invalid && verify_password.touched" >
+                                                <div  style="color:#DC3545;" *ngIf="verify_password.errors?.['required']"> Verify password is required  </div>
+                                                <div style="color:#DC3545;" *ngIf="verify_password.errors?.['pattern']"> Verify password error pattern</div>  
+                                            </div> 
+                                            <div class="d-flex flex-row justify-content-center margin-bottom-ten-px"  
+                                            *ngIf="validateSamePassword" >
+                                             <div  style="color:#DC3545;" > New Password and  Verify Password should be the same !  </div> 
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="d-flex flex-row d-flex justify-content-between" style="margin-top: 20px;margin-bottom: 10px;">
+                                <div class="d-flex flex-row padding-left-five-px padding-right-five-px"><i (click)="onClickBack()" class="fa fa-sign-out icon-return cursor-pointer"></i><span class="span-return">Back</span></div>
+                                <button  [disabled]="changePasswordForm.invalid || validateSamePassword" (click)="onClickUpdate_ChangePassword()" class="btn btn-primary btn btn-info" id="arrets-machines-interruptions-departements-button-insert" type="button"
+                                    style="font-family: TimesNewRoman;font-size: 20px;">update &nbsp;<i class="fa fa-plus"></i></button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+<div [ngClass]="( stateCard_ManageContact ? 'visible':'invisible' )" class="row" style="margin-bottom: 20px;">
+<div class="col-md-12">
+    <div class="card shadow h-100 py-2 card-border">
+        <div class="card-content">
+            <div class="card-body">
+                <div class="d-flex flex-row margin-right-ten-px margin-left-ten-px">
+                    <div class="d-flex flex-column" style="width: 100%;">
+                        <div class="d-flex flex-row margin-top-ten-px margin-bottom-ten-px">
+                            <div class="align-self-center margin-right-ten-px"><i class="fa fa-commenting-o fa-2x text-gray-300 primary-light-blue-color" style="font-size: 50px"></i></div>
+                            <h3>Manage Contact<br></h3>
+                        </div>
+                        <div class="d-flex flex-row margin-left-fifty-px">
+                            <p style="color: rgb(73,80,87);font-size: 18px; font-family: TimesNewRoman;"><span style="font-size: 30px;font-family: TimesNewRoman;">M</span>anaging contact information like email addresses and phone numbers is crucial for individuals and organizations. It is essential to keep this information
+                                up-to-date and accurate to ensure seamless communication. Users should have the ability to easily manage their contact information, including adding, editing, and deleting their email addresses and phone numbers.
+                                This ensures that the correct contact information is readily available and can help prevent any communication issues..</p>
+                        </div>
+                        <div class="d-flex flex-column margin-left-fifty-px">
+                            <form #manageContactForm = "ngForm">
+                            <div class="d-flex flex-column">
+                                <div class="group-input"    style="width: 100%;">
+                                    <p style="font: 40px TimesNewRoman;color: rgb(73,80,87);font-size: 24px;">Contact</p>
+                                    <div class="d-flex flex-row justify-content-around">
+                                        <div class="d-flex flex-column margin-left-ten-px margin-right-ten-px" style="width: 100%;">
+                                            <div class="d-flex flex-row row-input justify-content-between">
+                                                <p style="font: 40px TimesNewRoman;color: rgb(73,80,87);font-size: 18px;margin-top: auto;margin-bottom: auto;margin-right: 5px;">Contact Number :<br></p>
+                                                <input type="tel" class="form-control input-design"
+                                                [class]="(phone.invalid && phone.touched) ? 'is-invalid' :  ''" 
+                                                name="phone" [(ngModel)]="account.phone" #phone="ngModel" minlength=8 maxlength=8 pattern="^[0-9]{1,16}$" required
+                                                >
+                                            </div>
+                                            <div class="d-flex flex-row justify-content-center margin-bottom-ten-px"  
+                                            *ngIf="phone.invalid && phone.touched" >
+                                                <div  style="color:#DC3545;" *ngIf="phone.errors?.['required']"> Phone is required  </div>
+                                                <div style="color:#DC3545;" *ngIf="phone.errors?.['minlength']"> Phone minlength 8 chiffres</div> 
+                                                <div style="color:#DC3545;" *ngIf="phone.errors?.['maxlength']"> Phone maxlength 8 chiffres</div> 
+                                                <div style="color:#DC3545;" *ngIf="phone.errors?.['pattern']"> Phone pattern Key 0--9</div> 
+                                            </div> 
+                                        </div>
+                                        <div class="d-flex flex-column margin-left-ten-px margin-right-ten-px" style="width: 100%;">
+                                            <div class="d-flex flex-row row-input justify-content-between">
+                                                <p style="font: 40px TimesNewRoman;color: rgb(73,80,87);font-size: 18px;margin-top: auto;margin-bottom: auto;margin-right: 5px;">Email :<br></p>
+                                                <input type="email" class="form-control input-design"
+                                                [class]="(email.invalid && email.touched) ? 'is-invalid' :  ''" 
+                                                name="email" [(ngModel)]="account.email" #email="ngModel" pattern="^[a-z0-9]+@+[a-z0-9]+\.+[a-z]{3}$" required>
+                                            </div>
+                                            <div class="d-flex flex-row justify-content-center margin-bottom-ten-px"  
+                                            *ngIf="email.invalid && email.touched" >
+                                                <div  style="color:#DC3545;" *ngIf="email.errors?.['required']"> email is required  </div> 
+                                                <div style="color:#DC3545;" *ngIf="email.errors?.['pattern']"> email pattern Key [a-z0-9] + @ +  [a-z0-9] + 3 x char </div> 
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="d-flex flex-row d-flex justify-content-between" style="margin-top: 20px;margin-bottom: 10px;">
+                                <div class="d-flex flex-row padding-left-five-px padding-right-five-px"><i  (click)="onClickBack()" class="fa fa-sign-out icon-return cursor-pointer"></i><span class="span-return">Back</span></div>
+                                <button [disabled]="manageContactForm.invalid" (click)="onClickUpdate_ManageContact()"  class="btn btn-primary btn btn-info" id="arrets-machines-interruptions-departements-button-insert" type="button"
+                                    style="font-family: TimesNewRoman;font-size: 20px;">update &nbsp;<i class="fa fa-plus"></i></button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+</div>
+
+<app-upload-modal-img-account *ngIf="this.modalUploadImgAccount" 
+[modalState]="this.modalUploadImgAccount" [idAccount]="this.account.id" 
+(uploadImgAccountModalCloseEvent)="uploadImgAccountModalCloseEvent($event)"
+(uploadImgAccountModal_OnUploadSuccessEvent)="uploadImgAccountModal_OnUploadSuccessEvent($event)">
+</app-upload-modal-img-account> 
+
+<app-forgot-password-authentication *ngIf=" this.stateModalForgetPasswod" 
+[modalConfirmState]="this.stateModalForgetPasswod" 
+(ModalCloseEvent)="closeEventstateModalForgetPasswod($event)" 
+(ModalSendEvent)="SendEventModalForgetPasswod($event)" ></app-forgot-password-authentication>
+
+<app-message-box-authentication *ngIf=" this.stateMsgBoxAuth" 
+[modalConfirmState]="this.stateMsgBoxAuth"
+type={{this.authResponse.status}} 
+title="Message" message={{this.authResponse.message}}
+(ModalCloseEvent)="closeEventstateMsgBoxAuth($event)" ></app-message-box-authentication> 

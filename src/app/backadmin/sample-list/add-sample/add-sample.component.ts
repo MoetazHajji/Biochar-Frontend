@@ -26,7 +26,7 @@ export class AddSampleComponent implements OnInit {
   submitted = false;
   competenceList: Sample[]=[]
   idMiss : any
- id: number=2;
+ id: number=3;
   
  // myValues: Sample[] = [];
   
@@ -41,7 +41,13 @@ export class AddSampleComponent implements OnInit {
 
   addProduct() {
     this._sampleService.addProduct(this.sample,this.id).subscribe((res:any) => {
-      error : (err:any) => console.log(err) }) 
+      error : (err:any) => console.log(err)
+      this.refresh()
+    }) 
+  }
+
+  refresh(): void {
+    window.location.reload();
   }
  
   /*selectCompetence(sample: any) {      

@@ -26,6 +26,23 @@ import { EditProductComponent } from './product-list/edit-product/edit-product.c
 import { DetailsProductComponent } from './product-list/details-product/details-product.component';
 import { LoginComponent } from './login/login.component';
 import { StockComponent } from './stock/stock.component';
+import { ListTimeoffComponent } from './timeoff-component/list-timeoff/list-timeoff.component';
+import { AddTimeoffComponent } from './timeoff-component/add-timeoff/add-timeoff.component';
+import { EditTimeoffComponent } from './timeoff-component/edit-timeoff/edit-timeoff.component';
+import { DetailsTimeoffComponent } from './timeoff-component/details-timeoff/details-timeoff.component';
+import { TimeoffmodalComponent } from './timeoff-component/timeoffmodal/timeoffmodal.component';
+import { ListAccountComponent } from './account-component/list-account/list-account.component';
+import { DetailsAccountComponent } from './account-component/details-account/details-account.component';
+import { DetailsHrAccountComponent } from './account-component/details-hr-account/details-hr-account.component';
+import { EditGlobalAccountComponent } from './account-component/edit-global-account/edit-global-account.component';
+import { UploadModalImgAccountComponent } from './account-component/upload-modal-img-account/upload-modal-img-account.component';
+import { AddAppointmentComponent } from './appointment-component/add-appointment/add-appointment.component';
+import { ListAppointmentComponent } from './appointment-component/list-appointment/list-appointment.component';
+import { SignInAuthenticationComponent } from './authentication-component/sign-in-authentication/sign-in-authentication.component';
+import { SignUpAuthenticationComponent } from './authentication-component/sign-up-authentication/sign-up-authentication.component';
+import { MessageBoxAuthenticationComponent } from './authentication-component/message-box-authentication/message-box-authentication.component';
+import { ForgotPasswordAuthenticationComponent } from './authentication-component/forgot-password-authentication/forgot-password-authentication.component';
+import { EditForgotPasswordAuthenticationComponent } from './authentication-component/edit-forgot-password-authentication/edit-forgot-password-authentication.component';
 import { SampleListComponent } from './sample-list/sample-list.component';
 import { AddSampleComponent } from './sample-list/add-sample/add-sample.component';
 import { UpdateSampleComponent } from './sample-list/update-sample/update-sample.component';
@@ -41,8 +58,15 @@ import { TrainingsListComponent } from './trainings-list/trainings-list.componen
 import { AddStockComponent } from './stock/add-stock/add-stock.component';
 import { EditStockComponent } from './stock/edit-stock/edit-stock.component';
 import { DetailsStockComponent } from './stock/details-stock/details-stock.component';
+import { OrderComponent } from './order/order.component';
+import { PanierComponent } from './order/panier/panier.component';
+import { DetailsOrderComponent } from './order/details-order/details-order.component';
+import { OfferComponent } from './offer/offer.component';
 import { AddTestresultComponent } from './testresult-list/add-testresult/add-testresult.component';
 import { PdfextractorComponent } from './testresult-list/pdfextractor/pdfextractor.component';
+import { MidcalcardListComponent } from './midcalcard-list/midcalcard-list.component';
+import { AddMedicalcardComponent } from './midcalcard-list/add-medicalcard/add-medicalcard.component';
+import { UpdateMedicalcardComponent } from './midcalcard-list/update-medicalcard/update-medicalcard.component';
 import { LeaveAuthorizationComponent } from './leave-authorization/leave-authorization.component';
 import { AddLeaveAuthComponent } from './leave-authorization/add-leave-auth/add-leave-auth.component';
 import { DetailsLeaveAuthComponent } from './leave-authorization/details-leave-auth/details-leave-auth.component';
@@ -52,10 +76,16 @@ import { AddProfileComponent } from './profile/add-profile/add-profile.component
 import { DetailsProfileComponent } from './profile/details-profile/details-profile.component';
 import { EditProfileComponent } from './profile/edit-profile/edit-profile.component';
 import { WorkScheduleComponent } from './work-schedule/work-schedule.component';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { AddWsComponent } from './work-schedule/add-ws/add-ws.component';
+import { CertificateComponent } from './certificate/certificate.component';
+import { NgxPaginationModule } from 'ngx-pagination';
+import { DemandsComponent } from './demands/demands.component';
+import { EditUsersAuthenticationComponent } from './authentication-component/edit-users-authentication/edit-users-authentication.component';
+import { ModalEditUsersAuthenticationComponent } from './authentication-component/modal-edit-users-authentication/modal-edit-users-authentication.component';
 import { InternshipListComponent } from './internship-list/internship-list.component';
 import { InternshipRequestComponent } from './internship-request/internship-request.component';
 import { AddtestComponent } from './addtest/addtest.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -94,6 +124,37 @@ import { AddtestComponent } from './addtest/addtest.component';
     DetailsProfileComponent,
     EditProfileComponent,
     WorkScheduleComponent,
+    OrderComponent,
+    PanierComponent,
+    DetailsOrderComponent,
+    OfferComponent,
+    ListTimeoffComponent,
+    AddTimeoffComponent,
+    EditTimeoffComponent,
+    DetailsTimeoffComponent,
+    TimeoffmodalComponent,
+    ListAccountComponent,
+    DetailsAccountComponent,
+    DetailsHrAccountComponent,
+    EditGlobalAccountComponent,
+    UploadModalImgAccountComponent,
+    AddAppointmentComponent,
+    ListAppointmentComponent,
+    SignInAuthenticationComponent,
+    SignUpAuthenticationComponent,
+    MessageBoxAuthenticationComponent,
+    ForgotPasswordAuthenticationComponent,
+    EditForgotPasswordAuthenticationComponent,
+    MidcalcardListComponent,
+    AddMedicalcardComponent,
+    UpdateMedicalcardComponent,
+    AddWsComponent,
+    CertificateComponent,
+    DemandsComponent,
+    UpdateMedicalcardComponent,
+    EditUsersAuthenticationComponent,
+    ModalEditUsersAuthenticationComponent,
+    WorkScheduleComponent,
     InternshipListComponent,
     InternshipRequestComponent,
     AddtestComponent,
@@ -117,7 +178,8 @@ import { AddtestComponent } from './addtest/addtest.component';
     AutoCompleteModule,
     AvatarModule,
     CardModule,
-    SelectButtonModule
+    SelectButtonModule,
+    NgxPaginationModule
   ],
   bootstrap: [LoginComponent]
 })

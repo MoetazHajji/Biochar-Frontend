@@ -1,0 +1,49 @@
+<div class="container padding-top-one-hundred ">
+    <div class="row margin-bottom-twenty-px"  >
+        <div class="col-md-12">
+            <div class="card shadow h-100 py-2 card-border">
+                <div class="card-content">
+                    <div class="card-body">
+                        <div class="d-flex flex-row margin-left-ten-px margin-right-ten-px">
+                            <div class="d-flex flex-column" style="width: 100%;">
+                                <div class="d-flex flex-row margin-bottom-ten-px margin-top-ten-px">
+                                    <div class="align-self-center margin-right-ten-px"><i class="fa fa-calendar-o fa-2x text-gray-300 primary-light-blue-color" style="font-size: 50px;"></i></div>
+                                    <h3>Appointment</h3>
+                                </div>
+                                <div class="d-flex flex-column margin-left-fifty-px margin-top-fifteen-px margin-bottum-fifteen-px">
+                                    <p style="color: rgb(73,80,87);"><span style="font-size: 30px;font-family: TimesNewRoman;">T</span>he presentation of appointment information can be critical for healthcare providers to manage patient care effectively. A patient appointment
+                                        card can include essential information such as the patient's name, appointment date, and time, the reason for the visit, and any other relevant information. The card can be used by healthcare providers to
+                                        keep track of scheduled appointments and ensure that they are prepared to provide the necessary care. Additionally, adding and updating appointments to the card content list can be an efficient way to manage
+                                        patient care and avoid scheduling conflicts. This can help healthcare providers streamline their operations and provide better carefor their patients.<br></p>
+                                    <div class="d-flex flex-row justify-content-between">
+                                        <div>
+                                            <button   (click) ="onClickaddAppointment()" class="btn btn-primary primary-bold-blue-backgroud-color" type="button"><i class="fa fa-plus"></i>&nbsp;insert</button>
+                                          
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="margin-left-fifty-px">
+                                  <div id='calendar'></div>
+                                  <!--    <full-calendar [options]="calendarOptions" ></full-calendar>-->
+                                </div>
+                                
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+    </div>
+</div>
+</div> 
+<!-- <div id='calendar'></div> -->
+
+<app-add-appointment *ngIf="this.modaladdAppointement" [modalState]="this.modaladdAppointement"
+(onClickAppointmentModalAddEvent)="onClickAppointmentModalAddEvent($event)"
+(addAppointmentModalCloseEvent)="addAppointmentModalCloseEvent($event)"></app-add-appointment> 
+
+
+<app-message-box-authentication *ngIf="this.stateApptMsgBoxAuth" 
+[modalConfirmState]="this.stateApptMsgBoxAuth"
+type={{this.authenticationService.Response.status}} 
+title="Message" message={{this.authenticationService.Response.message}}
+(ModalCloseEvent)="closeEventstateMsgBoxAuth($event)" ></app-message-box-authentication>  

@@ -19,6 +19,7 @@ export class ProfileComponent implements OnInit {
   profileList: Profile[] = [];
   profileDetailedList: Profile[] = [];
   profile: Profile = new Profile();
+  idProfileToDelete!: any
   constructor(private _profileService: ProfileService) { }
 
   ngOnInit(): void {

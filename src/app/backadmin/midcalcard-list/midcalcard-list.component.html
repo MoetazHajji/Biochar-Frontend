@@ -1,0 +1,68 @@
+<div class="list-table-header-item-area">
+    <div class="introduction-area p-d-flex p-jc-between">
+        <h1 class="big-title">
+        MedicalCard list
+        </h1>
+        <div class="container">
+            <div class="btns-group two-btns">
+                <button class="btn btn-blue" (click)="AddNewProduct()" > New MedicalCard</button>
+            </div>
+        </div>
+    </div>
+    <!--.btns-group-->
+
+    <!--.ADD PRODUCT MODEL-->
+    <app-add-medicalcard *ngIf="addNewProductModal" [modalNewProduct]="addNewProductModal"
+                    (closeModalNewProduct)="closeModalNewProduct($event)"></app-add-medicalcard>
+
+  <app-update-medicalcard *ngIf="editProductModal" [modalEditProduct]="editProductModal"
+                    [ProductId]="getProductId"
+                    (closeModalNewProduct)="closeModalNewProduct($event)"></app-update-medicalcard>
+
+    <div class="list-table-item-area">
+        <div class="container" style="width: 60%;">
+            <div class="table-area ">
+                <div class="comments-table">
+                    <div class="card">
+                        <p-table [value]="productList" responsiveLayout="stack" [breakpoint]="'960px'" [tableStyle]="{'min-width': '50rem'}">
+                            <ng-template pTemplate="header" let-columns>
+                                <tr>
+                                    
+                                    <th id="card_number" pSortableColumn="card_number">Card number</th>
+                                    <th id="date_creation" pSortableColumn="date_creation">Date Creation</th>
+                                    <th id="review" pSortableColumn="review">Review</th>
+                                    <th id="Doc" pSortableColumn="Doc">Document</th>
+                                    <th id="typedossier" pSortableColumn="typedossier">Type Dossier</th>
+                                    <th  pSortableColumn="typedossier">Actions</th>
+                                 </tr>
+                            </ng-template>
+                            <ng-template pTemplate="body" let-MidcalcardList let-columns="columns">
+                                <tr>
+                                    
+                                    <td><span class="p-column-title">Card number</span>{{MidcalcardList.card_number}}</td>
+                                    <td><span class="p-column-title">Date Creation</span>{{MidcalcardList.date_creation}}</td>
+
+                                    <td><span class="p-column-title">Review</span>{{MidcalcardList.review}}</td>
+
+                                    <td><span class="p-column-title">Document</span>{{MidcalcardList.Doc}}</td>
+
+                                    <td><span class="p-column-title">Type Dossier</span>{{MidcalcardList.typedossier}}</td>
+                                    <td>
+                                        <div class="more-link">
+
+                                            <p-button class="p-panel-header-icon p-link" icon="pi pi-times" (click)="DeleteProduct(MidcalcardList.idMedicalcard)"></p-button>
+                                            <p-button class="p-panel-header-icon p-link" icon="pi pi-pencil" (click)="EditProduct(MidcalcardList.idMedicalcard)"></p-button>
+
+                                        </div>
+                                    </td>
+                                  
+                                </tr>
+                            </ng-template>
+                        </p-table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+  </div>
+  
