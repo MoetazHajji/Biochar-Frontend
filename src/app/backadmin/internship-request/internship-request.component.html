@@ -1,0 +1,223 @@
+<div class="main-body">
+    <div class="flex flex-col">
+        <div class="-my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
+            <div class="py-2 align-middle inline-block sm:px-6 lg:px-8">
+                <div class="shadow overflow-x-auto border-b border-gray-200 sm:rounded-lg">
+                    <table class="divide-gray-200">
+                        <thead class="bg-gray-50">
+                            <tr>
+
+                                <th scope="col"
+                                    class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                    Status
+                                </th>
+                                <th scope="col"
+                                    class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                    Motif
+                                </th>
+                                <th scope="col"
+                                    class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                    nom
+                                </th>
+                                <th scope="col"
+                                    class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                    prenom
+                                </th>
+                                <th scope="col"
+                                    class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                    Start Date
+                                </th>
+                                <th scope="col"
+                                    class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                    End Date
+                                </th>
+                                <th scope="col"
+                                    class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                    Duration
+                                </th>
+                                <th scope="col"
+                                    class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                    Motivation
+                                </th>
+                                <th scope="col"
+                                    class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                    CV
+                                </th>
+                                <th scope="col"
+                                    class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                    Choix
+                                </th>
+
+                            </tr>
+                        </thead>
+                        <tbody class="bg-white divide-y divide-gray-200">
+                            <tr *ngFor="let i of internship_requests">
+
+                                <td class="px-6 py-4 whitespace-nowrap">
+                                    <div class="text-sm font-medium text-gray-900">{{i.status}}</div>
+                                </td>
+                                <td class="px-6 py-4 whitespace-nowrap">
+                                    <div class="text-sm text-gray-500">{{i.motif}}</div>
+                                </td>
+                                <td class="px-6 py-4 whitespace-nowrap">
+                                    <div class="text-sm text-gray-500">{{i.nom}}</div>
+                                </td>
+                                <td class="px-6 py-4 whitespace-nowrap">
+                                    <div class="text-sm text-gray-500">{{i.prenom}}</div>
+                                </td>
+                                <td class="px-6 py-4 whitespace-nowrap">
+                                    <div class="text-sm text-gray-500">{{i.start_date}}</div>
+                                </td>
+                                <td class="px-6 py-4 whitespace-nowrap">
+                                    <div class="text-sm text-gray-500">{{i.end_date}}</div>
+                                </td>
+                                <td class="px-6 py-4 whitespace-nowrap">
+                                    <div class="text-sm text-gray-500">{{i.duration}}</div>
+                                </td>
+                                <td class="px-6 py-4 whitespace-nowrap">
+                                    <div class="text-sm text-gray-500">{{i.motivation}}</div>
+                                </td>
+                                <td class="px-6 py-4 whitespace-nowrap">
+                                    <div class="text-sm text-gray-500"><a [href]="i.cv">{{i.cv}}</a></div>
+                                </td>
+                                <td class="px-6 py-4 whitespace-nowrap">
+                                    <div *ngIf="i.status?.toString() != 'accepted'" class="text-sm text-gray-500">
+                                        <i class="fa fa-plus text-green-600 cursor-pointer"
+                                            (click)="openModalfun(i)"></i>
+
+                                        <i class="fa fa-minus px-6 text-red-600 cursor-pointer" (click)="delete(i.id)"
+                                            aria-hidden="true"></i>
+
+                                    </div>
+                                </td>
+                            </tr>
+
+                        </tbody>
+
+
+
+
+                        <div class="fixed z-10 inset-0 overflow-y-auto" *ngIf="openModal">
+                            <div class="flex items-center justify-center min-h-screen">
+                                <!-- Modal overlay -->
+                                <div class="fixed inset-0 opacity-75"></div>
+                                <div class="relative bg-white rounded-lg shadow ">
+                                    <button type="button"
+                                        class="absolute top-3 right-2.5 text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm p-1.5 ml-auto inline-flex items-center "
+                                        data-modal-hide="popup-modal">
+                                        <svg (click)="openModal = false" aria-hidden="true" class="w-5 h-5"
+                                            fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                                            <path fill-rule="evenodd"
+                                                d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"
+                                                clip-rule="evenodd"></path>
+                                        </svg>
+                                    </button>
+                                    <div class="p-6 text-center">
+                                        <label class="block text-gray-700 font-bold mb-2 text-lg"> Internship </label>
+                                        <form #f="ngForm">
+                                            <div class="grid grid-cols-2 gap-4">
+
+
+                                                <div class="mb-4">
+                                                    <label class="block text-gray-700 font-bold mb-2" for="state">
+                                                        State
+                                                    </label>
+                                                    <select
+                                                        class="block appearance-none w-full h-11 bg-white border border-gray-300 hover:border-gray-400  rounded shadow leading-tight focus:outline-none focus:shadow-outline"
+                                                        name="type" #type="ngModel" [(ngModel)]="internship.state">
+                                                        <option *ngFor="let option of options" [value]="option">
+                                                            {{option}}</option>
+
+
+                                                    </select>
+                                                </div>
+                                                <div class="mb-4">
+                                                    <label class="block text-gray-700 font-bold mb-2" for="university">
+                                                        University
+                                                    </label>
+                                                    <input
+                                                        class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                                                        id="state" type="text" required name="university "
+                                                        #university="ngModel" [(ngModel)]="details.university">
+                                                </div>
+                                                <div class="mb-4">
+                                                    <label class="block text-gray-700 font-bold mb-2" for="location">
+                                                        Location of university
+                                                    </label>
+                                                    <input
+                                                        class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                                                        id="state" type="text" required name="location"
+                                                        #location="ngModel" [(ngModel)]="details.location_university">
+                                                </div>
+                                                <div class="mb-4">
+                                                    <label class="block text-gray-700 font-bold mb-2" for="phone">
+                                                        Phone of university
+                                                    </label>
+                                                    <input
+                                                        class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                                                        id="state" type="text" required name="phone" #phone="ngModel"
+                                                        [(ngModel)]="details.phone_university">
+                                                </div>
+                                                <div class="mb-4">
+                                                    <label class="block text-gray-700 font-bold mb-2" for="diploma">
+                                                        Diploma
+                                                    </label>
+                                                    <select
+                                                        class="block appearance-none w-full h-11 bg-white border border-gray-300 hover:border-gray-400  rounded shadow leading-tight focus:outline-none focus:shadow-outline"
+                                                        name="diploma" #diploma="ngModel" [(ngModel)]="details.diploma">
+                                                        <option *ngFor="let option of options2" [value]="option">
+                                                            {{option}}</option>
+
+
+                                                    </select>
+                                                </div>
+                                                <div class="mb-4">
+                                                    <label class="block text-gray-700 font-bold mb-2" for="level">
+                                                        Level of study
+                                                    </label>
+                                                    <input
+                                                        class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                                                        id="state" type="text" required name="level" #level="ngModel"
+                                                        [(ngModel)]="details.level_of_study">
+                                                </div>
+                                                <div class="mb-4">
+                                                    <label class="block text-gray-700 font-bold mb-2" for="speciality">
+                                                        Speciality
+                                                    </label>
+                                                    <input
+                                                        class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                                                        id="state" type="text" required name="specialite"
+                                                        #specialite="ngModel" [(ngModel)]="details.specialite">
+                                                </div>
+                                                <div class="mb-4">
+                                                    <label class="block text-gray-700 font-bold mb-2" for="subject">
+                                                        Subject
+                                                    </label>
+                                                    <input
+                                                        class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                                                        id="state" type="text" required name="subject"
+                                                        #subject="ngModel" [(ngModel)]="selectedSubject">
+                                                </div>
+
+                                            </div>
+                                        </form>
+                                        <button data-modal-hide="popup-modal" type="button"
+                                            class="text-white disabled:bg-blue-200 bg-blue-600 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm inline-flex items-center px-5 py-2.5 text-center mr-2"
+                                            (click)="add()" [disabled]="f.invalid || added">
+                                            Add
+                                        </button>
+                                        <button type="button"
+                                            class="text-white disabled:bg-blue-200 bg-gray-600 hover:bg-gray-800 focus:ring-4 focus:outline-none focus:ring-gray-300 font-medium rounded-lg text-sm inline-flex items-center px-5 py-2.5 text-center mr-2"
+                                            (click)="close()">
+                                            Close
+                                        </button>
+                                        <div *ngIf="added">
+                                            <label class="block text-green-700 font-bold mb-2">
+                                                internship has beed added!
+                                            </label>
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>

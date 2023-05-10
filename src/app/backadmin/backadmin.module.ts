@@ -21,7 +21,7 @@ import { AutoCompleteModule } from 'primeng/autocomplete';
 import { AvatarModule } from "primeng/avatar";
 import { CardModule } from "primeng/card";
 import { SelectButtonModule } from "primeng/selectbutton";
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+
 import { EditProductComponent } from './product-list/edit-product/edit-product.component';
 import { DetailsProductComponent } from './product-list/details-product/details-product.component';
 import { LoginComponent } from './login/login.component';
@@ -52,6 +52,11 @@ import { AddProfileComponent } from './profile/add-profile/add-profile.component
 import { DetailsProfileComponent } from './profile/details-profile/details-profile.component';
 import { EditProfileComponent } from './profile/edit-profile/edit-profile.component';
 import { WorkScheduleComponent } from './work-schedule/work-schedule.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { InternshipListComponent } from './internship-list/internship-list.component';
+import { InternshipRequestComponent } from './internship-request/internship-request.component';
+import { AddtestComponent } from './addtest/addtest.component';
+
 
 @NgModule({
   declarations: [
@@ -76,7 +81,6 @@ import { WorkScheduleComponent } from './work-schedule/work-schedule.component';
     PdfextractorComponent,
     UpdateTesttComponent,
     TrainingAdminComponent,
-    SubjectsComponent,
     TrainingsListComponent,
     AddStockComponent,
     EditStockComponent,
@@ -89,7 +93,10 @@ import { WorkScheduleComponent } from './work-schedule/work-schedule.component';
     AddProfileComponent,
     DetailsProfileComponent,
     EditProfileComponent,
-    WorkScheduleComponent
+    WorkScheduleComponent,
+    InternshipListComponent,
+    InternshipRequestComponent,
+    AddtestComponent,
   ],
   imports: [
     CommonModule,

@@ -1,0 +1,90 @@
+<div class="p-8 text-center">
+    <label class="block text-gray-700 font-bold mb-2 text-lg"> Add Request </label>
+    <form #f="ngForm">
+        <div class="grid grid-cols-3 gap-2">
+            <div class="mb-4">
+                <label class="block text-gray-700 font-bold mb-2" for="university">
+                    Nom
+                </label>
+                <input
+                    class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                    id="nom" type="text" required name="nom" #nom="ngModel" [(ngModel)]="internshipRequest.nom">
+            </div>
+            <div class="mb-4">
+                <label class="block text-gray-700 font-bold mb-2" for="location">
+                    Prenom
+                </label>
+                <input
+                    class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                    id="prenom" type="text" required name="prenom" #prenom="ngModel" [(ngModel)]="internshipRequest.prenom">
+            </div>
+            <div class="mb-4">
+                <label class="block text-gray-700 font-bold mb-2">
+                    Duration
+                </label>
+                <input
+                    class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                    id="duration" type="text" required name="duration" #duration="ngModel" [(ngModel)]="internshipRequest.duration">
+            </div>
+        </div>
+        <div class="grid grid-cols-2 gap-2">
+            <div class="mb-4">
+                <label class="block text-gray-700 font-bold mb-2">
+                    Start Date
+                </label>
+                <input
+                    class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                    type="date" name="start_date" id="start-date-input" required name="startdate" #startdate="ngModel" [(ngModel)]="internshipRequest.start_date">
+
+            </div>
+            <div class="mb-4">
+                <label class="block text-gray-700 font-bold mb-2 ">
+                    End Date
+                </label>
+                <input
+                    class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                    type="date" name="end_date" id="end-date-input" required name="enddate" #enddate="ngModel" [(ngModel)]="internshipRequest.end_date">
+
+            </div>
+        </div>
+        <div class="grid grid-cols-2 gap-2">
+            <div class="mb-4">
+                <label class="block text-gray-700 font-bold mb-2">
+                    Motif
+                </label>
+                <textarea rows="4" cols="50" [(ngModel)]="internshipRequest.motif"
+                id="motif" type="text" required name="motif" #motif="ngModel" 
+                    class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
+                    </textarea>
+            </div>
+            <div class="mb-4">
+                <label class="block text-gray-700 font-bold mb-2">
+                    Motivation
+                </label>
+                <textarea rows="4" cols="50" [(ngModel)]="internshipRequest.motivation"
+                id="motivation" type="text" required name="motivation" #motivation="ngModel" 
+
+                    class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
+                    </textarea>
+            </div>
+        </div>
+        <div class="grid grid-cols-1 gap-2">
+            <div class="mb-4">
+                <input
+                    class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline "
+                    type="file" accept="application/pdf" name="file-upload" id="file-input" (change)="onFileSelect($event)">
+            </div>
+        </div>
+    </form>
+
+    <button type="button"
+        class="text-white disabled:bg-blue-200 bg-blue-600 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm inline-flex items-center px-5 py-2.5 text-center mr-2"
+        (click)="initialize()">
+        Initialize
+    </button>
+    <button type="button"
+        class="text-white disabled:bg-blue-200 bg-gray-600 hover:bg-gray-800 focus:ring-4 focus:outline-none focus:ring-gray-300 font-medium rounded-lg text-sm inline-flex items-center px-5 py-2.5 text-center mr-2"
+        (click)="add()">
+        Submit
+    </button>
+</div>
