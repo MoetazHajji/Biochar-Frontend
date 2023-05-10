@@ -80,6 +80,7 @@ import { AddWsComponent } from './work-schedule/add-ws/add-ws.component';
 import { CertificateComponent } from './certificate/certificate.component';
 import { NgxPaginationModule } from 'ngx-pagination';
 import { DemandsComponent } from './demands/demands.component';
+import { DashbordComponent } from './dashbord/dashbord.component';
 
 @NgModule({
   declarations: [
@@ -144,7 +145,8 @@ import { DemandsComponent } from './demands/demands.component';
     UpdateMedicalcardComponent,
     AddWsComponent,
     CertificateComponent,
-    DemandsComponent
+    DemandsComponent,
+    DashbordComponent
   ],
   imports: [
     CommonModule,

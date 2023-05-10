@@ -48,6 +48,7 @@ import { DetailsStockComponent } from './stock/details-stock/details-stock.compo
 import { AddTestresultComponent } from './testresult-list/add-testresult/add-testresult.component';
 import { AnalysisStatistiqueComponent } from './analysis-statistique/analysis-statistique.component';
 import { UpdateTesttComponent } from './tests/update-testt/update-testt.component';
+import { DashbordComponent } from './dashbord/dashbord.component';
 
 const routes: Routes = [
   { path: '', component: LoginComponent },
@@ -361,6 +362,16 @@ const routes: Routes = [
       {
         path: '',
         component: AnalysisStatistiqueComponent
+      }
+    ]
+  },
+  {
+    path: 'dashbord',
+    component: AdminLayoutComponent,
+    children: [
+      {
+        path: '',
+        component: DashbordComponent
       }
     ]
   },
