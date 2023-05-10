@@ -70,6 +70,7 @@ detailedHRAccountModalCloseEvent($event : any) : void{
 
   onClickMail(account : AccountDto ) :void {
     this.accountService.selectAccount = account;
+    this.accountService.goToComponent('/admin/mail/add/'+account.email);
   console.log("onClickMail");
  }
  onClickChat(account : AccountDto ) :void {

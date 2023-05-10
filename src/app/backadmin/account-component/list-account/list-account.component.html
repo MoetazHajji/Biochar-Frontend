@@ -37,7 +37,7 @@
 
 
     <div class="row" >
-        <div class="col custom-collumun" *ngFor="let account of ListAccounts">
+        <div class="col col-sm-auto custom-collumun" *ngFor="let account of ListAccounts"> <!-- col-sm-3 -->
             <div class="card custom-card" >
                 <div class="card-header border-bottom-0 custom-card-header">
                     <div class="d-flex flex-row-reverse">
@@ -56,13 +56,20 @@
                     <div class="d-flex justify-content-around">
                         <button (click)="onClickMail(account)" class="btn btn-outline-primary rounded-pill shadow-sm" type="button">
                             <i class="fa fa-envelope"></i> Mail</button>
-                        <button (click)="onClickChat(account)" class="btn btn-outline-primary rounded-pill shadow-sm" type="button">
-                            <i class="fa fa-comments-o"></i> Chat</button>
+                       <!-- <button (click)="onClickChat(account)" class="btn btn-outline-primary rounded-pill shadow-sm" type="button">
+                            <i class="fa fa-comments-o"></i> Chat</button>-->
                     </div>
                 </div>
             </div>
         </div>
+        <div class="w-100"></div>
     </div>
+
+
+
+
+
+    
 </div>
 <app-details-account *ngIf="this.modaldetailedAccount" [modalState]="this.modaldetailedAccount"
 [detailedAccount]="this.accountService.selectAccount" 
