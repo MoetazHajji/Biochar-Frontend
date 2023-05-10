@@ -21,7 +21,7 @@ import { AutoCompleteModule } from 'primeng/autocomplete';
 import { AvatarModule } from "primeng/avatar";
 import { CardModule } from "primeng/card";
 import { SelectButtonModule } from "primeng/selectbutton";
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+
 import { EditProductComponent } from './product-list/edit-product/edit-product.component';
 import { DetailsProductComponent } from './product-list/details-product/details-product.component';
 import { LoginComponent } from './login/login.component';
@@ -77,6 +77,16 @@ import { DetailsProfileComponent } from './profile/details-profile/details-profi
 import { EditProfileComponent } from './profile/edit-profile/edit-profile.component';
 import { WorkScheduleComponent } from './work-schedule/work-schedule.component';
 import { AddWsComponent } from './work-schedule/add-ws/add-ws.component';
+import { CertificateComponent } from './certificate/certificate.component';
+import { NgxPaginationModule } from 'ngx-pagination';
+import { DemandsComponent } from './demands/demands.component';
+import { EditUsersAuthenticationComponent } from './authentication-component/edit-users-authentication/edit-users-authentication.component';
+import { ModalEditUsersAuthenticationComponent } from './authentication-component/modal-edit-users-authentication/modal-edit-users-authentication.component';
+import { InternshipListComponent } from './internship-list/internship-list.component';
+import { InternshipRequestComponent } from './internship-request/internship-request.component';
+import { AddtestComponent } from './addtest/addtest.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+
 
 @NgModule({
   declarations: [
@@ -101,7 +111,6 @@ import { AddWsComponent } from './work-schedule/add-ws/add-ws.component';
     PdfextractorComponent,
     UpdateTesttComponent,
     TrainingAdminComponent,
-    SubjectsComponent,
     TrainingsListComponent,
     AddStockComponent,
     EditStockComponent,
@@ -139,7 +148,16 @@ import { AddWsComponent } from './work-schedule/add-ws/add-ws.component';
     MidcalcardListComponent,
     AddMedicalcardComponent,
     UpdateMedicalcardComponent,
-    AddWsComponent
+    AddWsComponent,
+    CertificateComponent,
+    DemandsComponent,
+    UpdateMedicalcardComponent,
+    EditUsersAuthenticationComponent,
+    ModalEditUsersAuthenticationComponent,
+    WorkScheduleComponent,
+    InternshipListComponent,
+    InternshipRequestComponent,
+    AddtestComponent,
   ],
   imports: [
     CommonModule,
@@ -160,7 +178,8 @@ import { AddWsComponent } from './work-schedule/add-ws/add-ws.component';
     AutoCompleteModule,
     AvatarModule,
     CardModule,
-    SelectButtonModule
+    SelectButtonModule,
+    NgxPaginationModule
   ],
   bootstrap: [LoginComponent]
 })

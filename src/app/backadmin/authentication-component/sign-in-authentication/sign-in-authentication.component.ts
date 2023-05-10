@@ -4,36 +4,59 @@ import { AuthenticationResponse } from 'src/app/_models/_user/AuthenticationResp
 import { AuthenticationService } from '../../_services/_user/authentication.service';
 import { AuthenticationStatus } from 'src/app/_models/_user/AuthenticationStatus';
 import { AccountService } from '../../_services/_user/account.service';
+import { LocalService } from '../../_services/_user/local.service';
 
 @Component({
   selector: 'app-sign-in-authentication',
   templateUrl: './sign-in-authentication.component.html',
   styleUrls: ['./sign-in-authentication.component.css']
 })
-export class SignInAuthenticationComponent implements OnInit {
-  authRequest  : AuthenticationRequest = new AuthenticationRequest(); 
-  authResponse  : AuthenticationResponse = new AuthenticationResponse(); 
+export class SignInAuthenticationComponent implements OnInit { 
   stateModalForgetPasswod: boolean = false; 
   stateMsgBoxAuth: boolean = false; 
-  constructor( private authenticationService : AuthenticationService , private accountService : AccountService ) { }
+  constructor( public authenticationService : AuthenticationService , private accountService : AccountService   ) { }
 
-  ngOnInit(): void {
+  ngOnInit(): void {  
   }
   signIn(){ 
-    console.log(this.authRequest);
-    this.authenticationService.login(this.authRequest).subscribe(
+    console.log(this.authenticationService.Request);
+    this.authenticationService.login(this.authenticationService.Request).subscribe(
       (response) => { 
         this.stateMsgBoxAuth  = false ; 
-        this.authResponse = response.body;
-        this.authenticationService.authenticationResponse =  response.body;
-        console.log(  this.authResponse );
+        this.authenticationService.Response = response.body;
+        this.authenticationService.Response =  response.body;
+        console.log(  this.authenticationService.Response);
+        this.save ( );
+    
        }
     ,(error) => { console.log("error");  console.log(error);
     this.stateMsgBoxAuth  = true ;
 
-    this.authResponse = {     token: "", status : AuthenticationStatus.ERROR , message : "Canot Access !" } 
+    this.authenticationService.Response = {     token: "", status : AuthenticationStatus.ERROR , message : "Canot Access !" } 
   }) ;
   }
+
+   save ( ) {
+    this.authenticationService.clearAccount();
+    this.authenticationService.clearAuthenticationResponse();
+    this.authenticationService.setAuthenticationResponse(this.authenticationService.Response);
+   // this.localService.removeData('AuthenticationResponse' );
+   // this.localService.saveData ( 'AuthenticationResponse', JSON.stringify( this.authenticationService.Response ) );
+    this.accountService.getByUsername (this.authenticationService.Request.username).subscribe(
+      (response) => { 
+        console.log( response .body)
+        this.authenticationService.goToComponent('admin/account/edit-detailled/' + this.authenticationService.Request.username);
+        //this.localService.removeData('AccountDto' );
+        //this.localService.saveData ( 'AccountDto', JSON.stringify( response.body ) );
+        this.authenticationService.setAuthenticationResponse(this.authenticationService.Response);
+        this.authenticationService.setAccount( response.body );
+       }
+    ,(error) => {   console.log( error ) 
+  }) ;
+   }
+
+
+
   onClickForgotPassword():void{
     this.stateModalForgetPasswod = true;
   }
@@ -45,12 +68,13 @@ export class SignInAuthenticationComponent implements OnInit {
     this.authenticationService.sendMailCode_ForgotPassword(  $event) .subscribe(
       (response) => { 
         this.stateMsgBoxAuth  = true ; 
-        this.authResponse = response.body;
-        console.log(  this.authResponse );
+        this.authenticationService.Response= response.body;
+        console.log(  this.authenticationService.Response);
+
        }
     ,(error) => { console.log("error");  console.log(error);
     this.stateMsgBoxAuth  = true ;
-    this.authResponse = {     token: "", status : AuthenticationStatus.ERROR , message : "Error send Mail !" } 
+    this.authenticationService.Response = {     token: "", status : AuthenticationStatus.ERROR , message : "Error send Mail !" } 
   }) ;
   }
 
@@ -61,13 +85,6 @@ export class SignInAuthenticationComponent implements OnInit {
   }
 
   logout():void{
-    this.authenticationService.logout ().subscribe(
-      (response) => {
-         console.log("response");  console.log(response.body); 
-        this.authenticationService.authenticationResponse = {   token: "", status : AuthenticationStatus.ERROR , message : "Canot Access !"}; 
-         }
-    ,(error) => { 
-      console.log("error");  console.log(error);  
-  }) ; 
+    this.authenticationService.onlogout (); 
   }
 }

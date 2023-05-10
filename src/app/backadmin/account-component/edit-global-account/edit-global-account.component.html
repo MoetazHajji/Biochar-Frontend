@@ -61,7 +61,7 @@
                                                     <div class="d-flex flex-row row-input justify-content-between">
                                                         <p class="paragraph-input">Firstname :<br></p>
                                                         <input type="text" class="form-control input-design"
-                                                        [class]="(firstname.invalid && firstname.touched) ? 'is-invalid' :  'is-valid'" 
+                                                        [class]="(firstname.invalid && firstname.touched) ? 'is-invalid' :  ''" 
                                                          name="firstname" [(ngModel)]="account.firstname" #firstname="ngModel"  required>
                                                     </div>
                                                       <div class="d-flex flex-row justify-content-center margin-bottom-ten-px"  
@@ -84,7 +84,7 @@
                                                     <div class="d-flex flex-row row-input justify-content-between">
                                                         <p class="paragraph-input">Cin :<br></p>
                                                         <input type="text" class="form-control input-design"
-                                                        [class]="(cin.invalid && cin.touched) ? 'is-invalid' :  'is-valid'" 
+                                                        [class]="(cin.invalid && cin.touched) ? 'is-invalid' :  ''" 
                                                         name="cin" [(ngModel)]="account.cin" #cin="ngModel" 
                                                         minlength=8 maxlength=8 pattern="^[0-9]{1,8}$" required >
                                                     </div>
@@ -100,7 +100,7 @@
                                                     <div class="d-flex flex-row row-input justify-content-between">
                                                         <p class="paragraph-input">Lastname&nbsp;:<br></p>
                                                         <input type="text" class="form-control input-design"
-                                                        [class]="(lastname.invalid && lastname.touched) ? 'is-invalid' :  'is-valid'" 
+                                                        [class]="(lastname.invalid && lastname.touched) ? 'is-invalid' :  ''" 
                                                         name="lastname" [(ngModel)]="account.lastname"   #lastname="ngModel"  required  >
                                                     </div>
                                                     <div class="d-flex flex-row justify-content-center margin-bottom-ten-px"  
@@ -110,7 +110,7 @@
                                                     <div class="d-flex flex-row row-input justify-content-between">
                                                         <p class="paragraph-input">Date of Birth :<br></p>
                                                         <input class="form-control input-design" type="date"
-                                                        [class]="(dateOfBirth.invalid && dateOfBirth.touched) ? 'is-invalid' :  'is-valid'" 
+                                                        [class]="(dateOfBirth.invalid && dateOfBirth.touched) ? 'is-invalid' :  ''" 
                                                         name="dateOfBirth" [(ngModel)]="account.dateOfBirth" #dateOfBirth="ngModel"  required
                                                         >
                                                     </div>
@@ -128,7 +128,7 @@
                                                     <div class="d-flex flex-row row-input justify-content-between">
                                                         <p style="font: 40px TimesNewRoman;color: rgb(73,80,87);font-size: 18px;margin-top: auto;margin-bottom: auto;margin-right: 5px;">State :<br></p>
                                                         <select class="form-control input-design"
-                                                        [class]="(state.invalid && state.touched) ? 'is-invalid' :  'is-valid'"
+                                                        [class]="(state.invalid && state.touched) ? 'is-invalid' :  ''"
                                                         name="state" [(ngModel)]="account.state" #state="ngModel"  
                                                          required 
                                                         >
@@ -144,7 +144,7 @@
                                                     <div  class="d-flex flex-row row-input justify-content-between">
                                                         <p style="font: 40px TimesNewRoman;color: rgb(73,80,87);font-size: 18px;margin-top: auto;margin-bottom: auto;margin-right: 5px;min-width: 90px;">Address :<br></p>
                                                         <textarea class="form-control input-design"
-                                                        [class]="(adresse.invalid && adresse.touched) ? 'is-invalid' :  'is-valid'" 
+                                                        [class]="(adresse.invalid && adresse.touched) ? 'is-invalid' :  ''" 
                                                          name="adresse" [(ngModel)]="account.adresse" #adresse="ngModel"  required
                                                         ></textarea>
                                                     </div>
@@ -157,7 +157,7 @@
                                                 <div class="d-flex flex-row row-input justify-content-between">
                                                     <p style="font: 40px TimesNewRoman;color: rgb(73,80,87);font-size: 18px;margin-top: auto;margin-bottom: auto;margin-right: 5px;">City :<br></p>
                                                     <input type="text" class="form-control input-design"
-                                                    [class]="(city.invalid && city.touched) ? 'is-invalid' :  'is-valid'" 
+                                                    [class]="(city.invalid && city.touched) ? 'is-invalid' :  ''" 
                                                     name="city" [(ngModel)]="account.city" #city="ngModel" minlength=3 required   >
                                                 </div>
                                                 <div class="d-flex flex-row justify-content-center margin-bottom-ten-px"  
@@ -168,7 +168,7 @@
                                                 <div class="d-flex flex-row row-input justify-content-between">
                                                     <p style="font: 40px TimesNewRoman;color: rgb(73,80,87);font-size: 18px;margin-top: auto;margin-bottom: auto;margin-right: 5px;">Zip Code :<br></p>
                                                     <input type="text" class="form-control input-design"
-                                                    [class]="(zip_code.invalid && zip_code.touched) ? 'is-invalid' :  'is-valid'" 
+                                                    [class]="(zip_code.invalid && zip_code.touched) ? 'is-invalid' :  ''" 
                                                    name="zip_code" [(ngModel)]="account.zip_code" #zip_code="ngModel" minlength=4 maxlength=4 pattern="^[0-9]{1,4}$" required>
                                                 </div>
                                                 <div class="d-flex flex-row justify-content-center margin-bottom-ten-px"  
@@ -223,22 +223,45 @@
                                                 <p style="font: 40px TimesNewRoman;color: rgb(73,80,87);font-size: 18px;margin-top: auto;margin-bottom: auto;margin-right: 5px;">Current Password:&nbsp;:<br></p>
                                                 <input type="password" class="form-control input-design"
                                                 [class]="(current_password.invalid && current_password.touched) ? 'is-invalid' : !current_password.touched ? '' : 'is-valid'" 
-                                                name="current_password" [(ngModel)]="currentPassword" #current_password="ngModel" minlength=8  pattern="^[0-9]{1,16}$" required >
+                                                name="current_password" [(ngModel)]="currentPassword" #current_password="ngModel" required >
                                             </div>
-                                            <div class="d-flex flex-row row-input justify-content-end"><a href="#" style="font: 40px TimesNewRoman;font-size: 18px;margin-top: auto;margin-bottom: auto;margin-right: 5px;">Forgot Password ?<br></a></div>
+                                            <div class="d-flex flex-row row-input justify-content-end">
+                                             
+                                                <p (click)="onClickForgotPassword()"   class="float-right cursor-pointer primary-light-blue-color" style="font: 40px TimesNewRoman;font-size: 18px;margin-top: auto;margin-bottom: auto;margin-right: 5px;">Forgot password?</p>
+                                            </div>
+                                            <div class="d-flex flex-row justify-content-center margin-bottom-ten-px"  
+                                            *ngIf="current_password.invalid && current_password.touched" >
+                                                <div  style="color:#DC3545;" *ngIf="current_password.errors?.['required']"> Verify password is required  </div> 
+                                            </div> 
                                         </div>
                                         <div class="d-flex flex-column margin-left-ten-px margin-right-ten-px" style="width: 100%;">
                                             <div class="d-flex flex-row row-input justify-content-between">
                                                 <p style="font: 40px TimesNewRoman;color: rgb(73,80,87);font-size: 18px;margin-top: auto;margin-bottom: auto;margin-right: 5px;">New Password:<br></p>
                                                 <input type="password" class="form-control input-design" 
                                                 [class]="(new_password.invalid && new_password.touched) ? 'is-invalid' : !new_password.touched ? '' :  'is-valid'" 
-                                                name="new_password" [(ngModel)]="newPassword" #new_password="ngModel" minlength=8  pattern="^[0-9]{1,16}$" required >
+                                                name="new_password" [(ngModel)]="newPassword" #new_password="ngModel" 
+                                                pattern="^[a-z0-9@]{8,}$"  required  (keyup)="validator()" >
                                             </div>
+                                            <div class="d-flex flex-row justify-content-center margin-bottom-ten-px"  
+                                            *ngIf="new_password.invalid && new_password.touched" >
+                                                <div  style="color:#DC3545;" *ngIf="new_password.errors?.['required']"> New password is required  </div>
+                                                <div style="color:#DC3545;" *ngIf="new_password.errors?.['pattern']"> New password error pattern</div>  
+                                            </div> 
                                             <div class="d-flex flex-row row-input justify-content-between">
                                                 <p style="font: 40px TimesNewRoman;color: rgb(73,80,87);font-size: 18px;margin-top: auto;margin-bottom: auto;margin-right: 5px;">Verify Password:<br></p>
                                                 <input type="password" class="form-control input-design"
                                                 [class]="(verify_password.invalid && verify_password.touched) ? 'is-invalid' : !verify_password.touched ? '' :  'is-valid'" 
-                                                name="verify_password" [(ngModel)]="verifyPassword" #verify_password="ngModel" minlength=8  pattern="^[0-9]{1,16}$" required >
+                                                name="verify_password" [(ngModel)]="verifyPassword" #verify_password="ngModel"
+                                                pattern="^[a-z0-9@]{8,}$"  required  (keyup)="validator()" >
+                                            </div>
+                                            <div class="d-flex flex-row justify-content-center margin-bottom-ten-px"  
+                                            *ngIf="verify_password.invalid && verify_password.touched" >
+                                                <div  style="color:#DC3545;" *ngIf="verify_password.errors?.['required']"> Verify password is required  </div>
+                                                <div style="color:#DC3545;" *ngIf="verify_password.errors?.['pattern']"> Verify password error pattern</div>  
+                                            </div> 
+                                            <div class="d-flex flex-row justify-content-center margin-bottom-ten-px"  
+                                            *ngIf="validateSamePassword" >
+                                             <div  style="color:#DC3545;" > New Password and  Verify Password should be the same !  </div> 
                                             </div>
                                         </div>
                                     </div>
@@ -246,7 +269,7 @@
                             </div>
                             <div class="d-flex flex-row d-flex justify-content-between" style="margin-top: 20px;margin-bottom: 10px;">
                                 <div class="d-flex flex-row padding-left-five-px padding-right-five-px"><i (click)="onClickBack()" class="fa fa-sign-out icon-return cursor-pointer"></i><span class="span-return">Back</span></div>
-                                <button  [disabled]="changePasswordForm.invalid" (click)="onClickUpdate_ChangePassword()" class="btn btn-primary btn btn-info" id="arrets-machines-interruptions-departements-button-insert" type="button"
+                                <button  [disabled]="changePasswordForm.invalid || validateSamePassword" (click)="onClickUpdate_ChangePassword()" class="btn btn-primary btn btn-info" id="arrets-machines-interruptions-departements-button-insert" type="button"
                                     style="font-family: TimesNewRoman;font-size: 20px;">update &nbsp;<i class="fa fa-plus"></i></button>
                                 </div>
                             </form>
@@ -284,7 +307,7 @@
                                             <div class="d-flex flex-row row-input justify-content-between">
                                                 <p style="font: 40px TimesNewRoman;color: rgb(73,80,87);font-size: 18px;margin-top: auto;margin-bottom: auto;margin-right: 5px;">Contact Number :<br></p>
                                                 <input type="tel" class="form-control input-design"
-                                                [class]="(phone.invalid && phone.touched) ? 'is-invalid' :  'is-valid'" 
+                                                [class]="(phone.invalid && phone.touched) ? 'is-invalid' :  ''" 
                                                 name="phone" [(ngModel)]="account.phone" #phone="ngModel" minlength=8 maxlength=8 pattern="^[0-9]{1,16}$" required
                                                 >
                                             </div>
@@ -300,7 +323,7 @@
                                             <div class="d-flex flex-row row-input justify-content-between">
                                                 <p style="font: 40px TimesNewRoman;color: rgb(73,80,87);font-size: 18px;margin-top: auto;margin-bottom: auto;margin-right: 5px;">Email :<br></p>
                                                 <input type="email" class="form-control input-design"
-                                                [class]="(email.invalid && email.touched) ? 'is-invalid' :  'is-valid'" 
+                                                [class]="(email.invalid && email.touched) ? 'is-invalid' :  ''" 
                                                 name="email" [(ngModel)]="account.email" #email="ngModel" pattern="^[a-z0-9]+@+[a-z0-9]+\.+[a-z]{3}$" required>
                                             </div>
                                             <div class="d-flex flex-row justify-content-center margin-bottom-ten-px"  
@@ -333,3 +356,14 @@
 (uploadImgAccountModalCloseEvent)="uploadImgAccountModalCloseEvent($event)"
 (uploadImgAccountModal_OnUploadSuccessEvent)="uploadImgAccountModal_OnUploadSuccessEvent($event)">
 </app-upload-modal-img-account> 
+
+<app-forgot-password-authentication *ngIf=" this.stateModalForgetPasswod" 
+[modalConfirmState]="this.stateModalForgetPasswod" 
+(ModalCloseEvent)="closeEventstateModalForgetPasswod($event)" 
+(ModalSendEvent)="SendEventModalForgetPasswod($event)" ></app-forgot-password-authentication>
+
+<app-message-box-authentication *ngIf=" this.stateMsgBoxAuth" 
+[modalConfirmState]="this.stateMsgBoxAuth"
+type={{this.authResponse.status}} 
+title="Message" message={{this.authResponse.message}}
+(ModalCloseEvent)="closeEventstateMsgBoxAuth($event)" ></app-message-box-authentication> 

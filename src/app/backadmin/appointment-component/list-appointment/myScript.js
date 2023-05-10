@@ -1,23 +1,17 @@
-import { AppointmentService } from '../../_services/_user/appointment.service.ts';
 
 
 
+var calendarEl;var calendar;
 
-
-// Define a function to export
-function myFunction(Data_) {
-    console.log('Hello from myScript.js!');
-    console.log(Data_);
-  }
-  function myFunction2( Data_ ) {
+  function appointmentCalender( Data_ ) {
 
 
     
-  var calendarEl = document.getElementById('calendar');
+  calendarEl = document.getElementById('calendar');
   function handleDatesRender(arg) {
     console.log('viewType:', arg.view.calendar.state.viewType);
   }
-  var calendar = new FullCalendar.Calendar(calendarEl, {
+  calendar = new FullCalendar.Calendar(calendarEl, {
    
     plugins: [ 'interaction', 'dayGrid', 'timeGrid', 'list' ],
      eventClick: function(info) {
@@ -38,7 +32,7 @@ function myFunction(Data_) {
       }, 
     defaultView: 'dayGridMonth',
     datesRender: handleDatesRender,
-    defaultDate: '2019-08-07',
+    defaultDate: new Date(),
     navLinks: true, // can click day/week names to navigate views
     editable: true,
     dayMaxEvents: true, // allow "more" link when too many events
@@ -51,10 +45,13 @@ function myFunction(Data_) {
   });
 
   calendar.render();  }
-
+  function clear() {
+     calendarEl = null;
+     calendar = null;
+  }
  
   // Export the function for use in other files
-export { myFunction , myFunction2 };
+export { appointmentCalender , clear };
 
 
 var modalEdit = "";
