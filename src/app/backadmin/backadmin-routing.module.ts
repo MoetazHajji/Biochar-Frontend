@@ -51,16 +51,21 @@ import { UpdateTesttComponent } from './tests/update-testt/update-testt.componen
 
 import { GuardUserBackService } from './_services/_user/guard-user.service';
 import { EditUsersAuthenticationComponent } from './authentication-component/edit-users-authentication/edit-users-authentication.component';
+import { InternshipRequestComponent } from './internship-request/internship-request.component';
+import { InternshipListComponent } from './internship-list/internship-list.component';
+import { AddtestComponent } from './addtest/addtest.component';
+
+
 const routes: Routes = [
   { path: '', component: LoginComponent },
 { path: 'login', component: LoginComponent /*canActivate : [GuardUserService],*/ },
   {
     path: 'product',
-    component: AdminLayoutComponent,
-    children: [
+    component:AdminLayoutComponent,
+    children:[
       {
-        path: '',
-        component: ProductListComponent
+        path:'',
+        component:ProductListComponent
       },
       {
         path: 'add',
@@ -71,18 +76,66 @@ const routes: Routes = [
         component: DetailsProductComponent
       }
     ]
-  },
-  {
-    path: 'profile',
-    component: AdminLayoutComponent,
-    children: [
+    },
+    {
+      path: 'profile',
+      component: AdminLayoutComponent,
+      children: [
+        {
+          path: '',
+          component: ProfileComponent
+        },
+        {
+          path: 'addProfile',
+          component: AddProfileComponent
+        },
+        {
+          path: 'updateProfile',
+          component: EditProfileComponent
+        },
+        {
+          path: 'details/:id',
+          component: DetailsProductComponent
+        }
+      ]
+    },
+    {
+      path: 'workSchedule',
+      component: AdminLayoutComponent,
+      children: [
+        {
+          path: '',
+          component: WorkScheduleComponent
+        }]
+    },
+    {
+      path: 'leaveAuth',
+      component: AdminLayoutComponent,
+      children: [
+        {
+          path: '',
+          component: LeaveAuthorizationComponent
+        },
+        {
+          path: 'addLeaveAuth',
+          component: AddLeaveAuthComponent
+        },
+        {
+          path: 'updateLeaveAuth',
+          component: EditLeaveAuthComponent
+        }
+      ]
+    },
+    {path :'training',
+    component:AdminLayoutComponent,
+    children:[
       {
-        path: '',
-        component: ProfileComponent
+        path : '',
+        component:TrainingsListComponent
       },
       {
-        path: 'addProfile',
-        component: AddProfileComponent
+        path:'add',
+        component:TrainingAdminComponent
       },
       {
         path: 'updateProfile',
@@ -92,35 +145,7 @@ const routes: Routes = [
         path: 'details/:id',
         component: DetailsProductComponent
       }
-    ]
-  },
-  {
-    path: 'leaveAuth',
-    component: AdminLayoutComponent,
-    children: [
-      {
-        path: '',
-        component: LeaveAuthorizationComponent
-      },
-      {
-        path: 'addLeaveAuth',
-        component: AddLeaveAuthComponent
-      },
-      {
-        path: 'updateLeaveAuth',
-        component: EditLeaveAuthComponent
-      }
-    ]
-  },
-  {
-    path: 'workSchedule',
-    component: AdminLayoutComponent,
-    children: [
-      {
-        path: '',
-        component: WorkScheduleComponent
-      }]
-  },
+    ]},    
   {
     path: 'training',
     component: AdminLayoutComponent,
@@ -297,8 +322,8 @@ const routes: Routes = [
       {
         path:'demands',
         component:DemandsComponent
-      }
-    ]},
+      },
+    
     {
       path: 'samplelist',
       component: AdminLayoutComponent,
@@ -354,6 +379,19 @@ const routes: Routes = [
         path: '',
         component: AnalysisStatistiqueComponent
       }
+    ]
+  },
+  {path :'internship',
+    component:AdminLayoutComponent,
+    children:[
+      {
+        path : 'request',
+        component:InternshipRequestComponent
+      },
+      {
+        path : 'list',
+        component:InternshipListComponent
+      },
     ]
   },
   { path: '**', component: NotFoundComponent }
