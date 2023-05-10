@@ -14,7 +14,7 @@ export class AddLeaveAuthComponent implements OnInit {
   @Output() refreshProfile = new EventEmitter<boolean>();
 
   leaveAuth: LeaveAuth = new LeaveAuth();
-  idA: number = 1;
+  idA: number = 8;
   dateValidation = false;
   timeValidation = false;
   leaveAuthTypes = Object.keys(TypeLA);
@@ -46,20 +46,20 @@ export class AddLeaveAuthComponent implements OnInit {
   }
 
   dateVerification() {
-    if (this.leaveAuth.authStartTime! > this.leaveAuth.authEndTime!) {
-      this.timeValidation = true;
-    } else {
-      this.timeValidation = false;
-    }
-  }
-
-  timeVerification() {
     if (this.leaveAuth.start_date! > this.leaveAuth.end_date!) {
       this.dateValidation = true;
     } else {
       this.dateValidation = false;
     }
-    console.log(this.dateValidation)
+  }
+
+  timeVerification() {
+    if (this.leaveAuth.authStartTime! > this.leaveAuth.authEndTime!) {
+      this.timeValidation = true;
+    } else {
+      this.timeValidation = false;
+    }
+    console.log(this.timeValidation)
   }
 
 
