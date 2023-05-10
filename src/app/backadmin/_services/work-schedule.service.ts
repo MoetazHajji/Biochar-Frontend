@@ -16,15 +16,15 @@ export class WorkScheduleService {
   constructor(private http: HttpClient) { }
 
   getAll(): Observable<HttpResponse<any>> {
-    return this.http.get(`${this.url}/WorkSchedule/getAllWorkSchedule`, { observe: 'response' })
+    return this.http.get(`${this.url}/hr-service/WorkSchedule/getAllWorkSchedule`, { observe: 'response' })
   }
 
   addWorkSchedule(startDate: any, endDate: any): Observable<HttpResponse<any>> {
-    return this.http.post(`${this.url}/WorkSchedule/createDailyWorkSchedule/${startDate}/${endDate}`, null, { observe: 'response' })
+    return this.http.post(`${this.url}/hr-service/WorkSchedule/createDailyWorkSchedule/${startDate}/${endDate}`, null, { observe: 'response' })
   }
 
   addSundayWorkSchedule(sunday: any): Observable<HttpResponse<any>> {
-    return this.http.post(`${this.url}/WorkSchedule/createWeekendWorkSchedule/${sunday}`, null, { observe: 'response' })
+    return this.http.post(`${this.url}/hr-service/WorkSchedule/createWeekendWorkSchedule/${sunday}`, null, { observe: 'response' })
   }
 
   convert(workWSchedules: CalenderGroupWSDto[]): CalendarDto[] {

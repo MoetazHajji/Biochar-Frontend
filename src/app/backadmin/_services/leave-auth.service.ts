@@ -12,26 +12,26 @@ export class LeaveAuthService {
   constructor(private http: HttpClient) { }
 
   getAll(): Observable<HttpResponse<any>> {
-    return this.http.get(`${this.url}/LeaveAuth/getAllLA`, { observe: 'response' })
+    return this.http.get(`${this.url}/hr-service/LeaveAuth/getAllLA`, { observe: 'response' })
   }
 
   getLAById(id: any) {
-    return this.http.get(`${this.url}/LeaveAuth/getLAById/${id}`, { observe: 'response' })
+    return this.http.get(`${this.url}/hr-service/LeaveAuth/getLAById/${id}`, { observe: 'response' })
   }
 
   AddLA(id: any, leaveAuth: LeaveAuth) {
-    return this.http.post(`${this.url}/LeaveAuth/addAndAssignLAToAccount/${id}`, leaveAuth, { observe: 'response' })
+    return this.http.post(`${this.url}/hr-service/LeaveAuth/addAndAssignLAToAccount/${id}`, leaveAuth, { observe: 'response' })
   }
 
   DeleteLA(id: any) {
-    return this.http.delete(`${this.url}/LeaveAuth/deleteLeaveAuth/${id}`, { observe: 'response' })
+    return this.http.delete(`${this.url}/hr-service/LeaveAuth/deleteLeaveAuth/${id}`, { observe: 'response' })
   }
 
   EditLA(id: any, leaveAuth: LeaveAuth) {
-    return this.http.put(`${this.url}/LeaveAuth/updateLeaveAuth/${id}`, leaveAuth, { observe: 'response' })
+    return this.http.put(`${this.url}/hr-service/LeaveAuth/updateLeaveAuth/${id}`, leaveAuth, { observe: 'response' })
   }
 
   UpdateRemainigDays() {
-    return this.http.post(`${this.url}/LeaveAuth/updatingRemainingdays`, { observe: 'response' })
+    return this.http.post(`${this.url}/hr-service/LeaveAuth/updatingRemainingdays`, { observe: 'response' })
   }
 }
