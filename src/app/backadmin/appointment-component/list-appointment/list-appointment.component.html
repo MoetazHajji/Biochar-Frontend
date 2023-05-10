@@ -18,7 +18,7 @@
                                     <div class="d-flex flex-row justify-content-between">
                                         <div>
                                             <button   (click) ="onClickaddAppointment()" class="btn btn-primary primary-bold-blue-backgroud-color" type="button"><i class="fa fa-plus"></i>&nbsp;insert</button>
-                                            <input id="message" type="text" name="message" value="Initial Value" />
+                                          
                                         </div>
                                     </div>
                                 </div>
@@ -40,3 +40,10 @@
 <app-add-appointment *ngIf="this.modaladdAppointement" [modalState]="this.modaladdAppointement"
 (onClickAppointmentModalAddEvent)="onClickAppointmentModalAddEvent($event)"
 (addAppointmentModalCloseEvent)="addAppointmentModalCloseEvent($event)"></app-add-appointment> 
+
+
+<app-message-box-authentication *ngIf="this.stateApptMsgBoxAuth" 
+[modalConfirmState]="this.stateApptMsgBoxAuth"
+type={{this.authenticationService.Response.status}} 
+title="Message" message={{this.authenticationService.Response.message}}
+(ModalCloseEvent)="closeEventstateMsgBoxAuth($event)" ></app-message-box-authentication>  

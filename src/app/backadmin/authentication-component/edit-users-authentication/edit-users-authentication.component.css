@@ -1,0 +1,120 @@
+.row-input {
+    margin-left: 10px;
+    margin-bottom: 10px;
+    /*padding-right: 10px;*/
+  }
+  .padding-top-one-hundred {
+    padding-top: 100px;
+  }
+  .input-design {
+    margin-left: 5px;
+    min-width: 100px;
+    max-width: 250px;
+  }
+  
+  .margin-left-fifty-px {
+    margin-left: 50px;
+  }
+  
+  .primary-bold-blue-backgroud-color {
+    background-color: #2366F7;
+  }
+  
+  .primary-light-blue-color {
+    color: #50B5FF;
+  }
+  
+  .button-delete-design {
+    background-color: #D84E4A;
+    border-color: #ff0700;
+  }
+  
+  .cursor-drop {
+    cursor: no-drop;
+  }
+  
+  .cursor-pointer {
+    cursor: pointer;
+  }
+  
+  .cursor-cell {
+    cursor: cell;
+  }
+  
+  .cursor-copy {
+    cursor: copy;
+  }
+  
+  .margin-left-ten-px {
+    margin-left: 10px;
+  }
+  
+  .input-max-width {
+    max-width: 300px;
+  }
+  
+  .margin-bottom-twenty-px {
+    margin-bottom: 20px;
+  }
+  
+  .card-border {
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    border-left-color: #50B5FF;
+    border-left-style: solid;
+    border-left-width: 4px;
+    min-width: 950px;
+  }
+  
+  .margin-right-ten-px {
+    margin-right: 10px;
+  }
+  
+  .margin-top-ten-px {
+    margin-top: 10px;
+  }
+  
+  .margin-bottom-ten-px {
+    margin-bottom: 10px;
+  }
+  
+  .table-responsive {
+    height: 500px;
+    overflow: auto;
+  }
+  
+  thead {
+    background-color: #f7f6f6;
+    text-align: center;
+  }
+  
+  tbody {
+  }
+  
+  .margin-top-fifteen-px {
+    margin-top: 15px;
+  }
+  
+  .margin-bottum-fifteen-px {
+    margin-bottom: 15px;
+  }
+  
+  h3 {
+    color: rgb(73,80,87);
+    font-family: TimesNewRoman;
+    font-size: 30px;
+    margin-top: auto;
+    margin-bottom: auto;
+  }
+  
+  .margin-top-five-px {
+    margin-top: 5px;
+  }
+  
+  .margin-bottum-five-px {
+    margin-bottom: 5px;
+  }
+  
+  

@@ -1,10 +1,12 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { myFunction2 } from './myScript.js';
+import { appointmentCalender ,clear } from './myScript.js';
 import { AccountDto } from 'src/app/_models/_user/AccountDto';
 import { AccountService } from '../../_services/_user/account.service';
 import { ActivatedRoute } from '@angular/router';
 import { AppointmentService } from '../../_services/_user/appointment.service';
 import { Appointment } from 'src/app/_models/_user/Appointment'; 
+import { AuthenticationService } from '../../_services/_user/authentication.service';
+import { AuthenticationStatus } from 'src/app/_models/_user/AuthenticationStatus';
 
 
 /*import { CalendarOptions } from '@fullcalendar/core'
@@ -19,53 +21,66 @@ import interactionPlugin from '@fullcalendar/interaction'*/
   styleUrls: ['./list-appointment.component.css']
 })
 export class ListAppointmentComponent implements OnInit {
- idAnnoce!:any
+ username!:any
   account : AccountDto = new AccountDto(); 
   modaladdAppointement :boolean = false ;  
   Listappointments : Appointment[] = [];
-
-
-
-
-  /*calendarOptions:CalendarOptions =  {
-    plugins : [
-      dayGridPlugin,
-      interactionPlugin,
-    ],
-    initialView: 'dayGridMonth'
-   // ,dateClick: this.handleDateClick.bind(this)
-  }*/
-  
+  stateApptMsgBoxAuth : boolean = false;
 
 
 
 
 
 
-  constructor(public accountService : AccountService,  private route: ActivatedRoute , private appointmentService :AppointmentService) {  
+
+
+
+  constructor(public accountService : AccountService,  private route: ActivatedRoute , 
+    private appointmentService :AppointmentService , public authenticationService : AuthenticationService ) {  
     
   }
   onClickaddAppointment( ) : void {this.modaladdAppointement = true; }
   addAppointmentModalCloseEvent( $event :any) : void { this.modaladdAppointement = $event ;}
-  onClickAppointmentModalAddEvent( $event :any) : void { }
+
+
+  onClickAppointmentModalAddEvent( $event :any) : void { 
+    console .log($event) ; 
+    this.accountService. addAppointementToUsername(   this.account.userDto.username , $event).subscribe(
+      (response) => { console.log( response.body) 
+        this.authenticationService.Response =response.body;
+        this.stateApptMsgBoxAuth = true; 
+        this. getAllDataAppointement ();
+      }
+    ,(error) => { this.stateApptMsgBoxAuth = true;   this.authenticationService.Response = {     token: "", status : AuthenticationStatus.ERROR , message : "Error Server ! " } })
+  }
+  closeEventstateMsgBoxAuth($event:any):void{
+    this.stateApptMsgBoxAuth = $event;
+  }
+
+
 
   ngOnInit(): void { 
-    this.idAnnoce = this.route.snapshot.params['id'];
-    console.log(this.idAnnoce);
-    this.accountService.getById(this.idAnnoce).subscribe((res:any)=>{   this.account = res.body; console.log(this.account);  }) ;
-    this.appointmentService.getAll().subscribe((res:any)=>{   this.Listappointments = res.body; console.log(this.Listappointments);  }) ;
- 
+    this.username = this.route.snapshot.params['username'];
+    console.log(this.username);
+   this. getAllDataAppointement ();
+  }
 
 
-    const input = document.getElementById(
-      'message',
-    ) as HTMLInputElement | null;
-    
-    if (input != null) {
-      console.log(input.value); // 👉️ "Initial Value"
-    }
-    
-    myFunction2([
+  getAllDataAppointement () : void {
+
+    this.accountService.getByUsername(this.username).subscribe((res:any)=>{   this.account = res.body; console.log(this.account);  }) ;
+    this.appointmentService.getAll().subscribe((res:any)=>{ 
+        this.Listappointments = res.body; console.log(this.Listappointments); 
+        console.log( this.appointmentService.convert(   this.Listappointments)); 
+        clear();
+        appointmentCalender(this.appointmentService.convert(   this.Listappointments));
+       }) ;
+  }
+}
+
+
+
+/* appointmentCalender([
       {
         id:'144',
         title: 'All Day Event',
@@ -118,7 +133,4 @@ export class ListAppointmentComponent implements OnInit {
         url: 'http://google.com/',
         start: '2019-08-28'
       }
-    ]);
-  }
-
-}
+    ]);*/

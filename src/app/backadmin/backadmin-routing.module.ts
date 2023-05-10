@@ -49,9 +49,11 @@ import { AddTestresultComponent } from './testresult-list/add-testresult/add-tes
 import { AnalysisStatistiqueComponent } from './analysis-statistique/analysis-statistique.component';
 import { UpdateTesttComponent } from './tests/update-testt/update-testt.component';
 
+import { GuardUserBackService } from './_services/_user/guard-user.service';
+import { EditUsersAuthenticationComponent } from './authentication-component/edit-users-authentication/edit-users-authentication.component';
 const routes: Routes = [
   { path: '', component: LoginComponent },
-  { path: 'login', component: LoginComponent },
+{ path: 'login', component: LoginComponent /*canActivate : [GuardUserService],*/ },
   {
     path: 'product',
     component: AdminLayoutComponent,
@@ -212,95 +214,85 @@ const routes: Routes = [
       component: OfferComponent
     }
     ]
-  },
-  {
-    path: 'auth',
-    //component:AdminLayoutComponent,
-    children: [
+    },
+    {
+      path: 'auth',
+      //component:AdminLayoutComponent,
+      children:[
+        {
+          path:'sign-in',
+          component:SignInAuthenticationComponent
+        },
+        {
+          path:'sign-up',
+          component:SignUpAuthenticationComponent
+        }
+      ]},
       {
-        path: 'sign-in',
-        component: SignInAuthenticationComponent
+        path: 'auth',
+        component:AdminLayoutComponent,
+        children:[
+          {
+            path:'edit-forget-password/:code',
+            component:EditForgotPasswordAuthenticationComponent
+          },
+          {
+            path:'edit-users',
+            component:EditUsersAuthenticationComponent
+          }
+        ]},
+    {
+      path: 'timeoff' , canActivateChild : [GuardUserBackService], 
+      component:AdminLayoutComponent,
+      children:[
+        {
+          path:'' , 
+          component:ListTimeoffComponent
+        },
+        {
+          path:'add',
+          component:AddTimeoffComponent
+        },
+        {
+          path:'edit', 
+          component:EditTimeoffComponent
+        }
+      ]
       },
       {
-        path: 'sign-up',
-        component: SignUpAuthenticationComponent
-      }
-    ]
-  },
-  {
-    path: 'auth',
-    component: AdminLayoutComponent,
-    children: [
-      {
-        path: 'edit-forget-password/:code',
-        component: EditForgotPasswordAuthenticationComponent
-      }
-    ]
-  },
-  {
-    path: 'timeoff',
-    component: AdminLayoutComponent,
-    children: [
-      {
-        path: '',
-        component: ListTimeoffComponent
+        path: 'account', canActivateChild : [GuardUserBackService], 
+        component:AdminLayoutComponent,
+        children:[
+          {
+            path:'list',
+            component:ListAccountComponent
+          },          {
+            path:'edit-detailled/:username',
+            component:EditGlobalAccountComponent
+          },
+          {
+            path:'pdf',
+            component:PdfextractorComponent
+          }
+        ]
       },
       {
-        path: 'add',
-        component: AddTimeoffComponent
-      },
-      {
-        path: 'edit',
-        component: EditTimeoffComponent
-      }
-    ]
-  },
-  {
-    path: 'account',
-    component: AdminLayoutComponent,
-    children: [
-      {
-        path: '',
-        component: ListAccountComponent
-      }, {
-        path: 'edit-detailled/:id',
-        component: EditGlobalAccountComponent
-      },
-      {
-        path: 'pdf',
-        component: PdfextractorComponent
-      }
-    ]
-  },
-  {
-    path: 'medicallist',
-    component: AdminLayoutComponent,
-    children: [
-      {
-        path: '',
-        component: MidcalcardListComponent
-      },
-      {
-        path: 'add',
-        component: AddMedicalcardComponent
-      },
-      {
-        path: 'update',
-        component: UpdateMedicalcardComponent
-      }
-    ]
-  },
-  {
-    path: 'samplelist',
-    component: AdminLayoutComponent,
-    children: [
-      {
-        path: '',
-        component: SampleListComponent
-      },
-      {
-        path:'certificate/:title',
-        component:CertificateComponent
+        path :'medicallist',
+        component:AdminLayoutComponent,
+        children : [
+          {
+            path:'',
+            component:MidcalcardListComponent
+          },
+          {
+            path:'add',
+            component:AddMedicalcardComponent
+          },
+          {
+            path:'update',
+            component:UpdateMedicalcardComponent
+          }
+        ]
       },
       {
         path:'demands',

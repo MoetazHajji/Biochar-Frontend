@@ -7,6 +7,7 @@ import { StateRegion } from 'src/app/_models/_user/StateRegion';
 import { Team } from 'src/app/_models/_user/Team';
 import { environment } from 'src/environments/environment';
 import { Appointment } from 'src/app/_models/_user/Appointment';
+import { CalendarDto } from 'src/app/_models/_user/CalendarDto';
 
 
 @Injectable({
@@ -32,6 +33,24 @@ export class AppointmentService {
   }
 
 
+  convert(appointments:  Appointment[]):CalendarDto[]{
+    const calendarEvents: CalendarDto[] = [];
+    appointments.forEach((appointment) => { 
+      const start = new Date(appointment.appointmentStart);  
+      const end = new Date(appointment.appointmentEnd);  
+      calendarEvents.push({
+        id: appointment.id.toString(),
+        title: appointment.firstName +" "+appointment.lastName,
+        start: start,
+        end: end,
+        color: "#fc9919",
+        editable:   false 
+      });
+    });
+  
+    return calendarEvents;
+
+  }
 
  
 }

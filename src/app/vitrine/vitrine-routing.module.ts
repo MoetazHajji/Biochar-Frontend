@@ -5,6 +5,7 @@ import { VitrineLayoutComponent } from './vitrine-layout/vitrine-layout.componen
 import { SignupComponent } from './signup/signup.component';
 import { LoginComponent } from './login/login.component';
 import { PdfextractorComponent } from './pdfextractor/pdfextractor.component';
+import { GuardUserFrontService } from '../backadmin/_services/_user/guard-user-front-service';
 import { TrainingsComponent } from './trainings/trainings.component';
 import { MyTrainingComponent } from './my-training/my-training.component';
 
@@ -33,7 +34,7 @@ children:[
 ]
 },
 {
-  path :'analysisPatient',
+  path :'analysisPatient',  canActivate : [GuardUserFrontService],
   component:PdfextractorComponent,
  
 },

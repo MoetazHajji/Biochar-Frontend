@@ -4,6 +4,7 @@ import { Roles } from "./Roles";
 import { Shift } from "./Shift";
 import { StateRegion } from "./StateRegion";
 import { Team } from "./Team";
+import { UserDto } from "./UserDto";
 
 export class AccountDto {
     id!: number; 
@@ -21,8 +22,9 @@ export class AccountDto {
     city! : string ;
     zip_code!: number;  
     adresse! : string ; 
-    roles! : Roles;
-    appointments! : Appointment[];  
+    //roles! : Roles;
     team!: Team ;   
     shift!: Shift ;   
+    appointments! : Appointment[];  
+    userDto! : UserDto;
 } 

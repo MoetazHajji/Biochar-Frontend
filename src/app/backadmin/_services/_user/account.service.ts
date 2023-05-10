@@ -3,6 +3,8 @@ import { Injectable } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { AccountDto } from 'src/app/_models/_user/AccountDto';
+import { Appointment } from 'src/app/_models/_user/Appointment';
+import { Roles } from 'src/app/_models/_user/Roles';
 import { Shift } from 'src/app/_models/_user/Shift';
 import { StateRegion } from 'src/app/_models/_user/StateRegion';
 import { Team } from 'src/app/_models/_user/Team';
@@ -23,9 +25,18 @@ export class AccountService {
   getById(id: any) : Observable<HttpResponse<any>>{
     return this.http.get(`${this.url}/user-service/account/${id}` , {observe : 'response'})
   }
+  getByUsername(usename: any) : Observable<HttpResponse<any>>{
+    return this.http.get(`${this.url}/user-service/account/selectbyUsername/${usename}` , {observe : 'response'})
+  }
   update(account:AccountDto) : Observable<HttpResponse<any>>{
     return this.http.put(`${this.url}/user-service/account`,account , {observe : 'response'})
   }
+
+    //http://localhost:8099/biochar/user-service/account/addAppointementToUsername/belhsen97
+    addAppointementToUsername(   username : string ,  appointment :Appointment ): Observable<HttpResponse<any>>{
+      return this.http.put(`${this.url}/user-service/account/addAppointementToUsername/${username}`,appointment , {observe : 'response'})
+    }
+
   delete(id:any) : Observable<HttpResponse<any>>{
     return this.http.delete(`${this.url}/user-service/account/${id}`, {observe : 'response'})
   }
@@ -36,6 +47,10 @@ export class AccountService {
     return this. getById(keyValue);
   }
 
+  listRolesOptions = [  { label: 'Doctor', value:  Roles.Doctor },  { label: 'TeaReceptionistm_B', value: Roles.Receptionist },
+  { label: 'Biologist', value:  Roles.Biologist },  { label: 'Chief_Service', value: Roles.Chief_Service },
+  { label: 'Intern', value:  Roles.Intern },  { label: 'Patient', value: Roles.Patient } 
+];
 
   listTeamOptions = [  { label: 'Team_A', value:  Team.Team_A },  { label: 'Team_B', value: Team.Team_B }  ];
   // fruitValues = Object.values(Team);

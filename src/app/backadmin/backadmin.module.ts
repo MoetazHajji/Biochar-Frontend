@@ -80,6 +80,8 @@ import { AddWsComponent } from './work-schedule/add-ws/add-ws.component';
 import { CertificateComponent } from './certificate/certificate.component';
 import { NgxPaginationModule } from 'ngx-pagination';
 import { DemandsComponent } from './demands/demands.component';
+import { EditUsersAuthenticationComponent } from './authentication-component/edit-users-authentication/edit-users-authentication.component';
+import { ModalEditUsersAuthenticationComponent } from './authentication-component/modal-edit-users-authentication/modal-edit-users-authentication.component';
 
 @NgModule({
   declarations: [
@@ -145,6 +147,9 @@ import { DemandsComponent } from './demands/demands.component';
     AddWsComponent,
     CertificateComponent,
     DemandsComponent
+    UpdateMedicalcardComponent,
+    EditUsersAuthenticationComponent,
+    ModalEditUsersAuthenticationComponent
   ],
   imports: [
     CommonModule,
