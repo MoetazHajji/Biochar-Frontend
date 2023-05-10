@@ -394,6 +394,16 @@ const routes: Routes = [
       },
     ]
   },
+  {
+    path: 'dashbord',
+    component: AdminLayoutComponent,
+    children: [
+      {
+        path: '',
+        component: DashbordComponent
+      }
+    ]
+  },
   { path: '**', component: NotFoundComponent }
 ];
 
