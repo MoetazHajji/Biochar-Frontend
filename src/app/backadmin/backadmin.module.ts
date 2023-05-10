@@ -87,6 +87,7 @@ import { InternshipRequestComponent } from './internship-request/internship-requ
 import { AddtestComponent } from './addtest/addtest.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { DashbordComponent } from './dashbord/dashbord.component';
+import { AddMailComponent } from './mail-component/add-mail/add-mail.component';
 
 @NgModule({
   declarations: [
@@ -158,7 +159,8 @@ import { DashbordComponent } from './dashbord/dashbord.component';
     InternshipListComponent,
     InternshipRequestComponent,
     AddtestComponent,
-    DashbordComponent
+    DashbordComponent,
+    AddMailComponent
   ],
   imports: [
     CommonModule,

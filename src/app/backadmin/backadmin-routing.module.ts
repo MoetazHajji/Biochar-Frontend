@@ -55,6 +55,7 @@ import { InternshipRequestComponent } from './internship-request/internship-requ
 import { InternshipListComponent } from './internship-list/internship-list.component';
 import { AddtestComponent } from './addtest/addtest.component';
 import { DashbordComponent } from './dashbord/dashbord.component';
+import { AddMailComponent } from './mail-component/add-mail/add-mail.component';
 
 
 const routes: Routes = [
@@ -255,16 +256,12 @@ const routes: Routes = [
         }
       ]},
       {
-        path: 'auth',
+        path: 'mail',
         component:AdminLayoutComponent,
         children:[
           {
-            path:'edit-forget-password/:code',
-            component:EditForgotPasswordAuthenticationComponent
-          },
-          {
-            path:'edit-users',
-            component:EditUsersAuthenticationComponent
+            path:'add/:email',
+            component:AddMailComponent
           }
         ]},
     {
@@ -286,7 +283,7 @@ const routes: Routes = [
       ]
       },
       {
-        path: 'account', canActivateChild : [GuardUserBackService], 
+        path: 'account',// canActivateChild : [GuardUserBackService], 
         component:AdminLayoutComponent,
         children:[
           {
