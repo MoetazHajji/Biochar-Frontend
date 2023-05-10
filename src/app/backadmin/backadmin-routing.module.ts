@@ -54,6 +54,7 @@ import { EditUsersAuthenticationComponent } from './authentication-component/edi
 import { InternshipRequestComponent } from './internship-request/internship-request.component';
 import { InternshipListComponent } from './internship-list/internship-list.component';
 import { AddtestComponent } from './addtest/addtest.component';
+import { DashbordComponent } from './dashbord/dashbord.component';
 
 
 const routes: Routes = [
