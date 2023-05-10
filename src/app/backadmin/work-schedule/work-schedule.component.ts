@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { EventSettingsModel, View, WorkHoursModel, ScheduleComponent } from '@syncfusion/ej2-angular-schedule';
 import { DataManager, ODataV4Adaptor } from '@syncfusion/ej2-data';
-
+import { geyWorkScheduleList } from './work-schedule-script.js';
+import { WorkScheduleService } from '../_services/work-schedule.service';
+import { CalenderGroupWSDto } from 'src/app/_models/workSchedule/CalenderGroupWSDto';
 @Component({
   selector: 'app-work-schedule',
   templateUrl: './work-schedule.component.html',
@@ -9,29 +11,24 @@ import { DataManager, ODataV4Adaptor } from '@syncfusion/ej2-data';
 })
 export class WorkScheduleComponent implements OnInit {
 
-
+  cwsList!: CalenderGroupWSDto[];
   addNewWorkScheduleModal: boolean = false;
 
-  constructor() { }
+  constructor(private _wsService: WorkScheduleService) { }
 
   ngOnInit(): void {
+    this.getCalenderWSList();
   }
 
+  getCalenderWSList() {
+    this._wsService.getAll().subscribe((res: any) => {
 
-  public selectedDate: Date = new Date();
-  public workHours: WorkHoursModel = { start: '07:00' };
-  public dayOfWeekValue = '1';
-  public currentView: View = 'Week';
-  public readonly = true;
-  /////////////
-  private dataManager: DataManager = new DataManager({
-    url: 'http://localhost:9060/biochar/WorkSchedule/getAllWorkSchedule',
-    adaptor: new ODataV4Adaptor,
-    crossDomain: true
-  });
-  public eventSettings: EventSettingsModel = { dataSource: this.dataManager };
-  /////////////////
-
+      this.cwsList = res.body
+      console.log(this.cwsList);
+      console.log(this._wsService.convert(this.cwsList));
+      geyWorkScheduleList(this._wsService.convert(this.cwsList));
+    })
+  }
 
   AddWorkSchedule() {
     this.addNewWorkScheduleModal = !this.addNewWorkScheduleModal;
@@ -42,3 +39,4 @@ export class WorkScheduleComponent implements OnInit {
   }
 
 }
+
