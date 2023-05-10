@@ -1,10 +1,10 @@
 <div class="modal modal-product-area" [class]="modalNewStock ? 'open' : ''">
-    <p-dialog header="Product Area" [(visible)]="modalNewStock" [modal]="true" [style]="{width: '500px'}" [baseZIndex]="10000" [draggable]="false" [resizable]="true" (onHide)="cancel()">
+    <p-dialog header="Stock Area" [(visible)]="modalNewStock" [modal]="true" [style]="{width: '500px'}" [baseZIndex]="10000" [draggable]="false" [resizable]="true" (onHide)="cancel()">
         <div *ngIf="hideForm" [formGroup]="createStockForm" >
             <div class="inscription-form-title-blc">
                 </div>
                 <div class="inscription-form-title">
-                <h1 class="edit-form-title text-hideform">Product added</h1>
+                <h1 class="edit-form-title text-hideform">Stock added</h1>
                 </div>
                 <button type="button" (click)="cancel()" class="btn btn-blue"></button>
             </div>

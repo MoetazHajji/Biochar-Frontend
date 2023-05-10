@@ -6,6 +6,8 @@ import { SignupComponent } from './signup/signup.component';
 import { LoginComponent } from './login/login.component';
 import { PdfextractorComponent } from './pdfextractor/pdfextractor.component';
 import { GuardUserFrontService } from '../backadmin/_services/_user/guard-user-front-service';
+import { TrainingsComponent } from './trainings/trainings.component';
+import { MyTrainingComponent } from './my-training/my-training.component';
 
 const routes: Routes = [
   { path:'' ,
@@ -16,6 +18,20 @@ const routes: Routes = [
       component:HomeComponent
     }
   ]
+},
+{ path:'training' ,
+component:VitrineLayoutComponent,
+children:[
+  {
+    path:'',
+    component:TrainingsComponent
+  }
+  ,
+  {
+    path : 'mytraining',
+    component:MyTrainingComponent
+  }
+]
 },
 {
   path :'analysisPatient',  canActivate : [GuardUserFrontService],

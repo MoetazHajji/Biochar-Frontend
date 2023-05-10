@@ -42,7 +42,7 @@ import { SignInAuthenticationComponent } from './authentication-component/sign-i
 import { SignUpAuthenticationComponent } from './authentication-component/sign-up-authentication/sign-up-authentication.component';
 import { MessageBoxAuthenticationComponent } from './authentication-component/message-box-authentication/message-box-authentication.component';
 import { ForgotPasswordAuthenticationComponent } from './authentication-component/forgot-password-authentication/forgot-password-authentication.component';
-import { EditForgotPasswordAuthenticationComponent } from './authentication-component/edit-forgot-password-authentication/edit-forgot-password-authentication.component'; 
+import { EditForgotPasswordAuthenticationComponent } from './authentication-component/edit-forgot-password-authentication/edit-forgot-password-authentication.component';
 import { SampleListComponent } from './sample-list/sample-list.component';
 import { AddSampleComponent } from './sample-list/add-sample/add-sample.component';
 import { UpdateSampleComponent } from './sample-list/update-sample/update-sample.component';
@@ -76,6 +76,10 @@ import { AddProfileComponent } from './profile/add-profile/add-profile.component
 import { DetailsProfileComponent } from './profile/details-profile/details-profile.component';
 import { EditProfileComponent } from './profile/edit-profile/edit-profile.component';
 import { WorkScheduleComponent } from './work-schedule/work-schedule.component';
+import { AddWsComponent } from './work-schedule/add-ws/add-ws.component';
+import { CertificateComponent } from './certificate/certificate.component';
+import { NgxPaginationModule } from 'ngx-pagination';
+import { DemandsComponent } from './demands/demands.component';
 import { EditUsersAuthenticationComponent } from './authentication-component/edit-users-authentication/edit-users-authentication.component';
 import { ModalEditUsersAuthenticationComponent } from './authentication-component/modal-edit-users-authentication/modal-edit-users-authentication.component';
 
@@ -136,9 +140,13 @@ import { ModalEditUsersAuthenticationComponent } from './authentication-componen
     SignUpAuthenticationComponent,
     MessageBoxAuthenticationComponent,
     ForgotPasswordAuthenticationComponent,
-    EditForgotPasswordAuthenticationComponent ,
+    EditForgotPasswordAuthenticationComponent,
     MidcalcardListComponent,
     AddMedicalcardComponent,
+    UpdateMedicalcardComponent,
+    AddWsComponent,
+    CertificateComponent,
+    DemandsComponent
     UpdateMedicalcardComponent,
     EditUsersAuthenticationComponent,
     ModalEditUsersAuthenticationComponent
@@ -162,7 +170,8 @@ import { ModalEditUsersAuthenticationComponent } from './authentication-componen
     AutoCompleteModule,
     AvatarModule,
     CardModule,
-    SelectButtonModule
+    SelectButtonModule,
+    NgxPaginationModule
   ],
   bootstrap: [LoginComponent]
 })

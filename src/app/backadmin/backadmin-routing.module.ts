@@ -1,7 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AdminLayoutComponent } from './admin-layout/admin-layout.component';
-import { AnalysisStatistiqueComponent } from './analysis-statistique/analysis-statistique.component';
 import { LoginComponent } from './login/login.component';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { AddProductComponent } from './product-list/add-product/add-product.component';
@@ -30,12 +29,8 @@ import { TestsComponent } from './tests/tests.component';
 import { TrainingAdminComponent } from './training-admin/training-admin.component';
 import { SubjectsComponent } from './subjects/subjects.component';
 import { TrainingsListComponent } from './trainings-list/trainings-list.component';
-import { StockComponent } from './stock/stock.component';
-import { EditStockComponent } from './stock/edit-stock/edit-stock.component';
-import { DetailsProductComponent } from './product-list/details-product/details-product.component';
-import { DetailsStockComponent } from './stock/details-stock/details-stock.component';
-import { UpdateTesttComponent } from './tests/update-testt/update-testt.component';
-import { AddTestresultComponent } from './testresult-list/add-testresult/add-testresult.component';
+import { CertificateComponent } from './certificate/certificate.component';
+import { DemandsComponent } from './demands/demands.component';
 import { PanierComponent } from './order/panier/panier.component';
 import { OrderComponent } from './order/order.component';
 import { DetailsOrderComponent } from './order/details-order/details-order.component';
@@ -45,6 +40,15 @@ import { AddMedicalcardComponent } from './midcalcard-list/add-medicalcard/add-m
 import { UpdateSampleComponent } from './sample-list/update-sample/update-sample.component';
 import { UpdateMedicalcardComponent } from './midcalcard-list/update-medicalcard/update-medicalcard.component';
 import { PdfextractorComponent } from './testresult-list/pdfextractor/pdfextractor.component';
+import { WorkScheduleComponent } from './work-schedule/work-schedule.component';
+import { DetailsProductComponent } from './product-list/details-product/details-product.component';
+import { StockComponent } from './stock/stock.component';
+import { EditStockComponent } from './stock/edit-stock/edit-stock.component';
+import { DetailsStockComponent } from './stock/details-stock/details-stock.component';
+import { AddTestresultComponent } from './testresult-list/add-testresult/add-testresult.component';
+import { AnalysisStatistiqueComponent } from './analysis-statistique/analysis-statistique.component';
+import { UpdateTesttComponent } from './tests/update-testt/update-testt.component';
+
 import { GuardUserBackService } from './_services/_user/guard-user.service';
 import { EditUsersAuthenticationComponent } from './authentication-component/edit-users-authentication/edit-users-authentication.component';
 const routes: Routes = [
@@ -61,6 +65,10 @@ const routes: Routes = [
       {
         path: 'add',
         component: AddProductComponent
+      },
+      {
+        path: 'details/:id',
+        component: DetailsProductComponent
       }
     ]
   },
@@ -79,6 +87,10 @@ const routes: Routes = [
       {
         path: 'updateProfile',
         component: EditProfileComponent
+      },
+      {
+        path: 'details/:id',
+        component: DetailsProductComponent
       }
     ]
   },
@@ -97,12 +109,17 @@ const routes: Routes = [
       {
         path: 'updateLeaveAuth',
         component: EditLeaveAuthComponent
-      },
-      {
-        path: 'details/:id',
-        component: DetailsProductComponent
       }
     ]
+  },
+  {
+    path: 'workSchedule',
+    component: AdminLayoutComponent,
+    children: [
+      {
+        path: '',
+        component: WorkScheduleComponent
+      }]
   },
   {
     path: 'training',
@@ -168,34 +185,34 @@ const routes: Routes = [
       }
     ]
   },
-    {
-      path:'panier',
-      component:AdminLayoutComponent,
-      children:[{
-        path:'',
-        component:PanierComponent
-      }]
+  {
+    path: 'panier',
+    component: AdminLayoutComponent,
+    children: [{
+      path: '',
+      component: PanierComponent
+    }]
+  },
+  {
+    path: 'order',
+    component: AdminLayoutComponent,
+    children: [{
+      path: '',
+      component: OrderComponent
     },
     {
-      path:'order',
-      component:AdminLayoutComponent,
-      children:[{
-        path:'',
-        component:OrderComponent
-      },
-      {
-        path:'details/:id',
-        component:DetailsOrderComponent
-      }
+      path: 'details/:id',
+      component: DetailsOrderComponent
+    }
     ]
-    },
-    {
-      path:'offer',
-      component:AdminLayoutComponent,
-      children:[{
-        path:'',
-        component:OfferComponent
-      }
+  },
+  {
+    path: 'offer',
+    component: AdminLayoutComponent,
+    children: [{
+      path: '',
+      component: OfferComponent
+    }
     ]
     },
     {
@@ -278,63 +295,68 @@ const routes: Routes = [
         ]
       },
       {
-        path :'samplelist',
-        component:AdminLayoutComponent,
-        children : [
-          {
-            path:'',
-            component:SampleListComponent
-          },
-          {
-            path:'add',
-            component:AddMedicalcardComponent
-          },
-          {
-            path:'update',
-            component:UpdateSampleComponent
-          }
-        ]
+        path:'demands',
+        component:DemandsComponent
+      }
+    ]},
+    {
+      path: 'samplelist',
+      component: AdminLayoutComponent,
+      children: [
+        {
+          path: '',
+          component: SampleListComponent
+        },
+        {
+          path: 'add',
+          component: AddMedicalcardComponent
+        },
+        {
+          path: 'update',
+          component: UpdateSampleComponent
+        }
+      ]
+    },
+  {
+    path: 'testList',
+    component: AdminLayoutComponent,
+    children: [
+      {
+        path: '',
+        component: TestsComponent
       },
       {
-        path :'testList',
-        component:AdminLayoutComponent,
-        children : [
-          {
-            path:'',
-            component:TestsComponent
-          },
-          {
-            path:'add',
-            component:AddTesttComponent
-          },
-          {
-            path:'update',
-            component:UpdateTesttComponent
-          }
-        ]
-        }, 
-        {
-          path: 'appointment',
-          component:AdminLayoutComponent,
-          children:[
-            {
-              path:':username',
-              component:ListAppointmentComponent
-            }  
-          ]
-          }, 
-  
+        path: 'add',
+        component: AddTesttComponent
+      },
       {
-        path :'stat',
-        component:AdminLayoutComponent,
-        children : [
-          {
-            path:'',
-            component:AnalysisStatistiqueComponent
-          }
-        ]
-      }, 
-  {path:'**',component:NotFoundComponent}
+        path: 'update',
+        component: UpdateTesttComponent
+      }
+    ]
+  },
+  {
+    path: 'appointment',
+    component: AdminLayoutComponent,
+    children: [
+      {
+        path: ':id',
+        component: ListAppointmentComponent
+      }
+    ]
+  },
+
+  {
+    path: 'stat',
+    component: AdminLayoutComponent,
+    children: [
+      {
+        path: '',
+        component: AnalysisStatistiqueComponent
+      }
+    ]
+  },
+  { path: '**', component: NotFoundComponent }
 ];
 
 @NgModule({
