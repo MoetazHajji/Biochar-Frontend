@@ -8,6 +8,7 @@ import { AccountService } from '../../_services/_user/account.service';
 import { Team } from 'src/app/_models/_user/Team';
 import { Shift } from 'src/app/_models/_user/Shift';
 import { FilterPipe } from './FilterPipe';
+import { UserDto } from 'src/app/_models/_user/UserDto';
 @Component({
   selector: 'app-list-account',
   templateUrl: './list-account.component.html',
@@ -21,19 +22,19 @@ export class ListAccountComponent implements OnInit {
  modaldetailedAccount : boolean = false;
  modaldetailedAccountHR : boolean = false;
  ListAccountsFilter:AccountDto[]=[];
-
+ userDto:UserDto={    id: 1,username:"Bel",password:"",roles : Roles.Patient,listPermissions: [],enabled  : true ,code : "" ,};
   constructor(public accountService : AccountService) { }
 
   ngOnInit(): void {
-   
+       
         this.ListAccounts = [  {id : 1, firstname:"belhsen", lastname:"bachouch"
       , cin: 10820305 , phone: 55775088 ,email: "belhsenbachouch@gmail.com", photo :  "src", 
-      gender : Gender.male , state : StateRegion.Ariana,city:"el fahs",zip_code:1040,adresse : " adresse " , roles :Roles.Biologist 
+      gender : Gender.male , state : StateRegion.Ariana,city:"el fahs",zip_code:1040,adresse : " adresse " , userDto : this.userDto
     , createdAt: new Date(1990, 5, 15)   , dateOfBirth: new Date(1990, 5, 15) , hireDate:new Date(1990, 5, 15), appointments :this.Listappointments ,
   team: Team.Team_B , shift: Shift.Afternoon},
     {id : 2, firstname:"zeineb", lastname:"bachouch"
     , cin: 10820305 , phone: 55775088 ,email: "belhsenbachouch@gmail.com", photo :  "src", 
-    gender : Gender.male , state : StateRegion.Ariana,city:"el fahs",zip_code:1040,adresse : " adresse " , roles :Roles.Patient 
+    gender : Gender.male , state : StateRegion.Ariana,city:"el fahs",zip_code:1040,adresse : " adresse " ,userDto : this.userDto
   , createdAt:new Date(1990, 5, 15)   , dateOfBirth: new Date(1990, 5, 15) , hireDate:new Date(1990, 5, 15), appointments :this.Listappointments,
   team: Team.Team_B , shift: Shift.Day_Guard }]; 
 
@@ -43,9 +44,6 @@ export class ListAccountComponent implements OnInit {
      this.ListAccountsFilter = response.body;
     console.log( response); }
   ,(error) => { console.log(error); }) ;
-
-
- 
   }
 
 

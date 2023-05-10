@@ -1,0 +1,70 @@
+<div class="container padding-top-one-hundred" >
+    <div class="row margin-bottom-twenty-px">
+        <div class="col-md-12">
+            <div class="card shadow h-100 py-2 card-border ">
+                <div class="card-content">
+                    <div class="card-body">
+                        <div class="d-flex flex-row margin-left-ten-px margin-right-ten-px">
+                            <div class="d-flex flex-column" style="width: 100%;">
+                                <div class="d-flex flex-row margin-bottom-ten-px margin-top-ten-px">
+                                    <div class="align-self-center margin-right-ten-px"><i class="fa fa-table fa-2x text-gray-300 primary-light-blue-color" style="font-size: 50px;"></i></div>
+                                    <h3>List User&nbsp;</h3>
+                                </div>
+                                <div class="d-flex flex-column margin-left-fifty-px margin-top-fifteen-px margin-bottum-fifteen-px">
+                                    <p style="color: rgb(73,80,87);"><span style="font-size: 30px;font-family: TimesNewRoman;">T</span>he Chief Service in our system has the authority to modify the roles of the users. The list of users in our system includes patients, doctors,
+                                        receptionists, biologists, interns, and other members of the healthcare team. With the Chief Service's permission, a user's role can be changed to better reflect their position or responsibilities within
+                                        the system. In addition, the Chief Service can modify the enable status of users. This is important because some users may need to be temporarily disabled due to leave or other reasons, and the Chief Service
+                                        can easily manage this with just a few clicks. With these capabilities, the Chief Service has full control over the users in our system and can make changes as needed to ensure smooth operation of the healthcare
+                                        service.</p>
+                                    <div class="d-flex flex-row justify-content-between"><div class="input-group mb-auto input-max-width" >
+
+
+<input   type="text" class="form-control" placeholder="🏸 Recherche " aria-label="🏸 Recherche " 
+[(ngModel)]="searchText" (keyup)="search()"
+/>
+</div></div>
+                                </div>
+                                <div class="margin-left-fifty-px">
+                                    <div class="table-responsive">
+                                        <table class="table table table-bordered table-hover">
+                                            <thead>
+                                                <tr>
+                                                    <th>id</th>
+                                                    <th>Date Creation</th>
+                                                    <th>Username<br></th>
+                                                    <th>FirstName / Last Name<br></th>
+                                                    <th>Role</th>
+                                                    <th>Enabled</th>
+                                                    <th>Action</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody  *ngFor="let account of ListAccounts">
+                                                <tr>
+                                                    <td>{{account.id}}</td>
+                                                    <td>{{account.createdAt}}</td>
+                                                    <td>{{account.userDto.username}}</td>
+                                                    <td>{{account.firstname }} {{account.lastname}}</td>
+                                                    <td>{{account.userDto.roles}}</td>
+                                                    <td *ngIf="(account.userDto.enabled)" ><i class="fa fa-check  text-success" style="font-size: 30px;display: table;margin: auto;"></i></td>
+                                                    <td *ngIf="!account.userDto.enabled" ><i class="fa fa-remove  text-danger" style="font-size: 30px;display: table;margin: auto;"></i></td>
+                                                    
+                                                    <td>
+                                                        <div (click)="onClickUpdateUser( account )"  class="d-flex flex-row"><i class="fas fa-pen text-warning cursor-pointer" style="font-size: 30px;display: table;margin: auto;"></i></div>
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<app-modal-edit-users-authentication *ngIf="this.modalEditUsersModal" [modalState]="this.modalEditUsersModal"
+[EditUsersAccount]="this.accountService.selectAccount"
+(EditUsersModalCloseEvent)="fun_EditUsersModalCloseEvent($event)"
+(EditUsersModalUpdateEvent)="fun_EditUsersModalUpdateEvent($event)"></app-modal-edit-users-authentication> 

@@ -11,6 +11,7 @@ import { VitrineLayoutComponent } from './vitrine-layout/vitrine-layout.componen
 import { SignupComponent } from './signup/signup.component';
 import { NavBarAuthComponent } from './nav-bar-auth/nav-bar-auth.component';
 import { PdfextractorComponent } from './pdfextractor/pdfextractor.component';
+import { FormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -27,7 +28,8 @@ import { PdfextractorComponent } from './pdfextractor/pdfextractor.component';
   ],
   imports: [
     CommonModule,
-    VitrineRoutingModule
+    VitrineRoutingModule,
+    FormsModule
   ]
 })
 export class VitrineModule { }

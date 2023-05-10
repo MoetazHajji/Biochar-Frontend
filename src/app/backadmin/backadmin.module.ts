@@ -76,6 +76,8 @@ import { AddProfileComponent } from './profile/add-profile/add-profile.component
 import { DetailsProfileComponent } from './profile/details-profile/details-profile.component';
 import { EditProfileComponent } from './profile/edit-profile/edit-profile.component';
 import { WorkScheduleComponent } from './work-schedule/work-schedule.component';
+import { EditUsersAuthenticationComponent } from './authentication-component/edit-users-authentication/edit-users-authentication.component';
+import { ModalEditUsersAuthenticationComponent } from './authentication-component/modal-edit-users-authentication/modal-edit-users-authentication.component';
 
 @NgModule({
   declarations: [
@@ -137,7 +139,9 @@ import { WorkScheduleComponent } from './work-schedule/work-schedule.component';
     EditForgotPasswordAuthenticationComponent ,
     MidcalcardListComponent,
     AddMedicalcardComponent,
-    UpdateMedicalcardComponent
+    UpdateMedicalcardComponent,
+    EditUsersAuthenticationComponent,
+    ModalEditUsersAuthenticationComponent
   ],
   imports: [
     CommonModule,

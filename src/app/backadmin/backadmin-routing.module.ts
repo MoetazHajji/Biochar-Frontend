@@ -45,9 +45,11 @@ import { AddMedicalcardComponent } from './midcalcard-list/add-medicalcard/add-m
 import { UpdateSampleComponent } from './sample-list/update-sample/update-sample.component';
 import { UpdateMedicalcardComponent } from './midcalcard-list/update-medicalcard/update-medicalcard.component';
 import { PdfextractorComponent } from './testresult-list/pdfextractor/pdfextractor.component';
+import { GuardUserBackService } from './_services/_user/guard-user.service';
+import { EditUsersAuthenticationComponent } from './authentication-component/edit-users-authentication/edit-users-authentication.component';
 const routes: Routes = [
   { path: '', component: LoginComponent },
-  { path: 'login', component: LoginComponent },
+{ path: 'login', component: LoginComponent /*canActivate : [GuardUserService],*/ },
   {
     path: 'product',
     component: AdminLayoutComponent,
@@ -216,14 +218,18 @@ const routes: Routes = [
           {
             path:'edit-forget-password/:code',
             component:EditForgotPasswordAuthenticationComponent
+          },
+          {
+            path:'edit-users',
+            component:EditUsersAuthenticationComponent
           }
         ]},
     {
-      path: 'timeoff',
+      path: 'timeoff' , canActivateChild : [GuardUserBackService], 
       component:AdminLayoutComponent,
       children:[
         {
-          path:'',
+          path:'' , 
           component:ListTimeoffComponent
         },
         {
@@ -231,20 +237,20 @@ const routes: Routes = [
           component:AddTimeoffComponent
         },
         {
-          path:'edit',
+          path:'edit', 
           component:EditTimeoffComponent
         }
       ]
       },
       {
-        path: 'account',
+        path: 'account', canActivateChild : [GuardUserBackService], 
         component:AdminLayoutComponent,
         children:[
           {
-            path:'',
+            path:'list',
             component:ListAccountComponent
           },          {
-            path:'edit-detailled/:id',
+            path:'edit-detailled/:username',
             component:EditGlobalAccountComponent
           },
           {
@@ -312,7 +318,7 @@ const routes: Routes = [
           component:AdminLayoutComponent,
           children:[
             {
-              path:':id',
+              path:':username',
               component:ListAppointmentComponent
             }  
           ]

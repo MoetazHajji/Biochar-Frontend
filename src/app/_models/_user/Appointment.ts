@@ -1,3 +1,4 @@
+import { Time } from "@angular/common";
 import { Account } from "./Account";
 import { AppointmentStatus } from "./AppointmentStatus";
 
@@ -7,9 +8,10 @@ export class Appointment {
     reason! : string ; 
     comments! : string ;
     firstVisit! : boolean;
-    appointmentDate!: Date ; 
-    appointmentStartTime!: Date ; 
-    appointmentEndTime !: Date ; 
+    appointmentStart!: Date ;  
+    appointmentEnd!: Date ;  
     appointmentStatus !: AppointmentStatus;
-    account! : Account;
+    firstName! : string ; 
+    lastName! : string ; 
+   // account! : Account;
 }

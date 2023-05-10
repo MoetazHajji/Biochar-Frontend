@@ -5,6 +5,7 @@ import { VitrineLayoutComponent } from './vitrine-layout/vitrine-layout.componen
 import { SignupComponent } from './signup/signup.component';
 import { LoginComponent } from './login/login.component';
 import { PdfextractorComponent } from './pdfextractor/pdfextractor.component';
+import { GuardUserFrontService } from '../backadmin/_services/_user/guard-user-front-service';
 
 const routes: Routes = [
   { path:'' ,
@@ -17,7 +18,7 @@ const routes: Routes = [
   ]
 },
 {
-  path :'analysisPatient',
+  path :'analysisPatient',  canActivate : [GuardUserFrontService],
   component:PdfextractorComponent,
  
 },

@@ -43,13 +43,13 @@
                     <div class="d-flex flex-row-reverse">
                       
                         <i (click)="onClickDetailed(account)" class="fa fa-search-plus cursor-pointer" style="font-size: 25px;color: #50b5ff;"></i>
-                        <i *ngIf="!(account.roles==='Patient')" (click)="onClickDetailedHR(account)"  class="fa fa-briefcase cursor-pointer" style="font-size: 25px;color: #50b5ff;margin-right: 10px;"></i>
+                        <i *ngIf="!(account.userDto.roles ==='Patient')" (click)="onClickDetailedHR(account)"  class="fa fa-briefcase cursor-pointer" style="font-size: 25px;color: #50b5ff;margin-right: 10px;"></i>
                     </div>
                 </div>
                 <div class="card-body text-center">
                     <div><img class="rounded-circle" [src]="account.photo" style="width: 50%;height: 500%;"></div>
                     <h4 class="mb-2" style="margin-top: 5px;">{{account.firstname}} - {{account.lastname}}</h4>
-                    <h6 class="mb-2">{{account.roles}}</h6>
+                    <h6 class="mb-2">{{account.userDto.roles}}</h6>
                     <h6 class="mb-2">{{account.gender}}</h6>
                     <h6 class="mb-2">{{account.phone}}</h6>
                     <h6 class="mb-2">{{account.email}}</h6>

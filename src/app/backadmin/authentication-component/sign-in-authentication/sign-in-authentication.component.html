@@ -10,7 +10,7 @@
           <div class="row no-gutters">
               <div class="col-md-6 text-center pt-5">
                   <div class="sign-in-detail text-white">
-                      <a class="sign-in-logo mb-5" href="#"><img src="../../../assets/images/logo-full.png" class="img-fluid" alt="logo"></a>
+                     <!-- <a class="sign-in-logo mb-5" href="#"><img src="../../../assets/images/logo-full.png" class="img-fluid" alt="logo"></a>-->
                       <div class="owl-carousel" data-autoplay="true" data-loop="true" data-nav="false" data-dots="true" data-items="1" data-items-laptop="1" data-items-tab="1" data-items-mobile="1" data-items-mobile-sm="1" data-margin="0">
                           <div class="item">
                               <img src="../../../assets/images/login/1.png" class="img-fluid mb-4" alt="logo">
@@ -37,8 +37,8 @@
                       <form #signInForm = "ngForm" class="mt-4">
                           <div class="form-group">
                               <label for="auth-input-username">Username</label>
-                              <input type="email" class="form-control mb-0" id="auth-input-username" placeholder="Enter Username"
-                              name="auth-username" [(ngModel)]="authRequest.username" #username="ngModel"  required>
+                              <input type="text" class="form-control mb-0" id="auth-input-username" placeholder="Enter Username"
+                              name="auth-username" [(ngModel)]="this.authenticationService.Request.username" #username="ngModel"  required>
                               <div class="d-flex flex-row justify-content-center margin-bottom-ten-px"  
                               *ngIf="username.invalid && username.touched" >
                                <div  style="color:#DC3545;" *ngIf="username.errors?.['required']"> Username is required  </div> 
@@ -48,7 +48,7 @@
                               <label for="auth-input-password">Password</label>
                               <p (click)="onClickForgotPassword()"   class="float-right cursor-pointer primary-light-blue-color">Forgot password?</p>
                               <input type="password" class="form-control mb-0" id="auth-input-password" placeholder="password"
-                              name="auth-password" [(ngModel)]="authRequest.password" #password="ngModel"  required>
+                              name="auth-password" [(ngModel)]="this.authenticationService.Request.password" #password="ngModel"  required>
                               <div class="d-flex flex-row justify-content-center margin-bottom-ten-px"  
                               *ngIf="password.invalid && password.touched" >
                                <div  style="color:#DC3545;" *ngIf="password.errors?.['required']"> Password is required  </div> 
@@ -60,7 +60,7 @@
                                   <label class="custom-control-label" for="customCheck1">Remember Me</label>
                               </div>
                               <button [disabled]="signInForm.invalid"  type="submit" class="btn btn-primary float-right" (click)="signIn()">Sign in</button>
-                              <button  type="submit" class="btn btn-primary float-right" (click)="logout()">Logout</button>
+                              <!--<button  type="submit" class="btn btn-primary float-right" (click)="logout()">Logout</button>-->
                             </div>
                       </form>
                   </div>
@@ -78,6 +78,6 @@
 
 <app-message-box-authentication *ngIf=" this.stateMsgBoxAuth" 
 [modalConfirmState]="this.stateMsgBoxAuth"
-type={{this.authResponse.status}} 
-title="Message" message={{this.authResponse.message}}
+type={{this.authenticationService.Response.status}} 
+title="Message" message={{this.authenticationService.Response.message}}
 (ModalCloseEvent)="closeEventstateMsgBoxAuth($event)" ></app-message-box-authentication>  
