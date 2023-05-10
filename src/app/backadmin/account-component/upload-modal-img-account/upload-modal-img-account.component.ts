@@ -3,6 +3,8 @@ import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Observable } from 'rxjs';
 import { AttachementDto } from 'src/app/_models/_user/AttachementDto';
 import { environment } from 'src/environments/environment';
+import { AuthenticationService } from '../../_services/_user/authentication.service';
+import { AccountDto } from 'src/app/_models/_user/AccountDto';
 
 @Component({
   selector: 'app-upload-modal-img-account',
@@ -61,6 +63,11 @@ onUpload() {
       this.uploadImgAccountModal_OnUploadSuccessEvent.emit(this.attachementDto); 
       this.modalState = false;  
       this.uploadImgAccountModalCloseEvent.emit(this.modalState); 
+
+
+
+
+
       console.log( this.attachementDto); }
       ,(error) => { console.log(error); })
 }

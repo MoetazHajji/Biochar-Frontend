@@ -9,6 +9,10 @@ import { Team } from 'src/app/_models/_user/Team';
 import { AccountService } from '../../_services/_user/account.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { AttachementDto } from 'src/app/_models/_user/AttachementDto';
+import { AuthenticationService } from '../../_services/_user/authentication.service';
+import { LocalService } from '../../_services/_user/local.service';
+import { AuthenticationResponse } from 'src/app/_models/_user/AuthenticationResponse';
+import { AuthenticationStatus } from 'src/app/_models/_user/AuthenticationStatus';
 //http://localhost:4200/admin/account/edit-detailled/3
 @Component({
   selector: 'app-edit-global-account',
@@ -17,35 +21,33 @@ import { AttachementDto } from 'src/app/_models/_user/AttachementDto';
 })
 export class EditGlobalAccountComponent implements OnInit {
 [x: string]: any;
-idAnnoce!:any
+usernameParam!:any
   account : AccountDto = new AccountDto(); 
   Listappointments : Appointment[] = [];
    maleOption :Gender = Gender.male;
    femaleOption :Gender = Gender.female;
    selectedGenderOption: Gender = Gender.male;
   constructor(public accountService : AccountService, 
-    private route: ActivatedRoute) {
-    this.idAnnoce = this.route.snapshot.params['id']
-    console.log(this.idAnnoce)
-    this.accountService.getById(this.idAnnoce).subscribe((res:any)=>{ 
-      this.account = res.body;   }) ;
-     }
+    private route: ActivatedRoute ,private authenticationService : AuthenticationService ) {
+     
 
-  ngOnInit(): void {
-    this.account =   {id : 1, firstname:"belhsen", lastname:"bachouch"
-    , cin: 10820305 , phone: 55775088 ,email: "belhsenbachouch@gmail.com", photo :  "src", 
-    gender : Gender.female , state : StateRegion.Zaghouan,city:"el fahs",zip_code:1040,adresse : " adresse " ,
-     roles :Roles.Biologist  , createdAt: new Date(1990, 5, 15)   , dateOfBirth: new Date(1990, 5, 15) , 
-     hireDate:new Date(1990, 5, 15), appointments :this.Listappointments , team: Team.Team_B , shift: Shift.Afternoon}; 
+   }
+
+  ngOnInit(): void { 
+    // const accountDtoString =   this.localService.getData( "AccountDto"); 
+   //  this.account = (  accountDtoString == null ?  new AccountDto :  JSON.parse(accountDtoString)  ) ;
+   // console.log (  this.account );
+   this.usernameParam = this.route.snapshot.params['username'];
+
+   //console.log(this.usernameParam)
+   this.accountService.getByUsername(this.usernameParam).subscribe((res:any)=>{  this.account = res.body;   }) ; 
   }
 
 
 
 
 
-public currentPassword! : String;
-public newPassword! : String;
-public verifyPassword! : String;
+
 
 
 
@@ -59,12 +61,60 @@ public verifyPassword! : String;
   }
   onClickUpdate_PersonalInformation(): void {
     console.log( "onClickUpdate_PersonalInformation" );
-    this.accountService.update(this.account).subscribe((response) => {  console.log( response); }
+    this.accountService.update(this.account).subscribe((response) => {  
+      console.log( response);
+      var  acct =   this.authenticationService.getAccount();
+      acct = this.account; 
+      this.authenticationService.setAccount (acct);
+     }
     ,(error) => { console.log(error); }) ;
   }
+
+
+  public currentPassword! : string;
+  public newPassword! : string;
+  public verifyPassword! : string;
   onClickUpdate_ChangePassword(): void {
     console.log( "onClickUpdate_ChangePassword" );
+    this.authenticationService.Request.username =  this.account.userDto.username;
+    this.authenticationService.Request.password =  this.currentPassword;
+    console.log( this.authenticationService.Request );
+    this.authenticationService.updatePassword( this.authenticationService.Request ,this.newPassword).subscribe(
+      (response) => {  console.log( response);this.authResponse = response.body; this.stateMsgBoxAuth  = true ;  }
+    ,(error) => { console.log("error"); console.log(error); 
+    this.authResponse = { token: "", status : AuthenticationStatus.ERROR , message : "Error send Mail !" };
+    this.stateMsgBoxAuth  = true ;});
   }
+
+
+
+
+
+  stateModalForgetPasswod : boolean = false;
+  onClickForgotPassword():void {this.stateModalForgetPasswod = true;}
+  closeEventstateModalForgetPasswod($event:any) : void {this.stateModalForgetPasswod = $event;}
+  SendEventModalForgetPasswod($event:any) : void {
+    this.authenticationService.sendMailCode_ForgotPassword(  $event) .subscribe(
+      (response) => { 
+        this.authResponse = response.body;
+        this.stateMsgBoxAuth  = true ; 
+       }
+    ,(error) => { console.log("error");  console.log(error);
+    this.authResponse = {     token: "", status : AuthenticationStatus.ERROR , message : "Error send Mail !" } ;
+    this.stateMsgBoxAuth  = true ;
+  }) ;
+  }
+authResponse : AuthenticationResponse = new AuthenticationResponse( );
+stateMsgBoxAuth : boolean = false;
+closeEventstateMsgBoxAuth($event:any):void{
+  this.stateMsgBoxAuth =$event ;
+}
+
+
+
+
+
+
     onClickUpdate_ManageContact(): void {
       console.log( "onClickUpdate_ManageContact" );
       console.log( this.account );
@@ -123,6 +173,13 @@ stateRadioGenderOption:boolean = false;
   }
   uploadImgAccountModal_OnUploadSuccessEvent($event : AttachementDto ):void{
     this.account.photo = $event.downloadURL;
-   // this.modalUploadImgAccount = $event; 
+    var  acct =   this.authenticationService.getAccount();
+    acct.photo = this.account.photo; 
+    this.authenticationService.setAccount (acct);
   }
+  validateSamePassword : boolean = false
+  validator():void{
+    if (this.newPassword != this.verifyPassword){this.validateSamePassword = true; }
+    else {this.validateSamePassword = false; } }
+
 }

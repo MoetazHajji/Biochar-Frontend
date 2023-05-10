@@ -7,11 +7,17 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { GuardUserBackService } from './backadmin/_services/_user/guard-user.service';
+import { GuardUserFrontService } from './backadmin/_services/_user/guard-user-front-service';
+import { LoginComponent } from './vitrine/login/login.component';
+
+
 
 
 @NgModule({
   declarations: [
     AppComponent
+    
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   imports: [
@@ -23,7 +29,7 @@ import { AppComponent } from './app.component';
     ReactiveFormsModule,
     HttpClientModule
   ],
-  providers: [],
+  providers: [GuardUserBackService,GuardUserFrontService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

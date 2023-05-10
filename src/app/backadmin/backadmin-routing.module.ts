@@ -48,18 +48,24 @@ import { DetailsStockComponent } from './stock/details-stock/details-stock.compo
 import { AddTestresultComponent } from './testresult-list/add-testresult/add-testresult.component';
 import { AnalysisStatistiqueComponent } from './analysis-statistique/analysis-statistique.component';
 import { UpdateTesttComponent } from './tests/update-testt/update-testt.component';
-import { DashbordComponent } from './dashbord/dashbord.component';
+
+import { GuardUserBackService } from './_services/_user/guard-user.service';
+import { EditUsersAuthenticationComponent } from './authentication-component/edit-users-authentication/edit-users-authentication.component';
+import { InternshipRequestComponent } from './internship-request/internship-request.component';
+import { InternshipListComponent } from './internship-list/internship-list.component';
+import { AddtestComponent } from './addtest/addtest.component';
+
 
 const routes: Routes = [
   { path: '', component: LoginComponent },
-  { path: 'login', component: LoginComponent },
+{ path: 'login', component: LoginComponent /*canActivate : [GuardUserService],*/ },
   {
     path: 'product',
-    component: AdminLayoutComponent,
-    children: [
+    component:AdminLayoutComponent,
+    children:[
       {
-        path: '',
-        component: ProductListComponent
+        path:'',
+        component:ProductListComponent
       },
       {
         path: 'add',
@@ -70,18 +76,66 @@ const routes: Routes = [
         component: DetailsProductComponent
       }
     ]
-  },
-  {
-    path: 'profile',
-    component: AdminLayoutComponent,
-    children: [
+    },
+    {
+      path: 'profile',
+      component: AdminLayoutComponent,
+      children: [
+        {
+          path: '',
+          component: ProfileComponent
+        },
+        {
+          path: 'addProfile',
+          component: AddProfileComponent
+        },
+        {
+          path: 'updateProfile',
+          component: EditProfileComponent
+        },
+        {
+          path: 'details/:id',
+          component: DetailsProductComponent
+        }
+      ]
+    },
+    {
+      path: 'workSchedule',
+      component: AdminLayoutComponent,
+      children: [
+        {
+          path: '',
+          component: WorkScheduleComponent
+        }]
+    },
+    {
+      path: 'leaveAuth',
+      component: AdminLayoutComponent,
+      children: [
+        {
+          path: '',
+          component: LeaveAuthorizationComponent
+        },
+        {
+          path: 'addLeaveAuth',
+          component: AddLeaveAuthComponent
+        },
+        {
+          path: 'updateLeaveAuth',
+          component: EditLeaveAuthComponent
+        }
+      ]
+    },
+    {path :'training',
+    component:AdminLayoutComponent,
+    children:[
       {
-        path: '',
-        component: ProfileComponent
+        path : '',
+        component:TrainingsListComponent
       },
       {
-        path: 'addProfile',
-        component: AddProfileComponent
+        path:'add',
+        component:TrainingAdminComponent
       },
       {
         path: 'updateProfile',
@@ -91,35 +145,7 @@ const routes: Routes = [
         path: 'details/:id',
         component: DetailsProductComponent
       }
-    ]
-  },
-  {
-    path: 'leaveAuth',
-    component: AdminLayoutComponent,
-    children: [
-      {
-        path: '',
-        component: LeaveAuthorizationComponent
-      },
-      {
-        path: 'addLeaveAuth',
-        component: AddLeaveAuthComponent
-      },
-      {
-        path: 'updateLeaveAuth',
-        component: EditLeaveAuthComponent
-      }
-    ]
-  },
-  {
-    path: 'workSchedule',
-    component: AdminLayoutComponent,
-    children: [
-      {
-        path: '',
-        component: WorkScheduleComponent
-      }]
-  },
+    ]},    
   {
     path: 'training',
     component: AdminLayoutComponent,
@@ -213,101 +239,91 @@ const routes: Routes = [
       component: OfferComponent
     }
     ]
-  },
-  {
-    path: 'auth',
-    //component:AdminLayoutComponent,
-    children: [
+    },
+    {
+      path: 'auth',
+      //component:AdminLayoutComponent,
+      children:[
+        {
+          path:'sign-in',
+          component:SignInAuthenticationComponent
+        },
+        {
+          path:'sign-up',
+          component:SignUpAuthenticationComponent
+        }
+      ]},
       {
-        path: 'sign-in',
-        component: SignInAuthenticationComponent
+        path: 'auth',
+        component:AdminLayoutComponent,
+        children:[
+          {
+            path:'edit-forget-password/:code',
+            component:EditForgotPasswordAuthenticationComponent
+          },
+          {
+            path:'edit-users',
+            component:EditUsersAuthenticationComponent
+          }
+        ]},
+    {
+      path: 'timeoff' , canActivateChild : [GuardUserBackService], 
+      component:AdminLayoutComponent,
+      children:[
+        {
+          path:'' , 
+          component:ListTimeoffComponent
+        },
+        {
+          path:'add',
+          component:AddTimeoffComponent
+        },
+        {
+          path:'edit', 
+          component:EditTimeoffComponent
+        }
+      ]
       },
       {
-        path: 'sign-up',
-        component: SignUpAuthenticationComponent
-      }
-    ]
-  },
-  {
-    path: 'auth',
-    component: AdminLayoutComponent,
-    children: [
-      {
-        path: 'edit-forget-password/:code',
-        component: EditForgotPasswordAuthenticationComponent
-      }
-    ]
-  },
-  {
-    path: 'timeoff',
-    component: AdminLayoutComponent,
-    children: [
-      {
-        path: '',
-        component: ListTimeoffComponent
+        path: 'account', canActivateChild : [GuardUserBackService], 
+        component:AdminLayoutComponent,
+        children:[
+          {
+            path:'list',
+            component:ListAccountComponent
+          },          {
+            path:'edit-detailled/:username',
+            component:EditGlobalAccountComponent
+          },
+          {
+            path:'pdf',
+            component:PdfextractorComponent
+          }
+        ]
       },
       {
-        path: 'add',
-        component: AddTimeoffComponent
-      },
-      {
-        path: 'edit',
-        component: EditTimeoffComponent
-      }
-    ]
-  },
-  {
-    path: 'account',
-    component: AdminLayoutComponent,
-    children: [
-      {
-        path: '',
-        component: ListAccountComponent
-      }, {
-        path: 'edit-detailled/:id',
-        component: EditGlobalAccountComponent
-      },
-      {
-        path: 'pdf',
-        component: PdfextractorComponent
-      }
-    ]
-  },
-  {
-    path: 'medicallist',
-    component: AdminLayoutComponent,
-    children: [
-      {
-        path: '',
-        component: MidcalcardListComponent
-      },
-      {
-        path: 'add',
-        component: AddMedicalcardComponent
-      },
-      {
-        path: 'update',
-        component: UpdateMedicalcardComponent
-      }
-    ]
-  },
-  {
-    path: 'samplelist',
-    component: AdminLayoutComponent,
-    children: [
-      {
-        path: '',
-        component: SampleListComponent
-      },
-      {
-        path:'certificate/:title',
-        component:CertificateComponent
+        path :'medicallist',
+        component:AdminLayoutComponent,
+        children : [
+          {
+            path:'',
+            component:MidcalcardListComponent
+          },
+          {
+            path:'add',
+            component:AddMedicalcardComponent
+          },
+          {
+            path:'update',
+            component:UpdateMedicalcardComponent
+          }
+        ]
       },
       {
         path:'demands',
         component:DemandsComponent
-      }
-    ]},
+      },
+    
     {
       path: 'samplelist',
       component: AdminLayoutComponent,
@@ -363,6 +379,19 @@ const routes: Routes = [
         path: '',
         component: AnalysisStatistiqueComponent
       }
+    ]
+  },
+  {path :'internship',
+    component:AdminLayoutComponent,
+    children:[
+      {
+        path : 'request',
+        component:InternshipRequestComponent
+      },
+      {
+        path : 'list',
+        component:InternshipListComponent
+      },
     ]
   },
   {

@@ -14,6 +14,7 @@ import { PdfextractorComponent } from './pdfextractor/pdfextractor.component';
 import { TrainingsComponent } from './trainings/trainings.component';
 import { MyTrainingComponent } from './my-training/my-training.component';
 import { FormsModule } from '@angular/forms';
+import { AddRequestComponent } from './add-request/add-request.component';
 
 
 @NgModule({
@@ -28,9 +29,11 @@ import { FormsModule } from '@angular/forms';
     NavBarAuthComponent,
     TrainingsComponent,
     MyTrainingComponent,
-    PdfextractorComponent
+    PdfextractorComponent,
+    AddRequestComponent
   ],
   imports: [
+    FormsModule,
     CommonModule,
     VitrineRoutingModule,
     FormsModule

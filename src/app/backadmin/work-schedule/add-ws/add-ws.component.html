@@ -1,1 +1,64 @@
-<p>add-ws works!</p>
+<div class="modal modal-la-area" [class]="modalNewWorkSchedule ? 'open' : ''">
+    <p-dialog header="Work Schedule" [(visible)]="modalNewWorkSchedule" [modal]="true" [style]="{width: '500px'}" [baseZIndex]="10000" [draggable]="false" [resizable]="true" (onHide)="cancel()">
+        <div *ngIf="hideForm" >
+            <div class="inscription-form-title-blc">
+                </div>
+                <div class="inscription-form-title">
+                <h1 class="edit-form-title text-hideform">Add Work Schedule</h1>
+                </div>
+                <button type="button" (click)="cancel()" class="btn btn-blue"></button>
+            </div>
+            <div class="form-container">
+                <form #p="ngForm" action="">
+                    <!-- <form> -->
+                    <label>Type of Work Schedule</label>
+                      <select class="form-control" name="selectedValue" [(ngModel)]="selectedValue" (change)="addtab()" required>
+                        <option selected="" disabled="">Select Type of Work Schedule</option>
+                        <option value="Daily Work Schedule">Daily Work Schedule</option>
+                        <option value="Weekend Work Schedule">Weekend Work Schedule</option>
+                        </select>
+                        
+                
+  
+                    <div class="form-group" *ngIf="kelma === 'Daily Work Schedule'">
+                      <label>Start Date</label>
+                      <input type="date" class="form-control"  name="startDate" [(ngModel)]="startDate"  required  (change)="dateVerification()"> 
+                      <div class="alert alert-danger" *ngIf="dateValidation">
+                        <div>Verify Start Date</div>
+                      </div>                  
+  
+                      <label>End Date</label>
+                      <input type="date" class="form-control" name="endDate" [(ngModel)]="endDate"  required  (change)="dateVerification()"> 
+                      <div class="alert alert-danger" *ngIf="dateValidation">
+                        <div>Verify End Date</div>
+                      </div> 
+                    </div>
+  
+                    <div *ngIf="kelma === 'Weekend Work Schedule'">
+                      <div class="form-group">
+                        <label>WeekEnd</label>
+                        <div>
+                          <input type="date" class="form-control" name="sunday" [(ngModel)]="sunday" required (change)="sundayVerification()">
+                          <div class="alert alert-danger" *ngIf="sValidation">
+                            <div>Date must be a sunday!</div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    
+
+                           <div class="form-group" *ngIf="kelma === 'Daily Work Schedule'">     
+                      <button (click)="addWorkS()" [disabled]="dateValidation" class="btn btn-primary align-center"> Submit </button>
+                      </div>
+
+                      
+                      <div class="form-group" *ngIf="kelma === 'Weekend Work Schedule'">     
+                        <button (click)="addSundayWorkS()" [disabled]="sValidation" class="btn btn-primary align-center"> Submit </button>
+                        </div>
+                    <!--.form-area-->
+                    <!-- </form> -->
+                </form>
+              </div>
+            <!--.inscription-form-area-->
+    </p-dialog>
+</div>
